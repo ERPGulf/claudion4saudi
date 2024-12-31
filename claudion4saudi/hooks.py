@@ -241,4 +241,9 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
+fixtures = [
+    # {"dt": "Workspace", "filters": {"module": "Zatca Erpgulf"}},
+    {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
+    # {"dt": "Report", "filters": {"module": "Zatca Erpgulf"}},
+    #    {"dt": "Page", "filters": {"module": "Zatca Erpgulf"}}
+]
