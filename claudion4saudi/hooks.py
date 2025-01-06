@@ -5,6 +5,9 @@ app_description = "Claudion4Saudi"
 app_email = "support@ERPGulf.com"
 app_license = "mit"
 
+
+from frappe import _
+from . import __version__ as app_version
 # Apps
 # ------------------
 
@@ -27,6 +30,8 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/claudion4saudi/css/claudion4saudi.css"
 # app_include_js = "/assets/claudion4saudi/js/claudion4saudi.js"
+app_include_css = "claudion4saudi.bundle.css"
+app_include_js = ["claudion4saudi.bundle.js"]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/claudion4saudi/css/claudion4saudi.css"
@@ -43,6 +48,10 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
+doctype_js = {
+    "Item": "claudion4saudi/custom/js/item.js",
+    "Quotation": "claudion4saudi/custom/js/quotation.js",
+}
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -173,6 +182,10 @@ app_license = "mit"
 
 # Overriding Methods
 # ------------------------------
+
+override_whitelisted_methods = {
+	"frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme"
+}
 #
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "claudion4saudi.event.get_events"
@@ -181,9 +194,9 @@ app_license = "mit"
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-# 	"Task": "claudion4saudi.task.get_dashboard_data"
-# }
+override_doctype_dashboards = {
+	"Task": "claudion4saudi.task.get_dashboard_data"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
@@ -242,8 +255,6 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 fixtures = [
-    # {"dt": "Workspace", "filters": {"module": "Zatca Erpgulf"}},
     {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
-    # {"dt": "Report", "filters": {"module": "Zatca Erpgulf"}},
-    #    {"dt": "Page", "filters": {"module": "Zatca Erpgulf"}}
 ]
+

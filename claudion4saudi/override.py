@@ -1,0 +1,6 @@
+import frappe # type: ignore
+
+@frappe.whitelist()
+def switch_theme(theme):
+    if theme in ["Dark", "Light", "Automatic", "Blue", "Red", "Peach_grey", "Purple"]:
+        frappe.db.set_value("User", frappe.session.user, "desk_theme", theme)

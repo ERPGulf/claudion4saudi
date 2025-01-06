@@ -1,0 +1,14 @@
+Version 1.0.0
+
+### Features
+- Initial release of Claudion4Saudi.
+- Comprehensive support for Saudi Arabian business processes.
+- Arabic language support.
+- Custom themes for enhanced user experience.
+
+### Contributors
+- Harsha Firozkhan (@Harshafiroz) 
+- Sahana V P (@Sahanaerp)
+
+### Notes
+- This is the first version of the app, focused on providing a stable foundation for future updates.
