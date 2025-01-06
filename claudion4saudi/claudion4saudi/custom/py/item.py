@@ -1,5 +1,6 @@
 import frappe
 
+
 @frappe.whitelist()
 def user_permission_checking(user):
     if user:

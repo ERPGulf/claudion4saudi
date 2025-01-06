@@ -3,7 +3,6 @@ Version 1.0.0
 ### Features
 - Initial release of Claudion4Saudi.
 - Comprehensive support for Saudi Arabian business processes.
-- Arabic language support.
 - Custom themes for enhanced user experience.
 
 ### Contributors

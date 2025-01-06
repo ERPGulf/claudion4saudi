@@ -44,7 +44,6 @@ def sales_invoice_list(item, company):
             LIMIT 5  -- Limit to 5 rows
         """, (item, company), as_dict=True)
         
-        # Return both lists
         return {"si_list": si_list, "pi_list": pi_list}
     
 
