@@ -256,5 +256,6 @@ override_doctype_dashboards = {
 # }
 fixtures = [
     {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
+    {"dt": "DocType", "filters": {"module": "Claudion4Saudi"}},
 ]
 
