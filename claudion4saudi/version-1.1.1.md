@@ -1,6 +1,7 @@
-# Version 1.0.0
+# Version 1.1.1
 
-## Features
+### Features
+
 - Comprehensive support for Saudi Arabian business processes.
 - Four custom themes: Blue, Red, Peach Grey, and Purple for enhanced user experience.
 - Added **Last Transactions Details** section to the **Quotation** doctype to track recent transactions.
@@ -18,12 +19,13 @@
 - Added bilingual support for **Customer** and **Item** names with Arabic fields.
 - Enhanced tracking of sales and purchase rates at the item level within the **Quotation** and **Purchase Invoice** doctypes.
 
-## Contributors
+### Contributors
+
 - **Harsha Firozkhan (@Harshafiroz)**:
   - Developed custom themes, core features, and custom fields across multiple doctypes.
 - **Sahana V P (@Sahanaerp)**:
   - Implemented features for tracking recent transactions and detailed item rate history.
 
+### Notes
 
-## Notes
 - This version establishes a robust foundation for **Claudion4Saudi**, focusing on seamless integration with Saudi business processes and enhanced user experience.
