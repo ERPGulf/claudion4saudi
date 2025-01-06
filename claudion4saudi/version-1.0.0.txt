@@ -6,8 +6,8 @@ Version 1.0.0
 - Custom themes for enhanced user experience.
 
 ### Contributors
-- Harsha Firozkhan (@Harshafiroz) 
-- Sahana V P (@Sahanaerp)
+- Harsha Firozkhan (@Harshafiroz) - Created custom themes for the app and Added custom features.
+- Sahana V P (@Sahanaerp) - Added custom functionalities.
 
 ### Notes
 - This is the first version of the app, focused on providing a stable foundation for future updates.

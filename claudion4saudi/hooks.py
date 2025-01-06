@@ -5,6 +5,7 @@ app_description = "Claudion4Saudi"
 app_email = "support@ERPGulf.com"
 app_license = "mit"
 
+
 from frappe import _
 from . import __version__ as app_version
 # Apps
