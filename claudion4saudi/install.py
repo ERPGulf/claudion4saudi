@@ -12,3 +12,11 @@ def set_default_theme():
 
     frappe.db.set_single_value("System Settings", "desk_theme", default_theme)
     frappe.db.commit()
+
+
+
+def validate_theme_availability():
+    themes = ["light", "dark", "automatic", "blue", "red", "peach_grey", "purple"]
+    desk_theme = frappe.db.get_single_value("System Settings", "desk_theme")
+    if desk_theme not in themes:
+        frappe.db.set_single_value("System Settings", "desk_theme", "Peach_grey")
