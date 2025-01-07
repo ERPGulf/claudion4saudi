@@ -5,7 +5,6 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
 ) {
   constructor() {
     super();
-    this.default_theme = "peach_grey";
   }
 
   fetch_themes() {
@@ -13,19 +12,15 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
       this.themes = [
         {
           name: "light",
-          label: "Frappe Light",
+          label: "Light",
           info: "Light Theme",
         },
         {
           name: "dark",
-          label: "Timeless Night",
+          label: "Dark",
           info: "Dark Theme",
         },
-        {
-          name: "automatic",
-          label: "Automatic",
-          info: "Uses system's theme to switch between light and dark mode",
-        },
+
         {
           name: "blue",
           label: "Blue",
@@ -39,7 +34,7 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
         {
           name: "peach_grey",
           label: "Peach Grey",
-          info: "Peach Grey Theme (Default)",
+          info: "Peach Grey Theme",
         },
         {
           name: "purple",
@@ -49,26 +44,6 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
       ];
 
       resolve(this.themes);
-    });
-  }
-
-  set_default_theme() {
-    frappe.db.get_value("User", frappe.session.user, "desk_theme", (r) => {
-      if (!r || !r.desk_theme) {
-        frappe.db.set_value(
-          "User",
-          frappe.session.user,
-          "desk_theme",
-          this.default_theme
-        );
-        frappe.show_alert({
-          message: `Default theme set to ${this.default_theme.replace(
-            "_",
-            " "
-          )}`,
-          indicator: "green",
-        });
-      }
     });
   }
 };
