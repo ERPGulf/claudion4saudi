@@ -1,4 +1,3 @@
-# your_app_name/install.py
 import frappe
 
 def set_default_theme():
