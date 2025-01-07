@@ -92,7 +92,7 @@ doctype_js = {
 # ------------
 
 # before_install = "claudion4saudi.install.before_install"
-after_install = "claudion4saudi.install.set_default_theme"
+# after_install = "claudion4saudi.install.after_install"
 
 # Uninstallation
 # ------------
