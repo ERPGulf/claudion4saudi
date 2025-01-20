@@ -1,14 +1,14 @@
 [data-theme="peach_grey"] {
-  --background-color: #36414c;
+  --background-color: #545f69;
   --primary-color: #ffa00a;
   --secondary-color: #7574ff;
   --white-color: #ffffff;
   --black-color: #000000;
-  --gray-color: #888;
-  --scroll-bg: #7a7979;
+  --gray-color: #c9c8c8;
+  --scroll-bg: #cfcece;
   --scroll-color: #ffffff;
   --text-base: 1rem;
-  --border-color: var(--gray-color);
+  --border-color: #cfcece;
   --bg-color: #d4d0d0;
   --navbar-bg: var(--background-color);
   --modal-bg: #2c436b;
