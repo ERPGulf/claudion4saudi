@@ -31,3 +31,4 @@ def switch_theme(theme):
     # valid_themes = ["light", "dark", "automatic", "blue", "red", "peach_grey", "purple"]
     # if theme in valid_themes:
     frappe.db.set_value("User", frappe.session.user, "desk_theme", theme_option)
+    return "Theme set to " + theme_option
