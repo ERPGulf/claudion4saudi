@@ -38,7 +38,7 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
         {
           name: "peach_grey",
           label: "Peach Grey",
-          info: "Peach Grey - Default Theme",
+          info: "Peach Grey Theme",
         },
         {
           name: "purple",
