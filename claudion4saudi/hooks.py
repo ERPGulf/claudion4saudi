@@ -8,6 +8,7 @@ app_license = "mit"
 
 from frappe import _
 from . import __version__ as app_version
+
 # Apps
 # ------------------
 
@@ -50,9 +51,9 @@ app_include_js = ["claudion4saudi.bundle.js"]
 # include js in doctype views
 doctype_js = {
     # "Item": "claudion4saudi/custom/js/item.js",
-    "Quotation": "claudion4saudi/custom/js/quotation.js", 
-    "Sales Order": "public/js/custom_sales_order.js",  
-    "Sales Invoice": "public/js/custom_sales_invoice.js",  
+    "Quotation": "claudion4saudi/custom/js/quotation.js",
+    "Sales Order": "public/js/custom_sales_order.js",
+    "Sales Invoice": "public/js/custom_sales_invoice.js",
 }
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
@@ -185,7 +186,7 @@ doctype_js = {
 # ------------------------------
 
 override_whitelisted_methods = {
-	"frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme"
+    "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme"
 }
 
 #
@@ -259,6 +260,5 @@ override_whitelisted_methods = {
 fixtures = [
     {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
     {"dt": "DocType", "filters": {"module": "Claudion4Saudi"}},
-    {"dt": "Property Setter", "filters": {"module": "Claudion4Saudi"}}
+    {"dt": "Property Setter", "filters": {"module": "Claudion4Saudi"}},
 ]
-
