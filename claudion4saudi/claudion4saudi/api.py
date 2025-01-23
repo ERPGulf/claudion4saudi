@@ -1,4 +1,3 @@
-
 import frappe
 from werkzeug.wrappers import Response
 import csv
@@ -18,6 +17,8 @@ def create_invoices():
     
     uploaded_file = frappe.request.files.get("file")
     image_files = frappe.request.files.getlist("images")
+    qr_code_files = frappe.request.files.getlist("qr_codes")
+    xml_files = frappe.request.files.getlist("xml_files")
 
     if not uploaded_file:
         return Response(
@@ -41,15 +42,18 @@ def create_invoices():
 
     if not (post_to_pos_invoice or post_to_sales_invoice):
         return Response(
-            json.dumps({"data":"No invoice type selected in GPOS Settings."}),
+            json.dumps({"data": "No invoice type selected in GPOS Settings."}),
             status=404, mimetype='application/json'
         )
 
     file_content = uploaded_file.read().decode("utf-8")
     csv_data = list(csv.DictReader(StringIO(file_content)))
     image_map = {img.filename: img for img in image_files}
+    qr_code_map = {qr.filename: qr for qr in qr_code_files}
+    xml_map = {xml.filename: xml for xml in xml_files}
+    
 
-    invoices_data = defaultdict(lambda: {"items": [], "details": {},"taxes": []})
+    invoices_data = defaultdict(lambda: {"items": [], "details": {}, "taxes": []})
     invoices_created = []
     current_invoice_id = None
 
@@ -71,8 +75,6 @@ def create_invoices():
                 "attachment": row.get("Attachments"),
                 "custom_unique_id": row.get("unique_id"),
                 "custom_zatca_pos_name": row.get("zatca_pos_name")
-                
-                
             }
 
             item = {
@@ -86,13 +88,14 @@ def create_invoices():
             }
             invoices_data[invoice_id]["items"].append(item)
             current_invoice_id = invoice_id
+
             tax = {
-            "charge_type": row.get("Tax Type"),
-            "account_head": row.get("Tax Account Head"),
-            "description": row.get("Description"),
-            "tax_rate": float(row.get("Tax Rate", "0") or "0"),
-            "amount": float(row.get("Tax Amount", "0") or "0"),
-        }
+                "charge_type": row.get("Tax Type"),
+                "account_head": row.get("Tax Account Head"),
+                "description": row.get("Description"),
+                "tax_rate": float(row.get("Tax Rate", "0") or "0"),
+                "amount": float(row.get("Tax Amount", "0") or "0"),
+            }
             invoices_data[invoice_id]["taxes"].append(tax)
         else:
             if current_invoice_id:
@@ -114,6 +117,14 @@ def create_invoices():
 
     for invoice_id, data in invoices_data.items():
         details = data["details"]
+
+        existing_invoice = frappe.db.exists({"doctype": "Sales Invoice", "custom_unique_id": details["custom_unique_id"]})
+        if existing_invoice:
+            return Response(
+                json.dumps({"data": f"Invoice with unique_id '{details['custom_unique_id']}' already exists."}),
+                status=404, mimetype='application/json'
+            )
+
         invoice_type = "POS Invoice" if post_to_pos_invoice else "Sales Invoice"
         total_tax_amount = sum(tax["amount"] for tax in data["taxes"])
         total_item_amount = sum(item["amount"] for item in data["items"])
@@ -158,6 +169,28 @@ def create_invoices():
                 "attached_to_doctype": invoice_type,
                 "attached_to_name": new_invoice.name,
                 "content": image_content,
+            })
+            file_doc.save(ignore_permissions=True)
+
+        qr_code_file = qr_code_map.get(details["custom_unique_id"])
+        if qr_code_file:
+            file_doc = frappe.get_doc({
+                "doctype": "File",
+                "file_name": qr_code_file.filename,
+                "attached_to_doctype": invoice_type,
+                "attached_to_name": new_invoice.name,
+                "content": qr_code_file.read(),
+            })
+            file_doc.save(ignore_permissions=True)
+
+        xml_file = xml_map.get(details["custom_unique_id"])
+        if xml_file:
+            file_doc = frappe.get_doc({
+                "doctype": "File",
+                "file_name": xml_file.filename,
+                "attached_to_doctype": invoice_type,
+                "attached_to_name": new_invoice.name,
+                "content": xml_file.read(),
             })
             file_doc.save(ignore_permissions=True)
 
