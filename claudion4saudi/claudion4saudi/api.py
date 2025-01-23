@@ -45,6 +45,11 @@ def create_invoices():
             json.dumps({"data": "No invoice type selected in GPOS Settings."}),
             status=404, mimetype='application/json'
         )
+    if post_to_pos_invoice and post_to_sales_invoice:
+        return Response(
+            json.dumps({"data": "Both invoice type are selected in GPOS Settings."}),
+            status=404, mimetype='application/json'
+        )
 
     file_content = uploaded_file.read().decode("utf-8")
     csv_data = list(csv.DictReader(StringIO(file_content)))
@@ -74,7 +79,9 @@ def create_invoices():
                 ).strftime("%Y-%m-%d"),
                 "attachment": row.get("Attachments"),
                 "custom_unique_id": row.get("unique_id"),
-                "custom_zatca_pos_name": row.get("zatca_pos_name")
+                "custom_zatca_pos_name": row.get("zatca_pos_name"),      
+                "custom_qr_code" : row.get("QR Code Filename"),
+                "custom_xml" : row.get("XML Filename")
             }
 
             item = {
@@ -172,27 +179,29 @@ def create_invoices():
             })
             file_doc.save(ignore_permissions=True)
 
-        qr_code_file = qr_code_map.get(details["custom_unique_id"])
-        if qr_code_file:
-            file_doc = frappe.get_doc({
-                "doctype": "File",
-                "file_name": qr_code_file.filename,
-                "attached_to_doctype": invoice_type,
-                "attached_to_name": new_invoice.name,
-                "content": qr_code_file.read(),
-            })
-            file_doc.save(ignore_permissions=True)
 
-        xml_file = xml_map.get(details["custom_unique_id"])
-        if xml_file:
-            file_doc = frappe.get_doc({
-                "doctype": "File",
-                "file_name": xml_file.filename,
-                "attached_to_doctype": invoice_type,
-                "attached_to_name": new_invoice.name,
-                "content": xml_file.read(),
-            })
-            file_doc.save(ignore_permissions=True)
+        qr_code_filename = details.get("custom_qr_code")
+        if qr_code_filename and qr_code_filename in qr_code_map:
+            qr_code_content = qr_code_map[qr_code_filename].read()
+            file_path = frappe.utils.get_files_path(qr_code_filename, is_private=False) 
+            with open(file_path, "wb") as f:
+                f.write(qr_code_content)
+            file_url = f"/files/{qr_code_filename}" 
+            new_invoice.db_set("custom_qr_code", file_url)
+
+
+        custom_xml_filename = details.get("custom_xml")
+        if custom_xml_filename and custom_xml_filename in qr_code_map: 
+            custom_xml_content = qr_code_map[custom_xml_filename].read()  
+
+            file_path = frappe.utils.get_files_path(custom_xml_filename, is_private=False) 
+            with open(file_path, "wb") as f:
+                f.write(custom_xml_content)
+
+            file_url = f"/files/{custom_xml_filename}" 
+
+            new_invoice.db_set("custom_xml", file_url)
+
 
     return {
         "message": f"{len(invoices_created)} {invoice_type}s created successfully.",
