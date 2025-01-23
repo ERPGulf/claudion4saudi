@@ -7,10 +7,7 @@ def after_install():
         "default_value"
     )
     
-    # valid_themes = ["Purple", "Frappe Light", "Timeless Night", "Automatic", "Blue", "Red", "Peach Grey"]
-    # if default_theme not in valid_themes:
-    #     frappe.log_error(f"Invalid default theme '{default_theme}' specified in Property Setter.", "Installation Error")
-    #     return
+    
 
     users = frappe.get_all("User", filters={"enabled": 1, "user_type": "System User"})
     for user in users:
