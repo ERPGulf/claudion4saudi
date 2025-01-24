@@ -3,7 +3,7 @@ import frappe
 def after_migrate():
     default_theme = frappe.db.get_value(
         "Property Setter", 
-        {"property": "options", "doctype": "User", "field_name": "desk_theme"}, 
+        {"property": "options", "doc_type": "User", "field_name": "desk_theme"}, 
         "default_value"
     )
     
