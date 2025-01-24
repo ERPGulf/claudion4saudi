@@ -14,4 +14,3 @@ def after_migrate():
         frappe.db.set_value("User", user.name, "desk_theme", default_theme)
 
     frappe.db.commit()
-    frappe.msgprint(f"Default theme set to '{default_theme}' for all users.")

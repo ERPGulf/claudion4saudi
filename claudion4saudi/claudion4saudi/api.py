@@ -232,17 +232,14 @@ def create_invoices():
 
 
 
-
-
 @frappe.whitelist(allow_guest=True)
 def create_invoices_csv():
-    
     if frappe.request.method != "POST":
         return Response(
             json.dumps({"data": "Only POST requests are allowed."}),
             status=404, mimetype='application/json'
         )
-    
+
     uploaded_file = frappe.request.files.get("file")
 
     if not uploaded_file:
@@ -256,24 +253,8 @@ def create_invoices_csv():
             status=404, mimetype='application/json'
         )
 
-    gpos_settings = frappe.get_doc("Gpos setting")
-    post_to_pos_invoice = gpos_settings.get("post_to_pos_invoice")
-    post_to_sales_invoice = gpos_settings.get("post_to_sales_invoice")
-
-    if not (post_to_pos_invoice or post_to_sales_invoice):
-        return Response(
-            json.dumps({"data": "No invoice type selected in GPOS Settings."}),
-            status=404, mimetype='application/json'
-        )
-    if post_to_pos_invoice and post_to_sales_invoice:
-        return Response(
-            json.dumps({"data": "Both invoice type are selected in GPOS Settings."}),
-            status=404, mimetype='application/json'
-        )
-
     file_content = uploaded_file.read().decode("utf-8")
     csv_data = list(csv.DictReader(StringIO(file_content)))
-    
 
     invoices_data = defaultdict(lambda: {"items": [], "details": {}, "taxes": []})
     invoices_created = []
@@ -301,8 +282,6 @@ def create_invoices_csv():
                 "qty": float(row.get("UOM Conversion Factor (Items)", "1")),
                 "rate": float(row.get("Rate (Items)", "0")),
                 "uom": row.get("UOM (Items)", "Nos"),
-                "cost_center": row.get("Cost Center (Items)"),
-                "income_account": row.get("Income Account (Items)"),
                 "amount": float(row.get("Amount (Items)", "0")),
             }
             invoices_data[invoice_id]["items"].append(item)
@@ -336,6 +315,27 @@ def create_invoices_csv():
 
     for invoice_id, data in invoices_data.items():
         details = data["details"]
+        company = details["company"]
+        if not company:
+            return Response(
+                json.dumps({"data": f"Missing company for invoice ID {invoice_id}."}),
+                status=404, mimetype='application/json'
+            )
+
+        company_settings = frappe.get_doc("Company", company)
+        post_to_pos_invoice = company_settings.get("post_to_pos_invoice")
+        post_to_sales_invoice = company_settings.get("post_to_sales_invoice")
+
+        if not (post_to_pos_invoice or post_to_sales_invoice):
+            return Response(
+                json.dumps({"data": f"No invoice type selected for company {company}."}),
+                status=404, mimetype='application/json'
+            )
+        if post_to_pos_invoice and post_to_sales_invoice:
+            return Response(
+                json.dumps({"data": f"Both invoice types are selected for company {company}."}),
+                status=404, mimetype='application/json'
+            )
 
         invoice_type = "POS Invoice" if post_to_pos_invoice else "Sales Invoice"
         total_tax_amount = sum(tax["amount"] for tax in data["taxes"])
@@ -345,7 +345,7 @@ def create_invoices_csv():
         invoice_doc = {
             "doctype": invoice_type,
             "customer": details["customer"],
-            "company": details["company"],
+            "company": company,
             "posting_date": details["posting_date"],
             "currency": details["currency"],
             "exchange_rate": details["exchange_rate"],
@@ -370,9 +370,7 @@ def create_invoices_csv():
         new_invoice.submit()
         invoices_created.append(new_invoice.name)
 
-
-
     return {
-        "message": f"{len(invoices_created)} {invoice_type}s created successfully.",
+        "message": f"{len(invoices_created)} invoices created successfully.",
         "invoices": invoices_created
     }
