@@ -95,7 +95,9 @@ doctype_js = {
 # ------------
 
 # before_install = "claudion4saudi.install.before_install"
-after_install = "claudion4saudi.install.after_install"
+# after_install = "claudion4saudi.install.after_install"
+after_migrate = "claudion4saudi.migrate.after_migrate"
+
 
 # Uninstallation
 # ------------
