@@ -183,24 +183,40 @@ def create_invoices():
         qr_code_filename = details.get("custom_qr_code")
         if qr_code_filename and qr_code_filename in qr_code_map:
             qr_code_content = qr_code_map[qr_code_filename].read()
-            file_path = frappe.utils.get_files_path(qr_code_filename, is_private=False) 
+
+            file_path = frappe.utils.get_files_path(qr_code_filename, is_private=True) 
             with open(file_path, "wb") as f:
                 f.write(qr_code_content)
-            file_url = f"/files/{qr_code_filename}" 
-            new_invoice.db_set("custom_qr_code", file_url)
+
+            qr_code_file_doc = frappe.get_doc({
+                "doctype": "File",
+                "file_name": qr_code_filename,
+                "file_url": f"/private/files/{qr_code_filename}",  
+                "content": qr_code_content,
+                "is_private": 1,  
+            })
+            qr_code_file_doc.save(ignore_permissions=True)
+            new_invoice.db_set("custom_qr_code", qr_code_file_doc.file_url)
 
 
         custom_xml_filename = details.get("custom_xml")
-        if custom_xml_filename and custom_xml_filename in qr_code_map: 
-            custom_xml_content = qr_code_map[custom_xml_filename].read()  
+        if custom_xml_filename and custom_xml_filename in xml_map:
+            custom_xml_content = xml_map[custom_xml_filename].read()
 
-            file_path = frappe.utils.get_files_path(custom_xml_filename, is_private=False) 
+            file_path = frappe.utils.get_files_path(custom_xml_filename, is_private=True)
             with open(file_path, "wb") as f:
                 f.write(custom_xml_content)
 
-            file_url = f"/files/{custom_xml_filename}" 
+            custom_xml_file_doc = frappe.get_doc({
+                "doctype": "File",
+                "file_name": custom_xml_filename,
+                "file_url": f"/private/files/{custom_xml_filename}",
+                "content": custom_xml_content,
+                "is_private": 1,  
+            })
+            custom_xml_file_doc.save(ignore_permissions=True)
+            new_invoice.db_set("custom_xml", custom_xml_file_doc.file_url)
 
-            new_invoice.db_set("custom_xml", file_url)
 
 
     return {
