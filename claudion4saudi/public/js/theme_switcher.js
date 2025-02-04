@@ -1,15 +1,24 @@
 frappe.provide("frappe.ui");
 
-frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
-  frappe.ui.ThemeSwitcher
-) {
+frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends frappe.ui.ThemeSwitcher {
   constructor() {
-    super();
+    super()
   }
 
   fetch_themes() {
+
     return new Promise((resolve) => {
       this.themes = [
+        {
+          name: "claudiontheme2",
+          label: "Claudion Theme 2",
+          info: "Claudion Default Theme 2",
+        },
+        {
+          name: "themei",
+          label: "Theme I",
+          info: "Claudion Theme 1",
+        },
         {
           name: "light",
           label: "Frappe Light",
@@ -36,7 +45,7 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
           info: "Red Theme",
         },
         {
-          name: "peach_grey",
+          name: "peachgrey",
           label: "Peach Grey",
           info: "Peach Grey Theme",
         },
@@ -45,8 +54,17 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
           label: "Purple",
           info: "Purple Theme",
         },
+        {
+          name: "claudiontheme3",
+          label: "Claudion Theme 3",
+          info: "Claudion Default Theme 3",
+        },
+        {
+          name: "claudiontheme4",
+          label: "Claudion Theme 4",
+          info: "Claudion Default Theme 4",
+        },
       ];
-
       resolve(this.themes);
     });
   }

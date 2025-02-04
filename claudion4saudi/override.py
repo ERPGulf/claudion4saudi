@@ -1,3 +1,6 @@
+import frappe
+
+
 @frappe.whitelist()
 def switch_theme(theme):
     theme_mapping = {
@@ -6,13 +9,19 @@ def switch_theme(theme):
         "Automatic": "Automatic",
         "Blue": "Blue",
         "Red": "Red",
-        "Peach_Grey": "Peach Grey",
-        "Purple": "Purple"
+        "peachgrey": "Peach Grey",
+        "Purple": "Purple",
+        "Themei": "Theme I",
+        "ClaudionTheme2": "Claudion Theme 2",
+        "ClaudionTheme3": "Claudion Theme 3",
+        "ClaudionTheme4": "Claudion Theme 4",
     }
-
-    if theme in theme_mapping:
-        theme_option = theme_mapping[theme]
-        frappe.db.set_value("User", frappe.session.user, "desk_theme", theme_option)
-        return f"Theme set to {theme_option}"
-    else:
-        frappe.throw("Invalid theme selected")
+    frappe.db.set_value("User", frappe.session.user, "desk_theme", theme)
+    return "success"
+    # if theme in theme_mapping:
+    #     theme_option = theme_mapping[theme]
+    #     # frappe.db.set_value("User", frappe.session.user, "desk_theme", "ClaudionTheme3")
+    #     frappe.db.set_value("User", frappe.session.user, "desk_theme", theme_option)
+    #     return f"Theme set to {theme_option}"
+    # else:
+    #     frappe.throw("Invalid theme selected")
