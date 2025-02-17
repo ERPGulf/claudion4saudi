@@ -5,8 +5,6 @@
   --fourth-color: #d1d3d4;
   --fifth-color: #808285;
   --second-color: #ffffff;
-  --main-color-box: #063c44;
-  
 
   --primary: var(--main-color);
   --dt-primary-color: var(--main-color);
@@ -14,22 +12,11 @@
   --blue-avatar-color: var(--main-color);
   --blue: var(--main-color);
 
-  --primary-color: var(--main-color-box);
-  --background-color: var(--main-color-box);
-  --text-color: white;
-  --navbar-bg: var(--main-color-box);
-  --btn-default-bg: var(--main-color-box);
-  --btn-default-hover-bg: var(--third-color-box);
-  --indicator-dot-red: var(--main-color-box);
-  --indicator-dot-purple: var(--third-color-box);
-
-  --bg-color:  var(--main-color-box);
-  --fg-color:  var(--main-color-box);
-
---fg-hover-color: var(--main-color);
---card-bg: var(--main-color);
---control-bg: var(--main-color);
---control-bg-on-pink: var(--main-color);
+  --navbar-bg: var(--second-color);
+  --fg-hover-color: var(--second-color);
+  --card-bg: var(--second-color);
+  --control-bg: var(--second-color);
+  --control-bg-on-pink: var(--second-color);
 }
 
 /* Page Background */
@@ -231,4 +218,3 @@ h6.uppercase {
 [data-theme="claudiontheme2"] #page-Workspaces .page-head {
   background: var(--third-color);
 }
-

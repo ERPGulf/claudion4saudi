@@ -10,24 +10,7 @@
   --blue-avatar-bg: var(--main-color);
   --blue-avatar-color: var(--main-color);
   --blue: var(--main-color);
-  
   --primary-color: var(--main-color);
-    --background-color: var(--main-color);
-    --text-color: white;
-    --navbar-bg: var(--main-color);
-    --btn-default-bg: var(--main-color);
-    --btn-default-hover-bg: var(--third-color);
-    --indicator-dot-red: var(--main-color);
-    --indicator-dot-purple: var(--third-color);
-
-    --bg-color:  var(--main-color);
-    --fg-color:  var(--main-color);
-
-    --navbar-bg: var(--main-color);
-  --fg-hover-color: var(--main-color);
-  --card-bg: var(--main-color);
-  --control-bg: var(--main-color);
-  --control-bg-on-pink: var(--main-color);
 }
 
 [data-theme="purple"] .page-container,

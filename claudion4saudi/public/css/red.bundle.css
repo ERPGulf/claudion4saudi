@@ -53,10 +53,32 @@
   --text-on-grey: var(--pink-50);
   --text-on-darkgrey: var(--pink-200);
   --text-on-dark-pink: var(--pink-200);
-
-
+  --text-on-light-pink: var(--pink-100);
+  --text-on-purple: var(--purple-100);
+  --text-on-pink: var(--pink-100);
+  --text-on-cyan: var(--cyan-100);
+  --bg-color: var(--pink-900);
+  --fg-color: var(--pink-800);
+  --navbar-bg: var(--pink-800);
+  --fg-hover-color: var(--pink-700);
   --card-bg: var(--pink-800);
-  
+  --disabled-text-color: var(--pink-400);
+  --disabled-control-bg: var(--pink-700);
+  --control-bg: var(--pink-300);
+  --control-bg-on-pink: var(--pink-800);
+  --awesomebar-focus-bg: var(--control-bg);
+  --awesomplete-hover-bg: var(--pink-300);
+  --modal-bg: var(--pink-700);
+  --toast-bg: var(--modal-bg);
+  --popover-bg: var(--bg-color);
+  --error-bg: var(--red-70);
+  --error-border: var(--red-400);
+  --icon-fill: transparent;
+  --icon-stroke: var(--pink-300);
+  --alert-text-danger: var(--red-300);
+  --alert-text-warning: var(--yellow-300);
+  --alert-text-info: var(--rose-300);
+  --alert-text-success: var(--green-300);
  
 }
 

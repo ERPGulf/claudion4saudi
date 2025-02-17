@@ -1,135 +1,248 @@
 
+
+
+# from erpnext.accounts.doctype.payment_entry.payment_entry import get_party_details
+# from erpnext.setup.utils import get_exchange_rate
 # import frappe
-# from frappe.utils import nowdate
+
 
 # @frappe.whitelist()
-# def create_advance_sales_invoice(sales_order):
-#     so_doc = frappe.get_doc("Sales Order", sales_order)
+# def get_advance_sales_invoice_entry(sales_order):
+#     sales_order_doc = frappe.get_doc("Sales Order", sales_order)
 
-#     asi_doc = frappe.new_doc("Advance Sales Invoice")
-#     asi_doc.payment_type = "Receive"  
-#     asi_doc.party_type = "Customer"
-#     asi_doc.party = so_doc.customer
-#     asi_doc.company = so_doc.company
-#     asi_doc.custom_sales_order_reference = sales_order  
+#     party_details = get_party_details(
+#         company=sales_order_doc.company,
+#         party_type="Customer",
+#         party=sales_order_doc.customer,
+#         date=sales_order_doc.transaction_date,
+#     )
 
-#     asi_doc.posting_date = nowdate()
-    
-#     asi_doc.paid_from = frappe.db.get_value("Company", so_doc.company, "default_receivable_account")
-#     asi_doc.paid_from_account_currency = frappe.db.get_value("Account", asi_doc.paid_from, "account_currency")
-    
-#     asi_doc.paid_to = frappe.db.get_value("Company", so_doc.company, "default_cash_account") 
-#     asi_doc.paid_to_account_currency = frappe.db.get_value("Account", asi_doc.paid_to, "account_currency")
+#     company_currency = frappe.get_cached_value("Company", sales_order_doc.company, "default_currency")
 
-#     asi_doc.paid_amount = so_doc.grand_total
-#     asi_doc.source_exchange_rate = 1.0  
-#     asi_doc.base_paid_amount = asi_doc.paid_amount  
-#     asi_doc.received_amount = asi_doc.paid_amount
-#     asi_doc.target_exchange_rate = 1.0
-#     asi_doc.base_received_amount = asi_doc.base_paid_amount
+#     source_exchange_rate = 1
+#     target_exchange_rate = 1
 
-#     if not frappe.get_meta("Advance Sales Invoice").has_field("custom_item"):
-#         frappe.throw("The 'custom_item' table does not exist in Advance Sales Invoice. Please verify your customization.")
+#     # Source exchange rate based on paid_from account currency
+#     if party_details.get("party_account_currency") != company_currency:
+#         source_exchange_rate = get_exchange_rate(
+#             from_currency=party_details.get("party_account_currency"),
+#             to_currency=company_currency,
+#             transaction_date=sales_order_doc.transaction_date,
+#         )
 
-#     for item in so_doc.items:
-#         asi_doc.append("custom_item", {
-#             "item_code": item.item_code,
-#             "delivery_date": item.delivery_date,
-#             "qty": item.qty,
-#             "rate": item.rate,
-#             "amount": item.amount
-#         })
+#     bank_account_currency = company_currency
+#     if party_details.get("bank_account"):
+#         bank_account_currency = frappe.get_cached_value("Account", party_details.get("bank_account"), "account_currency")
+#         if bank_account_currency != company_currency:
+#             target_exchange_rate = get_exchange_rate(
+#                 from_currency=bank_account_currency,
+#                 to_currency=company_currency,
+#                 transaction_date=sales_order_doc.transaction_date,
+#             )
 
-#     asi_doc.insert(ignore_permissions=True)
-#     return asi_doc.name
+#     paid_amount = sales_order_doc.advance_paid or 0
+#     base_paid_amount = paid_amount * source_exchange_rate
+#     received_amount = paid_amount * (source_exchange_rate / target_exchange_rate)
+#     base_received_amount = received_amount * target_exchange_rate
+
+#     asi_data = {
+#         "company": sales_order_doc.company,
+#         "party_type": "Customer",
+#         "party": sales_order_doc.customer,
+#         "party_name": party_details.get("party_name"),
+#         "party_balance": party_details.get("party_balance"),
+#         "paid_from": party_details.get("party_account"),
+#         "paid_to": party_details.get("bank_account"),
+#         "paid_from_account_currency": party_details.get("party_account_currency"),
+#         "posting_date": frappe.utils.nowdate(),
+#         "reference_date": sales_order_doc.transaction_date,
+#         "reference_no": sales_order_doc.name,
+#         "payment_type": "Receive",
+#         "paid_amount": paid_amount,
+#         "base_paid_amount": base_paid_amount,
+#         "received_amount": received_amount,
+#         "base_received_amount": base_received_amount,
+#         "source_exchange_rate": source_exchange_rate,
+#         "target_exchange_rate": target_exchange_rate,
+#         "payment_reference": sales_order_doc.name,
+#     }
+
+#     # Reference for Sales Order
+#     references = [
+#         {
+#             "reference_doctype": "Sales Order",
+#             "reference_name": sales_order_doc.name,
+#             "due_date": sales_order_doc.delivery_date,
+#             "total_amount": sales_order_doc.grand_total,
+#             "outstanding_amount": sales_order_doc.grand_total - paid_amount,
+#             "allocated_amount": paid_amount,
+#             "exchange_rate": source_exchange_rate,
+#             "account": party_details.get("party_account"),
+#         }
+#     ]
+#     asi_data["references"] = references
+
+#     # Items Table Mapping
+#     custom_items = []
+#     for item in sales_order_doc.items:
+#         custom_items.append(
+#             {
+#                 "item_code": item.item_code,
+#                 "delivery_date": item.delivery_date,
+#                 "qty": item.qty,
+#                 "rate": item.rate,
+#                 "amount": item.amount,
+#                 "actual_qty": item.actual_qty,
+#             }
+#         )
+#     asi_data["custom_item"] = custom_items
+
+#     # Taxes Table Mapping
+#     asi_taxes = []
+#     for tax in sales_order_doc.taxes:
+#         asi_taxes.append(
+#             {
+#                 "charge_type": tax.charge_type,
+#                 "account_head": tax.account_head,
+#                 "description": tax.description,
+#                 "rate": tax.rate,
+#                 "tax_amount": tax.tax_amount,
+#                 "base_tax_amount": tax.base_tax_amount,
+#                 "total": tax.total,
+#                 "base_total": tax.base_total,
+#                 "cost_center": tax.cost_center,
+#             }
+#         )
+#     asi_data["taxes"] = asi_taxes
+
+#     return asi_data
 
 
+
+from erpnext.accounts.doctype.payment_entry.payment_entry import get_party_details
+from erpnext.setup.utils import get_exchange_rate
 import frappe
-from frappe.utils import nowdate, flt, getdate
-from erpnext.accounts.party import get_party_bank_account  # ✅ Import function to fetch bank account
+
 
 @frappe.whitelist()
-def create_advance_sales_invoice(sales_order):
-    so_doc = frappe.get_doc("Sales Order", sales_order)
+def get_advance_sales_invoice_entry(sales_order):
+    sales_order_doc = frappe.get_doc("Sales Order", sales_order)
 
-    over_billing_allowance = frappe.db.get_single_value("Accounts Settings", "over_billing_allowance") or 0
-    if flt(so_doc.per_billed, 2) >= (100.0 + over_billing_allowance):
-        frappe.throw(_("Can only make payment against unbilled Sales Order."))
+    party_details = get_party_details(
+        company=sales_order_doc.company,
+        party_type="Customer",
+        party=sales_order_doc.customer,
+        date=sales_order_doc.transaction_date,
+    )
 
-    asi_doc = frappe.new_doc("Advance Sales Invoice")
-    asi_doc.payment_type = "Receive"
-    asi_doc.party_type = "Customer"
-    asi_doc.party = so_doc.customer
-    asi_doc.company = so_doc.company
-    asi_doc.custom_sales_order_reference = sales_order
-    asi_doc.posting_date = nowdate()
+    company_currency = frappe.get_cached_value("Company", sales_order_doc.company, "default_currency")
 
-    asi_doc.paid_from = frappe.db.get_value("Company", so_doc.company, "default_receivable_account")
-    asi_doc.paid_from_account_currency = frappe.db.get_value("Account", asi_doc.paid_from, "account_currency")
+    source_exchange_rate = 1
+    target_exchange_rate = 1
 
-    asi_doc.paid_to = frappe.db.get_value("Company", so_doc.company, "default_cash_account")
-    asi_doc.paid_to_account_currency = frappe.db.get_value("Account", asi_doc.paid_to, "account_currency")
+    # Source exchange rate based on paid_from account currency
+    if party_details.get("party_account_currency") != company_currency:
+        source_exchange_rate = get_exchange_rate(
+            from_currency=party_details.get("party_account_currency"),
+            to_currency=company_currency,
+            transaction_date=sales_order_doc.transaction_date,
+        )
 
-    asi_doc.source_exchange_rate = frappe.db.get_value("Currency Exchange", 
-        {"from_currency": asi_doc.paid_from_account_currency, "to_currency": asi_doc.paid_to_account_currency}, 
-        "exchange_rate") or 1.0
+    bank_account_currency = company_currency
+    if party_details.get("bank_account"):
+        bank_account_currency = frappe.get_cached_value("Account", party_details.get("bank_account"), "account_currency")
+        if bank_account_currency != company_currency:
+            target_exchange_rate = get_exchange_rate(
+                from_currency=bank_account_currency,
+                to_currency=company_currency,
+                transaction_date=sales_order_doc.transaction_date,
+            )
 
-    asi_doc.target_exchange_rate = frappe.db.get_value("Currency Exchange", 
-        {"from_currency": asi_doc.paid_to_account_currency, "to_currency": asi_doc.paid_from_account_currency}, 
-        "exchange_rate") or 1.0
+    paid_amount = sales_order_doc.advance_paid or 0
+    base_paid_amount = paid_amount * source_exchange_rate
+    received_amount = paid_amount * (source_exchange_rate / target_exchange_rate)
+    base_received_amount = received_amount * target_exchange_rate
 
-    asi_doc.paid_amount = so_doc.grand_total if so_doc.grand_total else 0
-    asi_doc.base_paid_amount = asi_doc.paid_amount * asi_doc.source_exchange_rate
-    asi_doc.received_amount = asi_doc.paid_amount * asi_doc.source_exchange_rate
-    asi_doc.base_received_amount = asi_doc.base_paid_amount * asi_doc.target_exchange_rate
+    asi_data = {
+        "company": sales_order_doc.company,
+        "party_type": "Customer",
+        "party": sales_order_doc.customer,
+        "party_name": party_details.get("party_name"),
+        "party_balance": party_details.get("party_balance"),
+        "paid_from": party_details.get("party_account"),
+        "paid_to": party_details.get("bank_account"),
+        "paid_from_account_currency": party_details.get("party_account_currency"),
+        "posting_date": frappe.utils.nowdate(),
+        "reference_date": sales_order_doc.transaction_date,
+        "reference_no": sales_order_doc.name,
+        "payment_type": "Receive",
+        "paid_amount": paid_amount,
+        "base_paid_amount": base_paid_amount,
+        "received_amount": received_amount,
+        "base_received_amount": base_received_amount,
+        "source_exchange_rate": source_exchange_rate,
+        "target_exchange_rate": target_exchange_rate,
+        "payment_reference": sales_order_doc.name,
+    }
 
-    for tax in so_doc.taxes:
-        charge_type = tax.charge_type
-        if charge_type == "On Net Total":
-            charge_type = "Actual"  
+    # Reference for Sales Order
+    references = [
+        {
+            "reference_doctype": "Sales Order",
+            "reference_name": sales_order_doc.name,
+            "due_date": sales_order_doc.delivery_date,
+            "total_amount": sales_order_doc.grand_total,
+            "outstanding_amount": sales_order_doc.grand_total - paid_amount,
+            "allocated_amount": paid_amount,
+            "exchange_rate": source_exchange_rate,
+            "account": party_details.get("party_account"),
+        }
+    ]
+    asi_data["references"] = references
 
-        asi_doc.append("taxes", {
-            "charge_type": charge_type,
-            "account_head": tax.account_head,
-            "description": tax.description,
-            "rate": tax.rate,
-            "tax_amount": tax.tax_amount,
-            "total": tax.total
-        })
+    # Calculate Total Allocated Amount, Base Allocated Amount, and Unallocated Amount
+    total_allocated_amount = sum(d["allocated_amount"] for d in references)
+    base_total_allocated_amount = sum(d["allocated_amount"] * d["exchange_rate"] for d in references)
+    unallocated_amount = paid_amount - total_allocated_amount
 
-    vat_rate = 0
-    for tax in so_doc.taxes:
-        if "VAT" in tax.account_head:
-            vat_rate = tax.rate / 100
+    asi_data["total_allocated_amount"] = abs(total_allocated_amount)
+    asi_data["base_total_allocated_amount"] = abs(base_total_allocated_amount)
+    asi_data["unallocated_amount"] = unallocated_amount
 
-    if vat_rate > 0:
-        vat_amount = asi_doc.paid_amount * vat_rate
-        asi_doc.paid_amount -= vat_amount  
-        asi_doc.append("taxes", {
-            "charge_type": "Actual",
-            "account_head": "VAT Account",
-            "description": "VAT on Advance Payment",
-            "rate": vat_rate * 100,
-            "tax_amount": vat_amount
-        })
+    frappe.msgprint(f"Total Allocated Amount: {total_allocated_amount}")
+    print(f"Total Allocated Amount: {total_allocated_amount}")
 
-    for item in so_doc.items:
-        asi_doc.append("custom_item", {
-            "item_code": item.item_code,
-            "delivery_date": item.delivery_date,
-            "qty": item.qty,
-            "rate": item.rate,
-            "amount": item.amount
-        })
+    # Items Table Mapping
+    custom_items = []
+    for item in sales_order_doc.items:
+        custom_items.append(
+            {
+                "item_code": item.item_code,
+                "delivery_date": item.delivery_date,
+                "qty": item.qty,
+                "rate": item.rate,
+                "amount": item.amount,
+                "actual_qty": item.actual_qty,
+            }
+        )
+    asi_data["custom_item"] = custom_items
 
-    asi_doc.party_bank_account = get_party_bank_account("Customer", asi_doc.party)
+    # Taxes Table Mapping
+    asi_taxes = []
+    for tax in sales_order_doc.taxes:
+        asi_taxes.append(
+            {
+                "charge_type": tax.charge_type,
+                "account_head": tax.account_head,
+                "description": tax.description,
+                "rate": tax.rate,
+                "tax_amount": tax.tax_amount,
+                "base_tax_amount": tax.base_tax_amount,
+                "total": tax.total,
+                "base_total": tax.base_total,
+                "cost_center": tax.cost_center,
+            }
+        )
+    asi_data["taxes"] = asi_taxes
 
-    asi_doc.party_name = frappe.db.get_value("Customer", asi_doc.party, "customer_name")
-    asi_doc.party_balance = frappe.db.get_value("Accounts", asi_doc.paid_from, "account_balance")
-
-    asi_doc.letter_head = frappe.db.get_single_value("System Settings", "default_letter_head") or ""
-
-    asi_doc.mode_of_payment = so_doc.get("mode_of_payment") or ""
-
-    asi_doc.insert(ignore_permissions=True)
-    return asi_doc.name
+    return asi_data

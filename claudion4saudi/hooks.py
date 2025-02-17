@@ -53,10 +53,10 @@ doctype_js = {
     "Quotation": "claudion4saudi/custom/js/quotation.js",
     "Sales Order": [
         "public/js/custom_sales_order.js",
-        "public/js/sales_invoice_adv.js"
+        "public/js/adv_sales_invoice.js"
     ],
     "Sales Invoice": "public/js/custom_sales_invoice.js",
-    # "Advance Sales Invoice": "public/js/advance_sales_invoice.js",
+    # "Advance Sales Invoice": "public/js/adv_sales_invoice.js",
 }
 
 # doctype_js = {"doctype" : "public/js/doctype.js"}
@@ -99,7 +99,7 @@ doctype_js = {
 # ------------
 
 # before_install = "claudion4saudi.install.before_install"
-# after_install = "claudion4saudi.install.after_install"
+after_migrate = "claudion4saudi.migrate.after_migrate"
 
 
 # Uninstallation

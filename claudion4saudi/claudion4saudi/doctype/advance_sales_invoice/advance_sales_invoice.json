@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2025-01-30 12:57:31.088969",
+ "creation": "2025-02-12 17:12:24.401332",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -42,7 +42,7 @@
   "paid_amount_after_tax",
   "source_exchange_rate",
   "base_paid_amount",
-  "base_paid_amount_after_tax",
+  "base_paid_amount_after_taxbase_paid_amount_after_tax",
   "column_break_21",
   "received_amount",
   "received_amount_after_tax",
@@ -99,8 +99,8 @@
   "in_words",
   "subscription_section",
   "auto_repeat",
-  "amended_from",
-  "title"
+  "title",
+  "amended_from"
  ],
  "fields": [
   {
@@ -302,71 +302,8 @@
    "reqd": 1
   },
   {
-   "fieldname": "paid_amount_after_tax",
-   "fieldtype": "Currency",
-   "label": "Paid Amount After Tax",
-   "options": "paid_from_account_currency",
-   "read_only": 1
-  },
-  {
-   "fieldname": "source_exchange_rate",
-   "fieldtype": "Float",
-   "label": "Source Exchange Rate",
-   "reqd": 1
-  },
-  {
-   "fieldname": "base_paid_amount",
-   "fieldtype": "Currency",
-   "label": "Paid Amount (Company Currency)",
-   "options": "Company:company:default_currency",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
-   "fieldname": "base_paid_amount_after_tax",
-   "fieldtype": "Currency",
-   "label": "Paid Amount After Tax (Company Currency)",
-   "options": "Company:company:default_currency",
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_21",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "received_amount",
-   "fieldtype": "Currency",
-   "label": "Received Amount",
-   "options": "paid_to_account_currency",
-   "reqd": 1
-  },
-  {
-   "fieldname": "received_amount_after_tax",
-   "fieldtype": "Currency",
-   "label": "Received Amount After Tax",
-   "options": "paid_to_account_currency",
-   "read_only": 1
-  },
-  {
-   "fieldname": "target_exchange_rate",
-   "fieldtype": "Float",
-   "label": "Target Exchange Rate",
-   "reqd": 1
-  },
-  {
-   "fieldname": "base_received_amount",
-   "fieldtype": "Currency",
-   "label": "Received Amount (Company Currency)",
-   "options": "Company:company:default_currency",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
-   "fieldname": "base_received_amount_after_tax",
-   "fieldtype": "Currency",
-   "label": "Received Amount After Tax (Company Currency)",
-   "options": "Company:company:default_currency",
-   "read_only": 1
   },
   {
    "fieldname": "section_break_14",
@@ -469,7 +406,8 @@
   },
   {
    "fieldname": "section_break_56",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Tax"
   },
   {
    "fieldname": "taxes",
@@ -479,7 +417,8 @@
   },
   {
    "fieldname": "section_break_60",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Tax Charges"
   },
   {
    "fieldname": "base_total_taxes_and_charges",
@@ -645,20 +584,100 @@
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
-   "options": "Payment Entry",
-   "read_only": 1
+   "no_copy": 1,
+   "options": "Advance Sales Invoice",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   },
   {
    "fieldname": "title",
    "fieldtype": "Data",
    "label": "Title",
    "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "received_amount",
+   "fieldtype": "Currency",
+   "label": "Received Amount",
+   "options": "paid_to_account_currency",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "paid_amount_after_tax",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Paid Amount After Tax",
+   "options": "paid_from_account_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_exchange_rate",
+   "fieldtype": "Float",
+   "label": "Source Exchange Rate",
+   "precision": "9",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "base_paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount (Company Currency)",
+   "options": "Company:company:default_currency",
+   "print_hide": 1,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "base_paid_amount_after_taxbase_paid_amount_after_tax",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Paid Amount After Tax (Company Currency)",
+   "options": "Company:company:default_currency",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.received_amount && doc.payment_type != 'Internal Transfer'",
+   "fieldname": "received_amount_after_tax",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Received Amount After Tax",
+   "options": "paid_to_account_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "target_exchange_rate",
+   "fieldtype": "Float",
+   "label": "Target Exchange Rate",
+   "precision": "9",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "doc.received_amount",
+   "fieldname": "base_received_amount",
+   "fieldtype": "Currency",
+   "label": "Received Amount (Company Currency)",
+   "options": "Company:company:default_currency",
+   "print_hide": 1,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "base_received_amount_after_tax",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Received Amount After Tax (Company Currency)",
+   "options": "Company:company:default_currency",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-30 15:47:39.008113",
+ "modified": "2025-02-17 09:01:45.299420",
  "modified_by": "Administrator",
  "module": "Claudion4Saudi",
  "name": "Advance Sales Invoice",
