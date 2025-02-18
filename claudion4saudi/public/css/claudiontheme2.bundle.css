@@ -15,7 +15,7 @@
   --navbar-bg: var(--second-color);
   --fg-hover-color: var(--second-color);
   --card-bg: var(--second-color);
-  --control-bg: var(--second-color);
+  --control-bg: var(--fourth-color);
   --control-bg-on-pink: var(--second-color);
 }
 
@@ -68,15 +68,15 @@ h6.uppercase {
 }
 
 [data-theme="claudiontheme2"] .standard-sidebar-item.selected a {
-  color: var(--sixth-color);
+  color: var(--main-color);
 }
 
 [data-theme="claudiontheme2"] .standard-sidebar-item.selected a svg {
-  fill: var(--sixth-color);
+  fill: var(--main-color);
 }
 
 [data-theme="claudiontheme2"] .standard-sidebar-item:hover {
-  background-color: var(--second-color);
+  background-color: var(--main-color);
 }
 
 [data-theme="claudiontheme2"] .standard-sidebar-item:hover a,
