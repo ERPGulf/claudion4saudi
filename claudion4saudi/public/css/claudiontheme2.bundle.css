@@ -161,6 +161,9 @@
   color: black;
 }
 
+[data-theme="claudiontheme2"] span.link-option:hover {
+  color: white;
+}
 [data-theme="claudiontheme2"] span.sidebar-item-label {
   color: black;
 }
