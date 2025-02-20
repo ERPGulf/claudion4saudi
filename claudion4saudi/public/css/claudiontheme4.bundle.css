@@ -13,9 +13,9 @@
   --blue-avatar-color: var(--main-color);
   --blue: var(--main-color);
 
-  --navbar-bg: var(--second-color);
+  --navbar-bg: var(--third-color);
   --fg-hover-color: var(--second-color);
-  --card-bg: var(--second-color);
+  --card-bg: var(--main-color);
   --control-bg: var(--second-color);
   --control-bg-on-pink: var(--second-color);
 }

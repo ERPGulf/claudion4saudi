@@ -56,7 +56,8 @@ doctype_js = {
         "public/js/adv_sales_invoice.js"
     ],
     "Sales Invoice": "public/js/custom_sales_invoice.js",
-    # "Advance Sales Invoice": "public/js/adv_sales_invoice.js",
+    # "Advance Sales Invoice": "claudion4saudi/doctype/advance_sales_invoice/advance_sales_invoice.js"
+
 }
 
 # doctype_js = {"doctype" : "public/js/doctype.js"}

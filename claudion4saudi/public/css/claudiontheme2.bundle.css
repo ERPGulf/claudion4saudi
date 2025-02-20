@@ -8,17 +8,17 @@
   --fifth-color: #808285;
   --sixth-color: #58595b;
 
-  /* --primary: var(--main-color);
+  --primary: var(--main-color);
   --dt-primary-color: var(--main-color);
   --blue-avatar-bg: var(--main-color);
   --blue-avatar-color: var(--main-color);
-  --blue: var(--main-color); */
+  --blue: var(--main-color);
 
-  --navbar-bg: var(--second-color);
-  --fg-hover-color: var(--second-color);
+  --navbar-bg: var(--main-color);
+  --fg-hover-color: var(--main-color);
   --card-bg: var(--second-color);
-  --control-bg: var(--fourth-color);
-  --control-bg-on-pink: var(--second-color);
+  --control-bg: var(--main-color);
+  --control-bg-on-pink: var(--third-color);
 }
 
 /* Page Background */
@@ -28,17 +28,15 @@
   border: none !important;
 }
 
-[data-theme="claudiontheme2"] svg:hover .es-icon,
-[data-theme="claudiontheme2"] svg:hover .es-icon use {
-  fill: var(--second-color) !important;
-  stroke: var(--second-color) !important;
-}
-
 [data-theme="claudiontheme2"] .layout-main-section-wrapper {
   border: 1px solid var(--fourth-color);
 }
 
 /* Links */
+[data-theme="claudiontheme2"] ul li a {
+  /* background-color: var(--main-color); */
+  color: black !important;
+}
 [data-theme="claudiontheme2"] ul li a:hover {
   background-color: var(--main-color);
   color: var(--second-color) !important;
@@ -50,10 +48,29 @@
   background-color: var(--fourth-color);
 }
 
+/* [data-theme="claudiontheme2"] b:hover {
+  color: var(--second-color);
+  font-weight: 500;
+} */
+[data-theme="claudiontheme2"] #awesomplete_list_1 li:hover a {
+  color: var(--second-color) !important;
+  background-color: var(--main-color);
+}
+
 [data-theme="claudiontheme2"] a {
   color: var(--third-color);
   font-weight: 500;
 }
+[data-theme="claudiontheme2"] a.form-follow.text-sm:hover {
+  color: var(--main-color);
+  font-weight: 500;
+}
+
+/* [data-theme="claudiontheme2"] a.nav-link:hover {
+  color: var(--sixth-color);
+  background-color: var(--main-color);
+} */
+
 [data-theme="claudiontheme2"] a.ellipsis {
   color: var(--sixth-color);
 }
@@ -61,6 +78,14 @@
 [data-theme="claudiontheme2"] span.ellipsis {
   color: black;
 }
+[data-theme="claudiontheme2"] span.dropdown-text:hover {
+  color: black;
+}
+[data-theme="claudiontheme2"] span.filter-label {
+  background-color: var(--second-color);
+  color: var(--second-color);
+}
+
 [data-theme="claudiontheme2"] span.frappe-timestamp {
   color: var(--main-color);
 }
@@ -72,6 +97,12 @@
 }
 [data-theme="claudiontheme2"] span.menu-item-label span {
   color: var(--main-color);
+}
+[data-theme="claudiontheme2"] a.dropdown-item:hover {
+  color: var(--second-color) !important;
+}
+[data-theme="claudiontheme2"] .dropdown-item:hover {
+  color: var(--second-color) !important;
 }
 [data-theme="claudiontheme2"] a.dropdown-item:hover span.menu-item-label span,
 [data-theme="claudiontheme2"]
@@ -99,11 +130,11 @@
 }
 
 [data-theme="claudiontheme2"] .btn-edit-workspace:hover span.hidden-xs {
-  color: var(--second-color) !important;
+  color: var(--main-color) !important;
 }
 
 [data-theme="claudiontheme2"] .btn-new-workspace:hover span.hidden-xs {
-  color: var(--second-color) !important;
+  color: var(--main-color) !important;
 }
 [data-theme="claudiontheme2"] button.btn-primary.primary-action span,
 [data-theme="claudiontheme2"]
@@ -114,8 +145,18 @@
 }
 
 [data-theme="claudiontheme2"] span {
-  color: #58595b;
+  /* color: #58595b; */
+  color: var(--third-color);
 }
+[data-theme="claudiontheme2"] span:hover {
+  /* color: var(--second-color); */
+  color: black;
+  background-color: none !important;
+}
+[data-theme="claudiontheme2"] span.ellipsis {
+  color: black;
+}
+
 [data-theme="claudiontheme2"] span.link-text {
   color: black;
 }
@@ -133,6 +174,11 @@ small {
 h6.uppercase {
   font-weight: 600;
   font-size: 11.5px;
+}
+
+[data-theme="claudiontheme2"] .step-text,
+[data-theme="claudiontheme2"] .step-skip {
+  color: var(--sixth-color);
 }
 
 /* Navigation Bar */
@@ -190,7 +236,7 @@ h6.uppercase {
 }
 
 [data-theme="claudiontheme2"] .navbar-nav > li > a:hover {
-  color: var(--third-color) !important;
+  color: var(--second-color) !important;
 }
 
 [data-theme="claudiontheme2"] .navbar-brand:hover {
@@ -261,6 +307,11 @@ h6.uppercase {
 [data-theme="claudiontheme2"] .dropdown-menu > li > a {
   font-size: 13px;
   color: var(--main-color) !important;
+  font-weight: 500;
+}
+[data-theme="claudiontheme2"] .dropdown-menu > li > a :hover {
+  font-size: 13px;
+  color: var(--second-color) !important;
   font-weight: 500;
 }
 [data-theme="claudiontheme2"] .awesomplete > ul > li {
@@ -341,16 +392,11 @@ h6.uppercase {
 [data-theme="claudiontheme2"] a.comments:hover svg.es-icon.icon-sm,
 [data-theme="claudiontheme2"] a.comments:hover svg.es-icon.icon-sm use,
 [data-theme="claudiontheme2"] a.comments:hover .comments-count {
-  fill: var(--second-color);
-  color: var(--second-color);
+  fill: var(--main-color);
+  color: var(--main-color);
 }
 
 /* [data-theme="claudiontheme2"] .indicator-pill {
   background-color: var(--main-color);
   color: var(--second-color);
 } */
-
-[data-theme="claudiontheme2"] button.prev-doc:hover svg.es-icon.icon-sm,
-[data-theme="claudiontheme2"] button.prev-doc:hover svg.es-icon.icon-sm use {
-  fill: var(--second-color);
-}

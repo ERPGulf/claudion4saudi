@@ -12,7 +12,12 @@
   --blue-avatar-bg: var(--main-color);
   --blue-avatar-color: var(--main-color);
   --blue: var(--main-color);
-  color-scheme: dark;
+
+  --navbar-bg: var(--second-color);
+  --fg-hover-color: var(--fifth-color);
+  --card-bg: var(--main-color);
+  --control-bg: var(--fifth-color);
+  --control-bg-on-pink: var(--third-color);
 }
 
 /* Page Background */
