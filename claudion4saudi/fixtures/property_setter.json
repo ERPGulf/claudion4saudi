@@ -192,14 +192,14 @@
   "value": "0"
  },
  {
-  "default_value": "Purple",
+  "default_value": "Claudion Theme 2",
   "doc_type": "User",
   "docstatus": 0,
   "doctype": "Property Setter",
   "doctype_or_field": "DocField",
   "field_name": "desk_theme",
   "is_system_generated": 0,
-  "modified": "2025-02-04 08:38:42.766077",
+  "modified": "2025-02-21 10:03:30.884554",
   "module": "Claudion4Saudi",
   "name": "User-desk_theme-options",
   "property": "options",
