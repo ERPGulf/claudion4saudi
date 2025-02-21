@@ -161,6 +161,11 @@ after_migrate = "claudion4saudi.migrate.after_migrate"
 # 		"on_trash": "method"
 # 	}
 # }
+# doc_events = {
+#     "User": {
+#         "after_save": "claudion4saudi.user_theme.apply_theme"
+#     }
+# }
 
 # Scheduled Tasks
 # ---------------

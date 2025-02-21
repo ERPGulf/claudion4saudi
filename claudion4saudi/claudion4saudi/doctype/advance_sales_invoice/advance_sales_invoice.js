@@ -72,7 +72,8 @@
 //   },
 // });
 
-frappe.provide("erpnext.accounts.dimensions");
+// Ensure necessary dependencies are loaded
+frappe.require("erpnext.accounts.taxes");
 
 cur_frm.cscript.tax_table = "Advance Taxes and Charges";
 erpnext.accounts.taxes.setup_tax_validations("Payment Entry");
@@ -98,8 +99,6 @@ frappe.ui.form.on("Advance Sales Invoice", {
       if (!frm.doc.paid_to) frm.set_value("paid_to_account_currency", null);
     }
 
-    erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
-
     frm.set_query("project", function (doc) {
       let filters = { company: doc.company };
       if (doc.party_type === "Customer") filters.customer = doc.party;
@@ -108,10 +107,6 @@ frappe.ui.form.on("Advance Sales Invoice", {
         filters,
       };
     });
-
-    if (frm.doc.reference_no) {
-      frm.events.get_sales_order_references(frm);
-    }
 
     if (frm.is_new()) {
       set_default_party_type(frm);

@@ -22,6 +22,9 @@
   --heading-color: var(--primary-color);
   --page-head-height: 50px;
   --navbar-height: 50px;
+
+  --control-bg-on-pink: #ffdba0;
+  --fg-hover-color: var(--bg-color);
 }
 
 [data-theme="peachgrey"] *::-webkit-scrollbar {
