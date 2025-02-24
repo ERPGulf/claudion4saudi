@@ -72,106 +72,27 @@
 //   },
 // });
 
-// Ensure necessary dependencies are loaded
-frappe.require("erpnext.accounts.taxes");
-
-cur_frm.cscript.tax_table = "Advance Taxes and Charges";
-erpnext.accounts.taxes.setup_tax_validations("Payment Entry");
-erpnext.accounts.taxes.setup_tax_filters("Advance Taxes and Charges");
-
 frappe.ui.form.on("Advance Sales Invoice", {
-  onload: function (frm) {
-    console.log("Advance Sales Invoice Loaded");
-
-    frm.ignore_doctypes_on_cancel_all = [
-      "Sales Invoice",
-      "Purchase Invoice",
-      "Journal Entry",
-      "Repost Payment Ledger",
-      "Repost Accounting Ledger",
-      "Unreconcile Payment",
-      "Unreconcile Payment Entries",
-      "Bank Transaction",
-    ];
-
-    if (frm.doc.__islocal) {
-      if (!frm.doc.paid_from) frm.set_value("paid_from_account_currency", null);
-      if (!frm.doc.paid_to) frm.set_value("paid_to_account_currency", null);
-    }
-
-    frm.set_query("project", function (doc) {
-      let filters = { company: doc.company };
-      if (doc.party_type === "Customer") filters.customer = doc.party;
-      return {
-        query: "erpnext.controllers.queries.get_project_name",
-        filters,
-      };
-    });
-
-    if (frm.is_new()) {
-      set_default_party_type(frm);
-    }
-  },
-
-  refresh: function (frm) {
+  refresh(frm) {
     console.log("Advance Sales Invoice JS Loaded");
 
     if (frm.doc.references && frm.doc.references.length > 0) {
       frm.trigger("calculate_totals");
     }
-
-    // Add buttons for fetching outstanding invoices/orders
-    frm.add_custom_button(
-      __("Get Outstanding Invoices"),
-      function () {
-        frm.events.get_outstanding_documents(frm, true, false);
-      },
-      __("Actions")
-    );
-
-    frm.add_custom_button(
-      __("Get Outstanding Orders"),
-      function () {
-        frm.events.get_outstanding_documents(frm, false, true);
-      },
-      __("Actions")
-    );
   },
 
-  reference_no: function (frm) {
-    if (frm.doc.reference_no) {
-      frm.events.get_sales_order_references(frm);
-    }
-  },
-
-  get_sales_order_references: function (frm) {
-    frappe.call({
-      method:
-        "claudion4saudi.advance_sales_invoice_.get_advance_sales_invoice_entry",
-      args: { sales_order: frm.doc.reference_no },
-      callback: function (r) {
-        if (r.message) {
-          let data = r.message;
-          frm.clear_table("references");
-
-          (data.references || []).forEach((ref) => {
-            let row = frm.add_child("references");
-            Object.assign(row, ref);
-          });
-
-          frm.refresh_field("references");
-        }
-      },
-    });
-  },
-
-  paid_amount: function (frm) {
+  paid_amount(frm) {
     if (!frm.doc.paid_amount) return;
 
     frm.set_value(
       "base_paid_amount",
       flt(frm.doc.paid_amount) * flt(frm.doc.source_exchange_rate)
     );
+
+    let company_currency = frappe.get_doc(
+      ":Company",
+      frm.doc.company
+    )?.default_currency;
 
     if (
       frm.doc.paid_from_account_currency === frm.doc.paid_to_account_currency
@@ -194,11 +115,11 @@ frappe.ui.form.on("Advance Sales Invoice", {
     frm.trigger("calculate_totals");
   },
 
-  calculate_totals: function (frm) {
+  calculate_totals(frm) {
     let total_allocated_amount = 0;
     let base_total_allocated_amount = 0;
 
-    (frm.doc.references || []).forEach((d) => {
+    (frm.doc.references || []).forEach(function (d) {
       total_allocated_amount += flt(d.allocated_amount);
       base_total_allocated_amount +=
         flt(d.allocated_amount) * flt(d.exchange_rate || 1);
@@ -214,112 +135,146 @@ frappe.ui.form.on("Advance Sales Invoice", {
     );
   },
 
-  get_outstanding_documents: function (frm, get_invoices, get_orders) {
-    frappe.call({
-      method:
-        "erpnext.accounts.doctype.payment_entry.payment_entry.get_outstanding_reference_documents",
-      args: {
-        posting_date: frm.doc.posting_date,
-        company: frm.doc.company,
-        party_type: frm.doc.party_type,
-        party: frm.doc.party,
-        get_outstanding_invoices: get_invoices,
-        get_orders_to_be_billed: get_orders,
+  get_outstanding_invoices_or_orders(
+    frm,
+    get_outstanding_invoices,
+    get_orders_to_be_billed
+  ) {
+    const today = frappe.datetime.get_today();
+    let fields = [
+      { fieldtype: "Section Break", label: __("Posting Date") },
+      {
+        fieldtype: "Date",
+        label: __("From Date"),
+        fieldname: "from_posting_date",
+        default: frappe.datetime.add_days(today, -30),
       },
-      callback: function (r) {
-        if (r.message) {
-          frm.clear_table("references");
-          r.message.forEach((d) => {
-            let row = frm.add_child("references");
-            row.reference_doctype = d.voucher_type;
-            row.reference_name = d.voucher_no;
-            row.total_amount = d.invoice_amount;
-            row.outstanding_amount = d.outstanding_amount;
-            row.allocated_amount = d.outstanding_amount;
-          });
-          frm.refresh_field("references");
-          frm.trigger("calculate_totals");
+      { fieldtype: "Column Break" },
+      {
+        fieldtype: "Date",
+        label: __("To Date"),
+        fieldname: "to_posting_date",
+        default: today,
+      },
+      { fieldtype: "Section Break", label: __("Due Date") },
+      { fieldtype: "Date", label: __("From Date"), fieldname: "from_due_date" },
+      { fieldtype: "Column Break" },
+      { fieldtype: "Date", label: __("To Date"), fieldname: "to_due_date" },
+      { fieldtype: "Section Break", label: __("Outstanding Amount") },
+      {
+        fieldtype: "Float",
+        label: __("Greater Than Amount"),
+        fieldname: "outstanding_amt_greater_than",
+        default: 0,
+      },
+      { fieldtype: "Column Break" },
+      {
+        fieldtype: "Float",
+        label: __("Less Than Amount"),
+        fieldname: "outstanding_amt_less_than",
+      },
+    ];
+
+    if (frm.dimension_filters) {
+      let column_break_insertion_point = Math.ceil(
+        frm.dimension_filters.length / 2
+      );
+      fields.push({ fieldtype: "Section Break" });
+
+      frm.dimension_filters.map((elem, idx) => {
+        fields.push({
+          fieldtype: "Link",
+          label:
+            elem.document_type == "Cost Center" ? "Cost Center" : elem.label,
+          options: elem.document_type,
+          fieldname: elem.fieldname || elem.document_type,
+        });
+        if (idx + 1 == column_break_insertion_point) {
+          fields.push({ fieldtype: "Column Break" });
         }
+      });
+    }
+
+    fields = fields.concat([
+      { fieldtype: "Section Break" },
+      {
+        fieldtype: "Check",
+        label: __("Allocate Payment Amount"),
+        fieldname: "allocate_payment_amount",
+        default: 1,
       },
-    });
+    ]);
+
+    let btn_text = get_outstanding_invoices
+      ? "Get Outstanding Invoices"
+      : "Get Outstanding Orders";
+
+    frappe.prompt(
+      fields,
+      function (filters) {
+        frappe.flags.allocate_payment_amount = true;
+        frm.events.validate_filters_data(frm, filters);
+        frm.doc.cost_center = filters.cost_center;
+        frm.events.get_outstanding_documents(
+          frm,
+          filters,
+          get_outstanding_invoices,
+          get_orders_to_be_billed
+        );
+      },
+      __("Filters"),
+      __(btn_text)
+    );
   },
 
-  sales_taxes_and_charges_template: function (frm) {
-    frm.trigger("fetch_taxes_from_template");
+  get_outstanding_invoices(frm) {
+    frm.events.get_outstanding_invoices_or_orders(frm, true, false);
   },
 
-  fetch_taxes_from_template: function (frm) {
-    if (!frm.doc.sales_taxes_and_charges_template) return;
+  get_outstanding_orders(frm) {
+    frm.events.get_outstanding_invoices_or_orders(frm, false, true);
+  },
 
-    frappe.call({
-      method: "erpnext.controllers.accounts_controller.get_taxes_and_charges",
-      args: {
-        master_doctype: "Sales Taxes and Charges Template",
-        master_name: frm.doc.sales_taxes_and_charges_template,
-      },
-      callback: function (r) {
-        if (!r.exc && r.message) {
-          frm.clear_table("taxes");
-          r.message.forEach((tax) => frm.add_child("taxes", tax));
-          frm.refresh_field("taxes");
-        }
-      },
-    });
+  validate_filters_data(frm, filters) {
+    const fields = {
+      "Posting Date": ["from_posting_date", "to_posting_date"],
+      "Due Date": ["from_due_date", "to_due_date"],
+      "Advance Amount": [
+        "outstanding_amt_greater_than",
+        "outstanding_amt_less_than",
+      ],
+    };
+
+    for (let key in fields) {
+      let from_field = fields[key][0];
+      let to_field = fields[key][1];
+
+      if (filters[from_field] && !filters[to_field]) {
+        frappe.throw(
+          __("Error: {0} is mandatory field", [to_field.replace(/_/g, " ")])
+        );
+      } else if (
+        filters[from_field] &&
+        filters[from_field] > filters[to_field]
+      ) {
+        frappe.throw(
+          __("{0}: {1} must be less than {2}", [
+            key,
+            from_field.replace(/_/g, " "),
+            to_field.replace(/_/g, " "),
+          ])
+        );
+      }
+    }
   },
 });
 
-// Handle deductions and taxes
-frappe.ui.form.on("Advance Taxes and Charges", {
-  rate: function (frm) {
-    frm.trigger("apply_taxes");
-  },
-
-  tax_amount: function (frm) {
-    frm.trigger("apply_taxes");
-  },
-
-  charge_type: function (frm) {
-    frm.trigger("apply_taxes");
-  },
-
-  included_in_paid_amount: function (frm) {
-    frm.trigger("apply_taxes");
-  },
-
-  taxes_remove: function (frm) {
-    frm.trigger("apply_taxes");
-  },
-});
-
-frappe.ui.form.on("Payment Entry Deduction", {
-  amount: function (frm) {
-    frm.trigger("set_unallocated_amount");
-  },
-
-  deductions_remove: function (frm) {
-    frm.trigger("set_unallocated_amount");
-  },
-});
-
-// Handle allocation for references
+// For Payment Entry Reference Child Table
 frappe.ui.form.on("Payment Entry Reference", {
-  reference_doctype: function (frm, cdt, cdn) {
-    let row = frappe.get_doc(cdt, cdn);
-    frm.events.validate_reference_document(frm, row);
-  },
-
-  allocated_amount: function (frm) {
+  allocated_amount(frm, cdt, cdn) {
     frm.trigger("calculate_totals");
   },
-
-  references_remove: function (frm) {
+  exchange_rate(frm, cdt, cdn) {
     frm.trigger("calculate_totals");
   },
 });
-
-// Utility functions
-function set_default_party_type(frm) {
-  if (frm.doc.party) return;
-  let party_type = frm.doc.payment_type === "Receive" ? "Customer" : "Supplier";
-  frm.set_value("party_type", party_type);
-}
