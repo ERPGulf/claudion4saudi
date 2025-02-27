@@ -1,77 +1,3 @@
-// frappe.ui.form.on("Advance Sales Invoice", {
-//   refresh(frm) {
-//     console.log("Advance Sales Invoice JS Loaded");
-
-//     if (frm.doc.references && frm.doc.references.length > 0) {
-//       frm.trigger("calculate_totals");
-//     }
-//   },
-
-//   paid_amount: function (frm) {
-//     if (!frm.doc.paid_amount) return;
-
-//     frm.set_value(
-//       "base_paid_amount",
-//       flt(frm.doc.paid_amount) * flt(frm.doc.source_exchange_rate)
-//     );
-
-//     let company_currency = frappe.get_doc(
-//       ":Company",
-//       frm.doc.company
-//     )?.default_currency;
-
-//     if (
-//       frm.doc.paid_from_account_currency === frm.doc.paid_to_account_currency
-//     ) {
-//       frm.set_value("received_amount", frm.doc.paid_amount);
-//       frm.set_value("base_received_amount", frm.doc.base_paid_amount);
-//     } else {
-//       frm.set_value(
-//         "received_amount",
-//         flt(frm.doc.paid_amount) *
-//           (flt(frm.doc.source_exchange_rate) /
-//             flt(frm.doc.target_exchange_rate))
-//       );
-//       frm.set_value(
-//         "base_received_amount",
-//         flt(frm.doc.received_amount) * flt(frm.doc.target_exchange_rate)
-//       );
-//     }
-
-//     frm.trigger("calculate_totals");
-//   },
-
-//   calculate_totals: function (frm) {
-//     let total_allocated_amount = 0;
-//     let base_total_allocated_amount = 0;
-
-//     (frm.doc.references || []).forEach(function (d) {
-//       total_allocated_amount += flt(d.allocated_amount);
-//       base_total_allocated_amount +=
-//         flt(d.allocated_amount) * flt(d.exchange_rate || 1);
-//     });
-
-//     frm.set_value("total_allocated_amount", total_allocated_amount);
-//     frm.set_value("base_total_allocated_amount", base_total_allocated_amount);
-
-//     let unallocated_amount = flt(frm.doc.paid_amount) - total_allocated_amount;
-//     frm.set_value(
-//       "unallocated_amount",
-//       unallocated_amount < 0 ? 0 : unallocated_amount
-//     );
-//   },
-// });
-
-// // For Payment Entry Reference Child Table
-// frappe.ui.form.on("Payment Entry Reference", {
-//   allocated_amount: function (frm, cdt, cdn) {
-//     frm.trigger("calculate_totals");
-//   },
-//   exchange_rate: function (frm, cdt, cdn) {
-//     frm.trigger("calculate_totals");
-//   },
-// });
-
 frappe.ui.form.on("Advance Sales Invoice", {
   refresh(frm) {
     console.log("Advance Sales Invoice JS Loaded");
@@ -81,7 +7,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
     }
   },
 
-  paid_amount(frm) {
+  paid_amount: function (frm) {
     if (!frm.doc.paid_amount) return;
 
     frm.set_value(
@@ -115,7 +41,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
     frm.trigger("calculate_totals");
   },
 
-  calculate_totals(frm) {
+  calculate_totals: function (frm) {
     let total_allocated_amount = 0;
     let base_total_allocated_amount = 0;
 
@@ -135,7 +61,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
     );
   },
 
-  get_outstanding_invoices_or_orders(
+  get_outstanding_invoices_or_orders: function (
     frm,
     get_outstanding_invoices,
     get_orders_to_be_billed
@@ -175,25 +101,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
       },
     ];
 
-    if (frm.dimension_filters) {
-      let column_break_insertion_point = Math.ceil(
-        frm.dimension_filters.length / 2
-      );
-      fields.push({ fieldtype: "Section Break" });
-
-      frm.dimension_filters.map((elem, idx) => {
-        fields.push({
-          fieldtype: "Link",
-          label:
-            elem.document_type == "Cost Center" ? "Cost Center" : elem.label,
-          options: elem.document_type,
-          fieldname: elem.fieldname || elem.document_type,
-        });
-        if (idx + 1 == column_break_insertion_point) {
-          fields.push({ fieldtype: "Column Break" });
-        }
-      });
-    }
+    fields.push({ fieldtype: "Section Break" });
 
     fields = fields.concat([
       { fieldtype: "Section Break" },
@@ -251,7 +159,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
 
       if (filters[from_field] && !filters[to_field]) {
         frappe.throw(
-          __("Error: {0} is mandatory field", [to_field.replace(/_/g, " ")])
+          __("Error: {0} is a mandatory field", [to_field.replace(/_/g, " ")])
         );
       } else if (
         filters[from_field] &&
@@ -267,14 +175,91 @@ frappe.ui.form.on("Advance Sales Invoice", {
       }
     }
   },
+  set_exchange_gain_loss_deduction: async function (frm) {
+    // wait for allocate_party_amount_against_ref_docs to finish
+    await frappe.after_ajax();
+    const base_paid_amount = frm.doc.base_paid_amount || 0;
+    const base_received_amount = frm.doc.base_received_amount || 0;
+    const exchange_gain_loss = flt(
+      base_paid_amount - base_received_amount,
+      get_deduction_amount_precision()
+    );
+
+    if (!exchange_gain_loss) {
+      frm.events.delete_exchange_gain_loss(frm);
+      return;
+    }
+
+    const account_fieldname = "exchange_gain_loss_account";
+    let row = (frm.doc.deductions || []).find((t) => t.is_exchange_gain_loss);
+
+    if (!row) {
+      const response = await get_company_defaults(frm.doc.company);
+
+      const account =
+        response.message?.[account_fieldname] ||
+        (await prompt_for_missing_account(frm, account_fieldname));
+
+      row = frm.add_child("deductions");
+      row.account = account;
+      row.cost_center = response.message?.cost_center;
+      row.is_exchange_gain_loss = 1;
+    }
+
+    row.amount = exchange_gain_loss;
+    frm.refresh_field("deductions");
+    frm.events.set_unallocated_amount(frm);
+  },
+
+  delete_exchange_gain_loss: function (frm) {
+    const exchange_gain_loss_row = (frm.doc.deductions || []).find(
+      (row) => row.is_exchange_gain_loss
+    );
+
+    if (!exchange_gain_loss_row) return;
+
+    exchange_gain_loss_row.amount = 0;
+    frm
+      .get_field("deductions")
+      .grid.grid_rows[exchange_gain_loss_row.idx - 1].remove();
+    frm.refresh_field("deductions");
+  },
+
+  set_write_off_deduction: async function (frm) {
+    const difference_amount = flt(
+      frm.doc.difference_amount,
+      get_deduction_amount_precision()
+    );
+    if (!difference_amount) return;
+
+    const account_fieldname = "write_off_account";
+    const response = await get_company_defaults(frm.doc.company);
+    const write_off_account =
+      response.message?.[account_fieldname] ||
+      (await prompt_for_missing_account(frm, account_fieldname));
+
+    if (!write_off_account) return;
+
+    let row = (frm.doc["deductions"] || []).find(
+      (t) => t.account == write_off_account
+    );
+    if (!row) {
+      row = frm.add_child("deductions");
+      row.account = write_off_account;
+      row.cost_center = response.message?.cost_center;
+    }
+
+    row.amount = flt(row.amount) + difference_amount;
+    frm.refresh_field("deductions");
+    frm.events.set_unallocated_amount(frm);
+  },
 });
 
-// For Payment Entry Reference Child Table
 frappe.ui.form.on("Payment Entry Reference", {
-  allocated_amount(frm, cdt, cdn) {
+  allocated_amount: function (frm, cdt, cdn) {
     frm.trigger("calculate_totals");
   },
-  exchange_rate(frm, cdt, cdn) {
+  exchange_rate: function (frm, cdt, cdn) {
     frm.trigger("calculate_totals");
   },
 });
