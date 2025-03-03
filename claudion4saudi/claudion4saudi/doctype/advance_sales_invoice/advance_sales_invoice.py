@@ -13,6 +13,7 @@
 	# Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and contributors
 # For license information, please see license.txt
 
+from claudion4saudi.advance_sales_invoice_ import get_reference_details_
 from frappe.model.document import Document
 
 import json
@@ -2667,6 +2668,7 @@ def get_account_details(account, date, cost_center=None):
 			"account_type": frappe.get_cached_value("Account", account, "account_type"),
 		}
 	)
+from frappe import _  
 
 
 @frappe.whitelist()
@@ -2950,7 +2952,7 @@ def get_payment_entry(
     ignore_permissions=False,
     created_from_payment_request=False,
 ):
-    dt = "Sales Order"
+    dt = "Sales Order"  # Ensuring this function works only for Sales Orders
 
     frappe.logger().info(f"Received params: dn={dn}, args={frappe.form_dict}")
 
@@ -2965,30 +2967,35 @@ def get_payment_entry(
     except frappe.DoesNotExistError:
         frappe.throw(_("Sales Order {0} not found").format(dn), title=_("Error"))
 
+    # Check if Sales Order has already been billed
     over_billing_allowance = frappe.db.get_single_value("Accounts Settings", "over_billing_allowance")
-    if dt in ("Sales Order", "Purchase Order") and flt(doc.per_billed, 2) >= (100.0 + over_billing_allowance):
-        frappe.throw(_("Can only make payment against unbilled {0}").format(_(dt)))
+    if flt(doc.per_billed, 2) >= (100.0 + over_billing_allowance):
+        frappe.throw(_("Can only make payment against unbilled Sales Order"))
 
+    # Set Party Type and Account
     if not party_type:
-        party_type = set_party_type(dt)
+        party_type = "Customer"  # Sales Orders are always for customers
 
     party_account = set_party_account(dt, dn, doc, party_type)
     party_account_currency = set_party_account_currency(dt, party_account, doc)
 
     if not payment_type:
-        payment_type = set_payment_type(dt, doc)
+        payment_type = "Receive"  # Sales Order payments are typically received
 
+    # Calculate Outstanding Amount
     grand_total = flt(doc.grand_total)
     outstanding_amount = grand_total - flt(doc.advance_paid)
 
+    # Get Bank Account
     bank = get_bank_cash_account(doc, bank_account)
 
-    if party_type in ["Customer", "Supplier"] and not bank:
-        party_bank_account = get_party_bank_account(party_type, doc.get(scrub(party_type)))
+    if not bank:
+        party_bank_account = get_party_bank_account(party_type, doc.get("customer"))
         if party_bank_account:
             account = frappe.db.get_value("Bank Account", party_bank_account, "account")
             bank = get_bank_cash_account(doc, account)
 
+    # Calculate Paid and Received Amount
     paid_amount, received_amount = set_paid_amount_and_received_amount(
         dt, party_account_currency, bank, outstanding_amount, payment_type, bank_amount, doc
     )
@@ -2998,6 +3005,16 @@ def get_payment_entry(
         paid_amount, received_amount, doc, party_account_currency, reference_date
     )
 
+    # Fetch financial details
+    financial_details = get_reference_details_(
+        reference_doctype=dt,
+        reference_name=dn,
+        party_account_currency=party_account_currency,
+        party_type=party_type,
+        party=doc.get("customer")
+    )
+
+    # Create Advance Sales Invoice
     pe = frappe.new_doc("Advance Sales Invoice")
     pe.payment_type = payment_type
     pe.company = doc.company
@@ -3006,7 +3023,7 @@ def get_payment_entry(
     pe.reference_date = reference_date
     pe.mode_of_payment = doc.get("mode_of_payment")
     pe.party_type = party_type
-    pe.party = doc.get(scrub(party_type))
+    pe.party = doc.get("customer")
     pe.contact_person = doc.get("contact_person")
     pe.contact_email = doc.get("contact_email")
 
@@ -3024,31 +3041,30 @@ def get_payment_entry(
     pe.letter_head = doc.get("letter_head")
     pe.bank_account = frappe.db.get_value("Bank Account", {"is_company_account": 1, "is_default": 1}, "name")
 
-    if dt in ["Purchase Order", "Sales Order", "Sales Invoice", "Purchase Invoice"]:
-        pe.project = doc.get("project") or next(
-            (x.get("project") for x in doc.get("items") if x.get("project")), None
-        )
+    # Set Project (if applicable)
+    pe.project = doc.get("project") or next(
+        (x.get("project") for x in doc.get("items") if x.get("project")), None
+    )
 
-    if pe.party_type in ["Customer", "Supplier"]:
-        bank_account = get_party_bank_account(pe.party_type, pe.party)
-        pe.set("party_bank_account", bank_account)
-        pe.set_bank_account_data()
+    # Set Party Bank Account
+    bank_account = get_party_bank_account(pe.party_type, pe.party)
+    pe.set("party_bank_account", bank_account)
+    pe.set_bank_account_data()
 
-    existing_references = {ref.reference_name for ref in pe.get("references", [])}
+    # Attach financial details to the payment entry references
+    pe.append("references", {
+        "reference_doctype": dt,
+        "reference_name": dn,
+        "total_amount": financial_details.get("total_amount"),
+        "outstanding_amount": financial_details.get("outstanding_amount"),
+        "exchange_rate": financial_details.get("exchange_rate"),
+        "bill_no": financial_details.get("bill_no"),
+        "due_date": financial_details.get("due_date"),
+        "account_type": financial_details.get("account_type"),
+        "payment_type": financial_details.get("payment_type"),
+    })
 
-    for item in doc.items:
-        if dn not in existing_references:
-            pe.append("references", {
-                "reference_doctype": dt,
-                "reference_name": dn,
-                "total_amount": grand_total,
-                "outstanding_amount": outstanding_amount,
-                "allocated_amount": grand_total,
-                "bill_no": doc.get("bill_no"),
-                "due_date": doc.get("due_date"),
-            })
-            existing_references.add(dn)
-
+    # Append Items from Sales Order
     if not pe.get("custom_item"):
         pe.set("custom_item", [])
 
@@ -3062,9 +3078,10 @@ def get_payment_entry(
             "actual_qty": item.actual_qty,
         })
 
-    unallocated_amount = max(0, paid_amount - grand_total)
-    pe.unallocated_amount = unallocated_amount
+    # Calculate Unallocated Amount
+    pe.unallocated_amount = max(0, paid_amount - grand_total)
 
+    # Set Exchange Rates and Amounts
     if party_account and bank:
         pe.company_currency = frappe.get_cached_value("Company", pe.company, "default_currency")
         pe.set_exchange_rate(ref_doc=doc)
@@ -3074,57 +3091,8 @@ def get_payment_entry(
         allocate_open_payment_requests_to_references(pe.references, pe.precision("paid_amount"))
 
     return pe
-@frappe.whitelist()
-def get_entry(
-    dn=None,  
-    party_amount=None,
-    bank_account=None,
-    bank_amount=None,
-    party_type=None,
-    payment_type=None,
-    reference_date=None,
-    ignore_permissions=False,
-    created_from_payment_request=False,
-):
-    dt = "Sales Order"
 
-    if not dn:
-        dn = frappe.form_dict.get("sales_order")
 
-    if not dn:
-        frappe.throw(_("Missing required parameter: dn (Sales Order name)"), title=_("Validation Error"))
-
-    doc = frappe.get_doc(dt, dn)
-    
-    # Fetch existing references
-    existing_references = {ref.reference_name for ref in doc.get("references", [])}
-
-    # Calculate amounts
-    grand_total = flt(doc.grand_total)
-    outstanding_amount = grand_total - flt(doc.advance_paid)
-
-    pe = frappe.new_doc("Advance Sales Invoice")
-    pe.payment_type = payment_type
-    pe.company = doc.company
-    pe.posting_date = nowdate()
-    pe.party_type = party_type
-    pe.party = doc.get(scrub(party_type))
-
-    # Ensure references exist
-    for item in doc.items:
-        if dn not in existing_references:
-            pe.append("references", {
-                "reference_doctype": dt,
-                "reference_name": dn,
-                "total_amount": grand_total,
-                "outstanding_amount": outstanding_amount,
-                "allocated_amount": grand_total,
-                "due_date": doc.get("due_date"),
-            })
-            existing_references.add(dn)
-
-    # Return payment entry object
-    return pe
 
 
 def get_open_payment_requests_for_references(references=None):
