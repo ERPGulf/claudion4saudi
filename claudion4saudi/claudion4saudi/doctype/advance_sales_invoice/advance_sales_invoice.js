@@ -123,7 +123,6 @@ frappe.ui.form.on("Advance Sales Invoice", {
       );
     }
 
-    // Reallocate amounts proportionally if paid_amount changes
     frm.events.reallocate_amounts(frm);
   },
 
@@ -141,13 +140,11 @@ frappe.ui.form.on("Advance Sales Invoice", {
       (frm.doc.references || []).map((d) => flt(d.allocated_amount))
     );
 
-    // Calculate allocation ratio
     let allocation_ratio = new_paid_amount / total_allocated;
 
     (frm.doc.references || []).forEach(function (d) {
       let new_allocated_amount = flt(d.allocated_amount) * allocation_ratio;
 
-      // Ensure allocated amount does not exceed outstanding
       d.allocated_amount = Math.min(new_allocated_amount, d.outstanding_amount);
     });
 
@@ -270,14 +267,6 @@ frappe.ui.form.on("Payment Entry Reference", {
 });
 
 frappe.ui.form.on("Advance Sales Invoice", {
-  // get_outstanding_orders: function (frm) {
-  //   frm.events.get_outstanding_invoices_or_orders(frm, false, true);
-  // },
-
-  // get_outstanding_invoices: function (frm) {
-  //   frm.events.get_outstanding_invoices_or_orders(frm, true, false);
-  // },
-
   get_outstanding_invoices_or_orders: function (
     frm,
     get_outstanding_invoices,
@@ -393,7 +382,6 @@ frappe.ui.form.on("Advance Sales Invoice", {
     }
   },
   set_exchange_gain_loss_deduction: async function (frm) {
-    // wait for allocate_party_amount_against_ref_docs to finish
     await frappe.after_ajax();
     const base_paid_amount = frm.doc.base_paid_amount || 0;
     const base_received_amount = frm.doc.base_received_amount || 0;

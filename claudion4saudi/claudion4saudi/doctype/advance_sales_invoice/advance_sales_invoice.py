@@ -1,19 +1,7 @@
 # # Copyright (c) 2025, Claudion and contributors
 # # For license information, please see license.txt
 
-# # from erpnext.accounts.doctype.payment_entry.payment_entry import allocate_open_payment_requests_to_references, get_payment_request_outstanding_set_in_references, get_references_outstanding_amount
-# # import frappe
-# # from frappe.model.document import Document
-# # from frappe.utils import flt
 
-
-# 	# 
-    
-
-# 	# Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and contributors
-# # For license information, please see license.txt
-
-# from claudion4saudi.advance_sales_invoice_ import get_reference_details_
 from frappe.model.document import Document
 
 # import json
