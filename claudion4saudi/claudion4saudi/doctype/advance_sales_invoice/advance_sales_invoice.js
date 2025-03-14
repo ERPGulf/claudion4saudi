@@ -173,7 +173,46 @@ frappe.ui.form.on("Advance Sales Invoice", {
 
     frm.events.set_unallocated_amount(frm);
   },
+  unallocated_amount: function (frm) {
+    let unallocated = flt(frm.doc.unallocated_amount);
+    let paid_amount = flt(frm.doc.paid_amount);
 
+    if (unallocated > paid_amount) {
+      console.log("Excess Unallocated Amount Found:", unallocated);
+
+      let excess_amount = unallocated - paid_amount;
+
+      frappe.call({
+        method: "claudion4saudi.advance_sales_invoice_.get_company_defaults",
+        args: {
+          company: frm.doc.company,
+        },
+        callback: function (r) {
+          if (r.message) {
+            let { write_off_account, exchange_gain_loss_account, cost_center } =
+              r.message;
+
+            let deduction_row = (frm.doc.deductions || []).find(
+              (row) => row.account == write_off_account
+            );
+
+            if (!deduction_row) {
+              deduction_row = frm.add_child("deductions");
+              deduction_row.account = write_off_account;
+              deduction_row.cost_center = cost_center;
+            }
+
+            deduction_row.amount = excess_amount;
+
+            console.log("Deductions Table Updated:", frm.doc.deductions);
+            frm.refresh_field("deductions");
+          } else {
+            frappe.msgprint(__("Failed to fetch company defaults."));
+          }
+        },
+      });
+    }
+  },
   set_unallocated_amount: function (frm) {
     let unallocated_amount = 0;
     let deductions_to_consider = 0;
@@ -382,6 +421,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
     }
   },
   set_exchange_gain_loss_deduction: async function (frm) {
+    // wait for allocate_party_amount_against_ref_docs to finish
     await frappe.after_ajax();
     const base_paid_amount = frm.doc.base_paid_amount || 0;
     const base_received_amount = frm.doc.base_received_amount || 0;
@@ -459,3 +499,84 @@ frappe.ui.form.on("Advance Sales Invoice", {
     frm.events.set_unallocated_amount(frm);
   },
 });
+function get_company_defaults(company) {
+  return frappe.call({
+    method:
+      "erpnext.accounts.doctype.payment_entry.payment_entry.get_company_defaults",
+    args: {
+      company: company,
+    },
+  });
+}
+console.log("ped");
+frappe.ui.form.on("Payment Entry Deduction", {
+  before_deductions_remove: function (doc, cdt, cdn) {
+    console.log("before_deductions_remove");
+    const row = frappe.get_doc(cdt, cdn);
+    if (row.is_exchange_gain_loss && row.amount) {
+      frappe.throw(__("Cannot delete Exchange Gain/Loss row"));
+    }
+  },
+
+  amount: function (frm) {
+    frm.events.set_unallocated_amount(frm);
+  },
+
+  deductions_remove: function (frm) {
+    frm.events.set_unallocated_amount(frm);
+  },
+});
+
+function set_default_party_type(frm) {
+  if (frm.doc.party) return;
+
+  let party_type;
+  if (frm.doc.payment_type == "Receive") {
+    party_type = "Customer";
+  } else if (frm.doc.payment_type == "Pay") {
+    party_type = "Supplier";
+  }
+
+  if (party_type) frm.set_value("party_type", party_type);
+}
+
+function get_included_taxes(frm) {
+  let included_taxes = 0;
+  for (const tax of frm.doc.taxes) {
+    if (!tax.included_in_paid_amount) continue;
+
+    if (tax.add_deduct_tax == "Add") {
+      included_taxes += tax.base_tax_amount;
+    } else {
+      included_taxes -= tax.base_tax_amount;
+    }
+  }
+
+  return included_taxes;
+}
+
+function prompt_for_missing_account(frm, account) {
+  return new Promise((resolve) => {
+    const dialog = frappe.prompt(
+      {
+        label: __(frappe.unscrub(account)),
+        fieldname: account,
+        fieldtype: "Link",
+        options: "Account",
+        get_query: () => ({
+          filters: {
+            company: frm.doc.company,
+          },
+        }),
+      },
+      (values) => resolve(values?.[account]),
+      __("Please Specify Account")
+    );
+  });
+}
+
+function get_deduction_amount_precision() {
+  return frappe.meta.get_field_precision(
+    frappe.meta.get_field("Payment Entry Deduction", "amount")
+  );
+}

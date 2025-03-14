@@ -84,9 +84,11 @@ def get_payment_entry(
     pe.party = doc.get("customer")
     pe.contact_person = doc.get("contact_person")
     pe.contact_email = doc.get("contact_email")
+    pe.total = doc.get("total")
+    pe.grand_total = doc.get("grand_total")
 
     if hasattr(pe, "ensure_supplier_is_not_blocked"):
-        pe.ensure_supplier_is_not_blocked()
+        pe.ensure_supplier_is_not_blocked()        
 
     pe.paid_from = party_account if payment_type == "Receive" else bank.account
     pe.paid_to = party_account if payment_type == "Pay" else bank.account
@@ -114,17 +116,17 @@ def get_payment_entry(
 
     if dn not in existing_references:
         pe.append("references", {
-        "reference_doctype": dt,
-        "reference_name": dn,
-        "total_amount": financial_details.get("total_amount"),
-        "outstanding_amount": financial_details.get("outstanding_amount"),
-        "exchange_rate": financial_details.get("exchange_rate"),
-        "allocated_amount": paid_amount,
-        "bill_no": financial_details.get("bill_no"),
-        "due_date": financial_details.get("due_date"),
-        "account_type": financial_details.get("account_type"),
-        "payment_type": financial_details.get("payment_type"),
-    })
+            "reference_doctype": dt,
+            "reference_name": dn,             
+            "total_amount": financial_details.get("total_amount"),
+            "outstanding_amount": financial_details.get("outstanding_amount"),
+            "exchange_rate": financial_details.get("exchange_rate"),
+            "allocated_amount": paid_amount,
+            "bill_no": financial_details.get("bill_no"),
+            "due_date": financial_details.get("due_date"),
+            "account_type": financial_details.get("account_type"),
+            "payment_type": financial_details.get("payment_type"),
+        })
 
     pe.run_method("set_missing_values") 
     pe.flags.ignore_validate = True
@@ -142,6 +144,23 @@ def get_payment_entry(
             "actual_qty": item.actual_qty,
         })
 
+    if not pe.get("taxes"):
+        pe.set("taxes", [])
+
+    for tax in doc.get("taxes"):
+        pe.append("taxes", {
+            "charge_type": tax.charge_type,
+            "account_head": tax.account_head,
+            "description": tax.description,
+            "rate": tax.rate,
+            "tax_amount": tax.tax_amount,
+            "included_in_paid_amount": tax.included_in_paid_amount,
+            "total": tax.total,
+            "base_total": tax.base_total,
+            "base_tax_amount": tax.base_tax_amount,
+            "tax_amount_after_discount_amount": tax.tax_amount_after_discount_amount,
+        })
+    pe.total_taxes_and_charges = doc.get("total_taxes_and_charges")
     pe.unallocated_amount = max(0, paid_amount - grand_total)
 
     if party_account and bank:
@@ -154,6 +173,7 @@ def get_payment_entry(
         allocate_open_payment_requests_to_references(pe.references, pe.precision("paid_amount"))
 
     return pe
+
 
 @frappe.whitelist()
 def get_reference_details_(
@@ -240,3 +260,10 @@ def get_reference_details_(
 	if account:
 		res.update({"account": account})
 	return res
+
+
+@frappe.whitelist()
+def get_company_defaults(company):
+	fields = ["write_off_account", "exchange_gain_loss_account", "cost_center"]
+	return frappe.get_cached_value("Company", company, fields, as_dict=1)
+

@@ -56,7 +56,7 @@ doctype_js = {
         "public/js/adv_sales_invoice.js",
     ],
     "Sales Invoice": "public/js/custom_sales_invoice.js",
-    # "Advance Sales Invoice": "claudion4saudi/doctype/advance_sales_invoice/advance_sales_invoice.js"
+    "Advance Sales Invoice":"public/js/zatca_button.js"
 }
 
 # doctype_js = {"doctype" : "public/js/doctype.js"}
@@ -166,6 +166,10 @@ after_migrate = "claudion4saudi.migrate.after_migrate"
 #         "after_save": "claudion4saudi.user_theme.apply_theme"
 #     }
 # }
+doc_events = {
+    "Sales Invoice": {
+        "on_submit": "zatca_erpgulf.zatca_erpgulf.advance_payment.zatca_background_on_submit",
+    }}
 
 # Scheduled Tasks
 # ---------------

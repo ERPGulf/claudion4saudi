@@ -1632,21 +1632,21 @@ class AdvanceSalesInvoice(Document):
 # 			"amount": self.total_allocated_amount * (tax_details["tax"]["rate"] / 100),
 # 		}
 
-# 	def set_gain_or_loss(self, account_details=None):
-# 		if not self.difference_amount:
-# 			self.set_difference_amount()
+	def set_gain_or_loss(self, account_details=None):
+		if not self.difference_amount:
+			self.set_difference_amount()
 
-# 		row = {"amount": self.difference_amount}
+		row = {"amount": self.difference_amount}
 
-# 		if account_details:
-# 			row.update(account_details)
+		if account_details:
+			row.update(account_details)
 
-# 		if not row.get("amount"):
-# 			# if no difference amount
-# 			return
+		if not row.get("amount"):
+			# if no difference amount
+			return
 
-# 		self.append("deductions", row)
-# 		self.set_unallocated_amount()
+		self.append("deductions", row)
+		self.set_unallocated_amount()
 
 # 	def get_exchange_rate(self):
 # 		return self.source_exchange_rate if self.payment_type == "Receive" else self.target_exchange_rate
@@ -3505,38 +3505,38 @@ class AdvanceSalesInvoice(Document):
 # 	return base_loss_on_income  # Return loss without rounding
 
 
-# def add_tax_discount_loss(pe, doc, total_discount_percentage) -> float:
-# 	"""Add loss on tax discount in base currency."""
-# 	tax_discount_loss = {}
-# 	base_total_tax_loss = 0
-# 	precision = doc.precision("tax_amount_after_discount_amount", "taxes")
+def add_tax_discount_loss(pe, doc, total_discount_percentage) -> float:
+	"""Add loss on tax discount in base currency."""
+	tax_discount_loss = {}
+	base_total_tax_loss = 0
+	precision = doc.precision("tax_amount_after_discount_amount", "taxes")
 
-# 	# The same account head could be used more than once
-# 	for tax in doc.get("taxes", []):
-# 		base_tax_loss = tax.get("base_tax_amount_after_discount_amount") * (total_discount_percentage / 100)
+	# The same account head could be used more than once
+	for tax in doc.get("taxes", []):
+		base_tax_loss = tax.get("base_tax_amount_after_discount_amount") * (total_discount_percentage / 100)
 
-# 		account = tax.get("account_head")
-# 		if not tax_discount_loss.get(account):
-# 			tax_discount_loss[account] = base_tax_loss
-# 		else:
-# 			tax_discount_loss[account] += base_tax_loss
+		account = tax.get("account_head")
+		if not tax_discount_loss.get(account):
+			tax_discount_loss[account] = base_tax_loss
+		else:
+			tax_discount_loss[account] += base_tax_loss
 
-# 	for account, loss in tax_discount_loss.items():
-# 		base_total_tax_loss += loss
-# 		if loss == 0.0:
-# 			continue
+	for account, loss in tax_discount_loss.items():
+		base_total_tax_loss += loss
+		if loss == 0.0:
+			continue
 
-# 		pe.append(
-# 			"deductions",
-# 			{
-# 				"account": account,
-# 				"cost_center": pe.cost_center
-# 				or frappe.get_cached_value("Company", pe.company, "cost_center"),
-# 				"amount": flt(loss, precision),
-# 			},
-# 		)
+		pe.append(
+			"deductions",
+			{
+				"account": account,
+				"cost_center": pe.cost_center
+				or frappe.get_cached_value("Company", pe.company, "cost_center"),
+				"amount": flt(loss, precision),
+			},
+		)
 
-# 	return base_total_tax_loss  # Return loss without rounding
+	return base_total_tax_loss  # Return loss without rounding
 
 
 # def get_reference_as_per_payment_terms(
