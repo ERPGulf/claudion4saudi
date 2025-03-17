@@ -142,6 +142,7 @@ def get_payment_entry(
             "rate": item.rate,
             "amount": item.amount,
             "actual_qty": item.actual_qty,
+            "item_tax_template": item.item_tax_template,
         })
 
     if not pe.get("taxes"):

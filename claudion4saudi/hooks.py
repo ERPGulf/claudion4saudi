@@ -167,7 +167,7 @@ after_migrate = "claudion4saudi.migrate.after_migrate"
 #     }
 # }
 doc_events = {
-    "Sales Invoice": {
+    "Advance Sales Invoice": {
         "on_submit": "zatca_erpgulf.zatca_erpgulf.advance_payment.zatca_background_on_submit",
     }}
 

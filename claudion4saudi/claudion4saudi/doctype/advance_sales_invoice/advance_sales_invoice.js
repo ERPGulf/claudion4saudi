@@ -174,14 +174,21 @@ frappe.ui.form.on("Advance Sales Invoice", {
     frm.events.set_unallocated_amount(frm);
   },
   unallocated_amount: function (frm) {
-    let unallocated = flt(frm.doc.unallocated_amount);
-    let paid_amount = flt(frm.doc.paid_amount);
+    let base_paid_amount = flt(frm.doc.base_paid_amount || 0);
+    let base_total_allocated_amount = flt(
+      frm.doc.base_total_allocated_amount || 0
+    );
+    let base_unallocated_amount =
+      flt(frm.doc.unallocated_amount || 0) *
+      (frm.doc.payment_type == "Receive"
+        ? frm.doc.source_exchange_rate
+        : frm.doc.target_exchange_rate);
 
-    if (unallocated > paid_amount) {
-      console.log("Excess Unallocated Amount Found:", unallocated);
+    let difference_amount =
+      base_paid_amount -
+      (base_total_allocated_amount + base_unallocated_amount);
 
-      let excess_amount = unallocated - paid_amount;
-
+    if (difference_amount) {
       frappe.call({
         method: "claudion4saudi.advance_sales_invoice_.get_company_defaults",
         args: {
@@ -189,8 +196,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
         },
         callback: function (r) {
           if (r.message) {
-            let { write_off_account, exchange_gain_loss_account, cost_center } =
-              r.message;
+            let { write_off_account, cost_center } = r.message;
 
             let deduction_row = (frm.doc.deductions || []).find(
               (row) => row.account == write_off_account
@@ -202,7 +208,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
               deduction_row.cost_center = cost_center;
             }
 
-            deduction_row.amount = excess_amount;
+            deduction_row.amount = difference_amount;
 
             console.log("Deductions Table Updated:", frm.doc.deductions);
             frm.refresh_field("deductions");
@@ -213,6 +219,7 @@ frappe.ui.form.on("Advance Sales Invoice", {
       });
     }
   },
+
   set_unallocated_amount: function (frm) {
     let unallocated_amount = 0;
     let deductions_to_consider = 0;

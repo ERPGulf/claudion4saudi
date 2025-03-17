@@ -9,7 +9,8 @@
   "delivery_date",
   "qty",
   "rate",
-  "amount"
+  "amount",
+  "item_tax_template"
  ],
  "fields": [
   {
@@ -47,12 +48,19 @@
    "in_list_view": 1,
    "label": "Amount",
    "read_only": 1
+  },
+  {
+   "fieldname": "item_tax_template",
+   "fieldtype": "Link",
+   "label": "Item Tax Template",
+   "options": "Item Tax Template",
+   "print_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-01-31 09:34:06.146520",
+ "modified": "2025-03-14 12:07:17.387476",
  "modified_by": "Administrator",
  "module": "Claudion4Saudi",
  "name": "Advance Sales Invoice Item",
