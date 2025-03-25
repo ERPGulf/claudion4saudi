@@ -161,7 +161,6 @@ def create_invoices():
                     "amount": total_amount,
                 }
             ]
-
         new_invoice = frappe.get_doc(invoice_doc)
         new_invoice.insert(ignore_permissions=True)
         new_invoice.submit()

@@ -10,7 +10,8 @@
   "qty",
   "rate",
   "amount",
-  "item_tax_template"
+  "item_tax_template",
+  "net_amount"
  ],
  "fields": [
   {
@@ -55,12 +56,19 @@
    "label": "Item Tax Template",
    "options": "Item Tax Template",
    "print_hide": 1
+  },
+  {
+   "fieldname": "net_amount",
+   "fieldtype": "Currency",
+   "label": "Net Amount",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-03-14 12:07:17.387476",
+ "modified": "2025-03-25 09:36:07.113208",
  "modified_by": "Administrator",
  "module": "Claudion4Saudi",
  "name": "Advance Sales Invoice Item",

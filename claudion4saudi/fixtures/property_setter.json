@@ -199,12 +199,12 @@
   "doctype_or_field": "DocField",
   "field_name": "desk_theme",
   "is_system_generated": 0,
-  "modified": "2025-02-21 10:03:30.884554",
+  "modified": "2025-03-18 12:04:00.107560",
   "module": "Claudion4Saudi",
   "name": "User-desk_theme-options",
   "property": "options",
   "property_type": "Text",
   "row_name": null,
-  "value": "Purple\nFrappe Light\nTimeless Night\nAutomatic\nBlue\nRed\nPeach Grey\nTheme I\nClaudion Theme 2\nClaudion Theme 3\nClaudion Theme 4"
+  "value": "Claudion Theme 2\nPurple\nFrappe Light\nTimeless Night\nAutomatic\nBlue\nRed\nPeach Grey\nTheme I\nClaudion Theme 3\nClaudion Theme 4"
  }
 ]

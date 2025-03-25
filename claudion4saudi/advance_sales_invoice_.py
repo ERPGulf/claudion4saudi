@@ -143,13 +143,14 @@ def get_payment_entry(
             "amount": item.amount,
             "actual_qty": item.actual_qty,
             "item_tax_template": item.item_tax_template,
+            "net_amount": item.net_amount,
         })
 
     if not pe.get("taxes"):
         pe.set("taxes", [])
 
     for tax in doc.get("taxes"):
-        pe.append("taxes", {
+        new_tax = pe.append("taxes", {
             "charge_type": tax.charge_type,
             "account_head": tax.account_head,
             "description": tax.description,
@@ -162,6 +163,8 @@ def get_payment_entry(
             "tax_amount_after_discount_amount": tax.tax_amount_after_discount_amount,
         })
     pe.total_taxes_and_charges = doc.get("total_taxes_and_charges")
+    if hasattr(tax, "item_wise_tax_detail"):
+        new_tax.item_wise_tax_detail = tax.item_wise_tax_detail
     pe.unallocated_amount = max(0, paid_amount - grand_total)
 
     if party_account and bank:
@@ -174,6 +177,30 @@ def get_payment_entry(
         allocate_open_payment_requests_to_references(pe.references, pe.precision("paid_amount"))
 
     return pe
+import json
+from collections import defaultdict
+
+def generate_item_wise_tax_detail(doc):
+    item_tax_map = defaultdict(lambda: [0, 0])  # {item_code: [rate, tax_amount]}
+
+    for tax in doc.get("taxes"):
+        if not tax.charge_type in ["On Net Total", "On Previous Row Amount", "On Previous Row Total"]:
+            continue
+
+        if not hasattr(tax, "item_wise_tax_detail") or not tax.item_wise_tax_detail:
+            continue
+
+        try:
+            tax_detail = json.loads(tax.item_wise_tax_detail)
+        except Exception as e:
+            frappe.logger().error(f"Could not parse item_wise_tax_detail: {e}")
+            continue
+
+        for item_code, values in tax_detail.items():
+            item_tax_map[item_code][0] = values[0]  # tax rate (same across taxes usually)
+            item_tax_map[item_code][1] += values[1]  # sum up tax amount per item
+
+    return dict(item_tax_map)
 
 
 @frappe.whitelist()

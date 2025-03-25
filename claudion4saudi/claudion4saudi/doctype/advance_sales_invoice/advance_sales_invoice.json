@@ -58,6 +58,7 @@
   "section_break_34",
   "total_allocated_amount",
   "base_total_allocated_amount",
+  "base_total",
   "column_break_36",
   "unallocated_amount",
   "difference_amount",
@@ -691,12 +692,20 @@
    "label": "Total",
    "options": "currency",
    "read_only": 1
+  },
+  {
+   "fieldname": "base_total",
+   "fieldtype": "Currency",
+   "label": "Total (Company Currency)",
+   "options": "Company:company:default_currency",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-11 12:45:41.556454",
+ "modified": "2025-03-25 09:53:27.254124",
  "modified_by": "Administrator",
  "module": "Claudion4Saudi",
  "name": "Advance Sales Invoice",
