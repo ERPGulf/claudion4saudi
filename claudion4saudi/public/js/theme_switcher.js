@@ -65,6 +65,11 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
           label: "Claudion Light",
           info: "Claudion Default Theme 4",
         },
+        {
+          name: "white",
+          label: "white",
+          info: "white Theme",
+        },
       ];
       resolve(this.themes);
     });

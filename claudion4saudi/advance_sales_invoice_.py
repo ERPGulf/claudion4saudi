@@ -86,7 +86,7 @@ def get_payment_entry(
     pe.contact_email = doc.get("contact_email")
     pe.total = doc.get("total")
     pe.grand_total = doc.get("grand_total")
-
+    pe.base_total = doc.get("base_total")
     if hasattr(pe, "ensure_supplier_is_not_blocked"):
         pe.ensure_supplier_is_not_blocked()        
 
@@ -137,6 +137,7 @@ def get_payment_entry(
     for item in doc.items:
         pe.append("custom_item", {
             "item_code": item.item_code,
+            "item_name": item.item_name,	
             "delivery_date": item.delivery_date,
             "qty": item.qty,
             "rate": item.rate,
@@ -144,6 +145,8 @@ def get_payment_entry(
             "actual_qty": item.actual_qty,
             "item_tax_template": item.item_tax_template,
             "net_amount": item.net_amount,
+            "uom": item.uom,
+            "base_amount": item.base_amount,
         })
 
     if not pe.get("taxes"):
@@ -181,7 +184,7 @@ import json
 from collections import defaultdict
 
 def generate_item_wise_tax_detail(doc):
-    item_tax_map = defaultdict(lambda: [0, 0])  # {item_code: [rate, tax_amount]}
+    item_tax_map = defaultdict(lambda: [0, 0])  
 
     for tax in doc.get("taxes"):
         if not tax.charge_type in ["On Net Total", "On Previous Row Amount", "On Previous Row Total"]:
@@ -197,9 +200,8 @@ def generate_item_wise_tax_detail(doc):
             continue
 
         for item_code, values in tax_detail.items():
-            item_tax_map[item_code][0] = values[0]  # tax rate (same across taxes usually)
-            item_tax_map[item_code][1] += values[1]  # sum up tax amount per item
-
+            item_tax_map[item_code][0] = values[0]  
+            item_tax_map[item_code][1] += values[1]  
     return dict(item_tax_map)
 
 

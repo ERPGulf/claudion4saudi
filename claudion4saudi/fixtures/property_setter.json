@@ -192,19 +192,19 @@
   "value": "0"
  },
  {
-  "default_value": "Claudion Theme 2",
+  "default_value": "ClaudionTheme ",
   "doc_type": "User",
   "docstatus": 0,
   "doctype": "Property Setter",
   "doctype_or_field": "DocField",
   "field_name": "desk_theme",
   "is_system_generated": 0,
-  "modified": "2025-03-18 12:04:00.107560",
+  "modified": "2025-04-09 08:20:49.265829",
   "module": "Claudion4Saudi",
   "name": "User-desk_theme-options",
   "property": "options",
   "property_type": "Text",
   "row_name": null,
-  "value": "Claudion Theme 2\nPurple\nFrappe Light\nTimeless Night\nAutomatic\nBlue\nRed\nPeach Grey\nTheme I\nClaudion Theme 3\nClaudion Theme 4"
+  "value": "Purple\nFrappe Light\nTimeless Night\nAutomatic\nBlue\nRed\nPeachGrey\nClaudionTheme \nClaudionLight\nClaudionDark\nClaudionSimple"
  }
 ]

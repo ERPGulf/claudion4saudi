@@ -146,9 +146,10 @@ after_migrate = "claudion4saudi.migrate.after_migrate"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"ToDo": "custom_app.overrides.CustomToDo",
+    "Sales Invoice": "claudion4saudi.advance_in_sales_invoice.CustomSalesInvoice"
+}
 
 # Document Events
 # ---------------
@@ -168,8 +169,15 @@ after_migrate = "claudion4saudi.migrate.after_migrate"
 # }
 doc_events = {
     "Advance Sales Invoice": {
+
         "on_submit": "zatca_erpgulf.zatca_erpgulf.advance_payment.zatca_background_on_submit",
-    }}
+
+    },
+    #  "Sales Invoice": {
+    #     "before_submit": "zatca_erpgulf.zatca_erpgulf.tax_error.validate_sales_invoice_taxes",
+    #     "on_submit": "zatca_erpgulf.zatca_erpgulf.advance_sales_invoice.zatca_background_on_submit",
+    # }
+    }
 
 # Scheduled Tasks
 # ---------------

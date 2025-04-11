@@ -138,6 +138,7 @@ h6.uppercase {
 [data-theme="purple"] .section-head,
 [data-theme="purple"] .comment-input-header {
   font-size: 14px;
+
   color: var(--third-color);
 }
 
