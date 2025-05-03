@@ -1,0 +1,760 @@
+[data-theme="claudionnight"] {
+  --main-color: #073C44;
+  /* Dark green */
+  --accent-color: #15B08F;
+  /* Teal for hover effects */
+  --searchbar-color: #293532;
+  --text-highlight: #9EC8B9;
+  /* Soft green for titles */
+  --text-color: #AAB2BD;
+  /*search bar text color*/
+  --background-light: #0D1211;
+  /* white background */
+  --background-color3: #1B2120;
+  --border-color3: #1E2624;
+  /* Light gray for borders */
+  --box-color:rgba(255, 255, 255, 0.03) !important; ;
+  ;
+  /* box color light minty */
+  --border-color: #192422;
+  --box3-color: #F5F7F7;
+  --text-color: #151616;
+  --text-color2: #525454;
+  /* Text color for various elements */
+  --text-color3: #B4B8B7;
+  /* Text color for various elements */
+  --text-light: #ffffff;
+  /* Text color for various elements */
+}
+
+[data-theme="claudionnight"] .theme-selector .theme-card {
+  background-color: #0D1211 !important;
+  /* Match your dark background */
+  color: var(--text-light) !important;
+  border: 1px solid #1E2624 !important;
+  /* Same border color you use */
+}
+
+[data-theme="claudionnight"] .theme-selector .theme-card .preview {
+  background-color: #1B2120 !important;
+  /* slightly different for preview sections if needed */
+}
+
+
+[data-theme="claudionnight"] .page-container,
+[data-theme="claudionnight"] .layout-main-section {
+  background-color: var(--background-light);
+}
+
+[data-theme="claudionnight"] .page-head.flex {
+  background-color: var(--background-light);
+  /* Pure black */
+  color: var(--text-light);
+  /* White text */
+  border: var(--background-light);
+}
+
+[data-theme="claudionnight"] .layout-main-section {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme="claudionnight"] .avatar-frame {
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important;
+
+}
+
+/*upper sidebar*/
+[data-theme="claudionnight"] header.navbar.navbar-expand {
+  background-color: var(--background-light);
+  color: var(--text-light);
+  /*Ensures text/icons are visible*/
+  border: 1px solid var(--border-color);
+}
+
+/*search bar background*/
+[data-theme="claudionnight"] #navbar-search {
+  background-color: var(--searchbar-color);
+  color: #AAB2BD !important;
+}
+
+/*color for notification icon*/
+[data-theme="claudionnight"] .es-icon.icon-sm {
+  stroke: var(--text-light) !important;
+}
+
+/*color for help icon*/
+[data-theme="claudionnight"] .dropdown-help .nav-link span {
+  color: var(--text-light);
+}
+
+[data-theme="claudionnight"] .dropdown-help .es-icon.icon-xs {
+  stroke: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .widget.onboarding-widget-box {
+  background-color: var(--box-color) !important;
+  border: 1px solid #293532;
+  color: var(--text-light) !important;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+[data-theme="claudionnight"] .links-widget-box,
+[data-theme="claudionnight"] .widget.links-widget-box {
+  background-color: var(--box-color) !important;
+  /* dark background */
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-light) !important;
+  border-radius: 8px;
+  /* rounded corners */
+  padding: 16px;
+  /* optional for spacing */
+}
+
+[data-theme="claudionnight"] span.ellipsis {
+  color: var(--text-light) !important;
+  /* Or use #ffffff directly */
+}
+
+[data-theme="claudionnight"] .widget-title {
+  color: var(--text-light) !important;
+
+
+}
+
+[data-theme="claudionnight"] .onboarding-step-body h1 {
+  color: var(--text-light) !important;
+  font-weight: 600;
+}
+
+[data-theme="claudionnight"] .onboarding-step-body p {
+  color: var(--text-color3) !important;
+}
+
+[data-theme="claudionnight"] .onboarding-step-body ul,
+[data-theme="claudionnight"] .onboarding-step-body ul li {
+  color: var(--text-color3) !important;
+}
+
+[data-theme="claudionnight"] .widget-subtitle {
+  color: var(--text-color3) !important;
+}
+
+
+
+[data-theme="claudionnight"] .onboarding-steps-wrapper {
+  background-color: var(--background-color3) !important;
+  border: 1px solid #1E2624 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="claudionnight"] .onboarding-step {
+  background-color: var(--background-color3);
+  color: var(--text-light);
+
+}
+
+[data-theme="claudionnight"] h3.ellipsis.title-text {
+  color: var(--text-light) !important;
+  /* Or any color code like #ffffff */
+}
+
+[data-theme="claudionnight"] svg.es-icon.sidebar-toggle-placeholder {
+  stroke: var(--text-light) !important;
+  /* or use a color like #ffffff */
+  fill: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .ce-header .h4 b {
+  color: var(--text-light) !important;
+  /* or #FFFFFF for white */
+}
+
+[data-theme="claudionnight"] .ce-header .h4 b {
+  color: var(--text-light) !important;
+  /* or use a hex: #ffffff for white */
+}
+
+[data-theme="claudionnight"] .shortcut-widget-box {
+  background-color: var(--background-light) !important;
+  color: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .onboarding-step:hover,
+[data-theme="claudionnight"] .onboarding-step.skipped.active:hover,
+[data-theme="claudionnight"] .onboarding-step.pending.active:hover {
+  background-color: #1B2120 !important;
+  /* Same as normal background */
+  color: var(--text-light) !important;
+  border: 1px solid #1E2624 !important;
+  /* match border too */
+}
+
+[data-theme="claudionnight"] .onboarding-step:empty {
+  display: none;
+  background: transparent;
+  border: none;
+}
+
+
+
+[data-theme="claudionnight"] .onboarding-step:focus,
+[data-theme="claudionnight"] .onboarding-step.active,
+[data-theme="claudionnight"] .onboarding-step:focus-visible {
+  border: 1px solid var(--accent-color) !important;
+  /* optional if you want a colored border */
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme="claudionnight"] .links-widget-box,
+[data-theme="claudionnight"] .widget.links-widget-box {
+  background-color: var(--box-color) !important;
+  border: 1px solid #293532 !important;
+  color: var(--text-light) !important;
+  /* This makes text white */
+}
+
+/* Target the specific text elements inside */
+[data-theme="claudionnight"] .widget.links-widget-box .widget-title,
+[data-theme="claudionnight"] .widget.links-widget-box .widget-subtitle,
+[data-theme="claudionnight"] .widget.links-widget-box .link-text {
+  color: var(--text-light) !important;
+  /* Title, subtitle, links all white */
+}
+
+
+[data-theme="claudionnight"] .onboarding-step.skipped.active {
+  background-color: var(--background-color3);
+}
+
+/* green tick mark*/
+[data-theme="claudionnight"] .step-index svg {
+  display: none !important;
+  /* hide old SVG */
+}
+
+[data-theme="claudionnight"] .step-index.step-pending {
+  background-image: url('/assets/claudion4saudi/assets/night_step.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+[data-theme="claudionnight"] .step-index.step-skipped {
+  background-image: url('/assets/claudion4saudi/assets/nightstep2.svg');
+  /* ← update filename */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+/* [data-theme="claudionnight"] .step-index svg use {
+  fill: var(--background-light);
+} */
+/* text color*/
+[data-theme="claudionnight"] .step-text {
+  color: var(--text-ight);
+}
+
+/*points*/
+[data-theme="claudionnight"] .onboarding-step-body ul li::marker {
+  color: var(--accent-color);
+}
+
+[data-theme="claudionnight"] .onboarding-step-preview {
+  display: flex;
+  flex-direction: column;
+}
+
+/*show customer list text color*/
+[data-theme="claudionnight"] .onboarding-step-body a[href*="/app/customer"] {
+  color: var(--accent-color);
+  background: transparent;
+}
+
+[data-theme="claudionnight"] .onboarding-step-body p a {
+  color: var(--accent-color) !important;
+  /* Use your theme accent */
+}
+
+[data-theme="claudionnight"] .onboarding-step-body p a:hover {
+  color: var(--main-color) !important;
+  /* Use your theme accent */
+}
+
+
+
+
+
+
+[data-theme="claudionnight"] .onboarding-step-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+[data-theme="claudionnight"] .onboarding-step-body a:hover {
+  color: var(--main-color);
+  text-decoration: underline;
+}
+
+/*button*/
+[data-theme="claudionnight"] .onboarding-step-footer .btn.btn-default {
+  background-color: #094D3E;
+  color: var(--text-light);
+  border: none;
+  font-weight: 500;
+}
+
+[data-theme="claudionnight"] .onboarding-step-footer .btn.btn-default:hover {
+  background-color: var(--accent-color);
+  color: var(--background-light);
+  border: #094D3E;
+  font-weight: 500;
+}
+
+/*line*/
+[data-theme="claudionnight"] .widget.spacer {
+  background-color: transparent !important;
+  border-top: 1px solid #192422;
+  height: 1px;
+  margin: 24px 0;
+  border-radius: 0;
+}
+
+/* [data-theme="claudionnight"] .links-widget-box {
+  background-color:var(--box3-color);
+} */
+
+
+
+[data-theme="claudionnight"] .sidebar-item-label {
+  color: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .sidebar-item-label:hover {
+  color: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .sidebar-item-label.selected {
+  color: var(--text-light) !important;
+}
+
+
+[data-theme="claudionnight"] .sidebar-item-icon {
+  fill: var(--text-light) !important;
+  /* or use a specific color code like #FFFFFF */
+}
+
+
+
+[data-theme="claudionnight"] .desk-sidebar-item:hover {
+  background-color: #2A2F2D;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected {
+  background-color: #2A2F2D !important;
+  color: var(--background-light);
+}
+
+
+/* Change the text/icon color on hover */
+[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label,
+[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-icon {
+  color: var(--accent-color);
+  fill: var(--accent-color);
+}
+
+
+[data-theme="claudionnight"] .standard-sidebar-label {
+  color: var(--text-light) !important;
+  /* white color or whatever text color you want */
+  font-weight: 500;
+  /* optional: slightly bold */
+  font-size: 14px;
+  /* optional: control font size */
+  text-transform: capitalize;
+  /* optional: make first letter caps */
+}
+
+
+/* Hover effect to change stroke color */
+[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-icon svg {
+  stroke: var(--accent-color) !important;
+  /* Optional: Change outline color on hover */
+}
+
+/* Make sure the <use> element inside the svg also doesn't override it */
+/* [data-theme="claudionnight"] .desk-sidebar-item .sidebar-item-icon svg use {
+  fill: none !important;
+  stroke: var(--text-light) !important;
+} */
+
+
+
+/* Selected item text/icon color */
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-label,
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon {
+  color: var(--accent-color);
+  fill: var(--accent-color);
+}
+
+/* For typed text inside the search input */
+[data-theme="claudionnight"] #navbar-search {
+  color: var(--text-color2);
+}
+
+/* For the placeholder text */
+[data-theme="claudionnight"] #navbar-search::placeholder {
+  color: #AAB2BD !important;
+  opacity: 1;
+}
+
+[data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small {
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--main-color);
+  padding: 0;
+  position: relative;
+}
+
+/* Hide the original text */
+[data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small::before {
+  content: "";
+  display: inline-block;
+  width:36px;
+  height:36px;
+  background-image: url('/assets/claudion4saudi/assets/Button1.svg'); /* Correct path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Perfect centering */
+}
+
+[data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small::after {
+  content: "";
+  display: none;
+}
+
+/* Optional: hide original content using visibility */
+[data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small {
+  color: transparent !important;
+
+}
+
+[data-theme="claudionnight"] .list-row a {
+  color: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .list-row a:hover {
+  color: #969e9e !important;
+}
+
+[data-theme="claudionnight"] .level.list-row {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="claudionnight"] .list-row-container:hover .level.list-row {
+  background-color: #2A2F2D !important;
+  color: var(--text-light) !important;
+  cursor: pointer;
+}
+
+
+[data-theme="claudionnight"] .onboarding-step.skipped {
+  background-color: transparent !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .onboarding-step.pending.active {
+  background-color: #313634 !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="claudionnight"] .onboarding-step.pending.active:hover {
+  background-color: #313634 !important;
+  color: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .standard-sidebar-section .es-icon {
+  stroke: var(--text-light) !important;
+  fill: var(--text-light) !important;
+}
+
+
+[data-theme="claudionnight"] .sidebar-item-icon svg use {
+  stroke: white !important;
+  fill: white !important;
+}
+
+[data-theme="claudionnight"] .sidebar-label {
+  color: var(--text-color3) !important;
+  /* White color */
+}
+
+[data-theme=claudionnight] span.ellipsis,
+[data-theme=claudionnight] .widget-title {
+  color: #837a7a !important;
+}
+
+[data-theme="claudionnight"] .widget-title span.ellipsis {
+  color: #ffffff !important;
+  /* <-- pure white or your desired color */
+}
+
+[data-theme="claudionnight"] a.add-group-by {
+  color: #837a7a !important;
+  /* or whatever color you want */
+}
+
+[data-theme="claudionnight"] a.add-group-by:hover {
+  color: var(--accent-color);
+  /* or whatever color you want */
+}
+
+[data-theme="claudionnight"] a.list-tag-preview {
+  color: #837a7a !important;
+  /* White color */
+}
+
+/* Optional - on hover */
+[data-theme="claudionnight"] a.list-tag-preview:hover {
+  color: var(--accent-color) !important;
+  /* Your accent color on hover */
+}
+
+-------------------------------------------------
+/*hovers*/
+/*===============================
+Polish Hover Effects - Final
+================================*/
+
+/* Links inside sidebar filters ("Edit Filters" and similar) */
+[data-theme="claudionnight"] a.add-group-by {
+  color: #837a7a !important;
+  transition: color 0.3s ease;
+}
+
+[data-theme="claudionnight"] a.add-group-by:hover {
+  color: var(--accent-color) !important;
+  /* Hover turns accent color */
+}
+
+/* "Show Tags" link */
+[data-theme="claudionnight"] a.list-tag-preview {
+  color: #837a7a !important;
+  transition: color 0.3s ease;
+}
+
+[data-theme="claudionnight"] a.list-tag-preview:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Sidebar labels like "Filter By" */
+[data-theme="claudionnight"] li.sidebar-label {
+  color: var(--text-color3) !important;
+  transition: color 0.3s ease;
+}
+
+[data-theme="claudionnight"] li.sidebar-label:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Text inside widget boxes (titles, subtitles) */
+[data-theme="claudionnight"] span.ellipsis,
+[data-theme="claudionnight"] .widget-title {
+  color: #837a7a !important;
+  transition: color 0.3s ease;
+}
+
+/* Hover for widget titles */
+[data-theme="claudionnight"] .widget-title:hover span.ellipsis {
+  color: var(--accent-color) !important;
+}
+
+/* Hover for text inside "Your Shortcuts" widgets */
+[data-theme="claudionnight"] .links-widget-box a:hover,
+[data-theme="claudionnight"] .widget.links-widget-box a:hover {
+  color: var(--accent-color) !important;
+}
+
+/* List View Row hover smooth transition */
+[data-theme="claudionnight"] .list-row-container:hover .level.list-row {
+  background-color: #2A2F2D !important;
+  color: var(--text-light) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Final polish: normal links inside list view */
+[data-theme="claudionnight"] .list-row a {
+  color: var(--text-light) !important;
+  transition: color 0.3s ease;
+}
+
+[data-theme="claudionnight"] .list-row a:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Final polish: hover for dashboard sidebar text */
+[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label,
+[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-icon {
+  color: var(--accent-color) !important;
+  fill: var(--accent-color) !important;
+}
+
+[data-theme="claudionnight"] a.link-item.ellipsis.onboard-spotlight:hover {
+  background-color: #2A2F2D !important;
+  /* Dark gray hover background */
+  color: var(--text-light) !important;
+  /* Keep text white */
+}
+
+/* General icon styling */
+[data-theme="claudionnight"] .widget-head .widget-label {
+  display: flex;
+  /* Align icon and text in a row */
+  align-items: center;
+  /* Center vertically */
+  gap: 8px;
+  /* Space between icon and text */
+}
+
+[data-theme="claudionnight"] .widget-head .widget-label::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Item"])::before {
+  background-image: url('/assets/claudion4saudi/assets/night_item.svg');
+}
+
+[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Customer"])::before {
+  background-image: url('/assets/claudion4saudi/assets/night_customer.svg');
+}
+
+[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Supplier"])::before {
+  background-image: url('/assets/claudion4saudi/assets/night_supplier.svg');
+}
+
+[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Sales Invoice"])::before {
+  background-image: url('/assets/claudion4saudi/assets/night_salesinvoice.svg');
+}
+
+[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Leaderboard"])::before {
+  background-image: url('/assets/claudion4saudi/assets/night_leaderboard.svg');
+}
+
+[data-theme="claudionnight"] .step-index {
+  position: relative;
+  /* Make the step-index the reference point */
+}
+
+/* Connector line below each icon */
+[data-theme="claudionnight"] .step-index::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 6px);
+  /* Small gap after icon */
+  left: 50%;
+  /* Center it horizontally */
+  transform: translateX(-50%);
+  /* Exact center alignment */
+  width: 2px;
+  /* Width of the connector */
+  height: 20px;
+  /* Height of connector (adjust if needed) */
+  background-image: url('/assets/claudion4saudi/assets/Connector.png');
+  /* Your connector image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Remove connector for last step */
+[data-theme="claudionnight"] .onboarding-step:last-child .step-index::after {
+  display: none;
+}
+
+[data-theme="claudionnight"] .widget-control svg use,
+[data-theme="claudionnight"] .link-content.ellipsis svg use {
+  stroke: var(--text-light) !important;
+  fill: var(--text-light) !important;
+}
+
+/* On hover - optional */
+[data-theme="claudionnight"] .widget-control:hover svg use,
+[data-theme="claudionnight"] .link-content.ellipsis:hover svg use {
+  stroke: var(--accent-color) !important;
+  fill: var(--accent-color) !important;
+}
+
+
+
+/* Remove connector for last step */
+[data-theme="claudionnight"] .onboarding-step:last-child .step-index::after {
+  display: none;
+}
+
+[data-theme="claudionnight"] .navbar .vertical-bar {
+  border-right: 1px solid #114D56;
+  height: 24px;
+  margin: auto;
+  margin-left: var(--margin-md);
+}
+
+[data-theme="claudionnight"] .vertical-bar {
+  justify: space-between
+    /* Optional: equal gap between bell and Help */
+}
+
+[data-theme="claudionnight"] ul.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  /* 16px between all navbar items */
+}
+
+
+/* Apply only to widget titles under the Reports & Masters section */
+
+[data-theme="claudionnight"] .widget-control svg.es-icon-es-line.icon-xs {
+  stroke: black !important;
+  fill: black !important;
+}
+
+[data-theme="claudionnight"] .shortcut-widget-box .widget-label {
+  flex-direction: row !important;    /* Align icon and text side-by-side */
+  align-items: center !important;    /* Vertically center */
+  justify-content: flex-start;
+  gap: 8px;                          /* Space between icon and text */
+}
+[data-theme="claudionnight"] .widget-head .widget-label {
+  display: flex;
+  flex-direction: column;  /* Stack title and subtitle vertically */
+  align-items: flex-start; /* Align to the left */
+  gap: 2px;                /* Optional: spacing between title and subtitle */
+}

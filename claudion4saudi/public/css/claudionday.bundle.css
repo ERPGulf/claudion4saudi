@@ -1,0 +1,496 @@
+[data-theme="claudionday"] {
+  --main-color: #073C44;      /* Dark green */
+  --accent-color: #15B08F; /* Teal for hover effects */
+  --searchbar-color:#114D56;   /* Darker green for search bar */
+  --text-highlight: #9EC8B9; /* Soft green for titles */
+  --text-color:#AAB2BD; /*search bar text color*/
+  --background-light: #FFFFFF; /* white background */
+  --background-color2: #DFE3E1; /* Light gray for borders */
+  --background-color3:#DAEDE9;
+  --border-color3:#CEDBD9; /* Light gray for borders */
+  --box-color:#EDF2F0; /* box color light minty */
+  --border-color: #DFE3E1;
+  --box2-color:#DAEDE9;
+  --box3-color:#F5F7F7;
+  --border-color3: #EBEDED; /* Light gray for borders */
+  --card-bg: #D8E9E2;  /* Card and widget background */
+  --text-color:#151616;
+  --text-color2:#525454;/* Text color for various elements */
+}
+[data-theme="claudionday"] .page-container,
+[data-theme="claudionday"] .layout-main-section {
+  background-color: var(--background-light); /* White base */
+}
+[data-theme="claudionday"] .layout-main-section {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme="claudionday"] .avatar-frame {
+  background-color:var(--accent-color) !important; /* Replace with your desired color */
+  color: #ffffff !important;            /* Optional: change letter color */
+}
+/*upper sidebar*/
+[data-theme="claudionday"] header.navbar.navbar-expand {
+  background-color: var(--main-color);
+  color: var(--background-light); /*Ensures text/icons are visible*/
+}
+/*search bar background*/
+[data-theme="claudionday"] #navbar-search {
+  color: #3b3636  !important;
+  background-color: var(--searchbar-color); /* Dark green background */
+}
+
+[data-theme="claudionday"] #navbar-search::placeholder {
+  color: #AAB2BD !important; /* light gray placeholder */
+}
+
+/*color for notification icon*/
+[data-theme="claudionday"] .es-icon.icon-sm {
+  stroke: var(--background-light) !important;
+}
+
+/*color for help icon*/
+[data-theme="claudionday"] .dropdown-help .nav-link span {
+  color: var(--background-light); /* or any color you prefer */
+}
+[data-theme="claudionday"] .dropdown-help .es-icon.icon-xs {
+  stroke: var(--background-light) !important;
+}
+
+
+[data-theme="claudionday"] .widget.onboarding-widget-box {
+  background-color: var(--box-color); /* Light minty background */
+  border: 1px solid var(--border-color); /* Dark green border */
+  border-radius: 8px; /* Optional: Rounded corners */
+  padding: 20px; /* Optional: Inner spacing */
+}
+
+
+[data-theme="claudionday"] .onboarding-steps-wrapper {
+  background-color: var(--background-color3);
+  border: 1px solid #CEDBD9;
+  border-radius: 6px;
+  padding: 20px;
+
+}
+
+[data-theme="claudionday"] .onboarding-step.skipped.active {
+  background-color: var(--background-color3);
+}
+/* green tick mark*/
+/* [data-theme="claudionday"] .step-index svg {
+  background-color: var(--accent-color);
+  border-radius: 100px;
+} */
+
+/* [data-theme="claudionday"] .step-index svg use {
+  fill: var(--background-light);
+} */
+[data-theme="claudionday"] .step-index svg {
+  display: none !important; /* hide old SVG */
+}
+
+[data-theme="claudionday"] .step-index.step-pending {
+  background-image: url('/assets/claudion4saudi/assets/step_icon_day.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width:24px;
+  height:24px;
+  border-radius:12px;
+}
+[data-theme="claudionday"] .step-index.step-skipped {
+  background-image: url('/assets/claudion4saudi/assets/circular_icon.svg'); /* ← update filename */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  border-radius:12px;
+}
+
+/* text color*/
+[data-theme="claudionday"] .step-text {
+  color: var(--text-color);
+}
+/*points*/
+[data-theme="claudionday"] .onboarding-step-body ul li::marker {
+  color: var(--accent-color);
+}
+
+
+[data-theme="claudionday"] .onboarding-step-preview {
+  display: flex;
+  flex-direction: column;
+}
+/*show customer list text color*/
+[data-theme="claudionday"] .onboarding-step-body a[href*="/app/customer"] {
+  color:#094D3E !important; /* or any custom color you want */
+}
+
+[data-theme="claudionday"] .onboarding-step-body a[href*="/app/customer"]:hover {
+  color: var(--accent-color) !important; /* hover color */
+}
+
+
+[data-theme="claudionday"] .onboarding-step-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+[data-theme="claudionday"] .onboarding-step-body a:hover {
+  color: var(--accent-color); /* Change to teal on hover */
+  text-decoration: underline; /* Optional: underline on hover */
+}
+
+/*button*/
+[data-theme="claudionday"] .onboarding-step-footer .btn.btn-default {
+  background-color: #094D3E;    /* Teal background */
+  color: var(--background-light);           /* White text */
+  border: none;                             /* Optional: remove default border */
+  font-weight: 500;
+}
+[data-theme="claudionday"] .onboarding-step-footer .btn.btn-default:hover {
+  background-color: var(--accent-color);    /* Darker teal on hover */
+  color: var(--background-light);           /* White text */
+  border: none;                             /* Optional: remove default border */
+  font-weight: 500;
+}
+
+[data-theme="claudionday"] .shortcut-widget-box {
+  background-color: #ffffff !important;  /* Force white background */
+
+}
+/*line*/
+[data-theme="claudionday"] .widget.spacer {
+  background-color: transparent !important; /* Remove green background */
+  border-top: 1px solid #E0E0E0 !important;  /* Use primary color for the line */
+  height: 1px;                               /* Just a line, no extra height */
+  margin: 24px 0;                            /* Space above and below the line */
+  border-radius: 0;
+
+}
+
+[data-theme="claudionday"] .links-widget-box {
+  background-color:var(--box3-color);
+}
+
+[data-theme="claudionday"] .links-widget-box .link-text {
+  color:var(--text-color2);  /* Dark green */
+}
+[data-theme="claudionday"] .links-widget-box .link-text:hover {
+  color: var(--accent-color); /* Teal on hover */
+  text-decoration: underline; /* Optional: underline on hover */
+}
+
+/* Hover effect for sidebar items */
+[data-theme="claudionday"] .desk-sidebar-item:hover {
+  background-color: var(--accent-color); /* Teal or green on hover */
+  border-radius: 6px; /* Optional: rounded edges */
+}
+
+/* Change the text/icon color on hover */
+[data-theme="claudionday"] .desk-sidebar-item:hover .sidebar-item-label,
+[data-theme="claudionday"] .desk-sidebar-item:hover .sidebar-item-icon {
+  color: var(--background-light); /* White text on hover */
+  fill: var(--background-light) !important;  /* SVG icon color */
+}
+
+/* Selected item background */
+[data-theme="claudionday"] .desk-sidebar-item.selected {
+  background-color: var(--accent-color); /* Active selection */
+
+}
+
+/* Selected item text/icon color */
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-label,
+[data-theme="claudionday"] .desk-sidebar-item.selected .icon:focus {
+  color: var(--background-light);
+  fill:white !important; /* White text */
+}
+
+
+
+/* For typed text inside the search input */
+[data-theme="claudionday"] #navbar-search {
+  color: var(--text-color2); /* or use a hex like #FFFFFF for white */
+}
+
+/* For the placeholder text */
+[data-theme="claudionday"] #navbar-search::placeholder {
+  color:#AAB2BD !important;  /* Customize this */
+  opacity: 1;                /* Ensure it's visible */
+}
+[data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small {
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--main-color); /* use your existing color */
+  padding: 0;
+  position: relative;
+}
+[data-theme="claudionday"] .widget-title:hover span.ellipsis {
+  color: var(--accent-color) !important;
+}
+/* Hide the original text */
+[data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small::before {
+  content: "";
+  display: inline-block;
+  width:36px;
+  height:36px;
+  background-image: url('/assets/claudion4saudi/assets/Button.svg'); /* Correct path */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Perfect centering */
+}
+
+[data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small::after {
+  content: "";
+  display: none;
+}
+
+/* Optional: hide original content using visibility */
+[data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small {
+  color: transparent !important;  /* Hides the text while preserving dimensions */
+}
+[data-theme="claudionday"] a.onboarding-step.skipped {
+  background-color:transparent!important; /* Or set your preferred color */
+}
+/* General icon styling */
+[data-theme="claudionday"] .widget-head .widget-label {
+  display: flex;                /* Align icon and text in a row */
+  align-items: center;           /* Center vertically */
+  flex-direction: column;  /* Stack title and subtitle vertically */
+  align-items: flex-start; /* Align to the left */
+  gap: 2px;
+
+}
+[data-theme="claudionday"] .shortcut-widget-box .widget-label {
+  flex-direction: row !important;    /* Align icon and text side-by-side */
+  align-items: center !important;    /* Vertically center */
+  justify-content: flex-start;
+  gap: 8px;                          /* Space between icon and text */
+}
+
+
+[data-theme="claudionday"] .widget-head .widget-label::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Item"])::before {
+  background-image: url('/assets/claudion4saudi/assets/item.svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Customer"])::before {
+  background-image: url('/assets/claudion4saudi/assets/customer.svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Supplier"])::before {
+  background-image: url('/assets/claudion4saudi/assets/supplier.svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Sales Invoice"])::before {
+  background-image: url('/assets/claudion4saudi/assets/salesinvoice.svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Leaderboard"])::before {
+  background-image: url('/assets/claudion4saudi/assets/leaderboard.svg');
+}
+
+[data-theme="claudionday"] .step-index {
+  position: relative; /* Make the step-index the reference point */
+}
+
+/* Connector line below each icon */
+[data-theme="claudionday"] .step-index::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 2.5px);
+  left: 50%;
+  transform: translate(-50%);
+  width: 2px;
+  height: 12px;
+  background-image: url(/assets/claudion4saudi/assets/Connector.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  bottom: calc(100% + 5px);
+}
+
+/* Remove connector for last step */
+[data-theme="claudionday"] .onboarding-step:last-child .step-index::after {
+  display: none;
+}
+
+[data-theme="claudionday"] .navbar .vertical-bar {
+  border-right: 1px solid #114D56;
+  height: 24px;
+  margin: auto;
+  margin-left: var(--margin-md);
+}
+
+[data-theme="claudionday"] .vertical-bar {
+ justify:space-between/* Optional: equal gap between bell and Help */
+}
+
+[data-theme="claudionday"] ul.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* 16px between all navbar items */
+}
+
+
+/* Apply only to widget titles under the Reports & Masters section */
+
+[data-theme="claudionday"] .widget-control svg.es-icon-es-line.icon-xs {
+  stroke: black !important;
+  fill: black !important;
+}
+
+[data-theme="claudionday"] .form-tabs-list {
+  background-color: #F7FAF9;
+  color: #393A3A!important;
+
+}
+[data-theme="claudionday"] .std-form-layout>.form-layout>.form-page {
+
+  background-color: #F7FAF9;
+  border:1px solid #DFE3E1;
+  color: #393A3A!important;
+}
+[data-theme="claudionday"] .form-control {
+  width: 100%; /* It will adapt to container */
+  height: 38px;
+  padding: 10px;
+  gap: 8px;
+  border-radius: 6px;
+  font-size: 14px; /* (optional) make it neat */
+  box-shadow: none;
+  background-color: #FFFFFF !important; /* white background */
+  color: #393A3A !important; /* text dark */
+  border: 1px solid #CCD0D0 !important; /* light gray border */
+}
+[data-theme="claudionday"] #navbar-breadcrumbs a {
+  color: white!important; /* Or you can give a specific hex code */
+  text-decoration: none;
+  font-weight: 500; /* (optional) make it slightly bolder */
+}
+[data-theme="claudionday"] #navbar-breadcrumbs a::before {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+}
+
+[data-theme="claudionday"] .control-label, .grid-heading-row  {
+  color: #393A3A;                  /* updated from screenshot */
+  font-family: 'Host Grotesk', sans-serif; /* added the font */
+  font-weight: 500;                /* 500 from screenshot */
+  font-size: 12px;                 /* 12px from screenshot */
+  line-height: 120%;               /* 120% line height */
+  letter-spacing: 0%;              /* 0% letter spacing */
+}
+[data-theme="claudionday"] ul.list-unstyled.sidebar-menu.text-muted {
+  background-color: #EDF2F0; /* your provided background color */
+  padding: 10px; /* optional: to give some breathing space */
+  border-radius: 8px;
+  border:1px solid#E1E5E4 /* optional: if you want rounded corners */
+}
+
+[data-theme="claudionday"] ul.list-unstyled.sidebar-menu.form-sidebar-stats {
+  background-color: #EDF2F0; /* Replace #EDF2F0 with your desired color */
+  padding: 10px;
+  border-radius: 8px; /* Optional for smoother corners */
+}
+
+/* Hide the original  dot */
+[data-theme="claudionday"] .timeline-dot {
+  background: none !important;
+  border: none !important;
+}
+
+/* Add your custom icon */
+[data-theme="claudionday"] .timeline-dot::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('/assets/claudion4saudi/assets/step_icon_day.svg'); /* <-- update path here */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+[data-theme="claudionday"] .new-timeline::before {
+  display: none !important;
+}
+
+[data-theme="claudionday"] .timeline-item::before {
+  display: none !important;
+}
+
+[data-theme="claudionday"] .timeline-dot::after {
+  content: "";
+  display: block;
+  width: 2px; /* or as per your image width */
+  height: 40px; /* or image height */
+  margin: 6px auto 0 auto;
+  background-image: url('/assets/yourappname/assets/white_connector.svg'); /* <-- your image */
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+[data-theme="claudionday"] .btn.btn-secondary{
+  background-color: #073C44;
+  color: #FFFFFF;
+}
+
+/* [data-theme="claudionday"] .col-md-4 {
+  flex: 0 0 22.1002222%;
+  max-width:33.33333333%;
+
+} */
+
+
+[data-theme="claudionday"] .layout-main-section.frappe-card {
+  background-color: #F9FAFB;
+  border:1px solid #EAECF0!important; /* Replace with your desired hex code */
+}
+
+[data-theme="claudionday"] .page-form {
+  background-color: #F9FAFB !important; /* Replace with your desired color */
+}
+[data-theme="claudionday"] .layout-main-section .frappe-list .result {
+  background-color: white!important;
+  color: #393A3A;/* replace with your desired color */
+}
+
+[data-theme="claudionday"].list-subject a {
+  font-family: 'Host Grotesk';
+  font-size: 14px;
+  font-weight:400;
+}
+
+[data-theme="claudionday"] .indicator-pill.blue,
+[data-theme="claudionday"] .indicator-pill-right.blue,
+[data-theme="claudionday"] .indicator-pill-round.blue {
+  background-color: #CFE7EB !important;
+  color: #256A74 !important;
+  border: #A6C8CD;
+}

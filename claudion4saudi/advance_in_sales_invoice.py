@@ -1,13 +1,18 @@
-
 from erpnext.accounts.party import get_party_account
 from erpnext.controllers.accounts_controller import AccountsController
 from erpnext.accounts.doctype.sales_invoice.sales_invoice import SalesInvoice
 
-from erpnext.controllers.accounts_controller import get_advance_journal_entries, get_advance_payment_entries_for_regional
+from erpnext.controllers.accounts_controller import (
+    get_advance_journal_entries,
+    get_advance_payment_entries_for_regional,
+)
 import frappe
 from frappe import _dict
 
-def get_advance_sales_invoice_entries(party_type, party, party_account, order_list, include_unallocated=True, company=None):
+
+def get_advance_sales_invoice_entries(
+    party_type, party, party_account, order_list, include_unallocated=True, company=None
+):
     if not order_list:
         return []
 
@@ -22,32 +27,50 @@ def get_advance_sales_invoice_entries(party_type, party, party_account, order_li
             "party_type": party_type,
             "paid_from": ["in", party_account],
             "reference_name": ["in", order_list],
-            "company": company
+            "company": company,
         },
         fields=[
-            "name", "posting_date", "total_allocated_amount", "paid_amount",
-            "unallocated_amount", "references.reference_doctype", "paid_to"
+            "name",
+            "posting_date",
+            "total_allocated_amount",
+            "paid_amount",
+            "unallocated_amount",
+            "references.reference_doctype",
+            "paid_to",
         ],
-        order_by="posting_date desc"
+        order_by="posting_date desc",
     )
 
     result = []
 
     for adv_inv in advance_sales_invoices:
-        if include_unallocated or adv_inv.unallocated_amount > 0:
-            result.append(_dict({
-                "reference_type": "Advance Sales Invoice",
-                "reference_name": adv_inv.name,
-                "posting_date": adv_inv.posting_date,
-                "advance_amount": adv_inv.paid_amount,
-                "allocated_amount": adv_inv.total_allocated_amount,
-                "unallocated_amount": adv_inv.unallocated_amount,
-                "sales_order": adv_inv.references[0].reference_name if adv_inv.references else None,
-                "reference_doctype": adv_inv.references[0].reference_doctype if adv_inv.references else None,
-                "exchange_rate": 1,
-                "account": adv_inv.paid_to,
-                "amount": adv_inv.paid_amount,
-            }))
+        # if include_unallocated or adv_inv.unallocated_amount > 0:
+        if True:
+            result.append(
+                _dict(
+                    {
+                        "reference_type": "Advance Sales Invoice",
+                        "reference_name": adv_inv.name,
+                        "posting_date": adv_inv.posting_date,
+                        "advance_amount": adv_inv.paid_amount,
+                        "allocated_amount": adv_inv.total_allocated_amount,
+                        "unallocated_amount": adv_inv.unallocated_amount,
+                        "sales_order": (
+                            adv_inv.references[0].reference_name
+                            if adv_inv.references
+                            else None
+                        ),
+                        "reference_doctype": (
+                            adv_inv.references[0].reference_doctype
+                            if adv_inv.references
+                            else None
+                        ),
+                        "exchange_rate": 1,
+                        "account": adv_inv.paid_to,
+                        "amount": adv_inv.paid_amount,
+                    }
+                )
+            )
 
     return result
 
@@ -55,7 +78,7 @@ def get_advance_sales_invoice_entries(party_type, party, party_account, order_li
 class CustomSalesInvoice(SalesInvoice):
 
     def get_advance_entries(self, include_unallocated=True):
-        frappe.msgprint("Getting advance entries for Sales Invoice")
+        # frappe.msgprint("Getting advance entries for Sales Invoice")
         party_account = []
         default_advance_account = None
 
@@ -80,12 +103,22 @@ class CustomSalesInvoice(SalesInvoice):
 
         if party_accounts:
             party_account.append(party_accounts[0])
-            default_advance_account = party_accounts[1] if len(party_accounts) == 2 else None
+            default_advance_account = (
+                party_accounts[1] if len(party_accounts) == 2 else None
+            )
 
-        order_list = list(set(d.get(order_field) for d in self.get("items") if d.get(order_field)))
+        order_list = list(
+            set(d.get(order_field) for d in self.get("items") if d.get(order_field))
+        )
 
         journal_entries = get_advance_journal_entries(
-            party_type, party, party_account, amount_field, order_doctype, order_list, include_unallocated
+            party_type,
+            party,
+            party_account,
+            amount_field,
+            order_doctype,
+            order_list,
+            include_unallocated,
         )
 
         payment_entries = get_advance_payment_entries_for_regional(
@@ -98,18 +131,53 @@ class CustomSalesInvoice(SalesInvoice):
             include_unallocated,
         )
 
+        linked_sales_orders = set(order_list)
+
+        filtered_payment_entries = []
+        for pe in payment_entries:
+            if pe.get("remarks"):
+                for so in linked_sales_orders:
+                    if so in pe["remarks"]:
+                        filtered_payment_entries.append(pe)
+                        break
+
         advance_sales_invoices = get_advance_sales_invoice_entries(
             party_type,
             party,
             party_account,
             order_list,
             include_unallocated,
-            company=self.company
+            company=self.company,
         )
 
-        res = journal_entries + payment_entries + advance_sales_invoices
+        res = journal_entries + filtered_payment_entries + advance_sales_invoices
 
         frappe.msgprint("Advance entries fetched successfully")
-        frappe.msgprint(f"Advance entries: {res}")
+        # frappe.msgprint(f"Advance entries: {res}")
 
         return res
+
+
+# my_custom_app/customizations/utils.py
+
+import frappe
+from erpnext.accounts.utils import (
+    update_reference_in_payment_entry as original_update_reference_in_payment_entry,
+)
+
+
+def update_reference_in_payment_entry(lst, active_dimensions=None):
+    # Check if the payment_entry is an AdvanceSalesInvoice
+    for payment_entry in lst:
+        if hasattr(payment_entry, "get_exchange_rate"):
+            return original_update_reference_in_payment_entry(lst, active_dimensions)
+
+        # If it's not, handle it differently
+        elif payment_entry.doctype == "Advance Sales Invoice":
+            # Return a default or fallback value for exchange rate if needed
+            payment_entry.exchange_rate = 1
+        else:
+            # Handle other cases as needed
+            payment_entry.exchange_rate = 1
+
+    return lst  # Return the modified list
