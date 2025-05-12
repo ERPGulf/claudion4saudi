@@ -17,6 +17,10 @@
   --text-color:#151616;
   --text-color2:#525454;/* Text color for various elements */
 }
+
+[data-theme="claudionday"] *{
+  font-family: Host Grotesk !important; 
+}
 [data-theme="claudionday"] .page-container,
 [data-theme="claudionday"] .layout-main-section {
   background-color: var(--background-light); /* White base */
@@ -61,20 +65,20 @@
 
 
 [data-theme="claudionday"] .widget.onboarding-widget-box {
+  font-family: Host Grotesk !important;
   background-color: var(--box-color); /* Light minty background */
   border: 1px solid var(--border-color); /* Dark green border */
   border-radius: 8px; /* Optional: Rounded corners */
-  padding: 20px; /* Optional: Inner spacing */
+  padding: 20px; 
 }
-
 
 [data-theme="claudionday"] .onboarding-steps-wrapper {
-  background-color: var(--background-color3);
-  border: 1px solid #CEDBD9;
+  background-color: rgba(23, 23, 23, 0.03) !important;
+  border: 1px solid rgba(23, 23, 23, 0.05) !important;
   border-radius: 6px;
   padding: 20px;
-
 }
+
 
 [data-theme="claudionday"] .onboarding-step.skipped.active {
   background-color: var(--background-color3);
@@ -115,7 +119,35 @@
 [data-theme="claudionday"] .step-text {
   color: var(--text-color);
 }
+
+[data-theme="claudionday"] .onboarding-step-body h1{
+  font-family:Host Grotesk ;
+  font-weight:700 !important;
+  font-size:15px !important;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color:#020D0F;
+}
+
+[data-theme="claudionday"] .onboarding-step-body p{
+  font-family:Host Grotesk ;
+  font-weight:400;
+  font-size:12px !important;
+  line-height: 120% !important;
+  letter-spacing: 0%;
+  color:#2A2B2B;
+}
+
 /*points*/
+
+[data-theme="claudionday"] .onboarding-step-body ul {
+  color: #2A2B2B;
+  font-family:Host Grotesk ;
+  font-weight:400;
+  font-size:12px;
+  line-height: 120% !important;
+  letter-spacing: 0%;
+}
 [data-theme="claudionday"] .onboarding-step-body ul li::marker {
   color: var(--accent-color);
 }
@@ -125,12 +157,20 @@
   display: flex;
   flex-direction: column;
 }
-/*show customer list text color*/
-[data-theme="claudionday"] .onboarding-step-body a[href*="/app/customer"] {
-  color:#094D3E !important; /* or any custom color you want */
+
+[data-theme="claudionday"] .onboarding-step-preview ul{
+  gap: 8px;
 }
 
-[data-theme="claudionday"] .onboarding-step-body a[href*="/app/customer"]:hover {
+[data-theme="claudionday"] .onboarding-step-preview ul li::marker {
+  font-size: 6px; 
+}
+/*show customer list text color*/
+[data-theme="claudionday"] .onboarding-step-body a {
+  color:#073C44 !important; /* or any custom color you want */
+}
+
+[data-theme="claudionday"] .onboarding-step-body a:hover {
   color: var(--accent-color) !important; /* hover color */
 }
 
@@ -231,11 +271,18 @@
   font-size: 20px;
   font-weight: bold;
   color: var(--main-color); /* use your existing color */
-  padding: 0;
+  padding: 12px !important;
+  /* margin: 0px !important; */
   position: relative;
 }
-[data-theme="claudionday"] .widget-title:hover span.ellipsis {
-  color: var(--accent-color) !important;
+
+[data-theme="claudionday"] .widget-subtitle{
+  font-family:Host Grotesk ;
+  font-weight:400;
+  font-size:12px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color:#2A2B2B !important;
 }
 /* Hide the original text */
 [data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small::before {
@@ -297,6 +344,30 @@
   background-image: url('/assets/claudion4saudi/assets/item.svg');
 }
 
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Material Request"])::before {
+  background-image: url('/assets/claudion4saudi/assets/Frame%202147226436.svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Purchase Order"])::before {
+  background-image: url('/assets/claudion4saudi/assets/Frame%202147226436%20(1).svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Purchase Analytics"])::before {
+  background-image: url('/assets/claudion4saudi/assets/Frame%202147226437%20(1).svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Purchase Order Analysis"])::before {
+  background-image: url('/assets/claudion4saudi/assets/Frame%202147226437.svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Dashboard"])::before {
+  background-image: url('/assets/claudion4saudi/assets/Frame%202147226436%20(2).svg');
+}
+
+[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Learn Procurement"])::before {
+  background-image: url('/assets/claudion4saudi/assets/Frame%202147226436%20(3).svg');
+}
+
 [data-theme="claudionday"] .widget-head .widget-label:has(span[title="Customer"])::before {
   background-image: url('/assets/claudion4saudi/assets/customer.svg');
 }
@@ -316,6 +387,15 @@
 [data-theme="claudionday"] .step-index {
   position: relative; /* Make the step-index the reference point */
 }
+
+[data-theme="claudionday"] .indicator-pill.no-indicator-dot.ellipsis.green {
+  width: 100%;
+  background-color: #CFE7EB;
+  border: 1px solid #A6C8CD;
+  color: #256A74;
+}
+
+
 
 /* Connector line below each icon */
 [data-theme="claudionday"] .step-index::after {
@@ -374,6 +454,22 @@
   border:1px solid #DFE3E1;
   color: #393A3A!important;
 }
+
+/* [data-theme="claudionday"] .awesomplete {
+  padding:4px 9px 4px 12px;
+} */
+/* 
+[data-theme="claudionday"] .awesomplete .form-control [type="text"] {
+padding-left: 20px !important;
+width: 156px !important;
+height: 16px !important;
+} */
+
+[data-theme="claudionday"] .awesomplete .search-icon{
+  padding-left: 10px !important;
+
+}
+
 [data-theme="claudionday"] .form-control {
   width: 100%; /* It will adapt to container */
   height: 38px;
@@ -493,4 +589,279 @@
   background-color: #CFE7EB !important;
   color: #256A74 !important;
   border: #A6C8CD;
+}
+/* 
+[data-theme="claudionday"] .layout-main-section{
+  margin: 0px !important;
+  padding: 0px !important;
+} */
+
+[data-theme="claudionday"] .ce-block__content {
+font-family: Host Grotesk !important;
+}
+
+/* [data-theme="claudionday"] .ce-block__content[onboarding_name="Home"]{
+  margin: 0px !important;
+  padding: 0px !important;
+} */
+ 
+
+[data-theme="claudionday"] .ce-block__content .ce-header .h4 b{
+  font-family: Host Grotesk !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+} 
+
+[data-theme="claudionday"] .ce-block .col-xs-12.ce-block__content {
+  background-color: #F5F7F7 !important;
+  border: 1px solid #DCDEDE !important;
+}
+
+
+[data-theme="claudionday"] .ce-block.col-xs-12.col-sm-6.col-md-4 .ce-block__content .widget .links-widget-box{
+  padding: 0px !important;
+}
+
+[data-theme="claudionday"] .widget-title .ellipsis{
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
+[data-theme="claudionday"] .shortcut-widget-box .widget-title .ellipsis {
+  font-family: Host Grotesk !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
+[data-theme="claudionday"] .link-item.onboard-spotlight .link-text {
+  color: #2A2B2B !important;
+}
+
+
+[data-theme=claudionday] .form-control {
+  background-color: rgba(22, 92, 100, 0.85) !important; 
+  border: none !important;
+  color: #FFFFFF !important; 
+  height: 32px !important;
+  border-radius: 8px !important;
+}
+
+.search-icon {
+  filter: brightness(0) invert(1);
+}
+
+
+[data-theme="claudionday"] .sidebar-item-icon svg {
+  display: none !important; 
+}
+
+[data-theme="claudionday"] .item-anchor{
+  gap: 8px;
+}
+
+[data-theme="claudionday"] .flex{
+  font-family: Host Grotesk !important;
+}
+
+[data-theme="claudionday"] .standard-sidebar-section .nested-container [title="Public"] {
+  font-family:Host Grotesk !important ;
+}
+
+[data-theme="claudionday"] .list-sidebar .overlay-sidebar .hidden-xs .hidden-sm .opened{
+  font-family: Host Grotesk !important;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="getting-started"] {
+  border: 1.5px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Smart%20Home,%20House.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="accounting"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/credit-card-edit.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="buying"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/shopping-bag-fast-buy.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="sell"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/store-minimal-shielld-2.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="stock"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Delivery,%20Shipment.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="assets"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/hotel-building-2.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="organization"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/factory-energy-style-2.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="quality"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Certificate,%20Checkmark,%20Square.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="project"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Documents,%20File,%20Blank.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="support"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Headphones,%20Customer,%20support.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="users"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/User,Profile.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="website"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Cursor,%20Select,%20Hand,%20Browser.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="crm"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Research,%20Target,%20Selection.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/tools-wench.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="setting"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/share-minimal-square.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .item-anchor[title="Integrations"] .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/magnet-horizontal-right-big.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .item-anchor[title="ERPNext Integrations"] .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/link-minimal-circle.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .item-anchor[title="Build"] .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/building-office-circle.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="folder-normal"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Delivery,%20Shipment.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
