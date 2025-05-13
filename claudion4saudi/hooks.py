@@ -28,7 +28,7 @@ doctype_js = {
 }
 
 
-after_migrate = "claudion4saudi.migrate.after_migrate"
+# after_migrate = "claudion4saudi.migrate.after_migrate"
 
 
 # override_doctype_class = {
@@ -45,7 +45,7 @@ doc_events = {
 
 
 override_whitelisted_methods = {
-    "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme",
+    # "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme",
     # "erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry":
     # "claudion4saudi.custom_payment_entry.custom_get_payment_entry"
 }
