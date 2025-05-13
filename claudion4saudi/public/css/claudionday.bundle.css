@@ -1,25 +1,31 @@
 [data-theme="claudionday"] {
-  --main-color: #073C44;      /* Dark green */
-  --accent-color: #15B08F; /* Teal for hover effects */
-  --searchbar-color:#114D56;   /* Darker green for search bar */
-  --text-highlight: #9EC8B9; /* Soft green for titles */
-  --text-color:#AAB2BD; /*search bar text color*/
-  --background-light: #FFFFFF; /* white background */
-  --background-color2: #DFE3E1; /* Light gray for borders */
-  --background-color3:#DAEDE9;
-  --border-color3:#CEDBD9; /* Light gray for borders */
-  --box-color:#EDF2F0; /* box color light minty */
-  --border-color: #DFE3E1;
-  --box2-color:#DAEDE9;
-  --box3-color:#F5F7F7;
-  --border-color3: #EBEDED; /* Light gray for borders */
-  --card-bg: #D8E9E2;  /* Card and widget background */
-  --text-color:#151616;
-  --text-color2:#525454;/* Text color for various elements */
+  --main-color: #042226; /* Dark green */
+  --accent-color: #15b08f; /* Teal for hover effects */
+  --searchbar-color: #114d56; /* Darker green for search bar */
+  --text-highlight: #9ec8b9; /* Soft green for titles */
+  --text-color: #aab2bd; /*search bar text color*/
+  --background-light: #ffffff; /* white background */
+  --background-color2: #dfe3e1; /* Light gray for borders */
+  --background-color3: #daede9;
+  --border-color3: #dcdede; /* Light gray for borders */
+  --box-color: #f5f7f7; /* box color light minty */
+  --border-color: #dfe3e1;
+  --box2-color: #daede9;
+  --box3-color: #f5f7f7;
+  --border-color3: #ebeded; /* Light gray for borders */
+  --card-bg: #f5f7f7; /* Card and widget background */
+  --text-color: #151616;
+  --text-color2: #525454; /* Text color for various elements */
 }
-
-[data-theme="claudionday"] *{
-  font-family: Host Grotesk !important; 
+@font-face {
+  font-family: "Host Grotesk";
+  src: url("/assets/claudion4saudi/fonts/HostGrotesk-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+[data-theme="claudionday"] * {
+  font-family: "Host Grotesk", sans-serif !important;
 }
 [data-theme="claudionday"] .page-container,
 [data-theme="claudionday"] .layout-main-section {
@@ -32,8 +38,14 @@
 }
 
 [data-theme="claudionday"] .avatar-frame {
-  background-color:var(--accent-color) !important; /* Replace with your desired color */
-  color: #ffffff !important;            /* Optional: change letter color */
+  background-color: var(
+    --accent-color
+  ) !important; /* Replace with your desired color */
+  color: #ffffff !important; /* Optional: change letter color */
+}
+
+[data-theme="claudionday"] .navbar {
+  background-color: #042226 !important; /* Dark green */
 }
 /*upper sidebar*/
 [data-theme="claudionday"] header.navbar.navbar-expand {
@@ -42,12 +54,12 @@
 }
 /*search bar background*/
 [data-theme="claudionday"] #navbar-search {
-  color: #3b3636  !important;
+  color: #3b3636 !important;
   background-color: var(--searchbar-color); /* Dark green background */
 }
 
 [data-theme="claudionday"] #navbar-search::placeholder {
-  color: #AAB2BD !important; /* light gray placeholder */
+  color: #aab2bd !important; /* light gray placeholder */
 }
 
 /*color for notification icon*/
@@ -63,13 +75,12 @@
   stroke: var(--background-light) !important;
 }
 
-
 [data-theme="claudionday"] .widget.onboarding-widget-box {
   font-family: Host Grotesk !important;
   background-color: var(--box-color); /* Light minty background */
   border: 1px solid var(--border-color); /* Dark green border */
   border-radius: 8px; /* Optional: Rounded corners */
-  padding: 20px; 
+  padding: 20px;
 }
 
 [data-theme="claudionday"] .onboarding-steps-wrapper {
@@ -78,7 +89,6 @@
   border-radius: 6px;
   padding: 20px;
 }
-
 
 [data-theme="claudionday"] .onboarding-step.skipped.active {
   background-color: var(--background-color3);
@@ -97,22 +107,22 @@
 }
 
 [data-theme="claudionday"] .step-index.step-pending {
-  background-image: url('/assets/claudion4saudi/assets/step_icon_day.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width:24px;
-  height:24px;
-  border-radius:12px;
-}
-[data-theme="claudionday"] .step-index.step-skipped {
-  background-image: url('/assets/claudion4saudi/assets/circular_icon.svg'); /* ← update filename */
+  background-image: url("/assets/claudion4saudi/assets/step_icon_day.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 24px;
   height: 24px;
-  border-radius:12px;
+  border-radius: 12px;
+}
+[data-theme="claudionday"] .step-index.step-skipped {
+  background-image: url("/assets/claudion4saudi/assets/circular_icon.svg"); /* ← update filename */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
 }
 
 /* text color*/
@@ -120,31 +130,31 @@
   color: var(--text-color);
 }
 
-[data-theme="claudionday"] .onboarding-step-body h1{
-  font-family:Host Grotesk ;
-  font-weight:700 !important;
-  font-size:15px !important;
+[data-theme="claudionday"] .onboarding-step-body h1 {
+  font-family: Host Grotesk;
+  font-weight: 700 !important;
+  font-size: 15px !important;
   line-height: 120%;
   letter-spacing: 0%;
-  color:#020D0F;
+  color: #020d0f;
 }
 
-[data-theme="claudionday"] .onboarding-step-body p{
-  font-family:Host Grotesk ;
-  font-weight:400;
-  font-size:12px !important;
+[data-theme="claudionday"] .onboarding-step-body p {
+  font-family: Host Grotesk;
+  font-weight: 400;
+  font-size: 12px !important;
   line-height: 120% !important;
   letter-spacing: 0%;
-  color:#2A2B2B;
+  color: #2a2b2b;
 }
 
 /*points*/
 
 [data-theme="claudionday"] .onboarding-step-body ul {
-  color: #2A2B2B;
-  font-family:Host Grotesk ;
-  font-weight:400;
-  font-size:12px;
+  color: #2a2b2b;
+  font-family: Host Grotesk;
+  font-weight: 400;
+  font-size: 12px;
   line-height: 120% !important;
   letter-spacing: 0%;
 }
@@ -152,28 +162,26 @@
   color: var(--accent-color);
 }
 
-
 [data-theme="claudionday"] .onboarding-step-preview {
   display: flex;
   flex-direction: column;
 }
 
-[data-theme="claudionday"] .onboarding-step-preview ul{
+[data-theme="claudionday"] .onboarding-step-preview ul {
   gap: 8px;
 }
 
 [data-theme="claudionday"] .onboarding-step-preview ul li::marker {
-  font-size: 6px; 
+  font-size: 6px;
 }
 /*show customer list text color*/
 [data-theme="claudionday"] .onboarding-step-body a {
-  color:#073C44 !important; /* or any custom color you want */
+  color: #073c44 !important; /* or any custom color you want */
 }
 
 [data-theme="claudionday"] .onboarding-step-body a:hover {
   color: var(--accent-color) !important; /* hover color */
 }
-
 
 [data-theme="claudionday"] .onboarding-step-footer {
   display: flex;
@@ -189,38 +197,36 @@
 
 /*button*/
 [data-theme="claudionday"] .onboarding-step-footer .btn.btn-default {
-  background-color: #094D3E;    /* Teal background */
-  color: var(--background-light);           /* White text */
-  border: none;                             /* Optional: remove default border */
+  background-color: #094d3e; /* Teal background */
+  color: var(--background-light); /* White text */
+  border: none; /* Optional: remove default border */
   font-weight: 500;
 }
 [data-theme="claudionday"] .onboarding-step-footer .btn.btn-default:hover {
-  background-color: var(--accent-color);    /* Darker teal on hover */
-  color: var(--background-light);           /* White text */
-  border: none;                             /* Optional: remove default border */
+  background-color: var(--accent-color); /* Darker teal on hover */
+  color: var(--background-light); /* White text */
+  border: none; /* Optional: remove default border */
   font-weight: 500;
 }
 
 [data-theme="claudionday"] .shortcut-widget-box {
-  background-color: #ffffff !important;  /* Force white background */
-
+  background-color: #ffffff !important; /* Force white background */
 }
 /*line*/
 [data-theme="claudionday"] .widget.spacer {
   background-color: transparent !important; /* Remove green background */
-  border-top: 1px solid #E0E0E0 !important;  /* Use primary color for the line */
-  height: 1px;                               /* Just a line, no extra height */
-  margin: 24px 0;                            /* Space above and below the line */
+  border-top: 1px solid #e0e0e0 !important; /* Use primary color for the line */
+  height: 1px; /* Just a line, no extra height */
+  margin: 24px 0; /* Space above and below the line */
   border-radius: 0;
-
 }
 
 [data-theme="claudionday"] .links-widget-box {
-  background-color:var(--box3-color);
+  background-color: var(--box3-color);
 }
 
 [data-theme="claudionday"] .links-widget-box .link-text {
-  color:var(--text-color2);  /* Dark green */
+  color: var(--text-color2); /* Dark green */
 }
 [data-theme="claudionday"] .links-widget-box .link-text:hover {
   color: var(--accent-color); /* Teal on hover */
@@ -237,23 +243,20 @@
 [data-theme="claudionday"] .desk-sidebar-item:hover .sidebar-item-label,
 [data-theme="claudionday"] .desk-sidebar-item:hover .sidebar-item-icon {
   color: var(--background-light); /* White text on hover */
-  fill: var(--background-light) !important;  /* SVG icon color */
+  fill: var(--background-light) !important; /* SVG icon color */
 }
 
 /* Selected item background */
 [data-theme="claudionday"] .desk-sidebar-item.selected {
   background-color: var(--accent-color); /* Active selection */
-
 }
 
 /* Selected item text/icon color */
 [data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-label,
 [data-theme="claudionday"] .desk-sidebar-item.selected .icon:focus {
   color: var(--background-light);
-  fill:white !important; /* White text */
+  fill: white !important; /* White text */
 }
-
-
 
 /* For typed text inside the search input */
 [data-theme="claudionday"] #navbar-search {
@@ -262,8 +265,8 @@
 
 /* For the placeholder text */
 [data-theme="claudionday"] #navbar-search::placeholder {
-  color:#AAB2BD !important;  /* Customize this */
-  opacity: 1;                /* Ensure it's visible */
+  color: #aab2bd !important; /* Customize this */
+  opacity: 1; /* Ensure it's visible */
 }
 [data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small {
   background: none;
@@ -276,21 +279,23 @@
   position: relative;
 }
 
-[data-theme="claudionday"] .widget-subtitle{
-  font-family:Host Grotesk ;
-  font-weight:400;
-  font-size:12px;
+[data-theme="claudionday"] .widget-subtitle {
+  font-family: Host Grotesk;
+  font-weight: 400;
+  font-size: 12px;
   line-height: 120%;
   letter-spacing: 0%;
-  color:#2A2B2B !important;
+  color: #2a2b2b !important;
 }
 /* Hide the original text */
-[data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small::before {
+[data-theme="claudionday"]
+  .widget-control
+  .btn.btn-sm.btn-secondary.small::before {
   content: "";
   display: inline-block;
-  width:36px;
-  height:36px;
-  background-image: url('/assets/claudion4saudi/assets/Button.svg'); /* Correct path */
+  width: 36px;
+  height: 36px;
+  background-image: url("/assets/claudion4saudi/assets/Button.svg"); /* Correct path */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -300,34 +305,34 @@
   transform: translate(-50%, -50%); /* Perfect centering */
 }
 
-[data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small::after {
+[data-theme="claudionday"]
+  .widget-control
+  .btn.btn-sm.btn-secondary.small::after {
   content: "";
   display: none;
 }
 
 /* Optional: hide original content using visibility */
 [data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small {
-  color: transparent !important;  /* Hides the text while preserving dimensions */
+  color: transparent !important; /* Hides the text while preserving dimensions */
 }
 [data-theme="claudionday"] a.onboarding-step.skipped {
-  background-color:transparent!important; /* Or set your preferred color */
+  background-color: transparent !important; /* Or set your preferred color */
 }
 /* General icon styling */
 [data-theme="claudionday"] .widget-head .widget-label {
-  display: flex;                /* Align icon and text in a row */
-  align-items: center;           /* Center vertically */
-  flex-direction: column;  /* Stack title and subtitle vertically */
+  display: flex; /* Align icon and text in a row */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Stack title and subtitle vertically */
   align-items: flex-start; /* Align to the left */
   gap: 2px;
-
 }
 [data-theme="claudionday"] .shortcut-widget-box .widget-label {
-  flex-direction: row !important;    /* Align icon and text side-by-side */
-  align-items: center !important;    /* Vertically center */
+  flex-direction: row !important; /* Align icon and text side-by-side */
+  align-items: center !important; /* Vertically center */
   justify-content: flex-start;
-  gap: 8px;                          /* Space between icon and text */
+  gap: 8px; /* Space between icon and text */
 }
-
 
 [data-theme="claudionday"] .widget-head .widget-label::before {
   content: "";
@@ -340,48 +345,109 @@
   flex-shrink: 0;
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Item"])::before {
-  background-image: url('/assets/claudion4saudi/assets/item.svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Item"])::before {
+  background-image: url("/assets/claudion4saudi/assets/item.svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Material Request"])::before {
-  background-image: url('/assets/claudion4saudi/assets/Frame%202147226436.svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Material Request"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226436.svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Purchase Order"])::before {
-  background-image: url('/assets/claudion4saudi/assets/Frame%202147226436%20(1).svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Purchase Order"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226436%20(1).svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Purchase Analytics"])::before {
-  background-image: url('/assets/claudion4saudi/assets/Frame%202147226437%20(1).svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Purchase Analytics"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226437%20(1).svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Purchase Order Analysis"])::before {
-  background-image: url('/assets/claudion4saudi/assets/Frame%202147226437.svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Purchase Order Analysis"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226437.svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Dashboard"])::before {
-  background-image: url('/assets/claudion4saudi/assets/Frame%202147226436%20(2).svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Dashboard"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226436%20(2).svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Learn Procurement"])::before {
-  background-image: url('/assets/claudion4saudi/assets/Frame%202147226436%20(3).svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Procurement"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226436%20(3).svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Customer"])::before {
-  background-image: url('/assets/claudion4saudi/assets/customer.svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Customer"])::before {
+  background-image: url("/assets/claudion4saudi/assets/customer.svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Supplier"])::before {
-  background-image: url('/assets/claudion4saudi/assets/supplier.svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Supplier"])::before {
+  background-image: url("/assets/claudion4saudi/assets/supplier.svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Sales Invoice"])::before {
-  background-image: url('/assets/claudion4saudi/assets/salesinvoice.svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Sales Invoice"])::before {
+  background-image: url("/assets/claudion4saudi/assets/salesinvoice.svg");
 }
 
-[data-theme="claudionday"] .widget-head .widget-label:has(span[title="Leaderboard"])::before {
-  background-image: url('/assets/claudion4saudi/assets/leaderboard.svg');
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Leaderboard"])::before {
+  background-image: url("/assets/claudion4saudi/assets/leaderboard.svg");
+}
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Sales Order"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226436.svg");
+}
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Sales Analytics"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226436%20(1).svg");
+}
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Point of Sale"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226437%20(1).svg");
+}
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Sales Management"])::before {
+  background-image: url("/assets/claudion4saudi/assets/Frame%202147226436.svg");
 }
 
 [data-theme="claudionday"] .step-index {
@@ -390,12 +456,10 @@
 
 [data-theme="claudionday"] .indicator-pill.no-indicator-dot.ellipsis.green {
   width: 100%;
-  background-color: #CFE7EB;
-  border: 1px solid #A6C8CD;
-  color: #256A74;
+  background-color: #cfe7eb;
+  border: 1px solid #a6c8cd;
+  color: #256a74;
 }
-
-
 
 /* Connector line below each icon */
 [data-theme="claudionday"] .step-index::after {
@@ -419,14 +483,14 @@
 }
 
 [data-theme="claudionday"] .navbar .vertical-bar {
-  border-right: 1px solid #114D56;
+  border-right: 1px solid #114d56;
   height: 24px;
   margin: auto;
   margin-left: var(--margin-md);
 }
 
 [data-theme="claudionday"] .vertical-bar {
- justify:space-between/* Optional: equal gap between bell and Help */
+  justify: space-between; /* Optional: equal gap between bell and Help */
 }
 
 [data-theme="claudionday"] ul.navbar-nav {
@@ -434,7 +498,6 @@
   align-items: center;
   gap: 16px; /* 16px between all navbar items */
 }
-
 
 /* Apply only to widget titles under the Reports & Masters section */
 
@@ -444,15 +507,13 @@
 }
 
 [data-theme="claudionday"] .form-tabs-list {
-  background-color: #F7FAF9;
-  color: #393A3A!important;
-
+  background-color: #f7faf9;
+  color: #393a3a !important;
 }
-[data-theme="claudionday"] .std-form-layout>.form-layout>.form-page {
-
-  background-color: #F7FAF9;
-  border:1px solid #DFE3E1;
-  color: #393A3A!important;
+[data-theme="claudionday"] .std-form-layout > .form-layout > .form-page {
+  background-color: #f7faf9;
+  border: 1px solid #dfe3e1;
+  color: #393a3a !important;
 }
 
 /* [data-theme="claudionday"] .awesomplete {
@@ -465,9 +526,8 @@ width: 156px !important;
 height: 16px !important;
 } */
 
-[data-theme="claudionday"] .awesomplete .search-icon{
+[data-theme="claudionday"] .awesomplete .search-icon {
   padding-left: 10px !important;
-
 }
 
 [data-theme="claudionday"] .form-control {
@@ -478,37 +538,38 @@ height: 16px !important;
   border-radius: 6px;
   font-size: 14px; /* (optional) make it neat */
   box-shadow: none;
-  background-color: #FFFFFF !important; /* white background */
-  color: #393A3A !important; /* text dark */
-  border: 1px solid #CCD0D0 !important; /* light gray border */
+  background-color: #ffffff !important; /* white background */
+  color: #393a3a !important; /* text dark */
+  border: 1px solid #ccd0d0 !important; /* light gray border */
 }
 [data-theme="claudionday"] #navbar-breadcrumbs a {
-  color: white!important; /* Or you can give a specific hex code */
+  color: white !important; /* Or you can give a specific hex code */
   text-decoration: none;
   font-weight: 500; /* (optional) make it slightly bolder */
 }
 [data-theme="claudionday"] #navbar-breadcrumbs a::before {
-  color: #FFFFFF !important;
-  fill: #FFFFFF !important;
+  color: #ffffff !important;
+  fill: #ffffff !important;
 }
 
-[data-theme="claudionday"] .control-label, .grid-heading-row  {
-  color: #393A3A;                  /* updated from screenshot */
-  font-family: 'Host Grotesk', sans-serif; /* added the font */
-  font-weight: 500;                /* 500 from screenshot */
-  font-size: 12px;                 /* 12px from screenshot */
-  line-height: 120%;               /* 120% line height */
-  letter-spacing: 0%;              /* 0% letter spacing */
+[data-theme="claudionday"] .control-label,
+.grid-heading-row {
+  color: #393a3a; /* updated from screenshot */
+  font-family: "Host Grotesk", sans-serif; /* added the font */
+  font-weight: 500; /* 500 from screenshot */
+  font-size: 12px; /* 12px from screenshot */
+  line-height: 120%; /* 120% line height */
+  letter-spacing: 0%; /* 0% letter spacing */
 }
 [data-theme="claudionday"] ul.list-unstyled.sidebar-menu.text-muted {
-  background-color: #EDF2F0; /* your provided background color */
+  background-color: #edf2f0; /* your provided background color */
   padding: 10px; /* optional: to give some breathing space */
   border-radius: 8px;
-  border:1px solid#E1E5E4 /* optional: if you want rounded corners */
+  border: 1px solid#E1E5E4; /* optional: if you want rounded corners */
 }
 
 [data-theme="claudionday"] ul.list-unstyled.sidebar-menu.form-sidebar-stats {
-  background-color: #EDF2F0; /* Replace #EDF2F0 with your desired color */
+  background-color: #edf2f0; /* Replace #EDF2F0 with your desired color */
   padding: 10px;
   border-radius: 8px; /* Optional for smoother corners */
 }
@@ -525,7 +586,7 @@ height: 16px !important;
   display: inline-block;
   width: 24px;
   height: 24px;
-  background-image: url('/assets/claudion4saudi/assets/step_icon_day.svg'); /* <-- update path here */
+  background-image: url("/assets/claudion4saudi/assets/step_icon_day.svg"); /* <-- update path here */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -547,14 +608,14 @@ height: 16px !important;
   width: 2px; /* or as per your image width */
   height: 40px; /* or image height */
   margin: 6px auto 0 auto;
-  background-image: url('/assets/yourappname/assets/white_connector.svg'); /* <-- your image */
+  background-image: url("/assets/yourappname/assets/white_connector.svg"); /* <-- your image */
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-[data-theme="claudionday"] .btn.btn-secondary{
-  background-color: #073C44;
-  color: #FFFFFF;
+[data-theme="claudionday"] .btn.btn-secondary {
+  background-color: #073c44;
+  color: #ffffff;
 }
 
 /* [data-theme="claudionday"] .col-md-4 {
@@ -563,32 +624,31 @@ height: 16px !important;
 
 } */
 
-
 [data-theme="claudionday"] .layout-main-section.frappe-card {
-  background-color: #F9FAFB;
-  border:1px solid #EAECF0!important; /* Replace with your desired hex code */
+  background-color: #f9fafb;
+  border: 1px solid #eaecf0 !important; /* Replace with your desired hex code */
 }
 
 [data-theme="claudionday"] .page-form {
-  background-color: #F9FAFB !important; /* Replace with your desired color */
+  background-color: #f9fafb !important; /* Replace with your desired color */
 }
 [data-theme="claudionday"] .layout-main-section .frappe-list .result {
-  background-color: white!important;
-  color: #393A3A;/* replace with your desired color */
+  background-color: white !important;
+  color: #393a3a; /* replace with your desired color */
 }
 
 [data-theme="claudionday"].list-subject a {
-  font-family: 'Host Grotesk';
+  font-family: "Host Grotesk";
   font-size: 14px;
-  font-weight:400;
+  font-weight: 400;
 }
 
 [data-theme="claudionday"] .indicator-pill.blue,
 [data-theme="claudionday"] .indicator-pill-right.blue,
 [data-theme="claudionday"] .indicator-pill-round.blue {
-  background-color: #CFE7EB !important;
-  color: #256A74 !important;
-  border: #A6C8CD;
+  background-color: #cfe7eb !important;
+  color: #256a74 !important;
+  border: #a6c8cd;
 }
 /* 
 [data-theme="claudionday"] .layout-main-section{
@@ -597,32 +657,34 @@ height: 16px !important;
 } */
 
 [data-theme="claudionday"] .ce-block__content {
-font-family: Host Grotesk !important;
+  font-family: Host Grotesk !important;
 }
 
 /* [data-theme="claudionday"] .ce-block__content[onboarding_name="Home"]{
   margin: 0px !important;
   padding: 0px !important;
 } */
- 
 
-[data-theme="claudionday"] .ce-block__content .ce-header .h4 b{
+[data-theme="claudionday"] .ce-block__content .ce-header .h4 b {
   font-family: Host Grotesk !important;
   font-size: 20px !important;
   font-weight: 600 !important;
-} 
-
-[data-theme="claudionday"] .ce-block .col-xs-12.ce-block__content {
-  background-color: #F5F7F7 !important;
-  border: 1px solid #DCDEDE !important;
 }
 
+[data-theme="claudionday"] .ce-block .col-xs-12.ce-block__content {
+  background-color: #f5f7f7 !important;
+  border: 1px solid #dcdede !important;
+}
 
-[data-theme="claudionday"] .ce-block.col-xs-12.col-sm-6.col-md-4 .ce-block__content .widget .links-widget-box{
+[data-theme="claudionday"]
+  .ce-block.col-xs-12.col-sm-6.col-md-4
+  .ce-block__content
+  .widget
+  .links-widget-box {
   padding: 0px !important;
 }
 
-[data-theme="claudionday"] .widget-title .ellipsis{
+[data-theme="claudionday"] .widget-title .ellipsis {
   font-size: 18px !important;
   font-weight: 700 !important;
   line-height: 120%;
@@ -638,14 +700,13 @@ font-family: Host Grotesk !important;
 }
 
 [data-theme="claudionday"] .link-item.onboard-spotlight .link-text {
-  color: #2A2B2B !important;
+  color: #2a2b2b !important;
 }
 
-
-[data-theme=claudionday] .form-control {
-  background-color: rgba(22, 92, 100, 0.85) !important; 
+[data-theme="claudionday"] .form-control {
+  background-color: rgba(22, 92, 100, 0.85) !important;
   border: none !important;
-  color: #FFFFFF !important; 
+  color: #ffffff !important;
   height: 32px !important;
   border-radius: 8px !important;
 }
@@ -654,24 +715,31 @@ font-family: Host Grotesk !important;
   filter: brightness(0) invert(1);
 }
 
-
 [data-theme="claudionday"] .sidebar-item-icon svg {
-  display: none !important; 
+  display: none !important;
 }
 
-[data-theme="claudionday"] .item-anchor{
+[data-theme="claudionday"] .item-anchor {
   gap: 8px;
 }
 
-[data-theme="claudionday"] .flex{
+[data-theme="claudionday"] .flex {
   font-family: Host Grotesk !important;
 }
 
-[data-theme="claudionday"] .standard-sidebar-section .nested-container [title="Public"] {
-  font-family:Host Grotesk !important ;
+[data-theme="claudionday"]
+  .standard-sidebar-section
+  .nested-container
+  [title="Public"] {
+  font-family: Host Grotesk !important ;
 }
 
-[data-theme="claudionday"] .list-sidebar .overlay-sidebar .hidden-xs .hidden-sm .opened{
+[data-theme="claudionday"]
+  .list-sidebar
+  .overlay-sidebar
+  .hidden-xs
+  .hidden-sm
+  .opened {
   font-family: Host Grotesk !important;
 }
 
@@ -826,7 +894,9 @@ font-family: Host Grotesk !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .item-anchor[title="Integrations"] .sidebar-item-icon[item-icon="integration"] {
+[data-theme="claudionday"]
+  .item-anchor[title="Integrations"]
+  .sidebar-item-icon[item-icon="integration"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -836,7 +906,9 @@ font-family: Host Grotesk !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .item-anchor[title="ERPNext Integrations"] .sidebar-item-icon[item-icon="integration"] {
+[data-theme="claudionday"]
+  .item-anchor[title="ERPNext Integrations"]
+  .sidebar-item-icon[item-icon="integration"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -846,7 +918,9 @@ font-family: Host Grotesk !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .item-anchor[title="Build"] .sidebar-item-icon[item-icon="tool"] {
+[data-theme="claudionday"]
+  .item-anchor[title="Build"]
+  .sidebar-item-icon[item-icon="tool"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -864,4 +938,49 @@ font-family: Host Grotesk !important;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+[data-theme="claudionday"] .ce-block__content .widget .dashboard-widget-box {
+  background-color: #f5f7f7 !important;
+  border: 1px solid #dcdede !important;
+}
+
+/* Change the line (path) color to purple */
+[data-theme="claudionday"] .line-graph-path {
+  stroke: #7575ff !important;
+}
+
+/* [data-theme="claudionday"] .region-fill {
+  fill: url(#path-fill-gradient-purple-custom) !important;
+} */
+
+[data-theme="claudionday"] .region-fill {
+  fill: linear-gradient(
+    357.36deg,
+    rgba(245, 247, 247, 0) -12.34%,
+    rgba(117, 117, 255, 0.3) 83.59%
+  ) !important;
+}
+[data-theme="claudionday"] .graph-svg-tip .tooltip-legend {
+  background: #7575ff !important;
+}
+
+/* Additional fallback if .region-fill doesn't respond to URL gradient */
+[data-theme="claudionday"] .region-fill {
+  fill: #7575ff1a !important; /* 10% opacity */
+}
+
+/* Adjusting stroke width or line style */
+[data-theme="claudionday"] .line-graph-path {
+  stroke-width: 2px !important;
+}
+
+/* Smooth curve if it's SVG path-based */
+[data-theme="claudionday"] .line-graph-path {
+  stroke-linejoin: round !important;
+  stroke-linecap: round !important;
+}
+
+[data-theme="claudionday"] rect.bar.mini {
+  fill: #073c44 !important;
 }

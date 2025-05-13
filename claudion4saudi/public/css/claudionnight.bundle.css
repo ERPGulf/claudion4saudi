@@ -1,45 +1,60 @@
 [data-theme="claudionnight"] {
-  --main-color: #073C44;
+  --main-color: #073c44;
   /* Dark green */
-  --accent-color: #15B08F;
+  --acnt-color: #15b08f;
   /* Teal for hover effects */
   --searchbar-color: #293532;
-  --text-highlight: #9EC8B9;
+  --text-highlight: #9ec8b9;
   /* Soft green for titles */
-  --text-color: #AAB2BD;
+  --text-color: #aab2bd;
   /*search bar text color*/
-  --background-light: #0D1211;
+  --background-light: #0d1211;
   /* white background */
-  --background-color3: #1B2120;
-  --border-color3: #1E2624;
+  --background-color3: #1b2120;
+  --border-color3: #1e2624;
   /* Light gray for borders */
-  --box-color:rgba(255, 255, 255, 0.03) !important; ;
-  ;
+  --box-color: rgba(255, 255, 255, 0.03) !important;
   /* box color light minty */
   --border-color: #192422;
-  --box3-color: #F5F7F7;
+  --box3-color: #f5f7f7;
   --text-color: #151616;
   --text-color2: #525454;
   /* Text color for various elements */
-  --text-color3: #B4B8B7;
+  --text-color3: #979999;
   /* Text color for various elements */
-  --text-light: #ffffff;
+  --text-light: #979999;
   /* Text color for various elements */
 }
 
+@font-face {
+  font-family: "Host Grotesk";
+  src: url("/assets/claudion4saudi/fonts/HostGrotesk-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+[data-theme="claudionnight"] * {
+  font-family: "Host Grotesk", sans-serif !important;
+}
+
 [data-theme="claudionnight"] .theme-selector .theme-card {
-  background-color: #0D1211 !important;
+  background-color: #0d1211 !important;
   /* Match your dark background */
   color: var(--text-light) !important;
-  border: 1px solid #1E2624 !important;
+  border: 1px solid #1e2624 !important;
   /* Same border color you use */
 }
 
 [data-theme="claudionnight"] .theme-selector .theme-card .preview {
-  background-color: #1B2120 !important;
+  background-color: #1b2120 !important;
   /* slightly different for preview sections if needed */
 }
 
+[data-theme="claudionnight"].list-subject a {
+  font-family: "Host Grotesk";
+  font-size: 14px;
+  font-weight: 400;
+}
 
 [data-theme="claudionnight"] .page-container,
 [data-theme="claudionnight"] .layout-main-section {
@@ -63,7 +78,6 @@
 [data-theme="claudionnight"] .avatar-frame {
   background-color: var(--accent-color) !important;
   color: #ffffff !important;
-
 }
 
 /*upper sidebar*/
@@ -77,7 +91,7 @@
 /*search bar background*/
 [data-theme="claudionnight"] #navbar-search {
   background-color: var(--searchbar-color);
-  color: #AAB2BD !important;
+  color: #aab2bd !important;
 }
 
 /*color for notification icon*/
@@ -92,6 +106,43 @@
 
 [data-theme="claudionnight"] .dropdown-help .es-icon.icon-xs {
   stroke: var(--text-light) !important;
+}
+
+[data-theme="claudionnight"] .onboarding-step-body h1 {
+  font-family: Host Grotesk;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: #020d0f;
+}
+
+[data-theme="claudionnight"] .onboarding-step-body p {
+  font-family: Host Grotesk;
+  font-weight: 400;
+  font-size: 12px !important;
+  line-height: 120% !important;
+  letter-spacing: 0%;
+  color: #2a2b2b;
+}
+
+/*points*/
+
+[data-theme="claudionnight"] .onboarding-step-body ul {
+  color: #2a2b2b;
+  font-family: Host Grotesk;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120% !important;
+  letter-spacing: 0%;
+}
+
+[data-theme="claudionnight"] .widget.onboarding-widget-box {
+  font-family: Host Grotesk !important;
+  background-color: var(--box-color); /* Light minty background */
+  border: 1px solid var(--border-color); /* Dark green border */
+  border-radius: 8px; /* Optional: Rounded corners */
+  padding: 20px;
 }
 
 [data-theme="claudionnight"] .widget.onboarding-widget-box {
@@ -121,8 +172,15 @@
 
 [data-theme="claudionnight"] .widget-title {
   color: var(--text-light) !important;
+}
 
-
+[data-theme="claudionnight"] .widget-subtitle {
+  font-family: Host Grotesk;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: #2a2b2b !important;
 }
 
 [data-theme="claudionnight"] .onboarding-step-body h1 {
@@ -143,18 +201,15 @@
   color: var(--text-color3) !important;
 }
 
-
-
 [data-theme="claudionnight"] .onboarding-steps-wrapper {
   background-color: var(--background-color3) !important;
-  border: 1px solid #1E2624 !important;
+  border: 1px solid #1e2624 !important;
   color: #ffffff !important;
 }
 
 [data-theme="claudionnight"] .onboarding-step {
   background-color: var(--background-color3);
   color: var(--text-light);
-
 }
 
 [data-theme="claudionnight"] h3.ellipsis.title-text {
@@ -167,6 +222,15 @@
   /* or use a color like #ffffff */
   fill: var(--text-light) !important;
 }
+[data-theme="claudionnight"] .ce-block__content {
+  font-family: Host Grotesk !important;
+}
+
+[data-theme="claudionnight"] .ce-block__content .ce-header .h4 b {
+  font-family: Host Grotesk !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+}
 
 [data-theme="claudionnight"] .ce-header .h4 b {
   color: var(--text-light) !important;
@@ -178,6 +242,14 @@
   /* or use a hex: #ffffff for white */
 }
 
+[data-theme="claudionnight"] .shortcut-widget-box .widget-title .ellipsis {
+  font-family: Host Grotesk !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
 [data-theme="claudionnight"] .shortcut-widget-box {
   background-color: var(--background-light) !important;
   color: var(--text-light) !important;
@@ -186,10 +258,10 @@
 [data-theme="claudionnight"] .onboarding-step:hover,
 [data-theme="claudionnight"] .onboarding-step.skipped.active:hover,
 [data-theme="claudionnight"] .onboarding-step.pending.active:hover {
-  background-color: #1B2120 !important;
+  background-color: #1b2120 !important;
   /* Same as normal background */
   color: var(--text-light) !important;
-  border: 1px solid #1E2624 !important;
+  border: 1px solid #1e2624 !important;
   /* match border too */
 }
 
@@ -198,8 +270,6 @@
   background: transparent;
   border: none;
 }
-
-
 
 [data-theme="claudionnight"] .onboarding-step:focus,
 [data-theme="claudionnight"] .onboarding-step.active,
@@ -226,7 +296,6 @@
   /* Title, subtitle, links all white */
 }
 
-
 [data-theme="claudionnight"] .onboarding-step.skipped.active {
   background-color: var(--background-color3);
 }
@@ -238,7 +307,7 @@
 }
 
 [data-theme="claudionnight"] .step-index.step-pending {
-  background-image: url('/assets/claudion4saudi/assets/night_step.svg');
+  background-image: url("/assets/claudion4saudi/assets/night_step.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -248,7 +317,7 @@
 }
 
 [data-theme="claudionnight"] .step-index.step-skipped {
-  background-image: url('/assets/claudion4saudi/assets/nightstep2.svg');
+  background-image: url("/assets/claudion4saudi/assets/nightstep2.svg");
   /* ← update filename */
   background-size: cover;
   background-repeat: no-repeat;
@@ -292,11 +361,6 @@
   /* Use your theme accent */
 }
 
-
-
-
-
-
 [data-theme="claudionnight"] .onboarding-step-footer {
   display: flex;
   justify-content: flex-end;
@@ -311,7 +375,7 @@
 
 /*button*/
 [data-theme="claudionnight"] .onboarding-step-footer .btn.btn-default {
-  background-color: #094D3E;
+  background-color: #094d3e;
   color: var(--text-light);
   border: none;
   font-weight: 500;
@@ -320,7 +384,7 @@
 [data-theme="claudionnight"] .onboarding-step-footer .btn.btn-default:hover {
   background-color: var(--accent-color);
   color: var(--background-light);
-  border: #094D3E;
+  border: #094d3e;
   font-weight: 500;
 }
 
@@ -337,9 +401,7 @@
   background-color:var(--box3-color);
 } */
 
-
-
-[data-theme="claudionnight"] .sidebar-item-label {
+/* [data-theme="claudionnight"] .sidebar-item-label {
   color: var(--text-light) !important;
 }
 
@@ -354,20 +416,37 @@
 
 [data-theme="claudionnight"] .sidebar-item-icon {
   fill: var(--text-light) !important;
-  /* or use a specific color code like #FFFFFF */
+  or use a specific color code like #FFFFFF
+} */
+
+[data-theme="claudionnight"] .flex {
+  font-family: Host Grotesk !important;
 }
 
+[data-theme="claudionnight"]
+  .standard-sidebar-section
+  .nested-container
+  [title="Public"] {
+  font-family: Host Grotesk !important ;
+}
 
+[data-theme="claudionnight"]
+  .list-sidebar
+  .overlay-sidebar
+  .hidden-xs
+  .hidden-sm
+  .opened {
+  font-family: Host Grotesk !important;
+}
 
 [data-theme="claudionnight"] .desk-sidebar-item:hover {
-  background-color: #2A2F2D;
+  background-color: #2a2f2d !important;
 }
 
 [data-theme="claudionnight"] .desk-sidebar-item.selected {
-  background-color: #2A2F2D !important;
+  background-color: #2a2f2d !important;
   color: var(--background-light);
 }
-
 
 /* Change the text/icon color on hover */
 [data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label,
@@ -375,7 +454,6 @@
   color: var(--accent-color);
   fill: var(--accent-color);
 }
-
 
 [data-theme="claudionnight"] .standard-sidebar-label {
   color: var(--text-light) !important;
@@ -388,6 +466,15 @@
   /* optional: make first letter caps */
 }
 
+[data-theme="claudionnight"] .control-label,
+.grid-heading-row {
+  color: #393a3a; /* updated from screenshot */
+  font-family: "Host Grotesk"; /* added the font */
+  font-weight: 500; /* 500 from screenshot */
+  font-size: 12px; /* 12px from screenshot */
+  line-height: 120%; /* 120% line height */
+  letter-spacing: 0%; /* 0% letter spacing */
+}
 
 /* Hover effect to change stroke color */
 [data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-icon svg {
@@ -400,8 +487,6 @@
   fill: none !important;
   stroke: var(--text-light) !important;
 } */
-
-
 
 /* Selected item text/icon color */
 [data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-label,
@@ -417,7 +502,7 @@
 
 /* For the placeholder text */
 [data-theme="claudionnight"] #navbar-search::placeholder {
-  color: #AAB2BD !important;
+  color: #aab2bd !important;
   opacity: 1;
 }
 
@@ -432,12 +517,14 @@
 }
 
 /* Hide the original text */
-[data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small::before {
+[data-theme="claudionnight"]
+  .widget-control
+  .btn.btn-sm.btn-secondary.small::before {
   content: "";
   display: inline-block;
-  width:36px;
-  height:36px;
-  background-image: url('/assets/claudion4saudi/assets/Button1.svg'); /* Correct path */
+  width: 36px;
+  height: 36px;
+  background-image: url("/assets/claudion4saudi/assets/Button1.svg"); /* Correct path */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -447,7 +534,9 @@
   transform: translate(-50%, -50%); /* Perfect centering */
 }
 
-[data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small::after {
+[data-theme="claudionnight"]
+  .widget-control
+  .btn.btn-sm.btn-secondary.small::after {
   content: "";
   display: none;
 }
@@ -455,7 +544,6 @@
 /* Optional: hide original content using visibility */
 [data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small {
   color: transparent !important;
-
 }
 
 [data-theme="claudionnight"] .list-row a {
@@ -471,11 +559,10 @@
 }
 
 [data-theme="claudionnight"] .list-row-container:hover .level.list-row {
-  background-color: #2A2F2D !important;
+  background-color: #2a2f2d !important;
   color: var(--text-light) !important;
   cursor: pointer;
 }
-
 
 [data-theme="claudionnight"] .onboarding-step.skipped {
   background-color: transparent !important;
@@ -494,7 +581,7 @@
   color: var(--text-light) !important;
 }
 
-[data-theme="claudionnight"] .standard-sidebar-section .es-icon {
+/* [data-theme="claudionnight"] .standard-sidebar-section .es-icon {
   stroke: var(--text-light) !important;
   fill: var(--text-light) !important;
 }
@@ -507,11 +594,11 @@
 
 [data-theme="claudionnight"] .sidebar-label {
   color: var(--text-color3) !important;
-  /* White color */
-}
+  White color
+} */
 
-[data-theme=claudionnight] span.ellipsis,
-[data-theme=claudionnight] .widget-title {
+[data-theme="claudionnight"] span.ellipsis,
+[data-theme="claudionnight"] .widget-title {
   color: #837a7a !important;
 }
 
@@ -598,7 +685,7 @@ Polish Hover Effects - Final
 
 /* List View Row hover smooth transition */
 [data-theme="claudionnight"] .list-row-container:hover .level.list-row {
-  background-color: #2A2F2D !important;
+  background-color: #2a2f2d !important;
   color: var(--text-light) !important;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -621,7 +708,7 @@ Polish Hover Effects - Final
 }
 
 [data-theme="claudionnight"] a.link-item.ellipsis.onboard-spotlight:hover {
-  background-color: #2A2F2D !important;
+  background-color: #2a2f2d !important;
   /* Dark gray hover background */
   color: var(--text-light) !important;
   /* Keep text white */
@@ -648,24 +735,34 @@ Polish Hover Effects - Final
   flex-shrink: 0;
 }
 
-[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Item"])::before {
-  background-image: url('/assets/claudion4saudi/assets/night_item.svg');
+[data-theme="claudionnight"]
+  .widget-head
+  .widget-label:has(span[title="Item"])::before {
+  background-image: url("/assets/claudion4saudi/assets/night_item.svg");
 }
 
-[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Customer"])::before {
-  background-image: url('/assets/claudion4saudi/assets/night_customer.svg');
+[data-theme="claudionnight"]
+  .widget-head
+  .widget-label:has(span[title="Customer"])::before {
+  background-image: url("/assets/claudion4saudi/assets/night_customer.svg");
 }
 
-[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Supplier"])::before {
-  background-image: url('/assets/claudion4saudi/assets/night_supplier.svg');
+[data-theme="claudionnight"]
+  .widget-head
+  .widget-label:has(span[title="Supplier"])::before {
+  background-image: url("/assets/claudion4saudi/assets/night_supplier.svg");
 }
 
-[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Sales Invoice"])::before {
-  background-image: url('/assets/claudion4saudi/assets/night_salesinvoice.svg');
+[data-theme="claudionnight"]
+  .widget-head
+  .widget-label:has(span[title="Sales Invoice"])::before {
+  background-image: url("/assets/claudion4saudi/assets/night_salesinvoice.svg");
 }
 
-[data-theme="claudionnight"] .widget-head .widget-label:has(span[title="Leaderboard"])::before {
-  background-image: url('/assets/claudion4saudi/assets/night_leaderboard.svg');
+[data-theme="claudionnight"]
+  .widget-head
+  .widget-label:has(span[title="Leaderboard"])::before {
+  background-image: url("/assets/claudion4saudi/assets/night_leaderboard.svg");
 }
 
 [data-theme="claudionnight"] .step-index {
@@ -687,7 +784,7 @@ Polish Hover Effects - Final
   /* Width of the connector */
   height: 20px;
   /* Height of connector (adjust if needed) */
-  background-image: url('/assets/claudion4saudi/assets/Connector.png');
+  background-image: url("/assets/claudion4saudi/assets/Connector.png");
   /* Your connector image */
   background-size: cover;
   background-repeat: no-repeat;
@@ -712,23 +809,21 @@ Polish Hover Effects - Final
   fill: var(--accent-color) !important;
 }
 
-
-
 /* Remove connector for last step */
 [data-theme="claudionnight"] .onboarding-step:last-child .step-index::after {
   display: none;
 }
 
 [data-theme="claudionnight"] .navbar .vertical-bar {
-  border-right: 1px solid #114D56;
+  border-right: 1px solid #114d56;
   height: 24px;
   margin: auto;
   margin-left: var(--margin-md);
 }
 
 [data-theme="claudionnight"] .vertical-bar {
-  justify: space-between
-    /* Optional: equal gap between bell and Help */
+  justify: space-between;
+  /* Optional: equal gap between bell and Help */
 }
 
 [data-theme="claudionnight"] ul.navbar-nav {
@@ -738,7 +833,6 @@ Polish Hover Effects - Final
   /* 16px between all navbar items */
 }
 
-
 /* Apply only to widget titles under the Reports & Masters section */
 
 [data-theme="claudionnight"] .widget-control svg.es-icon-es-line.icon-xs {
@@ -747,14 +841,251 @@ Polish Hover Effects - Final
 }
 
 [data-theme="claudionnight"] .shortcut-widget-box .widget-label {
-  flex-direction: row !important;    /* Align icon and text side-by-side */
-  align-items: center !important;    /* Vertically center */
+  flex-direction: row !important; /* Align icon and text side-by-side */
+  align-items: center !important; /* Vertically center */
   justify-content: flex-start;
-  gap: 8px;                          /* Space between icon and text */
+  gap: 8px; /* Space between icon and text */
 }
 [data-theme="claudionnight"] .widget-head .widget-label {
   display: flex;
-  flex-direction: column;  /* Stack title and subtitle vertically */
+  flex-direction: column; /* Stack title and subtitle vertically */
   align-items: flex-start; /* Align to the left */
-  gap: 2px;                /* Optional: spacing between title and subtitle */
+  gap: 2px; /* Optional: spacing between title and subtitle */
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon svg {
+  display: none !important;
+}
+
+[data-theme="claudionnight"] .item-anchor {
+  gap: 8px;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="getting-started"] {
+  border: 1.5px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Smart%20Home,%20House-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="accounting"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/credit-card-edit-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="buying"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/shopping-bag-fast-buy-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="sell"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/store-minimal-shielld-2-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="stock"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Delivery,%20Shipment-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="assets"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/hotel-building-2-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="organization"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/factory-energy-style-2-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="quality"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Certificate,%20Checkmark,%20Square-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="project"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Documents,%20File,%20Blank-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="support"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Headphones,%20Customer,%20support-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="users"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/User,Profile-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="website"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Cursor,%20Select,%20Hand,%20Browser-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="crm"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Research,%20Target,%20Selection-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/tools-wench-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="setting"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/share-minimal-square-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"]
+  .item-anchor[title="Integrations"]
+  .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/magnet-horizontal-right-big-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"]
+  .item-anchor[title="ERPNext Integrations"]
+  .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/link-minimal-circle-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"]
+  .item-anchor[title="Build"]
+  .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/building-office-circle-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="folder-normal"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Delivery,%20Shipment-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Base label color in the claudionnight theme */
+[data-theme="claudionnight"] .sidebar-item-label {
+  color: var(--text-light) !important;
+}
+
+/* Hover state */
+[data-theme="claudionnight"] .sidebar-item-label:hover,
+[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label {
+  color: #020d0f !important;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item:hover {
+  background-color: #44c0a5 !important;
+}
+
+/* Selected item label */
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-label {
+  color: #020d0f !important;
+}
+
+/* Selected item background */
+[data-theme="claudionnight"] .desk-sidebar-item.selected {
+  background-color: #44c0a5 !important;
+}
+
+/* Icon fill on hover or selected */
+[data-theme="claudionnight"] .desk-sidebar-item:hover svg use,
+[data-theme="claudionnight"] .desk-sidebar-item.selected svg use {
+  fill: #020d0f !important;
+  color: #020d0f !important;
 }
