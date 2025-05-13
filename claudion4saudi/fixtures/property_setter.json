@@ -192,19 +192,19 @@
   "value": "0"
  },
  {
-  "default_value": "ClaudionLight",
+  "default_value": "Frappe Light",
   "doc_type": "User",
   "docstatus": 0,
   "doctype": "Property Setter",
   "doctype_or_field": "DocField",
   "field_name": "desk_theme",
   "is_system_generated": 0,
-  "modified": "2025-05-05 22:21:33.346246",
+  "modified": "2025-05-13 18:19:40.237933",
   "module": "Claudion4Saudi",
   "name": "User-desk_theme-options",
   "property": "options",
   "property_type": "Text",
   "row_name": null,
-  "value": "ClaudionLight\nPurple\nFrappe Light\nTimeless Night\nAutomatic\nClaudionDark"
+  "value": "Frappe Light\nClaudionLight\nPurple\nTimeless Night\nAutomatic\nClaudionDark"
  }
 ]
