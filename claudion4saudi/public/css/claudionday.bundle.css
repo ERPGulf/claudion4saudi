@@ -552,6 +552,23 @@ height: 16px !important;
   fill: #ffffff !important;
 }
 
+[data-theme="claudionday"] .form-control {
+  background: rgba(255, 255, 255, 1) !important;
+  /* width: 472px !important; */
+  height: 38px !important;
+  gap: 8px !important;
+  border-radius: 6px !important;
+  border-width: 1px !important;
+  padding: 10px !important;
+  border: 1px solid rgba(204, 208, 208, 1) !important;
+}
+/* [data-theme="claudionday"] .form-control {
+  background-color: rgba(22, 92, 100, 0.85) !important;
+  border: none !important;
+  color: #ffffff !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+} */
 [data-theme="claudionday"] .control-label,
 .grid-heading-row {
   color: #393a3a; /* updated from screenshot */
@@ -701,14 +718,6 @@ height: 16px !important;
 
 [data-theme="claudionday"] .link-item.onboard-spotlight .link-text {
   color: #2a2b2b !important;
-}
-
-[data-theme="claudionday"] .form-control {
-  background-color: rgba(22, 92, 100, 0.85) !important;
-  border: none !important;
-  color: #ffffff !important;
-  height: 32px !important;
-  border-radius: 8px !important;
 }
 
 .search-icon {
