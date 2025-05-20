@@ -16,7 +16,7 @@
   --box-color: rgba(255, 255, 255, 0.03) !important;
   /* box color light minty */
   --border-color: #192422;
-  /* --box3-color: #f5f7f7; */
+  --box3-color: #f5f7f7;
   --text-color: #151616;
   --text-color2: #525454;
   /* Text color for various elements */
@@ -89,12 +89,24 @@
   border: var(--background-light);
 }
 
+/* [data-theme="claudionnight"] .layout-main-section {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+} */
+
 [data-theme="claudionnight"] .layout-main-section {
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
+  background: rgba(13, 18, 17, 1);
+  width: 1129px;
+  height: 913px;
+  gap: 32px;
+  padding-top: 24px;
+  padding-right: 90px;
+  padding-left: 24px;
 }
-
 [data-theme="claudionnight"] .avatar-frame {
   background-color: var(--accent-color) !important;
   color: #ffffff !important;
@@ -186,7 +198,13 @@
 }
 
 [data-theme="claudionnight"] span.ellipsis {
-  color: var(--text-light) !important;
+  height: 22px; /* width: 315px; */
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: rgba(255, 255, 255, 1); /* color: var(--text-light) !important; */
   /* Or use #ffffff directly */
 }
 
@@ -204,8 +222,22 @@
 }
 
 [data-theme="claudionnight"] .onboarding-step-body h1 {
-  color: var(--text-light) !important;
-  font-weight: 600;
+  width: 128px;
+  height: 18px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: rgba(
+    255,
+    255,
+    255,
+    1
+  ); /* color: var(--text-light) !important;
+  font-weight: 600; */
+}
+[data-theme="claudionnight"] li::marker {
+  color: red;
 }
 
 [data-theme="claudionnight"] .onboarding-step-body p {
@@ -233,7 +265,13 @@
 }
 
 [data-theme="claudionnight"] h3.ellipsis.title-text {
-  color: var(--text-light) !important;
+  width: 55px;
+  height: 24px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: rgba(255, 255, 255, 1); /* color: var(--text-light) !important; */
   /* Or any color code like #ffffff */
 }
 
@@ -250,6 +288,7 @@
   font-family: Host Grotesk !important;
   font-size: 20px !important;
   font-weight: 600 !important;
+  color: white !important;
 }
 
 [data-theme="claudionnight"] .ce-header .h4 b {
