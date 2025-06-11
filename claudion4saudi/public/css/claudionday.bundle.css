@@ -405,21 +405,21 @@
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Supplier"])::before {
-  background-image: url("/assets/claudion4saudi/assets/supplier.svg");
+  background-image: url("/assets/claudion4saudi/assets/B-supplier.svg");
 }
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Sales Invoice"])::before {
-  background-image: url("/assets/claudion4saudi/assets/salesinvoice.svg");
+  background-image: url("/assets/claudion4saudi/assets/B-Sales-inv.svg");
 }
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Leaderboard"])::before {
-  background-image: url("/assets/claudion4saudi/assets/leaderboard.svg");
+  background-image: url("/assets/claudion4saudi/assets/B-leaderboard.svg");
 }
 
 [data-theme="claudionday"]
@@ -562,6 +562,80 @@ height: 16px !important;
   padding: 10px !important;
   border: 1px solid rgba(204, 208, 208, 1) !important;
 }
+
+[data-theme="claudionday"] .btn-default {
+  /* Box and Layout */
+  /* width: 84px;
+  height: 29px;
+  gap: 4px; */
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e3e3e3;
+  padding: 6px 10px;
+  background: #f3f3f3;
+
+  /* Font Styling */
+  font-family: "Host Grotesk", sans-serif;
+  /* font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0; */
+  color: #151616;
+}
+[data-theme="claudionday"] .es-icon.icon-sm {
+  stroke: #151616 !important;
+}
+[data-theme="claudionday"] .icon .icon-sm {
+  stroke: #151616 !important;
+}
+
+[data-theme="claudionday"] .list-sidebar-button:hover {
+  background-color: #15b08f;
+  color: white;
+}
+[data-theme="claudionday"].icon-xs:hover {
+  stroke: white;
+}
+[data-theme="claudionday"] a[data-label="Assigned To"] ::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 20.00833511352539px;
+  height: 20.00833511352539px;
+  top: -0.01px;
+  left: -0.01px;
+  background-image: url(/assets/claudion4saudi/assets/user-profile-back.png); /* Replace with your icon file or base64 SVG */
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+/* [data-theme="claudionday"] button.btn-default[data-label="Duplicate"] {
+  width: 79px;
+  height: 29px;
+  gap: 4px;
+
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e3e3e3;
+
+  padding-top: 6px;
+  padding-right: 10px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+
+  background: #f3f3f3;
+
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0;
+
+  color: #151616;
+} */
+
 /* [data-theme="claudionday"] .form-control {
   background-color: rgba(22, 92, 100, 0.85) !important;
   border: none !important;
@@ -992,4 +1066,875 @@ height: 16px !important;
 
 [data-theme="claudionday"] rect.bar.mini {
   fill: #073c44 !important;
+}
+
+
+/* ******************************************************************************** */
+
+
+
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="getting-started"] {
+  border: 1.5px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-home/Smart home/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="accounting"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-accounting/Payments, Finance/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="buying"] {
+  background-image: url("/assets/claudion4saudi/assets/d-buying/Shopping, Ecommerce/shopping-bag-fast-buy.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  display: inline-block !important;
+}
+
+
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="sell"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-selling/Shopping, Ecommerce/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="stock"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-stock/Delivery/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="assets"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-asset/Building, Construction/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="organization"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-manufacturing/Energy, Renewable/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="quality"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-quality/Interface, Essential/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+    
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="project"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-project/Files/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="support"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-support/Support, Help, Question/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="users"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-users/User/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="website"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-website/Cursor, Select, Hand/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="crm"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-crm/Business, Products/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-tools/Construction, Tools/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="setting"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-erpnextsettings/Interface, Essential/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected a.item-anchor[title="Integrations"]  
+  .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-integrations/Interface, Essential/Group.png") !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected a.item-anchor[title="ERPNext Integrations"] 
+  .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-erpnextintegrations/Interface, Essential/Group.png") !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .item-anchor[title="Build"] .desk-sidebar-item.selected 
+  .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-build/Office, Work/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="folder-normal"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/d-zatca/Delivery/Group.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Delivery Note"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sto-delivery-note.png");}
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Inventory Management"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sto-learn-inventory.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Purchase Receipt"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sto-purchase-receipt.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Stock Balance"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-balance.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Stock Entry"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-entry.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Stock Ledger"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-ledger.png");}
+
+
+
+
+    
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Asset"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-asst-asset.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Asset Category"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-asst-asset-category.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Fixed Asset Register"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-asst-fixed-asset-reg.png");}
+
+
+
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="BOM Creator"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-bom-creator.png");}
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="BOM Stock Report"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-bom-stock-report.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="BOM"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-bom.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Forecasting"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-forecasting.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Job Card"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-job-card.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Manufacturing"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-learn-manufacturing.png");}
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Plant Floor"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-plant-floor.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Production Plan"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-production-plan.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Production Planning Report"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-production-planning-report.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Work Order"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-man-work-order.png");}
+
+
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Non Conformance"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-q-no-conformance.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Production Plan"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-q-production-plan.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Action"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-q-qaction.png");}
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Goal"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-q-qgoal.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Inspection"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-q-qinspection.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Procedure"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-q-qprocedure.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Review"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-q-qreview.png");}
+
+
+
+
+
+    
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Project Management"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-pro-learn-project-management.png");}
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Project Billing Summary"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-pro-project-billing-summary.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Project"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-pro-project.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Task"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-pro-task.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Timesheet"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-pro-timesheet.png");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Issue"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sup-issue.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Maintenance Visit"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sup-maintenance-visit.png");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Service Level Agreement"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-sup-service-level-agreement.png");}
+
+
+
+  
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Permission Manager"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-us-permission-manager.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Role"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-us-role.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="User Profile"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-us-user-profile.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="User Type"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-us-user-type.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="User"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-us-user.svg");}
+
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Blog Post"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-web-blog-post.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Blogger"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-web-blogger.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Web Form"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-web-web-form.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Web Page"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-web-web-page.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Website Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-web-website-settings.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Lead"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-crm-lead.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Opportunity"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-crm-opportunity.svg");}
+
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Assignment Rule"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-to-assignment-rule.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="File"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-to-file.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Import Data"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-to-import-data.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="ToDo"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d-to-todo.svg");}
+
+
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Accounts Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--acc-sett.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Buying Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--buying-sett.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Global Defaults"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--global-defaults.svg");}
+
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Print Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--print-sett.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Selling Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--selling-sett.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Stock Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--stock-sett.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="System Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--syst-sett.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Browse Apps"])::before {
+  background-image: url("/assets/claudion4saudi/assets/BROWSE.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Client Script"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-client-script.svg");}
+
+
+
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Customize Form"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-customize-form.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="DocType"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-doctype.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Report"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-report.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Server Script"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-server-script.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Print Format Builder"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-pfb.svg");}
+
+
+  [data-theme="claudionday"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Dashboard "])::before  {
+  background-image: url("/assets/claudion4saudi/assets/a-db.svg")!important;}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Zatca Setup Wizard"])::before {
+  background-image: url("/assets/claudion4saudi/assets/a-wizard.svg");}
+
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Accounts Receivable"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-accnts-recvbl.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Cost Center"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-cost-center.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Journal Entry"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-journal-entry.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Payment Entry"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-payment-entry.svg");}
+
+
+  [data-theme="claudionday"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="POS Invoice"])::before  {
+  background-image: url("/assets/claudion4saudi/assets/A-pos-invoice.svg")!important;}
+
+  
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Chart of Accounts"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-chart-of-accnts.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Purchase Invoice"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-pur-inv.svg");}
+
+  
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="General Ledger"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Trial Balance"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");}
+
+
+  [data-theme="claudionday"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Accounting"])::before  {
+  background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg")!important;}
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="General Ledger"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");}
+
+
+  [data-theme="claudionday"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Trial Balance"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");}
+
+
+  [data-theme="claudionday"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Accounting"])::before  {
+  background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg")!important;}
+
+
+
+
+  /*********************************ICONS END***********************************/
+
+
+
+  [data-theme="claudionday"] .count {
+  width: 16px !important;
+  height: 20px !important;
+  font-family: "Host Grotesk" !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 20px !important;
+  letter-spacing: 0% !important;
+  color: black !important;
+}
+
+
+
+[data-theme="claudionday"] .number-card {
+  width: 242px!important;
+  height: 104px!important;
+  gap: 4px!important;
+  border-radius: 6px!important;
+  padding: 20px!important;
+  background: #F5F7F7!important; /* Replace with your desired hex code */
+
+border: 1px solid #DCDEDE;
+  /* For inner alignment */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+[data-theme="claudionday"] .number-card h4 {
+  color: black !important;
+}
+
+
+[data-theme="claudionday"] 
+.frappe-control[data-fieldname="zatca_list"] table {
+
+  border-radius: 12px !important;
+
+  background: #ffffff !important;
+  border-bottom: 1px solid #EAECF0 !important;
+
+}
+[data-theme="claudionday"] 
+.frappe-control[data-fieldname="zatca_list"] td {
+  color: black !important;
+  font-family: 'Host Grotesk', sans-serif !important;
+ 
+}
+[data-theme="claudionday"] 
+.frappe-control[data-fieldname="zatca_list"] td a {
+  color: black !important;}
+
+[data-theme="claudionday"] th {
+  color: black !important;
+background: #F9FAFB;
+}
+
+[data-theme="claudionday"] .badge-danger {
+  width: 88px !important;
+  height: 20px !important;
+  gap: 4px !important;
+  border-radius: 9999px !important;
+  border-width: 1px !important;
+  padding-top: 2px !important;
+  padding-right: 8px !important;
+  padding-bottom: 2px !important;
+  padding-left: 8px !important;
+  background: #F6E6BA !important;
+  border: 1px solid #DECB96 !important;
+  color: #6B5B31 !important;
+
+  /* Font styles */
+  font-family: 'Host Grotesk', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  line-height: 120% !important;
+  letter-spacing: 0px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }

@@ -55,11 +55,10 @@
   padding-bottom: 8px;
   padding-left: 12px;
   background: rgba(2, 13, 15, 1);
-  border: 1px solid rgba(204, 208, 208, 1); /* You mentioned borderWidth/100, assuming a thin border */
+  border: 1px solid rgba(204, 208, 208, 1); 
 }
 [data-theme="claudionnight"] .theme-selector .theme-card .preview {
   background-color: #1b2120 !important;
-  /* slightly different for preview sections if needed */
 }
 
 [data-theme="claudionnight"].list-subject a {
@@ -71,15 +70,15 @@
 [data-theme="claudionnight"] .page-container {
   background-color: var(--background-light);
 }
-[data-theme="claudionnight"] .form-layout {
+/* [data-theme="claudionnight"] .form-page {
   width: 1030px;
-  height: 596px; /* Rounded to a practical value */
+  height: 596px;
   border-radius: 12px;
   padding: 16px;
   background: rgba(10, 20, 22, 1) !important;
   border: 1px solid rgba(49, 53, 54, 1);
-  box-sizing: border-box; /* ensures padding doesn’t expand total size */
-}
+  box-sizing: border-box;
+} */
 
 [data-theme="claudionnight"] .page-head.flex {
   background-color: var(--background-light);
@@ -89,32 +88,42 @@
   border: var(--background-light);
 }
 
-/* [data-theme="claudionnight"] .layout-main-section {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-} */
-
-[data-theme="claudionnight"] .layout-main-section {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  background: rgba(13, 18, 17, 1);
-  width: 1129px;
-  height: 913px;
-  gap: 32px;
-  padding-top: 24px;
-  padding-right: 90px;
-  padding-left: 24px;
+[data-theme="claudionnight"] .page-container {
+  background-color: #020d0f;
 }
-[data-theme="claudionnight"] .avatar-frame {
+[data-theme="claudionnight"] .page-head {
+  background-color: #020d0f !important;
+}
+[data-theme="claudionnight"] .layout-main-section {
+  background-color: #0a1416;
+  /* width: 1030px;
+  height: 583px;
+  gap: 10px;
+  border-radius: 12px;
+  border-width: 1px;
+  padding: 24px;
+  border: 1px solid #313536; */
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme="claudionnight"] .page-form {
+  background-color: #0a1416 !important;
+  /* white text */
+}
+[data-theme="claudionnight"] .list-row-head {
+  background-color: #0a1416 !important;
+  /* white text */
+}
+/* [data-theme="claudionnight"] .avatar-frame {
   background-color: var(--accent-color) !important;
   color: #ffffff !important;
-}
+} */
 
 /*upper sidebar*/
 [data-theme="claudionnight"] header.navbar.navbar-expand {
-  background-color: var(--background-light);
+  background-color: #042226;
   color: var(--text-light);
   /*Ensures text/icons are visible*/
   border: 1px solid var(--border-color);
@@ -122,8 +131,9 @@
 
 /*search bar background*/
 [data-theme="claudionnight"] #navbar-search {
-  background-color: var(--searchbar-color);
-  color: #aab2bd !important;
+  border-color: #4e878f !important;
+  background: #4E878F;
+
 }
 
 /*color for notification icon*/
@@ -142,10 +152,10 @@
 
 [data-theme="claudionnight"] .onboarding-step-body h1 {
   font-family: Host Grotesk;
-  font-weight: 700 !important;
+  /* font-weight: 700 !important;
   font-size: 15px !important;
   line-height: 120%;
-  letter-spacing: 0%;
+  letter-spacing: 0%; */
   color: #020d0f;
 }
 
@@ -197,16 +207,14 @@
   /* optional for spacing */
 }
 
-[data-theme="claudionnight"] span.ellipsis {
-  height: 22px; /* width: 315px; */
-
+/* [data-theme="claudionnight"] span.ellipsis {
+  height: 22px;
   font-weight: 700;
   font-size: 18px;
   line-height: 120%;
   letter-spacing: 0%;
-  color: rgba(255, 255, 255, 1); /* color: var(--text-light) !important; */
-  /* Or use #ffffff directly */
-}
+  color: rgba(255, 255, 255, 1);
+} */
 
 [data-theme="claudionnight"] .widget-title {
   color: var(--text-light) !important;
@@ -222,12 +230,12 @@
 }
 
 [data-theme="claudionnight"] .onboarding-step-body h1 {
-  width: 128px;
-  height: 18px;
-  font-weight: 700;
+  /* width: 128px;
+  height: 18px; */
+  /* font-weight: 700;
   font-size: 15px;
   line-height: 120%;
-  letter-spacing: 0%;
+  letter-spacing: 0%; */
   color: rgba(
     255,
     255,
@@ -406,9 +414,22 @@
 
 /*show customer list text color*/
 [data-theme="claudionnight"] .onboarding-step-body a[href*="/app/customer"] {
-  color: var(--accent-color);
-  background: transparent;
+  color:  #15B08F !important;
+
+  /* background: transparent; */
 }
+[data-theme="claudionnight"] h1#buyingsettings{
+    color:  #ffffff !important;
+
+}
+[data-theme="claudionnight"] h1#sellingsettings{
+    color:  #ffffff !important;
+
+}
+[data-theme="claudionnight"] h1#reviewstocksettings{
+    color:  #ffffff !important;}
+
+
 
 [data-theme="claudionnight"] .onboarding-step-body p a {
   color: var(--accent-color) !important;
@@ -506,7 +527,9 @@
   background-color: #2a2f2d !important;
   color: var(--background-light);
 }
-
+[data-theme="claudionnight"] .sidebar-item-label.selected {
+  color: black !important;
+}
 /* Change the text/icon color on hover */
 [data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label,
 [data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-icon {
@@ -524,6 +547,20 @@
   text-transform: capitalize;
   /* optional: make first letter caps */
 }
+/* [data-theme="claudionnight"] .page-form {
+  background-color: #0a1416;
+} /* 
+ /
+[data-theme="claudionnight"] .frappe-list {
+  background-color: #0a1416;
+  width: 1030px;
+  height: 583px;
+  gap: 10px;
+  border-radius: 12px;
+  border-width: 1px;
+  padding: 24px;
+  border: 1px solid #313536;
+} */
 
 [data-theme="claudionnight"] .control-label,
 .grid-heading-row {
@@ -809,19 +846,19 @@ Polish Hover Effects - Final
 [data-theme="claudionnight"]
   .widget-head
   .widget-label:has(span[title="Supplier"])::before {
-  background-image: url("/assets/claudion4saudi/assets/night_supplier.svg");
+  background-image: url("/assets/claudion4saudi/assets/B-supplier.svg");
 }
 
 [data-theme="claudionnight"]
   .widget-head
   .widget-label:has(span[title="Sales Invoice"])::before {
-  background-image: url("/assets/claudion4saudi/assets/night_salesinvoice.svg");
+  background-image: url("/assets/claudion4saudi/assets/B-Sales-inv.svg");
 }
 
 [data-theme="claudionnight"]
   .widget-head
   .widget-label:has(span[title="Leaderboard"])::before {
-  background-image: url("/assets/claudion4saudi/assets/night_leaderboard.svg");
+  background-image: url("/assets/claudion4saudi/assets/B-leaderboard.svg");
 }
 
 [data-theme="claudionnight"] .step-index {
@@ -884,11 +921,16 @@ Polish Hover Effects - Final
   justify: space-between;
   /* Optional: equal gap between bell and Help */
 }
-
+[data-theme="claudionnight"] #navbar-breadcrumbs li a {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+}
 [data-theme="claudionnight"] ul.navbar-nav {
   display: flex;
   align-items: center;
   gap: 16px;
+  color: white !important;
   /* 16px between all navbar items */
 }
 
@@ -1125,11 +1167,11 @@ Polish Hover Effects - Final
 /* Hover state */
 [data-theme="claudionnight"] .sidebar-item-label:hover,
 [data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label {
-  color: #020d0f !important;
+  color: white !important;
 }
 
 [data-theme="claudionnight"] .desk-sidebar-item:hover {
-  background-color: #44c0a5 !important;
+  background-color: #313634 !important;
 }
 
 /* Selected item label */
@@ -1147,4 +1189,1594 @@ Polish Hover Effects - Final
 [data-theme="claudionnight"] .desk-sidebar-item.selected svg use {
   fill: #020d0f !important;
   color: #020d0f !important;
+}
+[data-theme="claudionnight"] .input-with-feedback {
+  /* width: 145px;
+  height: 33px; */
+  /* gap: 8px;  */
+  /* border-radius: 6px; */
+  /* padding: 8px 10px; */
+  background-color: #020d0f;
+  border: 1px solid #313536;
+}
+[data-theme="claudionnight"] input[data-fieldname="has_variants"] {
+  width: 16px;
+  height: 16px;
+}
+
+[data-theme="claudionnight"] .label-area {
+  font-family: "Host Grotesk", sans-serif;
+  /* font-weight: 500; */
+  /* font-size: 12px; */
+  /* line-height: 130%; */
+  /* letter-spacing: 0; */
+  /* vertical-align: middle; */
+  /* width: 80px;
+  height: 18px; */
+  color: #ffffff;
+}
+
+[data-theme="claudionnight"] .list-row-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid #525656;
+  background: #0a1416;
+}
+[data-theme="claudionnight"] .list-check-all {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid #525656;
+  background: #0a1416;
+}
+[data-theme="claudionnight"] .btn.btn-default.btn-sm.ellipsis {
+  width: 112px;
+  height: 29px;
+  gap: 4px; /* Only effective if it's a flex or grid container */
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #0a1416;
+  border: 1px solid #4e878f;
+  color: #4e878f; /* optional for better contrast */
+}
+[data-theme="claudionnight"] .btn.btn-default.icon-btn {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  background-color: #0a1416;
+  border: 1px solid #4e878f;
+  border-radius: 4px;
+  color: #ffffff;
+}
+[data-theme="claudionnight"] .btn.btn-primary.btn-sm.primary-action {
+  width: 99px;
+  height: 29px;
+  gap: 8px;
+  border-radius: 4px;
+  padding: 8px;
+  background: #4e878f;
+
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #020d0f;
+   align-items: center;
+  justify-content: center;
+}
+[data-theme="claudionnight"] .es-icon.es-line.icon-sm {
+  stroke: #4e878f !important;
+  fill: #4e878f !important;
+}
+/* [data-theme="claudionnight"] svg.icon.icon-sm[href="#icon-dot-horizontal"] {
+  stroke: #4e878f !important;
+  fill: #4e878f !important;
+} */
+[data-theme="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button {
+  width: 198px;
+  height: 28px;
+  gap: 10px; /* Only effective if using flex or grid layout */
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+[data-theme="claudionnight"] .list-row-col {
+  color: #ffffff !important;
+}
+[data-theme="claudionnight"] .level-item {
+  color: #ffffff !important;
+}
+[data-theme="claudionnight"] .list-count {
+  color: #ffffff !important;
+}
+[data-theme="claudionnight"] .indicator-pill.blue {
+  border-radius: 9999px;
+  background: #94b1b6;
+  border: 1px solid #51858c;
+
+  font-family: "Host Grotesk", sans-serif;
+
+  color: #0b272b !important;
+}
+[data-theme="claudionnight"] .btn.btn-xs.btn-secondary.chart-menu {
+  border: 1px solid #4E878F;
+  background-color: #114d56;
+  fill:#ffffff;
+}
+[data-theme="claudionnight"] .filter-chart.btn.btn-xs.pull-right {
+  border: 1px solid #4E878F;
+  background-color: #114d56;
+  fill:#ffffff
+}
+[data-theme="claudionnight"] .indicator-pill.blue > .ellipsis {
+  font-family: "Host Grotesk", sans-serif;
+
+  color: #0b272b !important;
+}
+[data-theme="claudionnight"]
+  .btn.btn-default.btn-sm.list-sidebar-button[data-label="Assigned To"] {
+  width: 198px;
+  height: 28px;
+  gap: 10px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: #15b08f;
+}
+
+[data-theme="claudionnight"]
+  .btn.btn-default.btn-sm.list-sidebar-button[data-label="Assigned To"]
+  > .ellipsis {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: #020d0f !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+/* [data-theme="claudionnight"]
+  .btn.btn-default.btn-sm.list-sidebar-button[data-label="Created By"] {
+  width: 198px;
+  height: 28px;
+  gap: 10px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: #020d0f;
+} */
+[data-theme="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button {
+  width: 198px;
+  height: 28px;
+  gap: 10px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: #020d0f;
+}
+[data-theme="claudionnight"]
+  .btn.btn-default.btn-sm.list-sidebar-button
+  > .ellipsis {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: #979999 !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+[data-theme="claudionnight"] .list-sidebar-button span:first-child {
+  color: #979999;
+}
+[data-theme="claudionnight"]
+  .input-with-feedback.form-control.input-xs[placeholder="Filter Name"] {
+  width: 198px;
+  height: 30px;
+  gap: 8px; /* Only effective if display is flex or grid */
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #020d0f;
+  border: 1px solid #313536;
+
+  box-sizing: border-box; /* ensures padding fits within width/height */
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+}
+[data-theme="claudionnight"]
+  .list-link.filter-pill.list-sidebar-button.btn.btn-default {
+  width: 198px;
+  height: 30px;
+  gap: 8px; /* Only effective if display is flex or grid */
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #020d0f;
+  border: 1px solid #313536;
+}
+[data-theme="claudionnight"] .ellipsis.filter-name {
+  box-sizing: border-box; /* ensures padding fits within width/height */
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 13px;
+
+  color: #979999;
+}
+[data-theme="claudionnight"] .saved-filters-preview {
+  font-family: "Host Grotesk", sans-serif;
+  color: #979999;
+}
+[data-theme="claudionnight"] .filter-button.btn.btn-sm.btn-default {
+  width: 87px;
+  height: 28px;
+  gap: 4px; /* Only effective if display is flex/grid */
+  border-radius: 4px;
+  padding: 6px 10px;
+  background: #0a1416;
+  border: 1px solid #4e878f;
+  color: #4e878f; /* optional for better contrast */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ensures inner content is centered */
+  box-sizing: border-box;
+}
+[data-theme="claudionnight"] .filter-x-button.btn.btn-sm.btn-default {
+  /* width: 87px; */
+  height: 28px;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #0a1416;
+  border: 1px solid #4e878f;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ensures inner content is centered */
+  box-sizing: border-box;
+}
+[data-theme="claudionnight"] .btn.btn-default.btn-sm.sort-selector-button {
+  /* width: 129px;*/
+  height: 28px;
+  gap: 4px; /* Only effective if display is flex/grid */
+  border-radius: 4px;
+  padding: 6px 10px;
+  background: #0a1416;
+  border: 1px solid #4e878f;
+  color: #4e878f;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ensures inner content is centered */
+  box-sizing: border-box;
+}
+[data-theme="claudionnight"] .btn.btn-default.btn-sm.btn-order {
+  /* width: 89px; */
+  height: 28px;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #0a1416;
+  border: 1px solid #4e878f;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ensures inner content is centered */
+  box-sizing: border-box;
+}
+[data-theme="claudionnight"] .like-icon {
+  fill: #ffffff !important;
+}
+[data-theme="claudionnight"] .form-tabs-list {
+  background: #0a1416 !important;
+
+  color: #ffffffff !important;
+}
+[data-theme="claudionnight"] .std-form-layout > .form-layout > .form-page {
+  background: #0a1416 !important;
+  border: 1px solid #313536 !important;
+  color: #ffffffff !important;
+}
+[data-theme="claudionnight"] .input-with-feedback.form-control {
+  width: 100%; /* It will adapt to container */
+  height: 38px;
+  padding: 10px;
+  gap: 8px;
+  border-radius: 6px;
+  font-size: 14px; /* (optional) make it neat */
+  box-shadow: none;
+  background: #020d0f;
+  /* white background */
+  color: #ffffff !important; /* text dark */
+  border: 1px solid #313536 !important; /* light gray border */
+}
+[data-theme="claudionnight"] .control-label {
+  color: #979999;
+}
+[data-theme="claudionnight"] .layout-main-section.frappe-card {
+  background: #0A1416;
+  border: 1px solid #313536 !important; /* Replace with your desired hex code */
+}
+
+
+[data-theme="claudionnight"] .nav-link{
+  color:#ffffff !important;
+}
+
+[data-theme="claudionnight"] .btn.btn-default.ellipsis
+{
+  border: 1px solid #4E878F;
+  color: #4e878f;
+  background: #020D0F;
+  fill: #4E878F;
+  height: 32px;
+  padding: 4px;
+  border-radius: 4px;
+
+
+}
+
+
+[data-theme="claudionnight"] .comment-input-header{
+  color: #ffffff !important;
+}
+[data-theme="claudionnight"] .section-head.collapsible
+{
+  color: #ffffff !important;
+ 
+}
+[data-theme="claudionnight"] .timeline-item.activity-title{
+  background-color: #020D0F!important;
+  color: #ffffff!important;
+}
+[data-theme="claudionnight"] .timeline-item.activity-title h4{
+  background-color: #020D0F!important;
+  color: #ffffff!important;
+}
+
+[data-theme="claudionnight"] .timeline-items.timeline-actions{
+    background-color: #020D0F!important;
+
+}
+
+[data-theme="claudionnight"] button.action-btn{
+  border: 1px solid #4E878F;
+  color: #4e878f;
+  background: #020D0F;
+  fill: #4E878F;
+  height: 32px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+[data-theme="claudionnight"] .ql-editor
+{
+  background: #020D0F!important;
+  border: 1px solid #313536
+}
+
+[data-theme="claudionnight"] .ql-editor.ql-blank::before {
+  content: attr(data-placeholder);
+  color: #313536;
+  position: absolute;
+  pointer-events: none;
+}
+
+[data-theme="claudionnight"] .timeline-content{
+  color: #ffffff !important;
+}
+
+[data-theme="claudionnight"] .timeline-content a {
+  color: #ffffff !important;
+}
+
+[data-theme="claudionnight"] .timeline-content b {
+  color: #ffffff !important;
+}
+
+[data-theme="claudionnight"] h1#createacustomer {
+  /* width: 128px;
+  height: 18px; */
+  font-family: 'Host Grotesk', sans-serif;
+  /* font-weight: 700;
+  font-size: 15px;
+  line-height: 120%;
+  letter-spacing: 0%; */
+  color: #ffffff;
+}
+[data-theme="claudionnight"] .ce-block__content .widget .dashboard-widget-box{
+  background: #0A1416 !important;
+  border: 1px solid #313536;
+  /* border-radius: 12px; 
+  padding: 12px; */
+  color: #ffffff;
+}
+
+
+/* *******************************************************ICONS*********************************************************** */
+
+
+
+[data-theme="claudionnight"] .sidebar-item-icon[item-icon="getting-started"] {
+  border: 1.5px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/Smart%20Home,%20House-grey.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="accounting"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/accounting/Payments, Finance/credit-card-edit.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="buying"] {
+  background-image: url("/assets/claudion4saudi/assets/buying/Shopping, Ecommerce/shopping-bag-fast-buy.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  display: inline-block !important;
+}
+
+
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="sell"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/selling/Shopping, Ecommerce/store-minimal-shielld-2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="stock"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/stock/Delivery/Delivery, Shipment.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="assets"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/assets/Building, Construction/hotel-building-2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="organization"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/manufacture/Energy, Renewable/factory-energy-style-2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="quality"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/quality/Interface, Essential/Certificate, Checkmark, Square.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+    
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="project"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/projects/Files/Documents, File, Blank.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="support"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/support/Support, Help, Question/Headphones, Customer, support.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="users"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/users/User/User,Profile.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="website"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/website/Cursor, Select, Hand/Cursor, Select, Hand, Browser.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="crm"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/crm/Business, Products/Research, Target, Selection.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/tools/Construction, Tools/tools-wench.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="setting"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/erpsettings/Interface, Essential/share-minimal-square.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"]
+  .desk-sidebar-item.selected a.item-anchor[title="Integrations"]  
+  .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/integrations/Interface, Essential/magnet-horizontal-right-big.png") !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"]
+  .desk-sidebar-item.selected a.item-anchor[title="ERPNext Integrations"] 
+  .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/erpintegration/Interface, Essential/link-minimal-circle.png") !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"]
+  .item-anchor[title="Build"] .desk-sidebar-item.selected 
+  .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/build/Office, Work/building-office-circle.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="folder-normal"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/zatca-erp/Delivery/Delivery, Shipment.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+[data-theme="claudionnight"] .widget-label:has(span[title="Item"])::before {
+  background-image: url("/assets/claudion4saudi/assets/b-item.png")!important;
+}
+
+[data-theme="claudionnight"]  .widget-label:has(span[title="Material Request"])::before {
+  background-image: url("/assets/claudion4saudi/assets/b-material-request.png")!important;
+}
+
+[data-theme="claudionnight"]  .widget-label:has(span[title="Purchase Order"])::before {
+  background-image: url("/assets/claudion4saudi/assets/b-purchase-order.png")!important;
+}
+
+[data-theme="claudionnight"]  .widget-label:has(span[title="Purchase Analytics"])::before {
+  background-image: url("/assets/claudion4saudi/assets/b-purchase-analytics.png")!important;
+}
+[data-theme="claudionnight"]  .widget-label:has(span[title="Purchase Order Analysis"])::before {
+  background-image: url("/assets/claudion4saudi/assets/b-purchase-order-analysis.png")!important;
+}
+[data-theme="claudionnight"]  .widget-label:has(span[title="Dashboard"])::before {
+  background-image: url("/assets/claudion4saudi/assets/b-dashboard.png")!important;
+}
+[data-theme="claudionnight"]  .widget-label:has(span[title="Learn Procurement"])::before {
+  background-image: url("/assets/claudion4saudi/assets/b-learn-procurement.png")!important;
+}
+
+
+
+[data-theme="claudionnight"] .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Sales Order"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sell-sales-order.png")!important
+}
+[data-theme="claudionnight"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Sales Analytics"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sell-sales-analytics.png")!important;
+}
+[data-theme="claudionnight"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Point of Sale"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sell-point-of-sale.png")!important;
+}
+[data-theme="claudionnight"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Sales Management"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sell-learn-sales.png")!important;
+}
+
+
+
+
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Delivery Note"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sto-delivery-note.png");}
+
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Inventory Management"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sto-learn-inventory.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Purchase Receipt"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sto-purchase-receipt.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Stock Balance"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sto-stock-balance.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Stock Entry"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sto-stock-entry.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Stock Ledger"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sto-stock-ledger.png");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Asset"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-asst-asset.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Asset Category"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-asst-asset-category.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Fixed Asset Register"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-asst-fixed-asset-reg.png");}
+
+
+
+   
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="BOM Creator"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-bom-creator.png");}
+
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="BOM Stock Report"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-bom-stock-report.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="BOM"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-bom.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Forecasting"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-forecasting.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Job Card"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-job-card.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Manufacturing"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-learn-manufacturing.png");}
+
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Plant Floor"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-plant-floor.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Production Plan"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-production-plan.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Production Planning Report"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-production-planning-report.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Work Order"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-man-work-order.png");}
+
+
+
+
+
+  
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Non Conformance"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-q-no-conformance.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Production Plan"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-q-production-plan.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Action"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-q-qaction.png");}
+
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Goal"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-q-qgoal.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Inspection"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-q-qinspection.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Procedure"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-q-qprocedure.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Quality Review"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-q-qreview.png");}
+
+
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Project Management"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-pro-learn-project-management.png");}
+
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Project Billing Summary"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-pro-project-billing-summary.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Project"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-pro-project.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Task"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-pro-task.png");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Timesheet"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-pro-timesheet.png");}
+
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Issue"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sup-issue.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Maintenance Visit"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sup-maintenance-visit.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Service Level Agreement"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-sup-service-level-agreement.svg");}
+
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Permission Manager"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-us-permission-manager.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Role"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-us-role.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="User Profile"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-us-user-profile.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="User Type"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-us-user-type.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="User"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-us-user.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Blog Post"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-web-blog-post.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Blogger"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-web-blogger.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Web Form"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-web-web-form.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Web Page"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-web-web-page.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Website Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-web-website-settings.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Lead"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-crm-lead.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Opportunity"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-crm-opportunity.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Customer"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-crm-customer.svg");}
+
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Assignment Rule"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-to-assignment-rule.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="File"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-to-file.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Import Data"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-to-import-data.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="ToDo"])::before {
+  background-image: url("/assets/claudion4saudi/assets/n-to-todo.svg");}
+
+
+
+  
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Accounts Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--acc-sett.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Buying Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--buying-sett.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Global Defaults"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--global-defaults.svg");}
+
+
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Print Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--print-sett.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Selling Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--selling-sett.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Stock Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--stock-sett.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="System Settings"])::before {
+  background-image: url("/assets/claudion4saudi/assets/d--syst-sett.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Browse Apps"])::before {
+  background-image: url("/assets/claudion4saudi/assets/BROWSE.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Client Script"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-client-script.svg");}
+
+
+
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Customize Form"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-customize-form.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="DocType"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-doctype.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Report"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-report.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Server Script"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-server-script.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Print Format Builder"])::before {
+  background-image: url("/assets/claudion4saudi/assets/build-pfb.svg");}
+
+   [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Dashboard "])::before {
+  background-image: url("/assets/claudion4saudi/assets/a-db.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Zatca Setup Wizard"])::before {
+  background-image: url("/assets/claudion4saudi/assets/a-wizard.svg");}
+
+
+   [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Accounts Receivable"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-accnts-recvbl.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Cost Center"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-cost-center.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Journal Entry"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-journal-entry.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Payment Entry"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-payment-entry.svg");}
+
+
+  [data-theme="claudionnight"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="POS Invoice"])::before  {
+  background-image: url("/assets/claudion4saudi/assets/A-pos-invoice.svg")!important;}
+
+
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Chart of Accounts"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-chart-of-accnts.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Purchase Invoice"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-pur-inv.svg");}
+
+  
+[data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="General Ledger"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");}
+
+
+  [data-theme="claudionnight"]
+  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Trial Balance"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");}
+
+
+  [data-theme="claudionnight"]  .widget.shortcut-widget-box
+  .widget-head
+  .widget-label:has(span[title="Learn Accounting"])::before  {
+  background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg")!important;}
+
+
+    /*********************************ICONS END***********************************/
+
+    /* 
+[data-theme="claudionnight"] .count {
+  width: 16px !important;
+  height: 20px !important;
+  font-family: "Host Grotesk" !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 20px !important;
+  letter-spacing: 0% !important;
+  color: #ffffff !important;
+}
+
+
+
+[data-theme="claudionnight"] .number-card {
+  width: 242.4px!important;
+  height: 104px!important;
+  gap: 4px!important;
+  border-radius: 6px!important;
+  padding: 20px!important;
+  background: #0A1416!important;
+  border: 1px solid #313536!important; 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+[data-theme="claudionnight"] .number-card h4 {
+  color: #ffffff !important;
+}
+
+
+[data-theme="claudionnight"] #monthlyChart {
+ 
+  border-radius: 8px !important;
+  border-width: 1px !important;
+  background: #0A1416 !important;
+  border: 1px solid #313536 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+[data-theme="claudionnight"] 
+.frappe-control[data-fieldname="zatca_charts"] > div > div:nth-child(1),
+[data-theme="claudionnight"] 
+.frappe-control[data-fieldname="zatca_charts"] > div > div:nth-child(2) {
+  background-color: #0A1416 !important;
+}
+
+[data-theme="claudionnight"] 
+.frappe-control[data-fieldname="zatca_list"] table {
+  width: 1260px !important;
+  height: 464px !important;
+  border-radius: 12px !important;
+  border-width: 1px !important;
+  background: #0A1416 !important;
+  border: 1px solid #052B30 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  padding: 16px !important; 
+  box-sizing: border-box !important;
+}
+[data-theme="claudionnight"] 
+.frappe-control[data-fieldname="zatca_list"] td {
+  color: #FFFFFF !important;
+  font-family: 'Host Grotesk', sans-serif !important;
+ 
+}
+[data-theme="claudionnight"] 
+.frappe-control[data-fieldname="zatca_list"] td a {
+  color: #ffffff !important;}
+
+[data-theme="claudionnight"] th {
+  color: #ffffff !important;
+}
+
+
+ */
+
+
+ [data-theme="claudionnight"][data-route="Zatca/Zatca Dashboard"] .layout-main-section {
+  all: unset !important;
+  display: contents !important;
+}
+
+
+
+[data-theme="claudionnight"]  .dashboard-widget-box {
+background: #0A1416!important;
+border: 1px solid #313536!important;
+}
+
+/* Change the line (path) color to purple */
+[data-theme="claudionnight"] .line-graph-path {
+  stroke: #7575ff !important;
+}
+
+/* [data-theme="claudionday"] .region-fill {
+  fill: url(#path-fill-gradient-purple-custom) !important;
+} */
+
+[data-theme="claudionnight"] .region-fill {
+  fill: linear-gradient(
+    357.36deg,
+    rgba(245, 247, 247, 0) -12.34%,
+    rgba(117, 117, 255, 0.3) 83.59%
+  ) !important;
+}
+[data-theme="claudionnight"] .graph-svg-tip .tooltip-legend {
+  background: #7575ff !important;
+}
+
+/* Additional fallback if .region-fill doesn't respond to URL gradient */
+[data-theme="claudionnight"] .region-fill {
+  fill: #7575ff1a !important; /* 10% opacity */
+}
+
+/* Adjusting stroke width or line style */
+[data-theme="claudionnight"] .line-graph-path {
+  stroke-width: 2px !important;
+}
+
+/* Smooth curve if it's SVG path-based */
+[data-theme="claudionnight"] .line-graph-path {
+  stroke-linejoin: round !important;
+  stroke-linecap: round !important;
+}
+
+[data-theme="claudionnight"] rect.bar.mini {
+  fill: #2195A7!important;
+}
+
+[data-theme="claudionnight"] .chart-legend .legend-dataset-label {
+  fill: #8895a5;
+  color:  #8895A5!important;
+
+}
+
+[data-theme="claudionnight"] .bar-chart .x.axis text,
+[data-theme="claudionnight"] .bar-chart .y.axis text {
+  fill: #8895A5 !important;
+ 
+}
+
+[data-theme="claudionnight"] .widget.number-widget-box {
+  background-color: #0A1416 !important;
+  border: 1px solid #313536 !important;
+  border-radius: 6px !important;
+  padding: 16px !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="claudionnight"] .widget.number-widget-box .widget-title span {
+  width: 120px !important;
+  height: 20px !important;
+  font-family: 'Host Grotesk', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: 0 !important;
+color: #FFFFFF !important;
+  display: inline-block !important;
+  padding: 0 4px; /* optional for spacing */
+  background-color: #0a1416 !important; /* ensures contrast against white background */
+  border-radius: 4px; /* optional: softens background edges */
+}
+
+[data-theme="claudionnight"] .widget.number-widget-box .number {
+  color:#FFFFFF !important;
+  width: 91;
+height: 20;
+  font-family: 'Host Grotesk', sans-serif !important;
+font-weight: 700;
+font-size: 24px;
+line-height: 20px;
+letter-spacing: 0%;
+}
+
+[data-theme="claudionnight"] .widget-title .ellipsis:hover {
+color:#ffffff !important;
+}
+
+
+[data-theme="claudionnight"] .h4 {
+  color: #ffffff !important;
+}
+
+
+  [data-theme="claudionnight"] .count {
+  width: 16px !important;
+  height: 20px !important;
+  font-family: "Host Grotesk" !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 20px !important;
+  letter-spacing: 0% !important;
+  color: white !important;
+}
+
+
+
+[data-theme="claudionnight"] .number-card {
+  width: 242px!important;
+  height: 104px!important;
+  gap: 4px!important;
+  border-radius: 6px!important;
+  padding: 20px!important;
+  background: #0A1416!important; /* Replace with your desired hex code */
+
+  border: 1px solid #313536 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+[data-theme="claudionnight"] .number-card h4 {
+  color: white !important;
+}
+
+
+[data-theme="claudionnight"] 
+.frappe-control[data-fieldname="zatca_list"] table {
+
+  border-radius: 12px !important;
+
+  background: #0A1416 !important;
+  border-bottom: 1px solid #313536 !important;
+
+}
+[data-theme="claudionnight"] 
+.frappe-control[data-fieldname="zatca_list"] td {
+  color: white !important;
+  font-family: 'Host Grotesk', sans-serif !important;
+ 
+}
+[data-theme="claudionnight"] 
+.frappe-control[data-fieldname="zatca_list"] td a {
+  color: white !important;}
+
+[data-theme="claudionnight"] th {
+  color: white !important;
+background: #313536 !important;
+  font-family: 'Host Grotesk', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: 0px !important;
+}
+
+[data-theme="claudionnight"] .badge-danger {
+  width: 88px !important;
+  height: 20px !important;
+  gap: 4px !important;
+  border-radius: 9999px !important;
+  border-width: 1px !important;
+  padding-top: 2px !important;
+  padding-right: 8px !important;
+  padding-bottom: 2px !important;
+  padding-left: 8px !important;
+  background: #464133 !important;
+  border: 1px solid #564d33 !important;
+  color: #c3a75d !important;
+
+  /* Font styles */
+  font-family: 'Host Grotesk', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  line-height: 120% !important;
+  letter-spacing: 0px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
+[data-theme="claudionnight"] .modal-dialog .modal-content{
+  background: #0A1416 !important;
+  border: 1px solid #313536 !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="claudionnight"] .modal-title {
+  color: #FFFFFF !important;
+  font-family: 'Host Grotesk', sans-serif !important;
+ 
+}
+
+[data-theme="claudionnight"] .theme-title {
+  color: #FFFFFF !important;
+  font-family: 'Host Grotesk', sans-serif !important;
+
+}
+
+
+[data-theme="claudionnight"] .btn.btn-secondary.btn-sm {
+  background: #15b08f;
+  color:black;
+
+}
+
+[data-theme="claudionnight"] .btn.btn-default.btn-sm.btn-new-doc.hidden-xs {
+  background: #15b08f;
+  color:black;
+}
+
+[data-theme="claudionnight"] .btn.btn-primary.btn-sm.btn-modal-primary {
+  background: #15b08f;
+  color:black;
+}
+
+[data-theme="claudionnight"] .btn.btn-paging {
+  background-color:  #4e878f;
+  
+}
+
+[data-theme="claudionnight"] .btn.btn-paging.btn-info {
+    background-color:  #4e878f;
+
+}
+
+[data-theme="claudionnight"] .form-clickable-section.grid-footer {
+  background: #0A1416 !important;
+  
+}
+
+/* [data-theme="claudionnight"] .icon-btn svg {
+  display: none;
+}
+
+[data-theme="claudionnight"].icon-btn {
+  background-image: url('/assets/claudion4saudi/assets/printer-modern.svg'); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.2em; 
+  width: 2em;
+  height: 2em;
+} */
+
+
+[data-theme="claudionnight"] .frappe-control > div > div:first-child {
+  background: #0A1416 !important;
+color:#ffffff!important;
+/* border: 1px solid #313536 !important */
+}
+[data-theme="claudionnight"] .frappe-control > div > div:last-child {
+  background: #0A1416 !important;
+  color: #ffffff !important;
+  /* border: 1px solid #313536 !important; */
+}
+
+[data-theme="claudionnight"] .frappe-control[data-fieldname="zatca_list"] #dynamicContent {
+  background: #0A1416 !important;
+  color: #ffffff !important;
+  border: 1px solid #313536 !important;
+  
+}
+
+[data-theme="claudionnight"] #page-Sales\ Invoice > div.container.page-body > div.page-wrapper > div > div.row.layout-main > div.col-lg-2.layout-side-section > div > ul.list-unstyled.sidebar-menu.form-attachments > li.attachments-actions > span > span > a {
+color: #ffffff !important;
+ 
 }

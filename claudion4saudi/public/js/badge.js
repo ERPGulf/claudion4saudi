@@ -55,7 +55,7 @@ frappe.ui.form.on('Advance Sales Invoice', {
                   }
               }
 
-              // 🔴 FAILED Condition
+              // 🔴 FAILED Condition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
               else {
                   console.log('FAILED');
                   badgeHtml = '<div class="zatca-badge-container"><img src="/assets/zatca_erpgulf/js/badges/zatca-failed.png" alt="Failed" class="zatca-badge" width="110" height="36" style="margin-top: -5px; margin-left: 215px;"></div>';

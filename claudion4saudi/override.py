@@ -15,8 +15,8 @@ def switch_theme(theme):
         # "Claudion Theme": "ClaudionTheme",
         # "Claudion Simple": "ClaudionSimple",
         # "Claudion Light": "ClaudionLight",
-        "Claudion Day": "claudionday",
-        "Claudion Night": "claudionnight",
+        "Claudion Day": "ClaudionDay",
+        "Claudion Night": "ClaudionNight",
     }
     # frappe.db.set_value("User", frappe.session.user, "desk_theme", theme)
     # return "success"
