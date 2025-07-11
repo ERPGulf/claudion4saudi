@@ -1,6 +1,6 @@
 import frappe
 
-def after_migrate():
+def after_install():
     default_theme = frappe.db.get_value(
         "Property Setter", 
         {"property": "options", "doc_type": "User", "field_name": "desk_theme"}, 
