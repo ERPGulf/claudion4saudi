@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-25 14:49:49.868300",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "warehouse",
+  "item_location",
+  "oen",
+  "manufacturer_part_no",
+  "brand",
+  "title"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "item_location",
+   "fieldtype": "Data",
+   "label": "BIN"
+  },
+  {
+   "fieldname": "oen",
+   "fieldtype": "Read Only",
+   "label": "OEN"
+  },
+  {
+   "fieldname": "manufacturer_part_no",
+   "fieldtype": "Read Only",
+   "label": "Manufacturer Part Number"
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Read Only",
+   "label": "Brand"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-25 14:54:03.671616",
+ "modified_by": "Administrator",
+ "module": "Claudion4Saudi",
+ "name": "Item Location",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

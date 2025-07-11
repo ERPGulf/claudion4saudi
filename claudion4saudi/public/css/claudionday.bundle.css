@@ -1,22 +1,35 @@
 [data-theme="claudionday"] {
-  --main-color: #042226; /* Dark green */
-  --accent-color: #15b08f; /* Teal for hover effects */
-  --searchbar-color: #114d56; /* Darker green for search bar */
-  --text-highlight: #9ec8b9; /* Soft green for titles */
-  --text-color: #aab2bd; /*search bar text color*/
-  --background-light: #ffffff; /* white background */
-  --background-color2: #dfe3e1; /* Light gray for borders */
+  --main-color: #042226;
+  /* Dark green */
+  --accent-color: #15b08f;
+  /* Teal for hover effects */
+  --searchbar-color: #114d56;
+  /* Darker green for search bar */
+  --text-highlight: #9ec8b9;
+  /* Soft green for titles */
+  --text-color: #aab2bd;
+  /*search bar text color*/
+  --background-light: #ffffff;
+  /* white background */
+  --background-color2: #dfe3e1;
+  /* Light gray for borders */
   --background-color3: #daede9;
-  --border-color3: #dcdede; /* Light gray for borders */
-  --box-color: #f5f7f7; /* box color light minty */
+  --border-color3: #dcdede;
+  /* Light gray for borders */
+  --box-color: #f5f7f7;
+  /* box color light minty */
   --border-color: #dfe3e1;
   --box2-color: #daede9;
   --box3-color: #f5f7f7;
-  --border-color3: #ebeded; /* Light gray for borders */
-  --card-bg: #f5f7f7; /* Card and widget background */
+  --border-color3: #ebeded;
+  /* Light gray for borders */
+  --card-bg: #f5f7f7;
+  /* Card and widget background */
   --text-color: #151616;
-  --text-color2: #525454; /* Text color for various elements */
+  --text-color2: #525454;
+  /* Text color for various elements */
 }
+
 @font-face {
   font-family: "Host Grotesk";
   src: url("/assets/claudion4saudi/fonts/HostGrotesk-Regular.ttf")
@@ -24,13 +37,17 @@
   font-weight: normal;
   font-style: normal;
 }
+
 [data-theme="claudionday"] * {
   font-family: "Host Grotesk", sans-serif !important;
 }
+
 [data-theme="claudionday"] .page-container,
 [data-theme="claudionday"] .layout-main-section {
-  background-color: var(--background-light); /* White base */
+  background-color: var(--background-light);
+  /* White base */
 }
+
 [data-theme="claudionday"] .layout-main-section {
   outline: none !important;
   border: none !important;
@@ -38,48 +55,62 @@
 }
 
 [data-theme="claudionday"] .avatar-frame {
-  background-color: var(
-    --accent-color
-  ) !important; /* Replace with your desired color */
-  color: #ffffff !important; /* Optional: change letter color */
+  background-color: var(--accent-color) !important;
+  /* Replace with your desired color */
+  color: #ffffff !important;
+  /* Optional: change letter color */
 }
 
 [data-theme="claudionday"] .navbar {
-  background-color: #042226 !important; /* Dark green */
+  background-color: #073c44 !important;
 }
+
 /*upper sidebar*/
 [data-theme="claudionday"] header.navbar.navbar-expand {
   background-color: var(--main-color);
-  color: var(--background-light); /*Ensures text/icons are visible*/
+  color: var(--background-light);
 }
+
 /*search bar background*/
 [data-theme="claudionday"] #navbar-search {
   color: #3b3636 !important;
-  background-color: var(--searchbar-color); /* Dark green background */
+  background-color: var(--searchbar-color);
+  /* Dark green background */
 }
 
 [data-theme="claudionday"] #navbar-search::placeholder {
-  color: #aab2bd !important; /* light gray placeholder */
+  color: #aab2bd !important;
+  /* light gray placeholder */
+}
+
+[data-theme="claudionday"] #navbar-breadcrumbs > li > a::before {
+  color: #333;
+  -webkit-text-stroke: 0.5px white;
 }
 
 /*color for notification icon*/
 [data-theme="claudionday"] .es-icon.icon-sm {
-  stroke: var(--background-light) !important;
+  stroke: white !important;
 }
 
 /*color for help icon*/
 [data-theme="claudionday"] .dropdown-help .nav-link span {
-  color: var(--background-light); /* or any color you prefer */
+  color: var(--background-light);
+  /* or any color you prefer */
 }
+
 [data-theme="claudionday"] .dropdown-help .es-icon.icon-xs {
   stroke: var(--background-light) !important;
 }
 
 [data-theme="claudionday"] .widget.onboarding-widget-box {
   font-family: Host Grotesk !important;
-  background-color: var(--box-color); /* Light minty background */
-  border: 1px solid var(--border-color); /* Dark green border */
-  border-radius: 8px; /* Optional: Rounded corners */
+  background-color: var(--box-color);
+  /* Light minty background */
+  border: 1px solid var(--border-color);
+  /* Dark green border */
+  border-radius: 8px;
+  /* Optional: Rounded corners */
   padding: 20px;
 }
 
@@ -93,6 +124,7 @@
 [data-theme="claudionday"] .onboarding-step.skipped.active {
   background-color: var(--background-color3);
 }
+
 /* green tick mark*/
 /* [data-theme="claudionday"] .step-index svg {
   background-color: var(--accent-color);
@@ -103,7 +135,8 @@
   fill: var(--background-light);
 } */
 [data-theme="claudionday"] .step-index svg {
-  display: none !important; /* hide old SVG */
+  display: none !important;
+  /* hide old SVG */
 }
 
 [data-theme="claudionday"] .step-index.step-pending {
@@ -115,8 +148,10 @@
   height: 24px;
   border-radius: 12px;
 }
+
 [data-theme="claudionday"] .step-index.step-skipped {
-  background-image: url("/assets/claudion4saudi/assets/circular_icon.svg"); /* ← update filename */
+  background-image: url("/assets/claudion4saudi/assets/circular_icon.svg");
+  /* ← update filename */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -175,49 +210,129 @@
   font-size: 6px;
 }
 /*show customer list text color*/
-[data-theme="claudionday"] .onboarding-step-body a {
-  color: #073c44 !important; /* or any custom color you want */
-}
+/* [data-theme="claudionday"] .onboarding-step-body a {
 
-[data-theme="claudionday"] .onboarding-step-body a:hover {
-  color: var(--accent-color) !important; /* hover color */
-}
+  width: 130px !important;
+  height: 17px !important;
+  gap: 4px !important;
+  transform: rotate(0deg) !important;
+  opacity: 1 !important;
+  font-family: var(--fontFamily-secondary) !important;
+  font-weight: var(--fontWeight-semibold) !important;
+  font-style: normal !important; 
+  font-size: var(--fontSize-300) !important;
+  line-height: 120% !important;
+  letter-spacing: 0px !important;
+  text-decoration: underline !important;
+  text-decoration-style: solid !important;
+  text-decoration-offset: 0% !important;
+  text-decoration-thickness: 0% !important;
+  text-decoration-skip-ink: auto !important;
+  color: #094D3E !important;
+} */
 
+[data-theme="claudionday"]
+  #editorjs
+  > div
+  > div.codex-editor__redactor
+  > div:nth-child(1)
+  > div
+  > div
+  > div
+  > div.widget-body
+  > div.onboarding-step-preview
+  > div.onboarding-step-body
+  > p:nth-child(5)
+  > a {
+  /* display: inline-block !important; */
+
+  width: 105px !important;
+  height: 14px !important;
+
+  text-decoration: none !important;
+  font-family: "Host Grotesk", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  line-height: 14px !important;
+  letter-spacing: 0px !important;
+  color: #094d3e !important;
+
+  opacity: 1 !important;
+  transform: rotate(0deg) !important;
+  /* background: none !important; */
+  border: none !important;
+
+  padding: 0 !important;
+  gap: 4px !important;
+  cursor: pointer !important;
+  text-decoration: underline !important;
+}
 [data-theme="claudionday"] .onboarding-step-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 12px;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 12px !important; /* spacing between the two */
 }
 
-[data-theme="claudionday"] .onboarding-step-body a:hover {
-  color: var(--accent-color); /* Change to teal on hover */
-  text-decoration: underline; /* Optional: underline on hover */
-}
+/* [data-theme="claudionday"] .onboarding-step-footer p {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-block !important;
+} */
 
 /*button*/
+/* [data-theme="claudionday"] .onboarding-step-footer .btn.btn-default {
+  background-color: #094d3e; 
+  color: var(--background-light); 
+  border: none; 
+  font-weight: 500;
+} */
+
 [data-theme="claudionday"] .onboarding-step-footer .btn.btn-default {
-  background-color: #094d3e; /* Teal background */
-  color: var(--background-light); /* White text */
-  border: none; /* Optional: remove default border */
-  font-weight: 500;
-}
-[data-theme="claudionday"] .onboarding-step-footer .btn.btn-default:hover {
-  background-color: var(--accent-color); /* Darker teal on hover */
-  color: var(--background-light); /* White text */
-  border: none; /* Optional: remove default border */
-  font-weight: 500;
+  /* width: 225px !important;
+  height: 36px !important; */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+
+  /* 
+  border-radius: var(--borderRadius-button-dense) !important;
+  border-width: var(--borderWidth-button-dense) !important; */
+  border-style: solid !important;
+  border: 1px solid #094d3e !important;
+
+  padding: 8px 12px !important;
+
+  background-color: #094d3e !important;
+  color: var(--color-text-button-fill-primary, #ffffff) !important;
+
+  font-family: "Host Grotesk", sans-serif !important;
+  /* font-weight: var(--fontWeight-semibold, 600) !important; */
+  /* font-size: var(--fontSize-300) !important; */
+  font-style: normal !important;
+  /* 'SemiBold' is handled by font-weight */
+  line-height: 120% !important;
+  letter-spacing: 0px !important;
+  text-align: center !important;
+  vertical-align: middle !important;
 }
 
 [data-theme="claudionday"] .shortcut-widget-box {
-  background-color: #ffffff !important; /* Force white background */
+  background-color: #ffffff !important;
+  /* Force white background */
 }
+
 /*line*/
 [data-theme="claudionday"] .widget.spacer {
-  background-color: transparent !important; /* Remove green background */
-  border-top: 1px solid #e0e0e0 !important; /* Use primary color for the line */
-  height: 1px; /* Just a line, no extra height */
-  margin: 24px 0; /* Space above and below the line */
+  background-color: transparent !important;
+  /* Remove green background */
+  border-top: 1px solid #e0e0e0 !important;
+  /* Use primary color for the line */
+  height: 1px;
+  /* Just a line, no extra height */
+  margin: 24px 0;
+  /* Space above and below the line */
   border-radius: 0;
 }
 
@@ -226,54 +341,183 @@
 }
 
 [data-theme="claudionday"] .links-widget-box .link-text {
-  color: var(--text-color2); /* Dark green */
-}
-[data-theme="claudionday"] .links-widget-box .link-text:hover {
-  color: var(--accent-color); /* Teal on hover */
-  text-decoration: underline; /* Optional: underline on hover */
+  color: var(--text-color2);
+  /* Dark green */
 }
 
+[data-theme="claudionday"] .links-widget-box .link-text:hover {
+  color: var(--accent-color);
+  /* Teal on hover */
+  text-decoration: underline;
+  /* Optional: underline on hover */
+}
+
+[data-theme="claudionday"] .widget.links-widget-box .es-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin-left: auto !important;
+  /* pushes icon to the right */
+  margin-right: 1px !important;
+  /* adds 16px space from the right edge */
+  flex-shrink: 0 !important;
+  /* prevent shrinking */
+}
+/* [data-theme="claudionday"] .link-item.onboard-spotlight .link-text { */
+[data-theme="claudionday"] span.link-text {
+  color: #2a2b2b !important;
+  /* width: 133px !important; */
+  margin-top: 0 !important;
+  height: 19px !important;
+  font-family: "Host Grotesk", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 14px !important;
+  line-height: 90% !important;
+  letter-spacing: 0 !important;
+  transform: rotate(0deg) !important;
+  opacity: 1 !important;
+  display: inline-block !important;
+}
+
+/* [data-theme="claudionday"] .widget-title {
+  margin-bottom: 4px !important;
+} */
+/* [data-theme="claudionday"] .widget-title span.ellipsis {
+  font-family: "Host Grotesk", sans-serif !important;
+  font-weight: 700 !important; 
+  font-style: normal !important; 
+  font-size: 13.5px !important;
+  line-height: 120% !important;
+  letter-spacing: 0 !important;
+  color: #020d0f !important;
+} */
+[data-theme="claudionday"] .widget-subtitle {
+  display: none !important;
+}
 /* Hover effect for sidebar items */
 [data-theme="claudionday"] .desk-sidebar-item:hover {
-  background-color: var(--accent-color); /* Teal or green on hover */
-  border-radius: 6px; /* Optional: rounded edges */
+  background-color: var(--accent-color);
+  border-radius: 6px;
 }
 
 /* Change the text/icon color on hover */
 [data-theme="claudionday"] .desk-sidebar-item:hover .sidebar-item-label,
 [data-theme="claudionday"] .desk-sidebar-item:hover .sidebar-item-icon {
-  color: var(--background-light); /* White text on hover */
-  fill: var(--background-light) !important; /* SVG icon color */
+  color: var(--background-light);
+  /* White text on hover */
+  fill: var(--background-light) !important;
+  /* SVG icon color */
 }
 
 /* Selected item background */
 [data-theme="claudionday"] .desk-sidebar-item.selected {
-  background-color: var(--accent-color); /* Active selection */
+  background-color: var(--accent-color);
 }
 
 /* Selected item text/icon color */
 [data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-label,
 [data-theme="claudionday"] .desk-sidebar-item.selected .icon:focus {
   color: var(--background-light);
-  fill: white !important; /* White text */
+  fill: white !important;
 }
 
-/* For typed text inside the search input */
+/* 
 [data-theme="claudionday"] #navbar-search {
-  color: var(--text-color2); /* or use a hex like #FFFFFF for white */
+  width: 300px !important;
+  height: 32px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  transform: rotate(0deg) !important;
+  opacity: 1 !important;
+  border-radius: 8px !important;
+  padding: 4px 9px 4px 12px !important;
+
+  background-color: #114D56 !important;
+  border: 1px solid #114D56 !important;
+
+  background-image: url("/assets/claudion4saudi/assets/Search.svg"),
+                    url("/assets/claudion4saudi/assets/g.svg") !important;
+
+  background-repeat: no-repeat, no-repeat !important;
+  background-position: left center, right center !important;
+  background-size: 24px 24px, 39px 20px !important;
+
+  padding-left: 36px !important;  
+  padding-right: 50px !important; 
+} */
+
+[data-theme="claudionday"] #navbar-search {
+  color: #aab2bd !important;
+  width: 300px !important;
+  height: 32px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  transform: rotate(0deg) !important;
+  opacity: 1 !important;
+  border-radius: 8px !important;
+
+  padding: 4px 13px 4px 16px !important;
+
+  background-color: #114d56 !important;
+  border: 1px solid #114d56 !important;
+
+  background-image: url("/assets/claudion4saudi/assets/Search.svg"),
+    url("/assets/claudion4saudi/assets/g.svg") !important;
+
+  background-repeat: no-repeat, no-repeat !important;
+
+  background-position: 8px center, calc(100% - 6px) center !important;
+
+  background-size: 24px 24px, 39px 20px !important;
+
+  padding-left: 33px !important;
+  padding-right: 55px !important;
+}
+
+[data-theme="claudionday"] .search-icon {
+  display: none !important;
 }
 
 /* For the placeholder text */
 [data-theme="claudionday"] #navbar-search::placeholder {
-  color: #aab2bd !important; /* Customize this */
-  opacity: 1; /* Ensure it's visible */
+  opacity: 1 !important;
+  font-family: "Host Grotesk", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  /* "Regular" is not valid CSS */
+  font-size: 11px !important;
+  line-height: 130% !important;
+  letter-spacing: 0% !important;
+  color: #aab2bd !important;
+  vertical-align: middle !important;
 }
+
+[data-theme="claudionday"] .notifications-icon .notifications-seen,
+[data-theme="claudionday"] .notifications-icon .notifications-unseen {
+  display: none !important;
+}
+
+[data-theme="claudionday"] .notifications-icon {
+  width: 20px;
+  /* adjust as needed */
+  height: 20px;
+  /* adjust as needed */
+  background-image: url("/assets/claudion4saudi/assets/bell.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 0 !important;
+  border: none !important;
+  display: inline-block;
+}
+
 [data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small {
   background: none;
   border: none;
   font-size: 20px;
   font-weight: bold;
-  color: var(--main-color); /* use your existing color */
+  color: var(--main-color);
+  /* use your existing color */
   padding: 12px !important;
   /* margin: 0px !important; */
   position: relative;
@@ -287,24 +531,45 @@
   letter-spacing: 0%;
   color: #2a2b2b !important;
 }
+
 /* Hide the original text */
-[data-theme="claudionday"]
+/* [data-theme="claudionday"]
   .widget-control
   .btn.btn-sm.btn-secondary.small::before {
   content: "";
   display: inline-block;
   width: 36px;
   height: 36px;
-  background-image: url("/assets/claudion4saudi/assets/Button.svg"); /* Correct path */
+  background-image: url("/assets/claudion4saudi/assets/Button.svg"); 
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Perfect centering */
-}
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+} */
 
+[data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small {
+  width: 36px !important;
+  height: 36px !important;
+
+  padding: 12px 16px !important;
+
+  border-radius: 9999px !important;
+  opacity: 1 !important;
+  background-color: transparent !important; /* ghost style */
+  background-image: url("/assets/claudion4saudi/assets/Button.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 100% 100% !important;
+
+  text-indent: -9999px !important; /* hides "Dismiss" text */
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  border: none !important; /* optional: remove default border */
+  cursor: pointer !important;
+}
 [data-theme="claudionday"]
   .widget-control
   .btn.btn-sm.btn-secondary.small::after {
@@ -314,24 +579,33 @@
 
 /* Optional: hide original content using visibility */
 [data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small {
-  color: transparent !important; /* Hides the text while preserving dimensions */
+  color: transparent !important;
+  /* Hides the text while preserving dimensions */
 }
+
 [data-theme="claudionday"] a.onboarding-step.skipped {
-  background-color: transparent !important; /* Or set your preferred color */
+  background-color: transparent !important;
+  /* Or set your preferred color */
 }
+
 /* General icon styling */
 [data-theme="claudionday"] .widget-head .widget-label {
-  display: flex; /* Align icon and text in a row */
-  align-items: center; /* Center vertically */
-  flex-direction: column; /* Stack title and subtitle vertically */
-  align-items: flex-start; /* Align to the left */
+  display: flex;
+  /* Align icon and text in a row */
+  align-items: center;
+  /* Center vertically */
+  flex-direction: column;
+  /* Stack title and subtitle vertically */
+  align-items: flex-start;
+  /* Align to the left */
   gap: 2px;
 }
+
 [data-theme="claudionday"] .shortcut-widget-box .widget-label {
-  flex-direction: row !important; /* Align icon and text side-by-side */
-  align-items: center !important; /* Vertically center */
+  flex-direction: row !important;
+  align-items: center !important;
   justify-content: flex-start;
-  gap: 8px; /* Space between icon and text */
+  gap: 8px;
 }
 
 [data-theme="claudionday"] .widget-head .widget-label::before {
@@ -343,6 +617,98 @@
   background-repeat: no-repeat;
   background-position: center;
   flex-shrink: 0;
+}
+
+[data-theme="claudionday"] .widget.links-widget-box {
+  width: 245.67px !important;
+  height: 271px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+
+  transform: rotate(0deg) !important;
+  opacity: 1 !important;
+
+  border: 1px solid #ebeded !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  background-color: #f5f7f7 !important;
+}
+
+[data-theme="claudionday"] button.btn-new-workspace {
+  width: 69px !important;
+  height: 36px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+
+  padding: 8px 12px !important;
+
+  font-family: "Host Grotesk", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 120% !important;
+  letter-spacing: 0 !important;
+
+  border-radius: 6px !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: #4e878f !important;
+
+  background-color: transparent !important; /* stroke type */
+  color: #4e878f !important;
+
+  transform: rotate(0deg) !important;
+  opacity: 1 !important;
+
+  cursor: pointer !important;
+}
+[data-theme="claudionday"]
+  .btn.btn-default.ellipsis.btn-new-workspace
+  .es-icon {
+  width: 16px !important;
+  height: 16px !important;
+  fill: #4e878f !important;
+  stroke: #4e878f !important;
+  flex-shrink: 0 !important;
+}
+
+[data-theme="claudionday"] .btn-edit-workspace {
+  width: 65px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+
+  padding: 8px 12px !important;
+
+  border: 1px solid #4e878f !important;
+  border-radius: 6px !important;
+
+  background-color: transparent !important;
+  font-family: "Host Grotesk", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 120% !important;
+  color: #4e878f !important;
+
+  opacity: 1 !important;
+  transform: rotate(0deg) !important;
+}
+[data-theme="claudionday"] .btn-edit-workspace .es-icon {
+  width: 16px !important;
+  height: 16px !important;
+  fill: #4e878f !important;
+  stroke: #4e878f !important;
+  flex-shrink: 0 !important;
+}
+
+[data-theme="claudionday"] .widget.links-widget-box .link-content {
+  display: flex !important;
+  align-items: center !important;
 }
 
 [data-theme="claudionday"]
@@ -451,7 +817,8 @@
 }
 
 [data-theme="claudionday"] .step-index {
-  position: relative; /* Make the step-index the reference point */
+  position: relative;
+  /* Make the step-index the reference point */
 }
 
 [data-theme="claudionday"] .indicator-pill.no-indicator-dot.ellipsis.green {
@@ -490,13 +857,14 @@
 }
 
 [data-theme="claudionday"] .vertical-bar {
-  justify: space-between; /* Optional: equal gap between bell and Help */
+  justify: space-between;
 }
 
 [data-theme="claudionday"] ul.navbar-nav {
   display: flex;
   align-items: center;
-  gap: 16px; /* 16px between all navbar items */
+  gap: 16px;
+  /* 16px between all navbar items */
 }
 
 /* Apply only to widget titles under the Reports & Masters section */
@@ -510,6 +878,7 @@
   background-color: #f7faf9;
   color: #393a3a !important;
 }
+
 [data-theme="claudionday"] .std-form-layout > .form-layout > .form-page {
   background-color: #f7faf9;
   border: 1px solid #dfe3e1;
@@ -531,22 +900,31 @@ height: 16px !important;
 }
 
 [data-theme="claudionday"] .form-control {
-  width: 100%; /* It will adapt to container */
+  width: 100%;
+  /* It will adapt to container */
   height: 38px;
   padding: 10px;
   gap: 8px;
   border-radius: 6px;
-  font-size: 14px; /* (optional) make it neat */
+  font-size: 14px;
+  /* (optional) make it neat */
   box-shadow: none;
-  background-color: #ffffff !important; /* white background */
-  color: #393a3a !important; /* text dark */
-  border: 1px solid #ccd0d0 !important; /* light gray border */
+  background-color: #ffffff !important;
+  /* white background */
+  color: #393a3a !important;
+  /* text dark */
+  border: 1px solid #ccd0d0 !important;
+  /* light gray border */
 }
+
 [data-theme="claudionday"] #navbar-breadcrumbs a {
-  color: white !important; /* Or you can give a specific hex code */
+  color: white !important;
+  /* Or you can give a specific hex code */
   text-decoration: none;
-  font-weight: 500; /* (optional) make it slightly bolder */
+  font-weight: 500;
+  /* (optional) make it slightly bolder */
 }
+
 [data-theme="claudionday"] #navbar-breadcrumbs a::before {
   color: #ffffff !important;
   fill: #ffffff !important;
@@ -583,9 +961,11 @@ height: 16px !important;
   letter-spacing: 0; */
   color: #151616;
 }
+
 [data-theme="claudionday"] .es-icon.icon-sm {
   stroke: #151616 !important;
 }
+
 [data-theme="claudionday"] .icon .icon-sm {
   stroke: #151616 !important;
 }
@@ -594,9 +974,11 @@ height: 16px !important;
   background-color: #15b08f;
   color: white;
 }
+
 [data-theme="claudionday"].icon-xs:hover {
   stroke: white;
 }
+
 [data-theme="claudionday"] a[data-label="Assigned To"] ::before {
   content: "";
   display: inline-block;
@@ -605,11 +987,13 @@ height: 16px !important;
   height: 20.00833511352539px;
   top: -0.01px;
   left: -0.01px;
-  background-image: url(/assets/claudion4saudi/assets/user-profile-back.png); /* Replace with your icon file or base64 SVG */
+  background-image: url(/assets/claudion4saudi/assets/user-profile-back.png);
+  /* Replace with your icon file or base64 SVG */
   background-size: contain;
   background-repeat: no-repeat;
   vertical-align: middle;
 }
+
 /* [data-theme="claudionday"] button.btn-default[data-label="Duplicate"] {
   width: 79px;
   height: 29px;
@@ -645,24 +1029,36 @@ height: 16px !important;
 } */
 [data-theme="claudionday"] .control-label,
 .grid-heading-row {
-  color: #393a3a; /* updated from screenshot */
-  font-family: "Host Grotesk", sans-serif; /* added the font */
-  font-weight: 500; /* 500 from screenshot */
-  font-size: 12px; /* 12px from screenshot */
-  line-height: 120%; /* 120% line height */
-  letter-spacing: 0%; /* 0% letter spacing */
+  color: #393a3a;
+  /* updated from screenshot */
+  font-family: "Host Grotesk", sans-serif;
+  /* added the font */
+  font-weight: 500;
+  /* 500 from screenshot */
+  font-size: 12px;
+  /* 12px from screenshot */
+  line-height: 120%;
+  /* 120% line height */
+  letter-spacing: 0%;
+  /* 0% letter spacing */
 }
+
 [data-theme="claudionday"] ul.list-unstyled.sidebar-menu.text-muted {
-  background-color: #edf2f0; /* your provided background color */
-  padding: 10px; /* optional: to give some breathing space */
+  background-color: #edf2f0;
+  /* your provided background color */
+  padding: 10px;
+  /* optional: to give some breathing space */
   border-radius: 8px;
-  border: 1px solid#E1E5E4; /* optional: if you want rounded corners */
+  border: 1px solid#E1E5E4;
+  /* optional: if you want rounded corners */
 }
 
 [data-theme="claudionday"] ul.list-unstyled.sidebar-menu.form-sidebar-stats {
-  background-color: #edf2f0; /* Replace #EDF2F0 with your desired color */
+  background-color: #edf2f0;
+  /* Replace #EDF2F0 with your desired color */
   padding: 10px;
-  border-radius: 8px; /* Optional for smoother corners */
+  border-radius: 8px;
+  /* Optional for smoother corners */
 }
 
 /* Hide the original  dot */
@@ -677,7 +1073,8 @@ height: 16px !important;
   display: inline-block;
   width: 24px;
   height: 24px;
-  background-image: url("/assets/claudion4saudi/assets/step_icon_day.svg"); /* <-- update path here */
+  background-image: url("/assets/claudion4saudi/assets/step_icon_day.svg");
+  /* <-- update path here */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -685,6 +1082,7 @@ height: 16px !important;
   left: 0;
   top: 0;
 }
+
 [data-theme="claudionday"] .new-timeline::before {
   display: none !important;
 }
@@ -696,10 +1094,13 @@ height: 16px !important;
 [data-theme="claudionday"] .timeline-dot::after {
   content: "";
   display: block;
-  width: 2px; /* or as per your image width */
-  height: 40px; /* or image height */
+  width: 2px;
+  /* or as per your image width */
+  height: 40px;
+  /* or image height */
   margin: 6px auto 0 auto;
-  background-image: url("/assets/yourappname/assets/white_connector.svg"); /* <-- your image */
+  background-image: url("/assets/claudion4saudi/assets/white_connector.svg");
+  /* <-- your image */
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -717,15 +1118,19 @@ height: 16px !important;
 
 [data-theme="claudionday"] .layout-main-section.frappe-card {
   background-color: #f9fafb;
-  border: 1px solid #eaecf0 !important; /* Replace with your desired hex code */
+  border: 1px solid #eaecf0 !important;
+  /* Replace with your desired hex code */
 }
 
 [data-theme="claudionday"] .page-form {
-  background-color: #f9fafb !important; /* Replace with your desired color */
+  background-color: #f9fafb !important;
+  /* Replace with your desired color */
 }
+
 [data-theme="claudionday"] .layout-main-section .frappe-list .result {
   background-color: white !important;
-  color: #393a3a; /* replace with your desired color */
+  color: #393a3a;
+  /* replace with your desired color */
 }
 
 [data-theme="claudionday"].list-subject a {
@@ -741,6 +1146,7 @@ height: 16px !important;
   color: #256a74 !important;
   border: #a6c8cd;
 }
+
 /* 
 [data-theme="claudionday"] .layout-main-section{
   margin: 0px !important;
@@ -775,29 +1181,43 @@ height: 16px !important;
   padding: 0px !important;
 }
 
-[data-theme="claudionday"] .widget-title .ellipsis {
+/* [data-theme="claudionday"] .widget-title .ellipsis {
   font-size: 18px !important;
   font-weight: 700 !important;
   line-height: 120%;
   letter-spacing: 0%;
-}
+} */
 
-[data-theme="claudionday"] .shortcut-widget-box .widget-title .ellipsis {
+/* [data-theme="claudionday"] .shortcut-widget-box .widget-title .ellipsis {
   font-family: Host Grotesk !important;
   font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 120%;
   letter-spacing: 0%;
+} */
+[data-theme="claudionday"]
+  .widget.number-widget-box
+  .widget-label
+  .widget-title
+  span.ellipsis {
+  font-family: "Host Grotesk", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: 0 !important;
+  color: #151616 !important;
+  text-transform: none !important;
 }
-
-[data-theme="claudionday"] .link-item.onboard-spotlight .link-text {
-  color: #2a2b2b !important;
+[data-theme="claudionday"] .card-stats.grey-stat .percentage-stat-area {
+  font-family: "Host Grotesk", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: 0 !important;
+  color: #151616 !important;
 }
-
-.search-icon {
-  filter: brightness(0) invert(1);
-}
-
 [data-theme="claudionday"] .sidebar-item-icon svg {
   display: none !important;
 }
@@ -814,7 +1234,7 @@ height: 16px !important;
   .standard-sidebar-section
   .nested-container
   [title="Public"] {
-  font-family: Host Grotesk !important ;
+  font-family: Host Grotesk !important;
 }
 
 [data-theme="claudionday"]
@@ -1044,13 +1464,15 @@ height: 16px !important;
     rgba(117, 117, 255, 0.3) 83.59%
   ) !important;
 }
+
 [data-theme="claudionday"] .graph-svg-tip .tooltip-legend {
   background: #7575ff !important;
 }
 
 /* Additional fallback if .region-fill doesn't respond to URL gradient */
 [data-theme="claudionday"] .region-fill {
-  fill: #7575ff1a !important; /* 10% opacity */
+  fill: #7575ff1a !important;
+  /* 10% opacity */
 }
 
 /* Adjusting stroke width or line style */
@@ -1068,34 +1490,35 @@ height: 16px !important;
   fill: #073c44 !important;
 }
 
-
 /* ******************************************************************************** */
-
-
 
 [data-theme="claudionday"] .sidebar-item-icon[item-icon="getting-started"] {
   border: 1.5px;
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-home/Smart home/Group.png");
+  background-image: url("/assets/claudion4saudi/assets/1.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="accounting"] {
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="accounting"] {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-accounting/Payments, Finance/Group.png");
+  background-image: url("/assets/claudion4saudi/assets/2.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="buying"] {
-  background-image: url("/assets/claudion4saudi/assets/d-buying/Shopping, Ecommerce/shopping-bag-fast-buy.png") !important;
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="buying"] {
+  background-image: url("/assets/claudion4saudi/assets/3.svg") !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
@@ -1104,757 +1527,757 @@ height: 16px !important;
   display: inline-block !important;
 }
 
-
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="sell"] {
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="sell"] {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-selling/Shopping, Ecommerce/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="stock"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-stock/Delivery/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="assets"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-asset/Building, Construction/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="organization"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-manufacturing/Energy, Renewable/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="quality"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-quality/Interface, Essential/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-
-    
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="project"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-project/Files/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="support"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-support/Support, Help, Question/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="users"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-users/User/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="website"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-website/Cursor, Select, Hand/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="crm"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-crm/Business, Products/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="tool"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-tools/Construction, Tools/Group.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="setting"] {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-erpnextsettings/Interface, Essential/Group.png");
+  background-image: url("/assets/claudion4saudi/assets/4.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 [data-theme="claudionday"]
-  .desk-sidebar-item.selected a.item-anchor[title="Integrations"]  
-  .sidebar-item-icon[item-icon="integration"] {
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="stock"] {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-integrations/Interface, Essential/Group.png") !important;
+  background-image: url("/assets/claudion4saudi/assets/5.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 [data-theme="claudionday"]
-  .desk-sidebar-item.selected a.item-anchor[title="ERPNext Integrations"] 
-  .sidebar-item-icon[item-icon="integration"] {
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="assets"] {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-erpnextintegrations/Interface, Essential/Group.png") !important;
+  background-image: url("/assets/claudion4saudi/assets/6.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 [data-theme="claudionday"]
-  .item-anchor[title="Build"] .desk-sidebar-item.selected 
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="organization"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/7.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="quality"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/8.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="project"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/9.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="support"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/10.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="users"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/11.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="website"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/12.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="crm"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/13.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
   .sidebar-item-icon[item-icon="tool"] {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-build/Office, Work/Group.png");
+  background-image: url("/assets/claudion4saudi/assets/14.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="folder-normal"] {
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="setting"] {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-image: url("/assets/claudion4saudi/assets/d-zatca/Delivery/Group.png");
+  background-image: url("/assets/claudion4saudi/assets/15.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  a.item-anchor[title="Integrations"]
+  .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/16.svg") !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  a.item-anchor[title="ERPNext Integrations"]
+  .sidebar-item-icon[item-icon="integration"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/17.svg") !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
+[data-theme="claudionday"]
+  .item-anchor[title="Build"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="tool"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/18.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+[data-theme="claudionday"]
+  .desk-sidebar-item.selected
+  .sidebar-item-icon[item-icon="folder-normal"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/assets/claudion4saudi/assets/19.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Delivery Note"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sto-delivery-note.png");}
-
+  background-image: url("/assets/claudion4saudi/assets/d-sto-delivery-note.png");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Learn Inventory Management"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sto-learn-inventory.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-sto-learn-inventory.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Purchase Receipt"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sto-purchase-receipt.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-sto-purchase-receipt.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Stock Balance"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-balance.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-balance.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Stock Entry"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-entry.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-entry.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Stock Ledger"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-ledger.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-sto-stock-ledger.png");
+}
 
-
-
-
-    
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Asset"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-asst-asset.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-asst-asset.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Asset Category"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-asst-asset-category.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-asst-asset-category.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Fixed Asset Register"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-asst-fixed-asset-reg.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-asst-fixed-asset-reg.png");
+}
 
-
-
-
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="BOM Creator"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-bom-creator.png");}
-
+  background-image: url("/assets/claudion4saudi/assets/d-man-bom-creator.png");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="BOM Stock Report"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-bom-stock-report.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-man-bom-stock-report.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="BOM"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-bom.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-man-bom.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Forecasting"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-forecasting.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-man-forecasting.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Job Card"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-job-card.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-man-job-card.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Learn Manufacturing"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-learn-manufacturing.png");}
-
+  background-image: url("/assets/claudion4saudi/assets/d-man-learn-manufacturing.png");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Plant Floor"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-plant-floor.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-man-plant-floor.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Production Plan"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-production-plan.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-man-production-plan.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Production Planning Report"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-production-planning-report.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-man-production-planning-report.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Work Order"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-man-work-order.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-man-work-order.png");
+}
 
-
-
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Non Conformance"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-q-no-conformance.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-q-no-conformance.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Production Plan"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-q-production-plan.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-q-production-plan.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Quality Action"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-q-qaction.png");}
-
+  background-image: url("/assets/claudion4saudi/assets/d-q-qaction.png");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Quality Goal"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-q-qgoal.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-q-qgoal.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Quality Inspection"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-q-qinspection.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-q-qinspection.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Quality Procedure"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-q-qprocedure.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-q-qprocedure.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Quality Review"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-q-qreview.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-q-qreview.png");
+}
 
-
-
-
-
-    
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Learn Project Management"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-pro-learn-project-management.png");}
-
+  background-image: url("/assets/claudion4saudi/assets/d-pro-learn-project-management.png");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Project Billing Summary"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-pro-project-billing-summary.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-pro-project-billing-summary.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Project"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-pro-project.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-pro-project.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Task"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-pro-task.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-pro-task.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Timesheet"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-pro-timesheet.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-pro-timesheet.png");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Issue"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sup-issue.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-sup-issue.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Maintenance Visit"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sup-maintenance-visit.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-sup-maintenance-visit.png");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Service Level Agreement"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-sup-service-level-agreement.png");}
+  background-image: url("/assets/claudion4saudi/assets/d-sup-service-level-agreement.png");
+}
 
-
-
-  
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Permission Manager"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-us-permission-manager.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-us-permission-manager.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Role"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-us-role.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-us-role.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="User Profile"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-us-user-profile.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-us-user-profile.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="User Type"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-us-user-type.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-us-user-type.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="User"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-us-user.svg");}
-
-
+  background-image: url("/assets/claudion4saudi/assets/d-us-user.svg");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Blog Post"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-web-blog-post.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-web-blog-post.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Blogger"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-web-blogger.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-web-blogger.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Web Form"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-web-web-form.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-web-web-form.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Web Page"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-web-web-page.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-web-web-page.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Website Settings"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-web-website-settings.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-web-website-settings.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Lead"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-crm-lead.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-crm-lead.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Opportunity"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-crm-opportunity.svg");}
-
-
+  background-image: url("/assets/claudion4saudi/assets/d-crm-opportunity.svg");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Assignment Rule"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-to-assignment-rule.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-to-assignment-rule.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="File"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-to-file.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-to-file.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Import Data"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-to-import-data.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d-to-import-data.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="ToDo"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d-to-todo.svg");}
-
-
-
+  background-image: url("/assets/claudion4saudi/assets/d-to-todo.svg");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Accounts Settings"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d--acc-sett.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d--acc-sett.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Buying Settings"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d--buying-sett.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d--buying-sett.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Global Defaults"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d--global-defaults.svg");}
-
-
+  background-image: url("/assets/claudion4saudi/assets/d--global-defaults.svg");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Print Settings"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d--print-sett.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d--print-sett.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Selling Settings"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d--selling-sett.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d--selling-sett.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Stock Settings"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d--stock-sett.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d--stock-sett.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="System Settings"])::before {
-  background-image: url("/assets/claudion4saudi/assets/d--syst-sett.svg");}
+  background-image: url("/assets/claudion4saudi/assets/d--syst-sett.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Browse Apps"])::before {
-  background-image: url("/assets/claudion4saudi/assets/BROWSE.svg");}
+  background-image: url("/assets/claudion4saudi/assets/BROWSE.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Client Script"])::before {
-  background-image: url("/assets/claudion4saudi/assets/build-client-script.svg");}
-
-
+  background-image: url("/assets/claudion4saudi/assets/build-client-script.svg");
+}
 
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Customize Form"])::before {
-  background-image: url("/assets/claudion4saudi/assets/build-customize-form.svg");}
+  background-image: url("/assets/claudion4saudi/assets/build-customize-form.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="DocType"])::before {
-  background-image: url("/assets/claudion4saudi/assets/build-doctype.svg");}
+  background-image: url("/assets/claudion4saudi/assets/build-doctype.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Report"])::before {
-  background-image: url("/assets/claudion4saudi/assets/build-report.svg");}
+  background-image: url("/assets/claudion4saudi/assets/build-report.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Server Script"])::before {
-  background-image: url("/assets/claudion4saudi/assets/build-server-script.svg");}
+  background-image: url("/assets/claudion4saudi/assets/build-server-script.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Print Format Builder"])::before {
-  background-image: url("/assets/claudion4saudi/assets/build-pfb.svg");}
+  background-image: url("/assets/claudion4saudi/assets/build-pfb.svg");
+}
 
-
-  [data-theme="claudionday"]  .widget.shortcut-widget-box
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
   .widget-head
-  .widget-label:has(span[title="Dashboard "])::before  {
-  background-image: url("/assets/claudion4saudi/assets/a-db.svg")!important;}
+  .widget-label:has(span[title="Dashboard "])::before {
+  background-image: url("/assets/claudion4saudi/assets/a-db.svg") !important;
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Zatca Setup Wizard"])::before {
-  background-image: url("/assets/claudion4saudi/assets/a-wizard.svg");}
+  background-image: url("/assets/claudion4saudi/assets/a-wizard.svg");
+}
 
-
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Accounts Receivable"])::before {
-  background-image: url("/assets/claudion4saudi/assets/A-accnts-recvbl.svg");}
+  background-image: url("/assets/claudion4saudi/assets/A-accnts-recvbl.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Cost Center"])::before {
-  background-image: url("/assets/claudion4saudi/assets/A-cost-center.svg");}
+  background-image: url("/assets/claudion4saudi/assets/A-cost-center.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Journal Entry"])::before {
-  background-image: url("/assets/claudion4saudi/assets/A-journal-entry.svg");}
+  background-image: url("/assets/claudion4saudi/assets/A-journal-entry.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Payment Entry"])::before {
-  background-image: url("/assets/claudion4saudi/assets/A-payment-entry.svg");}
+  background-image: url("/assets/claudion4saudi/assets/A-payment-entry.svg");
+}
 
-
-  [data-theme="claudionday"]  .widget.shortcut-widget-box
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
   .widget-head
-  .widget-label:has(span[title="POS Invoice"])::before  {
-  background-image: url("/assets/claudion4saudi/assets/A-pos-invoice.svg")!important;}
+  .widget-label:has(span[title="POS Invoice"])::before {
+  background-image: url("/assets/claudion4saudi/assets/A-pos-invoice.svg") !important;
+}
 
-  
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Chart of Accounts"])::before {
-  background-image: url("/assets/claudion4saudi/assets/z-chart-of-accnts.svg");}
+  background-image: url("/assets/claudion4saudi/assets/z-chart-of-accnts.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Purchase Invoice"])::before {
-  background-image: url("/assets/claudion4saudi/assets/z-pur-inv.svg");}
+  background-image: url("/assets/claudion4saudi/assets/z-pur-inv.svg");
+}
 
-  
 [data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="General Ledger"])::before {
-  background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");}
+  background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Trial Balance"])::before {
-  background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");}
+  background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");
+}
 
-
-  [data-theme="claudionday"]  .widget.shortcut-widget-box
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
   .widget-head
-  .widget-label:has(span[title="Learn Accounting"])::before  {
-  background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg")!important;}
+  .widget-label:has(span[title="Learn Accounting"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg") !important;
+}
 
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="General Ledger"])::before {
-  background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");}
+  background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");
+}
 
-
-  [data-theme="claudionday"]
+[data-theme="claudionday"]
   .widget.shortcut-widget-box
   .widget-head
   .widget-label:has(span[title="Trial Balance"])::before {
-  background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");}
+  background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");
+}
 
-
-  [data-theme="claudionday"]  .widget.shortcut-widget-box
+[data-theme="claudionday"]
+  .widget.shortcut-widget-box
   .widget-head
-  .widget-label:has(span[title="Learn Accounting"])::before  {
-  background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg")!important;}
+  .widget-label:has(span[title="Learn Accounting"])::before {
+  background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg") !important;
+}
 
+/*********************************ICONS END***********************************/
 
-
-
-  /*********************************ICONS END***********************************/
-
-
-
-  [data-theme="claudionday"] .count {
+[data-theme="claudionday"] .count {
   width: 16px !important;
   height: 20px !important;
   font-family: "Host Grotesk" !important;
@@ -1865,17 +2288,15 @@ height: 16px !important;
   color: black !important;
 }
 
-
-
 [data-theme="claudionday"] .number-card {
-  width: 242px!important;
-  height: 104px!important;
-  gap: 4px!important;
-  border-radius: 6px!important;
-  padding: 20px!important;
-  background: #F5F7F7!important; /* Replace with your desired hex code */
+  width: 242px !important;
+  height: 104px !important;
+  gap: 4px !important;
+  border-radius: 6px !important;
+  padding: 20px !important;
+  background: #f5f7f7 !important;
 
-border: 1px solid #DCDEDE;
+  border: 1px solid #dcdede;
   /* For inner alignment */
   display: flex;
   flex-direction: column;
@@ -1884,33 +2305,40 @@ border: 1px solid #DCDEDE;
   text-align: center;
   box-sizing: border-box;
 }
+
+[data-theme="claudionday"] .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4px !important;
+  row-gap: 1px !important;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 [data-theme="claudionday"] .number-card h4 {
   color: black !important;
 }
 
-
-[data-theme="claudionday"] 
-.frappe-control[data-fieldname="zatca_list"] table {
-
+[data-theme="claudionday"] .frappe-control[data-fieldname="zatca_list"] table {
   border-radius: 12px !important;
 
   background: #ffffff !important;
-  border-bottom: 1px solid #EAECF0 !important;
+  border-bottom: 1px solid #eaecf0 !important;
+}
 
-}
-[data-theme="claudionday"] 
-.frappe-control[data-fieldname="zatca_list"] td {
+[data-theme="claudionday"] .frappe-control[data-fieldname="zatca_list"] td {
   color: black !important;
-  font-family: 'Host Grotesk', sans-serif !important;
- 
+  font-family: "Host Grotesk", sans-serif !important;
 }
-[data-theme="claudionday"] 
-.frappe-control[data-fieldname="zatca_list"] td a {
-  color: black !important;}
+
+[data-theme="claudionday"] .frappe-control[data-fieldname="zatca_list"] td a {
+  color: black !important;
+}
 
 [data-theme="claudionday"] th {
   color: black !important;
-background: #F9FAFB;
+  background: #f9fafb;
 }
 
 [data-theme="claudionday"] .badge-danger {
@@ -1923,12 +2351,12 @@ background: #F9FAFB;
   padding-right: 8px !important;
   padding-bottom: 2px !important;
   padding-left: 8px !important;
-  background: #F6E6BA !important;
-  border: 1px solid #DECB96 !important;
-  color: #6B5B31 !important;
+  background: #f6e6ba !important;
+  border: 1px solid #decb96 !important;
+  color: #6b5b31 !important;
 
   /* Font styles */
-  font-family: 'Host Grotesk', sans-serif !important;
+  font-family: "Host Grotesk", sans-serif !important;
   font-weight: 500 !important;
   font-size: 11px !important;
   line-height: 120% !important;
@@ -1937,4 +2365,70 @@ background: #F9FAFB;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+}
+
+[data-theme="claudionday"] .filter-chart.btn.btn-xs.pull-right {
+  width: 36px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  background-image: url("/assets/claudion4saudi/assets/21.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  color: transparent !important;
+  display: inline-block !important;
+}
+
+[data-theme="claudionday"] .filter-chart.btn.btn-xs.pull-right svg {
+  display: none !important;
+}
+[data-theme="claudionday"] .chart-actions .chart-menu {
+  width: 36px !important;
+  height: 28px !important;
+  padding: 0 !important;
+
+  background-image: url("/assets/claudion4saudi/assets/22.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+
+  color: transparent !important;
+  display: inline-block !important;
+}
+
+[data-theme="claudionday"] .chart-actions .chart-menu svg {
+  display: none !important;
+}
+[data-theme="claudionday"] .card-actions.dropdown.pull-right > a {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  background-image: url("/assets/claudion4saudi/assets/23.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  color: transparent !important;
+  overflow: visible !important;
+  text-decoration: none !important;
+}
+
+[data-theme="claudionday"] .card-actions.dropdown.pull-right > a * {
+  display: none !important;
+}
+[data-theme="claudionday"]
+  .widget-label:not(.shortcut-widget-box .widget-label)::before {
+  display: none !important;
+  content: none !important;
 }

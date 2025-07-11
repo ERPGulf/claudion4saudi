@@ -2716,7 +2716,6 @@ background: #313536 !important;
 [data-theme="claudionnight"] .btn.btn-secondary.btn-sm {
   background: #15b08f;
   color:black;
-
 }
 
 [data-theme="claudionnight"] .btn.btn-default.btn-sm.btn-new-doc.hidden-xs {
@@ -2760,9 +2759,10 @@ background: #313536 !important;
 
 [data-theme="claudionnight"] .frappe-control > div > div:first-child {
   background: #0A1416 !important;
-color:#ffffff!important;
+  color:#ffffff!important;
 /* border: 1px solid #313536 !important */
 }
+
 [data-theme="claudionnight"] .frappe-control > div > div:last-child {
   background: #0A1416 !important;
   color: #ffffff !important;
