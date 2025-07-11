@@ -28,7 +28,7 @@ doctype_js = {
 }
 
 
-after_install = "claudion4saudi.migrate.after_install"
+after_migrate = "claudion4saudi.migrate.after_migrate"
 
 
 # override_doctype_class = {
