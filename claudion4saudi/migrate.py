@@ -1,8 +1,7 @@
 import frappe
 
 def after_migrate():
-    print("after_migrate called")  
-    frappe.logger().info("after_migrate triggered")
+    frappe.msgprint("workingggggggggg")
     default_theme = frappe.db.get_value(
         "Property Setter", 
         {"property": "options", "doc_type": "User", "field_name": "desk_theme"}, 
