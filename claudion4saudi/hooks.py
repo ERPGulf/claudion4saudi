@@ -53,7 +53,7 @@ override_whitelisted_methods = {
 # override_whitelisted_methods = {
 #     "erpnext.accounts.utils.update_reference_in_payment_entry": "claudion4saudi.advance_in_sales_invoice.update_reference_in_payment_entry"
 # }
-
+# test
 
 fixtures = [
     {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
