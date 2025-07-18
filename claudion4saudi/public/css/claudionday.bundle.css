@@ -979,20 +979,18 @@ height: 16px !important;
   stroke: white;
 }
 
-[data-theme="claudionday"] a[data-label="Assigned To"] ::before {
+/* [data-theme="claudionday"] a[data-label="Assigned To"] ::before {
   content: "";
   display: inline-block;
   position: relative;
   width: 20.00833511352539px;
   height: 20.00833511352539px;
-  top: -0.01px;
-  left: -0.01px;
+  
   background-image: url(/assets/claudion4saudi/assets/user-profile-back.png);
-  /* Replace with your icon file or base64 SVG */
   background-size: contain;
   background-repeat: no-repeat;
   vertical-align: middle;
-}
+} */
 
 /* [data-theme="claudionday"] button.btn-default[data-label="Duplicate"] {
   width: 79px;
@@ -1045,20 +1043,15 @@ height: 16px !important;
 
 [data-theme="claudionday"] ul.list-unstyled.sidebar-menu.text-muted {
   background-color: #edf2f0;
-  /* your provided background color */
   padding: 10px;
-  /* optional: to give some breathing space */
   border-radius: 8px;
   border: 1px solid#E1E5E4;
-  /* optional: if you want rounded corners */
 }
 
 [data-theme="claudionday"] ul.list-unstyled.sidebar-menu.form-sidebar-stats {
   background-color: #edf2f0;
-  /* Replace #EDF2F0 with your desired color */
   padding: 10px;
   border-radius: 8px;
-  /* Optional for smoother corners */
 }
 
 /* Hide the original  dot */
@@ -1095,12 +1088,9 @@ height: 16px !important;
   content: "";
   display: block;
   width: 2px;
-  /* or as per your image width */
   height: 40px;
-  /* or image height */
   margin: 6px auto 0 auto;
   background-image: url("/assets/claudion4saudi/assets/white_connector.svg");
-  /* <-- your image */
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1108,6 +1098,8 @@ height: 16px !important;
 [data-theme="claudionday"] .btn.btn-secondary {
   background-color: #073c44;
   color: #ffffff;
+  border: 1px solid #073c44  !important;
+
 }
 
 /* [data-theme="claudionday"] .col-md-4 {
@@ -2431,4 +2423,45 @@ height: 16px !important;
   .widget-label:not(.shortcut-widget-box .widget-label)::before {
   display: none !important;
   content: none !important;
+}
+
+
+/*****************FINAL************************/
+
+[data-theme="claudionday"] .icon[href="#icon-select"],
+[data-theme="claudionday"] .icon use[href="#icon-select"] {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+[data-theme="claudionday"] a.btn.list-sidebar-button:hover,
+[data-theme="claudionday"] a.btn.list-sidebar-button.select,
+
+[data-theme="claudionday"] a.btn.list-sidebar-button[data-label="Assigned To"]
+{
+  width: 198px;
+  height: 28px;
+  gap: 10px;
+  transform: rotate(0deg);
+  opacity: 1;
+  border-radius: 6px;
+  padding: 4px 12px;
+  background: #15B08F;
+  display: flex; 
+  align-items: center;
+  border: 1px solid #15B08F;
+  color:#ffffff;
+}
+
+[data-theme="claudionday"] a.btn.list-sidebar-button{
+  width: 198px;
+  height: 28px;
+  gap: 10px;
+  transform: rotate(0deg);
+  opacity: 1;
+  border-radius: 6px;
+  padding: 4px 12px;
+  display: flex; 
+  align-items: center;
+  
 }

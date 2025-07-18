@@ -131,8 +131,10 @@
 
 /*search bar background*/
 [data-theme="claudionnight"] #navbar-search {
-  border-color: #4e878f !important;
-  background: #4E878F;
+  /* border-color: #4e878f !important;
+  background: #4E878F; */
+  border-color: #384B4B !important;
+  background: #384B4B !important;
 
 }
 

@@ -15,9 +15,7 @@ import frappe
 #     frappe.db.commit()
 
 
-# migrate.py
 from claudion4saudi.patch import update_user_theme  
 
 def after_migrate():
-    print("✅ after_migrate called")
-    update_user_theme()
+   update_user_theme()
