@@ -1098,6 +1098,8 @@ height: 16px !important;
 [data-theme="claudionday"] .btn.btn-secondary {
   background-color: #073c44;
   color: #ffffff;
+  stroke:white;
+  fill: white;
   border: 1px solid #073c44  !important;
 
 }
@@ -2465,3 +2467,27 @@ height: 16px !important;
   align-items: center;
   
 }
+
+/* Hide only the SVG that uses #icon-add */
+[data-theme="claudionday"] .btn.icon-btn svg.icon.icon-sm use[href="#icon-add"] {
+  display: none; 
+}
+
+[data-theme="claudionday"] .btn.icon-btn svg.icon.icon-sm:has(use[href="#icon-add"]) {
+  display: none !important;
+}
+
+[data-theme="claudionday"] .btn.icon-btn:has(svg.icon.icon-sm use[href="#icon-add"]) {
+  background-image: url("/assets/claudion4saudi/assets/add.svg") !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;  
+  padding-left: 24px;          
+  padding-right: 24px;
+  border: none !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
