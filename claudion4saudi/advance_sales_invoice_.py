@@ -84,9 +84,8 @@ def get_payment_entry(
     pe.party = doc.get("customer")
     pe.contact_person = doc.get("contact_person")
     pe.contact_email = doc.get("contact_email")
-    pe.total = doc.get("total")
-    pe.grand_total = doc.get("grand_total")
-    pe.base_total = doc.get("base_total")
+    # Note: total, grand_total, and base_total will be calculated proportionally based on paid_amount
+    # Don't copy directly from Sales Order - calculate after copying items and taxes
     if hasattr(pe, "ensure_supplier_is_not_blocked"):
         pe.ensure_supplier_is_not_blocked()        
 
@@ -114,6 +113,18 @@ def get_payment_entry(
 
     existing_references = {ref.reference_name for ref in pe.references}
 
+    # Calculate proportion ratio for advance payment based on ITEM TOTAL (without tax)
+    # User enters paid_amount WITHOUT tax (e.g., 20,000), system will add tax on top
+    sales_order_total = flt(doc.total)  # Item total WITHOUT tax
+    if sales_order_total > 0:
+        proportion_ratio = flt(paid_amount) / sales_order_total
+    else:
+        proportion_ratio = 1.0
+    
+    # Calculate proportional tax EARLY (needed for allocated_amount in references)
+    # allocated_amount must include tax because it represents the total customer payment
+    proportional_total_taxes = flt(doc.get("total_taxes_and_charges")) * proportion_ratio
+    
     if dn not in existing_references:
         pe.append("references", {
             "reference_doctype": dt,
@@ -121,7 +132,8 @@ def get_payment_entry(
             "total_amount": financial_details.get("total_amount"),
             "outstanding_amount": financial_details.get("outstanding_amount"),
             "exchange_rate": financial_details.get("exchange_rate"),
-            "allocated_amount": paid_amount,
+            # allocated_amount = paid_amount + proportional_tax (total customer payment including tax)
+            "allocated_amount": flt(paid_amount) + proportional_total_taxes,
             "bill_no": financial_details.get("bill_no"),
             "due_date": financial_details.get("due_date"),
             "account_type": financial_details.get("account_type"),
@@ -131,44 +143,91 @@ def get_payment_entry(
     pe.run_method("set_missing_values") 
     pe.flags.ignore_validate = True
 
+    # Proportion ratio already calculated above based on sales_order_total and paid_amount
+    
     if not pe.get("custom_item"):
         pe.set("custom_item", [])
 
+    # Copy items with proportional amounts based on paid_amount
     for item in doc.items:
+        # Calculate proportional amounts for this advance payment
+        proportional_amount = flt(item.amount) * proportion_ratio
+        proportional_net_amount = flt(item.net_amount) * proportion_ratio
+        proportional_base_amount = flt(item.base_amount) * proportion_ratio
+        
         pe.append("custom_item", {
             "item_code": item.item_code,
             "item_name": item.item_name,	
             "delivery_date": item.delivery_date,
-            "qty": item.qty,
-            "rate": item.rate,
-            "amount": item.amount,
+            "qty": item.qty,  # Keep original qty for reference
+            "rate": item.rate,  # Keep original rate for reference
+            "amount": proportional_amount,  # Proportional amount based on paid_amount
             "actual_qty": item.actual_qty,
             "item_tax_template": item.item_tax_template,
-            "net_amount": item.net_amount,
+            "net_amount": proportional_net_amount,  # Proportional net amount
             "uom": item.uom,
-            "base_amount": item.base_amount,
+            "base_amount": proportional_base_amount,  # Proportional base amount
         })
 
     if not pe.get("taxes"):
         pe.set("taxes", [])
 
+    # Copy taxes with proportional amounts based on paid_amount
     for tax in doc.get("taxes"):
+        # Calculate proportional tax amounts for this advance payment
+        proportional_tax_amount = flt(tax.tax_amount) * proportion_ratio
+        proportional_total = flt(tax.total) * proportion_ratio
+        proportional_base_total = flt(tax.base_total) * proportion_ratio
+        proportional_base_tax_amount = flt(tax.base_tax_amount) * proportion_ratio
+        proportional_tax_after_discount = flt(tax.tax_amount_after_discount_amount) * proportion_ratio if tax.get("tax_amount_after_discount_amount") else 0
+        
+        # Change charge_type from "On Net Total" to "On Paid Amount" for Advance Sales Invoice
+        # "On Net Total" is not valid for Advance Sales Invoice
+        charge_type = "On Paid Amount" if tax.charge_type == "On Net Total" else tax.charge_type
+        
         new_tax = pe.append("taxes", {
-            "charge_type": tax.charge_type,
+            "charge_type": charge_type,  # Use "On Paid Amount" instead of "On Net Total"
             "account_head": tax.account_head,
             "description": tax.description,
-            "rate": tax.rate,
-            "tax_amount": tax.tax_amount,
-            "included_in_paid_amount": tax.included_in_paid_amount,
-            "total": tax.total,
-            "base_total": tax.base_total,
-            "base_tax_amount": tax.base_tax_amount,
-            "tax_amount_after_discount_amount": tax.tax_amount_after_discount_amount,
+            "cost_center": tax.cost_center,
+            "rate": tax.rate,  # Keep original rate for reference
+            "tax_amount": proportional_tax_amount,  # Proportional tax amount
+            # CRITICAL: included_in_paid_amount=0 means tax is ADDED to paid_amount
+            # This matches Payment Entry behavior: user enters 20,000, system adds 3,000 tax = 23,000 total
+            "included_in_paid_amount": 0,  # Tax NOT included, will be added on top
+            "add_deduct_tax": "Add",  # Required field: Add or Deduct tax
+            "total": proportional_total,  # Proportional total
+            "base_total": proportional_base_total,  # Proportional base total
+            "base_tax_amount": proportional_base_tax_amount,  # Proportional base tax amount
+            "tax_amount_after_discount_amount": proportional_tax_after_discount,  # Proportional tax after discount
         })
-    pe.total_taxes_and_charges = doc.get("total_taxes_and_charges")
-    if hasattr(tax, "item_wise_tax_detail"):
-        new_tax.item_wise_tax_detail = tax.item_wise_tax_detail
-    pe.unallocated_amount = max(0, paid_amount - grand_total)
+        if hasattr(tax, "item_wise_tax_detail"):
+            new_tax.item_wise_tax_detail = tax.item_wise_tax_detail
+    
+    # proportional_total_taxes already calculated earlier
+    pe.total_taxes_and_charges = proportional_total_taxes
+    
+    # Calculate proportional totals for the advance payment
+    proportional_total = flt(doc.get("total")) * proportion_ratio
+    proportional_base_total = flt(doc.get("base_total")) * proportion_ratio
+    
+    # IMPORTANT: Now works like Payment Entry
+    # - paid_amount = 20,000 (items only, what user enters)
+    # - tax = 3,000 (calculated and added automatically)
+    # - grand_total = 23,000 (paid_amount + tax)
+    pe.total = flt(paid_amount)  # User-entered amount WITHOUT tax
+    pe.base_total = pe.total  # Assuming same currency
+    pe.grand_total = flt(paid_amount) + proportional_total_taxes  # Add tax on top
+    
+    # CRITICAL: Update received_amount to include tax for proper GL entries
+    # When tax is NOT included in paid_amount (included_in_paid_amount=0),
+    # the actual amount received from customer = paid_amount + tax
+    # This ensures bank GL entry debits the correct total amount (2,300 not 2,000)
+    pe.received_amount = flt(paid_amount) + proportional_total_taxes
+    pe.base_received_amount = pe.received_amount  # Assuming same currency
+    
+    # Unallocated amount should be 0 for advance invoices
+    pe.unallocated_amount = 0
 
     if party_account and bank:
         pe.db_set("company_currency", frappe.get_cached_value("Company", pe.company, "default_currency"))

@@ -31,10 +31,9 @@ doctype_js = {
 after_migrate = "claudion4saudi.migrate.after_migrate"
 
 
-# override_doctype_class = {
-#     # "ToDo": "custom_app.overrides.CustomToDo",
-#     "Sales Invoice": "claudion4saudi.advance_in_sales_invoice.CustomSalesInvoice",
-# }
+override_doctype_class = {
+    "Sales Invoice": "claudion4saudi.advance_in_sales_invoice.CustomSalesInvoice",
+}
 
 
 doc_events = {
@@ -48,6 +47,7 @@ override_whitelisted_methods = {
     # "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme",
     # "erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry":
     # "claudion4saudi.custom_payment_entry.custom_get_payment_entry"
+    "erpnext.accounts.utils.check_if_advance_entry_modified": "claudion4saudi.override.check_if_advance_entry_modified"
 }
 
 # override_whitelisted_methods = {
