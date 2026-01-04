@@ -47,9 +47,7 @@ def get_advance_sales_invoice_entries(
     result = []
 
     for adv_inv in advance_sales_invoices:
-        # if include_unallocated or adv_inv.unallocated_amount > 0:
-        if True:
-            result.append(
+        result.append(
                 _dict(
                     {
                         "reference_type": "Advance Sales Invoice",
@@ -162,8 +160,6 @@ class CustomSalesInvoice(SalesInvoice):
 
         res = journal_entries + filtered_payment_entries + advance_sales_invoices
 
-        frappe.msgprint("Advance entries fetched successfully")
-
         return res
     
     def calculate_taxes_and_totals(self):
@@ -172,26 +168,8 @@ class CustomSalesInvoice(SalesInvoice):
         # Call parent method - calculates standard taxes (FULL amounts)
         super().calculate_taxes_and_totals()
         
-        # NO additional adjustment needed!
-        # The allocated_amount in advances table already includes tax (23,000)
-        # Standard ERPNext calculates: Outstanding = Grand Total - Total Advance
-        # Which gives: 230,000 - 23,000 = 207,000 ✓
-    
-    # NOTE: adjust_total_advance_for_advance_sales_invoice() REMOVED
-    # The allocated_amount from get_advance_entries_for_advance_sales_invoice() 
-    # already returns grand_total (23,000 including tax).
-    # Adding extra tax here was causing Total Advance = 26,000 (wrong!)
-    #
-    # NOTE: Tax reduction methods also removed - we now show full amounts 
-    # and only deduct advance from outstanding, not from tax/grand total
-    # This is cleaner and consistent with standard ERPNext behavior
-    #
-    # Final SI now shows:
-    # - Items: 200,000
-    # - Tax: 30,000 (full)
-    # - Grand Total: 230,000
-    # - Total Advance: 23,000 (includes 3,000 tax portion)
-    # - Outstanding: 207,000
+        # allocated_amount already includes tax, no adjustment needed
+        # Outstanding = Grand Total - Total Advance (e.g., 230,000 - 23,000 = 207,000)
 
     def update_against_document_in_jv(self):
         """
@@ -386,30 +364,3 @@ class CustomSalesInvoice(SalesInvoice):
             limit=1
         )
         return references[0].reference_name if references else None
-
-
-
-
-# my_custom_app/customizations/utils.py
-
-import frappe
-from erpnext.accounts.utils import (
-    update_reference_in_payment_entry as original_update_reference_in_payment_entry,
-)
-
-
-def update_reference_in_payment_entry(lst, active_dimensions=None):
-    # Check if the payment_entry is an AdvanceSalesInvoice
-    for payment_entry in lst:
-        if hasattr(payment_entry, "get_exchange_rate"):
-            return original_update_reference_in_payment_entry(lst, active_dimensions)
-
-        # If it's not, handle it differently
-        elif payment_entry.doctype == "Advance Sales Invoice":
-            # Return a default or fallback value for exchange rate if needed
-            payment_entry.exchange_rate = 1
-        else:
-            # Handle other cases as needed
-            payment_entry.exchange_rate = 1
-
-    return lst  # Return the modified list

@@ -239,6 +239,9 @@ class AdvanceSalesInvoice(AccountsController):
 		# 2. Deferred Revenue Credit: paid_amount (20,000)
 		# 3. VAT Credit: total_taxes_and_charges (3,000)
 		self.make_advance_si_gl_entries()
+		# Create Advance Payment Ledger Entry and update Sales Order advance_paid
+		self.make_advance_payment_ledger_entries()
+		self.update_advance_paid()
 		self.set_status()
 
 	def make_advance_si_gl_entries(self, cancel=False):
@@ -329,7 +332,53 @@ class AdvanceSalesInvoice(AccountsController):
 	def on_cancel(self):
 		"""Reverse GL entries on cancel"""
 		self.make_advance_si_gl_entries(cancel=True)
+		# Reverse Advance Payment Ledger Entry and update Sales Order advance_paid
+		self.make_advance_payment_ledger_entries(cancel=True)
+		self.update_advance_paid()
 		self.set_status()
+
+	def make_advance_payment_ledger_entries(self, cancel=False):
+		"""
+		Create Advance Payment Ledger Entry for Sales Order references.
+		This allows the Sales Order to track advance_paid amount.
+		Similar to Payment Entry's make_advance_payment_ledger_for_payment()
+		"""
+		advance_payment_doctypes = ["Sales Order", "Purchase Order"]
+		
+		# Get currency
+		currency = (
+			self.paid_from_account_currency
+			if self.payment_type == "Receive"
+			else self.paid_to_account_currency
+		)
+		
+		for ref in self.get("references", []):
+			if ref.reference_doctype in advance_payment_doctypes and ref.allocated_amount:
+				doc = frappe.new_doc("Advance Payment Ledger Entry")
+				doc.company = self.company
+				doc.voucher_type = self.doctype  # "Advance Sales Invoice"
+				doc.voucher_no = self.name
+				doc.against_voucher_type = ref.reference_doctype  # "Sales Order"
+				doc.against_voucher_no = ref.reference_name
+				# On submit: positive amount, On cancel: negative amount
+				doc.amount = ref.allocated_amount if not cancel else -1 * ref.allocated_amount
+				doc.currency = currency or self.company_currency
+				doc.event = "Cancel" if cancel else "Submit"
+				doc.flags.ignore_permissions = 1
+				doc.save()
+
+	def update_advance_paid(self):
+		"""
+		Update advance_paid field on referenced Sales Orders.
+		Similar to Payment Entry's update_advance_paid()
+		"""
+		if self.payment_type in ("Receive", "Pay") and self.party:
+			advance_payment_doctypes = ["Sales Order", "Purchase Order"]
+			for ref in self.get("references", []):
+				if ref.allocated_amount and ref.reference_doctype in advance_payment_doctypes:
+					frappe.get_doc(
+						ref.reference_doctype, ref.reference_name, for_update=True
+					).set_total_advance_paid()
 
 # 	def validate_for_repost(self):
 # 		validate_docs_for_voucher_types(["Advance Sales Invoice"])

@@ -1,32 +1,7 @@
 import frappe
 
-
-def check_if_advance_entry_modified(args):
-	"""Custom validation to support Advance Sales Invoice in addition to Payment Entry"""
-	if not args.get("unreconciled_amount"):
-		args.update({"unreconciled_amount": args.get("unadjusted_amount")})
-
-	ret = None
-	
-	# Handle Advance Sales Invoice - Skip validation to avoid "Payment Entry has been modified" error
-	# This is safe because:
-	# 1. Advance Sales Invoice is already submitted (docstatus=1)
-	# 2. We're only reading values, not modifying the Advance Sales Invoice
-	# 3. The tax reduction is calculated fresh each time from DB values
-	if args.voucher_type == "Advance Sales Invoice":
-		# Simply return without throwing error - the advance is valid if it exists and is submitted
-		advance_exists = frappe.db.exists(
-			"Advance Sales Invoice",
-			{"name": args.get("voucher_no"), "docstatus": 1}
-		)
-		if not advance_exists:
-			frappe.throw(("Advance Sales Invoice {0} is not submitted or does not exist").format(args.get("voucher_no")))
-		return  # Valid - don't throw error
-	
-	# For other voucher types, call original ERPNext logic
-	# Import here to avoid circular import
-	from erpnext.accounts.doctype.payment_entry.payment_entry import check_if_advance_entry_modified as original_check
-	return original_check(args)
+# NOTE: check_if_advance_entry_modified is handled via monkey patch in __init__.py
+# The monkey patch approach is more reliable than override_whitelisted_methods
 
 
 @frappe.whitelist()

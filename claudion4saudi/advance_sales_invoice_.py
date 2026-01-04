@@ -95,7 +95,8 @@ def get_payment_entry(
         party_account_currency if payment_type == "Receive" else bank.account_currency
     )
     pe.paid_to_account_currency = party_account_currency if payment_type == "Pay" else bank.account_currency
-    pe.paid_amount = paid_amount
+    # Auto-fill paid_amount with total WITHOUT tax (user can change it)
+    pe.paid_amount = flt(doc.total)
     pe.received_amount = received_amount
     pe.letter_head = doc.get("letter_head")
     pe.bank_account = frappe.db.get_value("Bank Account", {"is_company_account": 1, "is_default": 1}, "name")
@@ -117,7 +118,7 @@ def get_payment_entry(
     # User enters paid_amount WITHOUT tax (e.g., 20,000), system will add tax on top
     sales_order_total = flt(doc.total)  # Item total WITHOUT tax
     if sales_order_total > 0:
-        proportion_ratio = flt(paid_amount) / sales_order_total
+        proportion_ratio = flt(pe.paid_amount) / sales_order_total  # Use pe.paid_amount not the old paid_amount variable
     else:
         proportion_ratio = 1.0
     
@@ -133,7 +134,7 @@ def get_payment_entry(
             "outstanding_amount": financial_details.get("outstanding_amount"),
             "exchange_rate": financial_details.get("exchange_rate"),
             # allocated_amount = paid_amount + proportional_tax (total customer payment including tax)
-            "allocated_amount": flt(paid_amount) + proportional_total_taxes,
+            "allocated_amount": flt(pe.paid_amount) + proportional_total_taxes,
             "bill_no": financial_details.get("bill_no"),
             "due_date": financial_details.get("due_date"),
             "account_type": financial_details.get("account_type"),
@@ -211,21 +212,6 @@ def get_payment_entry(
     proportional_total = flt(doc.get("total")) * proportion_ratio
     proportional_base_total = flt(doc.get("base_total")) * proportion_ratio
     
-    # IMPORTANT: Now works like Payment Entry
-    # - paid_amount = 20,000 (items only, what user enters)
-    # - tax = 3,000 (calculated and added automatically)
-    # - grand_total = 23,000 (paid_amount + tax)
-    pe.total = flt(paid_amount)  # User-entered amount WITHOUT tax
-    pe.base_total = pe.total  # Assuming same currency
-    pe.grand_total = flt(paid_amount) + proportional_total_taxes  # Add tax on top
-    
-    # CRITICAL: Update received_amount to include tax for proper GL entries
-    # When tax is NOT included in paid_amount (included_in_paid_amount=0),
-    # the actual amount received from customer = paid_amount + tax
-    # This ensures bank GL entry debits the correct total amount (2,300 not 2,000)
-    pe.received_amount = flt(paid_amount) + proportional_total_taxes
-    pe.base_received_amount = pe.received_amount  # Assuming same currency
-    
     # Unallocated amount should be 0 for advance invoices
     pe.unallocated_amount = 0
 
@@ -234,6 +220,26 @@ def get_payment_entry(
 
         pe.set_exchange_rate(ref_doc=doc)
         pe.set_amounts()
+    
+    # IMPORTANT: Set these values AFTER set_amounts() because set_amounts() overwrites received_amount
+    # - paid_amount = 100,000 (items only, what user enters)
+    # - tax = 15,000 (calculated and added automatically)
+    # - grand_total = 115,000 (paid_amount + tax)
+    pe.total = flt(pe.paid_amount)  # User-entered amount WITHOUT tax
+    pe.base_total = pe.total  # Assuming same currency
+    pe.grand_total = flt(pe.paid_amount) + proportional_total_taxes  # Add tax on top
+    
+    # CRITICAL: Update received_amount to include tax for proper GL entries
+    # When tax is NOT included in paid_amount (included_in_paid_amount=0),
+    # the actual amount received from customer = paid_amount + tax
+    pe.received_amount = flt(pe.paid_amount) + proportional_total_taxes
+    pe.base_received_amount = pe.received_amount  # Assuming same currency
+    
+    # Set total_allocated_amount to match received_amount (grand_total with tax)
+    pe.total_allocated_amount = pe.received_amount
+    
+    # Difference should be 0
+    pe.difference_amount = 0
 
     if not created_from_payment_request:
         allocate_open_payment_requests_to_references(pe.references, pe.precision("paid_amount"))
