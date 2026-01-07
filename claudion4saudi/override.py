@@ -1,5 +1,8 @@
 import frappe
 
+# NOTE: check_if_advance_entry_modified is handled via monkey patch in __init__.py
+# The monkey patch approach is more reliable than override_whitelisted_methods
+
 
 @frappe.whitelist()
 def switch_theme(theme):

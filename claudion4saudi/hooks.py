@@ -31,10 +31,9 @@ doctype_js = {
 after_migrate = "claudion4saudi.migrate.after_migrate"
 
 
-# override_doctype_class = {
-#     # "ToDo": "custom_app.overrides.CustomToDo",
-#     "Sales Invoice": "claudion4saudi.advance_in_sales_invoice.CustomSalesInvoice",
-# }
+override_doctype_class = {
+    "Sales Invoice": "claudion4saudi.advance_in_sales_invoice.CustomSalesInvoice",
+}
 
 
 doc_events = {
@@ -44,22 +43,11 @@ doc_events = {
 }
 
 
-override_whitelisted_methods = {
-    # "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme",
-    # "erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry":
-    # "claudion4saudi.custom_payment_entry.custom_get_payment_entry"
-}
-
-# override_whitelisted_methods = {
-#     "erpnext.accounts.utils.update_reference_in_payment_entry": "claudion4saudi.advance_in_sales_invoice.update_reference_in_payment_entry"
-# }
-# test
+# NOTE: override_whitelisted_methods not used
+# check_if_advance_entry_modified is handled via monkey patch in __init__.py
+# override_whitelisted_methods only works for @frappe.whitelist() methods, not internal functions
 
 fixtures = [
     {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
     {"dt": "Property Setter", "filters": {"module": "Claudion4Saudi"}},
 ]
-
-# from claudion4saudi.patch import apply_monkey_patches
-
-# apply_monkey_patches()
