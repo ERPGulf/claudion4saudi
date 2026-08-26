@@ -166,9 +166,15 @@ def get_payment_entry(
             "base_tax_amount": tax.base_tax_amount,
             "tax_amount_after_discount_amount": tax.tax_amount_after_discount_amount,
         })
+
+        # Per row, inside the loop. This used to sit outside it, which meant two
+        # things: on a source document with no taxes the loop never ran and both
+        # `tax` and `new_tax` were unbound (UnboundLocalError), and when there
+        # were taxes only the LAST row ever received the detail.
+        if hasattr(tax, "item_wise_tax_detail"):
+            new_tax.item_wise_tax_detail = tax.item_wise_tax_detail
+
     pe.total_taxes_and_charges = doc.get("total_taxes_and_charges")
-    if hasattr(tax, "item_wise_tax_detail"):
-        new_tax.item_wise_tax_detail = tax.item_wise_tax_detail
     pe.unallocated_amount = max(0, paid_amount - grand_total)
 
     if party_account and bank:
