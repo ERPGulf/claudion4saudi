@@ -9,12 +9,21 @@ from frappe.utils.file_manager import save_file
 
 from pdf2image import convert_from_bytes
 from io import BytesIO
-# Initialize Frappe
-# frappe.init(site="zatca-live.erpgulf.com")
-# frappe.connect()
-pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 
-@frappe.whitelist(allow_guest=True)
+
+def _configure_tesseract():
+    """Point pytesseract at the tesseract binary, at call time not import time.
+
+    Setting this at module scope hard-coded a Linux path into an import side
+    effect, so the module could not even be imported on a host where tesseract
+    lives elsewhere. Site-configurable via `tesseract_cmd` in site_config.json.
+    """
+    pytesseract.pytesseract.tesseract_cmd = frappe.conf.get(
+        "tesseract_cmd", "/usr/bin/tesseract"
+    )
+
+
+@frappe.whitelist(allow_guest=True, methods=["POST"])
 def pdf_to_json():
     try:
         uploaded_file = frappe.request.files.get("file")
@@ -87,6 +96,7 @@ def extract_text_from_pdf_bytes(pdf_bytes):
         frappe.msgprint(f"Error using pdfplumber: {e}")
 
     try:
+        _configure_tesseract()
         images = convert_from_bytes(pdf_bytes, dpi=300)
         for image in images:
             extracted_text += pytesseract.image_to_string(image) + "\n"

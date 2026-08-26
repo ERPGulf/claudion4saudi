@@ -6,15 +6,9 @@ from io import StringIO
 from datetime import datetime
 from collections import defaultdict
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist(allow_guest=True, methods=["POST"])
 def create_invoices():
-    
-    if frappe.request.method != "POST":
-        return Response(
-            json.dumps({"data": "Only POST requests are allowed."}),
-            status=404, mimetype='application/json'
-        )
-    
+
     uploaded_file = frappe.request.files.get("file")
     image_files = frappe.request.files.getlist("images")
     qr_code_files = frappe.request.files.getlist("qr_codes")
@@ -33,6 +27,13 @@ def create_invoices():
     if not image_files:
         return Response(
             json.dumps({"data": "No image files uploaded."}),
+            status=404, mimetype='application/json'
+        )
+
+    if not frappe.db.exists("DocType", "Gpos setting"):
+        return Response(
+            json.dumps({"data": "The 'Gpos setting' DocType is not installed on this site. "
+                                "This endpoint requires the GPOS app."}),
             status=404, mimetype='application/json'
         )
 
