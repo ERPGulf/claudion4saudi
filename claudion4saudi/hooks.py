@@ -7,7 +7,6 @@ app_license = "mit"
 
 
 from frappe import _
-from . import __version__ as app_version
 
 
 app_include_css = "claudion4saudi.bundle.css"
@@ -39,7 +38,7 @@ after_migrate = "claudion4saudi.migrate.after_migrate"
 
 doc_events = {
     "Advance Sales Invoice": {
-        "on_submit": "zatca_erpgulf.zatca_erpgulf.advance_payment.zatca_background_on_submit",
+        "on_submit": "claudion4saudi.zatca_bridge.zatca_background_on_submit",
     },
 }
 
