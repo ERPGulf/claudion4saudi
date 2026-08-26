@@ -4,54 +4,16 @@ from frappe.model.document import Document
 
 
 import frappe
-from frappe import ValidationError, _, qb, scrub, throw
-from frappe.query_builder import Tuple
-from frappe.query_builder.functions import Count
-from frappe.utils import cint, comma_or, flt, getdate, nowdate
-from frappe.utils.data import comma_and, fmt_money, get_link_to_form
-from pypika import Case
-from pypika.functions import Coalesce, Sum
+from frappe import _
+from frappe.utils import flt
+from frappe.utils.data import get_link_to_form
 
-import erpnext
-from erpnext.accounts.doctype.accounting_dimension.accounting_dimension import get_dimensions
 from erpnext.accounts.doctype.bank_account.bank_account import (
 	get_bank_account_details,
-	get_default_company_bank_account,
-	get_party_bank_account,
-)
-from erpnext.accounts.doctype.invoice_discounting.invoice_discounting import (
-	get_party_account_based_on_invoice_discounting,
-)
-from erpnext.accounts.doctype.journal_entry.journal_entry import get_default_bank_cash_account
-from erpnext.accounts.doctype.repost_accounting_ledger.repost_accounting_ledger import (
-	validate_docs_for_deferred_accounting,
-	validate_docs_for_voucher_types,
-)
-from erpnext.accounts.general_ledger import (
-	make_gl_entries,
-	make_reverse_gl_entries,
-	process_gl_map,
-)
-from erpnext.accounts.party import get_party_account
-from erpnext.accounts.utils import (
-	cancel_exchange_gain_loss_journal,
-	get_account_currency,
-	get_balance_on,
-	get_outstanding_invoices,
-)
-from erpnext.controllers.accounts_controller import (
-	AccountsController,
-	get_supplier_block_status,
-	validate_taxes_and_charges,
 )
 from erpnext.setup.utils import get_exchange_rate
 
 
-from erpnext.controllers.accounts_controller import (
-	AccountsController,
-	get_supplier_block_status,
-	validate_taxes_and_charges,
-)
 
 
 class AdvanceSalesInvoice(Document):

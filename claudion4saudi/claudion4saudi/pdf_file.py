@@ -2,10 +2,7 @@ import frappe
 import pdfplumber
 import re
 import json
-from pdf2image import convert_from_path
 import pytesseract
-import fitz
-from frappe.utils.file_manager import save_file
 
 from pdf2image import convert_from_bytes
 from io import BytesIO

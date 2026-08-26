@@ -6,7 +6,6 @@ app_email = "support@ERPGulf.com"
 app_license = "mit"
 
 
-from frappe import _
 
 
 app_include_css = "claudion4saudi.bundle.css"

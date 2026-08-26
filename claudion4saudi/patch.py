@@ -7,7 +7,6 @@ from frappe import _
 #     # pass  # Intentionally do nothing to skip the validation
 
 
-from datetime import datetime
 
 # In your results construction
 
