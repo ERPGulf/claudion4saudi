@@ -47,7 +47,3 @@ fixtures = [
     {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
     {"dt": "Property Setter", "filters": {"module": "Claudion4Saudi"}},
 ]
-
-# from claudion4saudi.patch import apply_monkey_patches
-
-# apply_monkey_patches()
