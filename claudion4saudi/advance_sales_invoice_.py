@@ -153,17 +153,43 @@ def get_payment_entry(
     if not pe.get("taxes"):
         pe.set("taxes", [])
 
+    # Advance Taxes and Charges accepts a narrower set of charge types than
+    # Sales/Purchase Taxes and Charges: ("", Actual, On Paid Amount,
+    # On Previous Row Amount, On Previous Row Total) - identical on v15 and v16.
+    # A perfectly ordinary "On Net Total" VAT row therefore cannot be copied
+    # across verbatim. Read the valid set from the child DocType itself so this
+    # cannot drift if ERPNext changes it.
+    allowed_charge_types = {
+        o.strip()
+        for o in (frappe.get_meta("Advance Taxes and Charges")
+                  .get_field("charge_type").options or "").split("\n")
+        if o.strip()
+    }
+
     for tax in doc.get("taxes"):
+        charge_type = tax.charge_type
+        tax_amount = tax.tax_amount
+        base_tax_amount = tax.base_tax_amount
+        rate = tax.rate
+
+        if charge_type not in allowed_charge_types:
+            # Collapse to an absolute amount. "Actual" is the only charge type
+            # that carries a fixed figure, so the already-computed tax amount
+            # from the source document is preserved exactly rather than being
+            # recomputed against a different base (paid amount != net total).
+            charge_type = "Actual"
+            rate = 0
+
         new_tax = pe.append("taxes", {
-            "charge_type": tax.charge_type,
+            "charge_type": charge_type,
             "account_head": tax.account_head,
             "description": tax.description,
-            "rate": tax.rate,
-            "tax_amount": tax.tax_amount,
+            "rate": rate,
+            "tax_amount": tax_amount,
             "included_in_paid_amount": tax.included_in_paid_amount,
             "total": tax.total,
             "base_total": tax.base_total,
-            "base_tax_amount": tax.base_tax_amount,
+            "base_tax_amount": base_tax_amount,
             "tax_amount_after_discount_amount": tax.tax_amount_after_discount_amount,
         })
 
