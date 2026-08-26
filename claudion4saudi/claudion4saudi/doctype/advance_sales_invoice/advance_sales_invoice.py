@@ -11,6 +11,11 @@ from frappe.utils.data import get_link_to_form
 from erpnext.accounts.doctype.bank_account.bank_account import (
 	get_bank_account_details,
 )
+from erpnext.accounts.doctype.payment_entry.payment_entry import (
+	allocate_open_payment_requests_to_references,
+	get_payment_request_outstanding_set_in_references,
+	get_references_outstanding_amount,
+)
 from erpnext.setup.utils import get_exchange_rate
 
 
