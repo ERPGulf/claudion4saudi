@@ -1,7 +1,8 @@
 import erpnext
 from erpnext.accounts.doctype.journal_entry.journal_entry import get_exchange_rate
 from erpnext.accounts.doctype.payment_entry.payment_entry import allocate_open_payment_requests_to_references, apply_early_payment_discount, get_bank_cash_account, get_outstanding_on_journal_entry, set_paid_amount_and_received_amount, set_party_account, set_party_account_currency
-from erpnext.accounts.party import get_party_account, get_party_bank_account
+from erpnext.accounts.doctype.bank_account.bank_account import get_party_bank_account
+from erpnext.accounts.party import get_party_account
 import frappe
 from frappe.utils import flt, getdate, nowdate
 
