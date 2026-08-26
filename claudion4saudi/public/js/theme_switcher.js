@@ -7,73 +7,44 @@ frappe.ui.ThemeSwitcher = class CustomThemeSwitcher extends (
     super();
   }
 
+  // `name` is the value core writes to <html data-theme-mode> and, after
+  // toTitle(), the value it persists to User.desk_theme. It must stay lowercase
+  // and single-word: toTitle() only upper-cases the first character of each
+  // space-separated word, so "claudionday" round-trips as "Claudionday", which
+  // is exactly what the User.desk_theme Property Setter now lists and what the
+  // CSS bundles key on ([data-theme="claudionday"]).
   fetch_themes() {
     return new Promise((resolve) => {
       this.themes = [
-        // {
-        //   name: "claudiontheme",
-        //   label: "Claudion Theme",
-        //   info: "Claudion Default Theme 2",
-        // },
-        // {
-        //   name: "claudiondark",
-        //   label: "Claudion Dark",
-        //   info: "Claudion Theme 1",
-        // },
         {
           name: "light",
-          label: "Frappe Light",
-          info: "Light Theme",
+          label: __("Frappe Light"),
+          info: __("Light Theme"),
         },
         {
           name: "dark",
-          label: "Timeless Night",
-          info: "Dark Theme",
+          label: __("Timeless Night"),
+          info: __("Dark Theme"),
         },
-        // {
-        //   name: "automatic",
-        //   label: "Automatic",
-        //   info: "Uses system's theme to switch between light and dark mode",
-        // },
-        // {
-        //   name: "blue",
-        //   label: "Blue",
-        //   info: "Blue Theme",
-        // },
-        // {
-        //   name: "red",
-        //   label: "Red",
-        //   info: "Red Theme",
-        // },
-        // {
-        //   name: "peachgrey",
-        //   label: "Peach Grey",
-        //   info: "Peach Grey Theme",
-        // },
+        {
+          name: "automatic",
+          label: __("Automatic"),
+          info: __("Uses system's theme to switch between light and dark mode"),
+        },
         {
           name: "purple",
-          label: "Purple",
-          info: "Purple Theme",
+          label: __("Purple"),
+          info: __("Purple Theme"),
         },
-        // {
-        //   name: "claudionsimple",
-        //   label: "Claudion Simple",
-        //   info: "Claudion Default Theme 3",
-        // },
-        // {
-        //   name: "claudionlight",
-        //   label: "Claudion Light",
-        //   info: "Claudion Default Theme 4",
-        // },
         {
           name: "claudionday",
-          label: "Claudion Day",
-          info: "Claudion Default Theme 5",
+          label: __("Claudion Day"),
+          info: __("Claudion Day Theme"),
         },
         {
           name: "claudionnight",
-          label: "Claudion Night",
-          info: "Claudion Default Theme 6",
+          label: __("Claudion Night"),
+          info: __("Claudion Night Theme"),
         },
       ];
       resolve(this.themes);

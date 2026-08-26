@@ -37,9 +37,9 @@ doc_events = {
 
 
 override_whitelisted_methods = {
-    # "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme",
-    # "erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry":
-    # "claudion4saudi.custom_payment_entry.custom_get_payment_entry"
+    # Core's switch_theme hard-codes Light/Dark/Automatic and silently drops
+    # anything else, so this app's themes never persisted. See override.py.
+    "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme",
 }
 
 fixtures = [
