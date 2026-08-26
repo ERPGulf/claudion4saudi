@@ -2,8 +2,11 @@
 # See license.txt
 
 # import frappe
-from frappe.tests.utils import FrappeTestCase
+try:  # frappe v16
+	from frappe.tests import IntegrationTestCase
+except ImportError:  # frappe v15 - IntegrationTestCase does not exist there
+	from frappe.tests.utils import FrappeTestCase as IntegrationTestCase
 
 
-class TestAdvanceSalesInvoiceItem(FrappeTestCase):
+class TestAdvanceSalesInvoiceItem(IntegrationTestCase):
 	pass
