@@ -30,12 +30,6 @@ doctype_js = {
 after_migrate = "claudion4saudi.migrate.after_migrate"
 
 
-# override_doctype_class = {
-#     # "ToDo": "custom_app.overrides.CustomToDo",
-#     "Sales Invoice": "claudion4saudi.advance_in_sales_invoice.CustomSalesInvoice",
-# }
-
-
 doc_events = {
     "Advance Sales Invoice": {
         "on_submit": "claudion4saudi.zatca_bridge.zatca_background_on_submit",
@@ -48,11 +42,6 @@ override_whitelisted_methods = {
     # "erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry":
     # "claudion4saudi.custom_payment_entry.custom_get_payment_entry"
 }
-
-# override_whitelisted_methods = {
-#     "erpnext.accounts.utils.update_reference_in_payment_entry": "claudion4saudi.advance_in_sales_invoice.update_reference_in_payment_entry"
-# }
-# test
 
 fixtures = [
     {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
