@@ -90,10 +90,10 @@ jobs:
           bench init --skip-redis-config-generation \
             --frappe-branch ${{ matrix.branch }} \
             --python "$(which python)" \
-            ~/bench
+            /home/runner/bench
 
       - name: Point bench at the CI redis services
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: |
           bench set-config -g redis_cache    redis://127.0.0.1:13000
           bench set-config -g redis_queue    redis://127.0.0.1:11000
@@ -101,15 +101,15 @@ jobs:
           bench set-config -g db_host 127.0.0.1
 
       - name: get-app erpnext (${{ matrix.branch }})
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: bench get-app --branch ${{ matrix.branch }} erpnext
 
       - name: get-app claudion4saudi (this commit)
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: bench get-app "$GITHUB_WORKSPACE/app-src"
 
       - name: new-site
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: |
           bench new-site ci.localhost \
             --admin-password admin \
@@ -118,23 +118,23 @@ jobs:
           bench --site ci.localhost set-config allow_tests true
 
       - name: install-app erpnext
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: bench --site ci.localhost install-app erpnext
 
       - name: install-app claudion4saudi
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: bench --site ci.localhost install-app claudion4saudi
 
       - name: migrate
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: bench --site ci.localhost migrate
 
       - name: build
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: bench build --app claudion4saudi
 
       - name: run-tests
-        working-directory: ~/bench
+        working-directory: /home/runner/bench
         run: bench --site ci.localhost run-tests --app claudion4saudi
 
       - name: lint
