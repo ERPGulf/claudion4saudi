@@ -158,6 +158,52 @@ Because v16 adds `mysqlclient` (a C extension) while v15 uses only PyMySQL, a v1
 bench additionally needs `pkg-config` and, on macOS, the `mariadb-connector-c`
 formula. A v15-only bench needs neither.
 
+### Test suite
+
+The three `test_*.py` classes previously had no test methods, so
+`bench run-tests --app claudion4saudi` collected nothing and exited 0. Each now
+has one assertion covering DocType existence, meta load and the presence of the
+fields the app is responsible for — including five fixture-supplied custom fields
+on Advance Sales Invoice, so a fixture that fails to sync fails the test.
+
+Two harness details were needed to make the suite runnable, and one of them is a
+genuine app defect:
+
+- The tests use `UnitTestCase` on v16 (falling back to `FrappeTestCase` on v15,
+  which has no `UnitTestCase`). They assert on metadata and create no documents,
+  so they need no fixtures. This is not a return to the deprecated shim — it is
+  the correct base for a unit test.
+- `IntegrationTestCase.setUpClass` calls `make_test_records()`
+  (`frappe/tests/classes/integration_test_case.py:55`), and the v15 runner does
+  the same at `frappe/test_runner.py:213` regardless of base class. That walk
+  reaches **ERPNext's standard Supplier test records, which do not set
+  `custom_company`** — a field this app's fixtures make mandatory on Supplier —
+  and the suite dies with `MandatoryError` before any assertion runs. Each test
+  module therefore declares its first-level dependencies in
+  `IGNORE_TEST_RECORD_DEPENDENCIES` (v16) / `test_ignore` (v15).
+
+  **This affects more than these three tests.** Any `IntegrationTestCase` that
+  touches Supplier will hit it on a site with this app installed, including
+  ERPGulf's own CI for erpnext-adjacent work. Relaxing the mandatory flag is a
+  product decision and was left alone.
+
+### Continuous integration
+
+`.github/workflows/ci.yml` runs the full sequence as a v15/v16 matrix on
+`ubuntu-latest` against a `mariadb:11.8` service: `bench init` → `get-app erpnext`
+→ `get-app` this commit → `new-site` → `install-app` (both) → `migrate` → `build`
+→ `run-tests` → `ruff`.
+
+Python 3.14 is used for both legs because it is the only version satisfying each
+range at the tested versions; the workflow says so in a comment so it is not read
+as "v15 requires 3.14". Node differs per leg (24 for v16, 20 for v15) per
+`frappe/package.json`. `pkg-config` and `libmysqlclient-dev` are installed on both
+legs though only v16 needs them, and `uv` is installed explicitly because bench 5.x
+shells out to it and fails with a bare `FileNotFoundError` otherwise.
+
+Both legs verified green:
+<https://github.com/anos4444/claudion4saudi/actions/runs/33038092137>
+
 ### Contributors
 
 - v16 compatibility work contributed via pull request.
