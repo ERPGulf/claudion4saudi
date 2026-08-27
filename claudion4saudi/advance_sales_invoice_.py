@@ -182,8 +182,17 @@ def get_payment_entry(
             # that carries a fixed figure, so the already-computed tax amount
             # from the source document is preserved exactly rather than being
             # recomputed against a different base (paid amount != net total).
+            #
+            # `rate` is deliberately carried over rather than zeroed. ERPNext
+            # ignores it for an Actual row - get_current_tax_amount() uses
+            # tax.tax_amount directly (payment_entry.py:1856) - so keeping it
+            # cannot disturb any figure. But it is not decorative: ZATCA reads it
+            # as the invoiced item VAT rate (BT-152), and a zero rate on a
+            # Standard-rated line is rejected outright with BR-KSA-84 ("for
+            # Standard Rate VAT Category the rate can either be 15% or 5%") plus
+            # a BR-S-05 warning. Zeroing it here previously produced exactly that
+            # rejection against the live ZATCA endpoint.
             charge_type = "Actual"
-            rate = 0
 
         new_tax = pe.append("taxes", {
             "charge_type": charge_type,
