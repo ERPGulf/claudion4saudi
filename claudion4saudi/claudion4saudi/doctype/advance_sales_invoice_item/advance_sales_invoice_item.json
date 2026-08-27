@@ -12,6 +12,7 @@
   "amount",
   "net_amount",
   "uom",
+  "item_tax_template",
   "base_amount",
   "item_name"
  ],
@@ -65,6 +66,13 @@
    "label": "UOM",
    "options": "UOM",
    "reqd": 1
+  },
+  {
+   "fieldname": "item_tax_template",
+   "fieldtype": "Link",
+   "label": "Item Tax Template",
+   "options": "Item Tax Template",
+   "read_only": 1
   },
   {
    "fieldname": "base_amount",

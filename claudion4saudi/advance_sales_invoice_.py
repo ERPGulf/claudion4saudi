@@ -143,7 +143,6 @@ def get_payment_entry(
             "qty": item.qty,
             "rate": item.rate,
             "amount": item.amount,
-            "actual_qty": item.actual_qty,
             "item_tax_template": item.item_tax_template,
             "net_amount": item.net_amount,
             "uom": item.uom,
