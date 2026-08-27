@@ -4,7 +4,7 @@ from erpnext.accounts.doctype.payment_entry.payment_entry import allocate_open_p
 from erpnext.accounts.doctype.bank_account.bank_account import get_party_bank_account
 from erpnext.accounts.party import get_party_account
 import frappe
-from frappe.utils import flt, getdate, nowdate
+from frappe.utils import flt, getdate, nowdate, nowtime
 
 
 @frappe.whitelist()
@@ -79,6 +79,12 @@ def get_payment_entry(
     pe.company = doc.company
     pe.cost_center = doc.get("cost_center")
     pe.posting_date = nowdate()
+    # posting_time is a custom field this app adds to Advance Sales Invoice, and it
+    # was never populated - the row went to the database as NULL. zatca_erpgulf reads
+    # it unguarded (advance_payment.py:73 -> frappe get_time), and frappe's get_time
+    # only catches ValueError, so None reaches datetime.time.fromisoformat and raises
+    # TypeError: fromisoformat: argument must be str - which aborts the ZATCA call.
+    pe.posting_time = nowtime()
     pe.reference_date = reference_date
     pe.mode_of_payment = doc.get("mode_of_payment")
     pe.party_type = party_type
