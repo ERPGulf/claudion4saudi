@@ -20,8 +20,18 @@ except ImportError:  # frappe v15
 # records, which omit custom_company (made mandatory by this app's fixtures) and
 # abort the whole suite with MandatoryError before any assertion runs.
 # IGNORE_TEST_RECORD_DEPENDENCIES is the v16 name; test_ignore is the v15 name.
+# NOTE: this list is derived from the DocType's link fields and goes stale when one
+# is added -- adding item_tax_template introduced "Item Tax Template" here and broke
+# the v15 CI leg with `LinkValidationError: Could not find Warehouse Type: Transit`,
+# because the runner walked into the un-ignored dependency. Regenerate with:
+#     meta = frappe.get_meta("Advance Sales Invoice Item")
+#     lf = list(meta.get_link_fields())
+#     for df in meta.get_table_fields():
+#         lf.extend(frappe.get_meta(df.options).get_link_fields())
+#     sorted({df.options for df in lf if df.options != "[Select]"})
 IGNORE_TEST_RECORD_DEPENDENCIES = [
 	"Item",
+	"Item Tax Template",
 	"UOM",
 ]
 test_ignore = IGNORE_TEST_RECORD_DEPENDENCIES
