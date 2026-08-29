@@ -192,6 +192,22 @@ def get_payment_entry(
             # Standard Rate VAT Category the rate can either be 15% or 5%") plus
             # a BR-S-05 warning. Zeroing it here previously produced exactly that
             # rejection against the live ZATCA endpoint.
+            #
+            # A percentage row can legitimately carry rate 0: when the tax is
+            # driven by an Item Tax Template, ERPNext leaves the document-level
+            # rate at 0 and keeps the real percentage per item in
+            # item_tax_rate (e.g. {"tax - TT": 15.0}) while the row holds only
+            # the computed amount. Copying that straight through hands ZATCA a
+            # 0.00 percent and earns the same BR-KSA-84 rejection. The rate is
+            # recoverable exactly from the row itself - tax_amount over
+            # net_amount - so recover it rather than emit a zero. Only done for
+            # rows that were percentage-based to begin with; a row authored as
+            # Actual is a fixed charge and keeps whatever rate it had.
+            if not rate and flt(tax.get("net_amount")):
+                rate = flt(
+                    flt(tax_amount) / flt(tax.get("net_amount")) * 100.0, 4
+                )
+
             charge_type = "Actual"
 
         new_tax = pe.append("taxes", {
