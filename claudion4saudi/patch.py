@@ -1,4 +1,3 @@
-import erpnext.accounts.utils
 import frappe
 from frappe import _
 
@@ -8,90 +7,6 @@ from frappe import _
 #     # pass  # Intentionally do nothing to skip the validation
 
 
-def custom_check_if_advance_entry_modified(args):
-    """
-    check if there is already a voucher reference
-    check if amount is same
-    check if jv is submitted
-    """
-    if not args.get("unreconciled_amount"):
-        args.update({"unreconciled_amount": args.get("unadjusted_amount")})
-
-    ret = None
-    if args.voucher_type == "Journal Entry":
-        journal_entry = frappe.qb.DocType("Journal Entry")
-        journal_acc = frappe.qb.DocType("Journal Entry Account")
-
-        q = (
-            frappe.qb.from_(journal_entry)
-            .inner_join(journal_acc)
-            .on(journal_entry.name == journal_acc.parent)
-            .select(journal_acc[args.get("dr_or_cr")])
-            .where(
-                (journal_acc.account == args.get("account"))
-                & (journal_acc.party_type == args.get("party_type"))
-                & (journal_acc.party == args.get("party"))
-                & (
-                    (journal_acc.reference_type.isnull())
-                    | (
-                        journal_acc.reference_type.isin(
-                            ["", "Sales Order", "Purchase Order"]
-                        )
-                    )
-                )
-                & (journal_entry.name == args.get("voucher_no"))
-                & (journal_acc.name == args.get("voucher_detail_no"))
-                & (journal_entry.docstatus == 1)
-            )
-        )
-
-    else:
-        payment_entry = frappe.qb.DocType("Sales Invoice Advance")
-        payment_ref = frappe.qb.DocType("Payment Entry Reference")
-
-        q = (
-            frappe.qb.from_(payment_entry)
-            .select(payment_entry.name)
-            .where(payment_entry.name == args.get("voucher_no"))
-            .where(payment_entry.docstatus == 1)
-            .where(payment_entry.party_type == args.get("party_type"))
-            .where(payment_entry.party == args.get("party"))
-        )
-
-        if args.voucher_detail_no:
-            q = (
-                q.inner_join(payment_ref)
-                .on(payment_entry.name == payment_ref.parent)
-                .where(payment_ref.name == args.get("voucher_detail_no"))
-                .where(
-                    payment_ref.reference_doctype.isin(
-                        ("", "Sales Order", "Purchase Order")
-                    )
-                )
-                .where(payment_ref.allocated_amount == args.get("unreconciled_amount"))
-            )
-        else:
-            q = q.where(
-                payment_entry.unallocated_amount == args.get("unreconciled_amount")
-            )
-
-    ret = q.run(as_dict=True)
-
-    if not ret:
-        frappe.throw(
-            _(
-                """NEW APP - Payment Entry has been modified after you pulled it. Please pull it again."""
-            )
-        )
-
-
-def apply_monkey_patches():
-    erpnext.accounts.utils.check_if_advance_entry_modified = (
-        custom_check_if_advance_entry_modified
-    )
-
-
-from datetime import datetime
 
 # In your results construction
 
@@ -133,15 +48,35 @@ def get_advance_sales_invoices(sales_order):
     return results
 
 
-
-
 def update_user_theme():
-    default_theme = frappe.db.get_value(
+    """Backfill desk_theme ONLY for users whose current value is no longer valid.
+
+    Previously this force-set every enabled System User's desk_theme to the
+    Property Setter default on every single migrate, silently clobbering each
+    user's own choice. It also ran unconditionally, so on a site where the
+    Property Setter had not been applied yet `default_theme` was None and every
+    user's theme was wiped.
+    """
+    ps = frappe.db.get_value(
         "Property Setter",
         {"property": "options", "doc_type": "User", "field_name": "desk_theme"},
-        "default_value"
+        ["default_value", "value"],
+        as_dict=True,
     )
-    users = frappe.get_all("User", filters={"enabled": 1, "user_type": "System User"})
-    for u in users:
-        frappe.db.set_value("User", u.name, "desk_theme", default_theme)
-    frappe.db.commit()
+    if not ps or not ps.default_value:
+        # Property Setter not applied on this site - nothing safe to do.
+        return
+
+    allowed = {o.strip() for o in (ps.value or "").split("\n") if o.strip()}
+    allowed.add(ps.default_value)
+
+    for u in frappe.get_all(
+        "User",
+        filters={"enabled": 1, "user_type": "System User"},
+        fields=["name", "desk_theme"],
+    ):
+        # Never overwrite a user's own valid choice.
+        if u.desk_theme in allowed:
+            continue
+        frappe.db.set_value("User", u.name, "desk_theme", ps.default_value)
+    # No frappe.db.commit() - migrate manages the transaction.

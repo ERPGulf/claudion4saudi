@@ -1,0 +1,144 @@
+name: CI
+
+on: [push, pull_request]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: ${{ matrix.label }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: frappe v15
+            branch: version-15
+            node: 20
+          - label: frappe v16
+            branch: version-16
+            node: 24
+
+    services:
+      mariadb:
+        image: mariadb:11.8
+        env:
+          MARIADB_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+
+      redis-cache:
+        image: redis:alpine
+        ports:
+          - 13000:6379
+      redis-queue:
+        image: redis:alpine
+        ports:
+          - 11000:6379
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: app-src
+
+      # Python 3.14 is used for BOTH branches because it is the only version that
+      # satisfies each range at the versions we test:
+      #   frappe v15 -> requires-python >=3.10,<3.15
+      #   frappe v16 -> requires-python >=3.14,<3.15
+      # That is a convenience for a single matrix, not a support statement: v15 is
+      # supported on 3.10-3.14, and running it on 3.11 is the common case.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      # frappe/package.json declares engines.node >= 24 on v16 and >= 18 on v15.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          # pkg-config and libmysqlclient-dev are needed only by v16, which builds
+          # mysqlclient (a C extension) on top of PyMySQL. Harmless on v15.
+          sudo apt-get install -y --no-install-recommends \
+            pkg-config libmysqlclient-dev mariadb-client
+          npm install -g yarn
+          pip install frappe-bench
+          # bench 5.x shells out to uv for every venv and install operation.
+          pip install uv
+
+      - name: Wait for MariaDB
+        run: |
+          for i in $(seq 1 30); do
+            mariadb -h 127.0.0.1 -u root -proot -e "SELECT 1" && break
+            sleep 2
+          done
+          mariadb -h 127.0.0.1 -u root -proot -e "
+            SET GLOBAL character_set_server = 'utf8mb4';
+            SET GLOBAL collation_server = 'utf8mb4_unicode_ci';"
+
+      - name: bench init (${{ matrix.branch }})
+        run: |
+          bench init --skip-redis-config-generation \
+            --frappe-branch ${{ matrix.branch }} \
+            --python "$(which python)" \
+            /home/runner/bench
+
+      - name: Point bench at the CI redis services
+        working-directory: /home/runner/bench
+        run: |
+          bench set-config -g redis_cache    redis://127.0.0.1:13000
+          bench set-config -g redis_queue    redis://127.0.0.1:11000
+          bench set-config -g redis_socketio redis://127.0.0.1:13000
+          bench set-config -g db_host 127.0.0.1
+
+      - name: get-app erpnext (${{ matrix.branch }})
+        working-directory: /home/runner/bench
+        run: bench get-app --branch ${{ matrix.branch }} erpnext
+
+      - name: get-app claudion4saudi (this commit)
+        working-directory: /home/runner/bench
+        run: bench get-app "$GITHUB_WORKSPACE/app-src"
+
+      - name: new-site
+        working-directory: /home/runner/bench
+        run: |
+          bench new-site ci.localhost \
+            --admin-password admin \
+            --mariadb-root-password root \
+            --no-mariadb-socket
+          bench --site ci.localhost set-config allow_tests true
+
+      - name: install-app erpnext
+        working-directory: /home/runner/bench
+        run: bench --site ci.localhost install-app erpnext
+
+      - name: install-app claudion4saudi
+        working-directory: /home/runner/bench
+        run: bench --site ci.localhost install-app claudion4saudi
+
+      - name: migrate
+        working-directory: /home/runner/bench
+        run: bench --site ci.localhost migrate
+
+      - name: build
+        working-directory: /home/runner/bench
+        run: bench build --app claudion4saudi
+
+      - name: run-tests
+        working-directory: /home/runner/bench
+        run: bench --site ci.localhost run-tests --app claudion4saudi
+
+      - name: lint
+        working-directory: ${{ github.workspace }}/app-src
+        run: |
+          pip install ruff
+          ruff check . --select E9,F63,F7,F82,F401

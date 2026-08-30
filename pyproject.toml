@@ -8,9 +8,17 @@ requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
 dependencies = [
-     "geoip2"
+    "geoip2",
+    # Actually imported by claudion4saudi/pdf_file.py but previously undeclared:
+    "pdfplumber",
+    "pdf2image",
+    "pytesseract",
     # "frappe~=15.0.0" # Installed and managed by bench.
 ]
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<17.0.0"
+erpnext = ">=15.0.0,<17.0.0"
 
 [build-system]
 requires = ["flit_core >=3.4,<4"]

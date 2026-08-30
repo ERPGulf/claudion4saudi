@@ -6,8 +6,6 @@ app_email = "support@ERPGulf.com"
 app_license = "mit"
 
 
-from frappe import _
-from . import __version__ as app_version
 
 
 app_include_css = "claudion4saudi.bundle.css"
@@ -31,35 +29,20 @@ doctype_js = {
 after_migrate = "claudion4saudi.migrate.after_migrate"
 
 
-# override_doctype_class = {
-#     # "ToDo": "custom_app.overrides.CustomToDo",
-#     "Sales Invoice": "claudion4saudi.advance_in_sales_invoice.CustomSalesInvoice",
-# }
-
-
 doc_events = {
     "Advance Sales Invoice": {
-        "on_submit": "zatca_erpgulf.zatca_erpgulf.advance_payment.zatca_background_on_submit",
+        "on_submit": "claudion4saudi.zatca_bridge.zatca_background_on_submit",
     },
 }
 
 
 override_whitelisted_methods = {
-    # "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme",
-    # "erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry":
-    # "claudion4saudi.custom_payment_entry.custom_get_payment_entry"
+    # Core's switch_theme hard-codes Light/Dark/Automatic and silently drops
+    # anything else, so this app's themes never persisted. See override.py.
+    "frappe.core.doctype.user.user.switch_theme": "claudion4saudi.override.switch_theme",
 }
-
-# override_whitelisted_methods = {
-#     "erpnext.accounts.utils.update_reference_in_payment_entry": "claudion4saudi.advance_in_sales_invoice.update_reference_in_payment_entry"
-# }
-# test
 
 fixtures = [
     {"dt": "Custom Field", "filters": {"module": "Claudion4Saudi"}},
     {"dt": "Property Setter", "filters": {"module": "Claudion4Saudi"}},
 ]
-
-# from claudion4saudi.patch import apply_monkey_patches
-
-# apply_monkey_patches()

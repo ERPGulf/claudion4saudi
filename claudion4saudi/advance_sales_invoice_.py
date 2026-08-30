@@ -1,9 +1,10 @@
 import erpnext
 from erpnext.accounts.doctype.journal_entry.journal_entry import get_exchange_rate
 from erpnext.accounts.doctype.payment_entry.payment_entry import allocate_open_payment_requests_to_references, apply_early_payment_discount, get_bank_cash_account, get_outstanding_on_journal_entry, set_paid_amount_and_received_amount, set_party_account, set_party_account_currency
-from erpnext.accounts.party import get_party_account, get_party_bank_account
+from erpnext.accounts.doctype.bank_account.bank_account import get_party_bank_account
+from erpnext.accounts.party import get_party_account
 import frappe
-from frappe.utils import flt, getdate, nowdate
+from frappe.utils import flt, getdate, nowdate, nowtime
 
 
 @frappe.whitelist()
@@ -78,6 +79,12 @@ def get_payment_entry(
     pe.company = doc.company
     pe.cost_center = doc.get("cost_center")
     pe.posting_date = nowdate()
+    # posting_time is a custom field this app adds to Advance Sales Invoice, and it
+    # was never populated - the row went to the database as NULL. zatca_erpgulf reads
+    # it unguarded (advance_payment.py:73 -> frappe get_time), and frappe's get_time
+    # only catches ValueError, so None reaches datetime.time.fromisoformat and raises
+    # TypeError: fromisoformat: argument must be str - which aborts the ZATCA call.
+    pe.posting_time = nowtime()
     pe.reference_date = reference_date
     pe.mode_of_payment = doc.get("mode_of_payment")
     pe.party_type = party_type
@@ -142,7 +149,6 @@ def get_payment_entry(
             "qty": item.qty,
             "rate": item.rate,
             "amount": item.amount,
-            "actual_qty": item.actual_qty,
             "item_tax_template": item.item_tax_template,
             "net_amount": item.net_amount,
             "uom": item.uom,
@@ -152,22 +158,79 @@ def get_payment_entry(
     if not pe.get("taxes"):
         pe.set("taxes", [])
 
+    # Advance Taxes and Charges accepts a narrower set of charge types than
+    # Sales/Purchase Taxes and Charges: ("", Actual, On Paid Amount,
+    # On Previous Row Amount, On Previous Row Total) - identical on v15 and v16.
+    # A perfectly ordinary "On Net Total" VAT row therefore cannot be copied
+    # across verbatim. Read the valid set from the child DocType itself so this
+    # cannot drift if ERPNext changes it.
+    allowed_charge_types = {
+        o.strip()
+        for o in (frappe.get_meta("Advance Taxes and Charges")
+                  .get_field("charge_type").options or "").split("\n")
+        if o.strip()
+    }
+
     for tax in doc.get("taxes"):
+        charge_type = tax.charge_type
+        tax_amount = tax.tax_amount
+        base_tax_amount = tax.base_tax_amount
+        rate = tax.rate
+
+        if charge_type not in allowed_charge_types:
+            # Collapse to an absolute amount. "Actual" is the only charge type
+            # that carries a fixed figure, so the already-computed tax amount
+            # from the source document is preserved exactly rather than being
+            # recomputed against a different base (paid amount != net total).
+            #
+            # `rate` is deliberately carried over rather than zeroed. ERPNext
+            # ignores it for an Actual row - get_current_tax_amount() uses
+            # tax.tax_amount directly (payment_entry.py:1856) - so keeping it
+            # cannot disturb any figure. But it is not decorative: ZATCA reads it
+            # as the invoiced item VAT rate (BT-152), and a zero rate on a
+            # Standard-rated line is rejected outright with BR-KSA-84 ("for
+            # Standard Rate VAT Category the rate can either be 15% or 5%") plus
+            # a BR-S-05 warning. Zeroing it here previously produced exactly that
+            # rejection against the live ZATCA endpoint.
+            #
+            # A percentage row can legitimately carry rate 0: when the tax is
+            # driven by an Item Tax Template, ERPNext leaves the document-level
+            # rate at 0 and keeps the real percentage per item in
+            # item_tax_rate (e.g. {"tax - TT": 15.0}) while the row holds only
+            # the computed amount. Copying that straight through hands ZATCA a
+            # 0.00 percent and earns the same BR-KSA-84 rejection. The rate is
+            # recoverable exactly from the row itself - tax_amount over
+            # net_amount - so recover it rather than emit a zero. Only done for
+            # rows that were percentage-based to begin with; a row authored as
+            # Actual is a fixed charge and keeps whatever rate it had.
+            if not rate and flt(tax.get("net_amount")):
+                rate = flt(
+                    flt(tax_amount) / flt(tax.get("net_amount")) * 100.0, 4
+                )
+
+            charge_type = "Actual"
+
         new_tax = pe.append("taxes", {
-            "charge_type": tax.charge_type,
+            "charge_type": charge_type,
             "account_head": tax.account_head,
             "description": tax.description,
-            "rate": tax.rate,
-            "tax_amount": tax.tax_amount,
+            "rate": rate,
+            "tax_amount": tax_amount,
             "included_in_paid_amount": tax.included_in_paid_amount,
             "total": tax.total,
             "base_total": tax.base_total,
-            "base_tax_amount": tax.base_tax_amount,
+            "base_tax_amount": base_tax_amount,
             "tax_amount_after_discount_amount": tax.tax_amount_after_discount_amount,
         })
+
+        # Per row, inside the loop. This used to sit outside it, which meant two
+        # things: on a source document with no taxes the loop never ran and both
+        # `tax` and `new_tax` were unbound (UnboundLocalError), and when there
+        # were taxes only the LAST row ever received the detail.
+        if hasattr(tax, "item_wise_tax_detail"):
+            new_tax.item_wise_tax_detail = tax.item_wise_tax_detail
+
     pe.total_taxes_and_charges = doc.get("total_taxes_and_charges")
-    if hasattr(tax, "item_wise_tax_detail"):
-        new_tax.item_wise_tax_detail = tax.item_wise_tax_detail
     pe.unallocated_amount = max(0, paid_amount - grand_total)
 
     if party_account and bank:
