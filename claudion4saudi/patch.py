@@ -131,17 +131,3 @@ def get_advance_sales_invoices(sales_order):
         )
 
     return results
-
-
-
-
-def update_user_theme():
-    default_theme = frappe.db.get_value(
-        "Property Setter",
-        {"property": "options", "doc_type": "User", "field_name": "desk_theme"},
-        "default_value"
-    )
-    users = frappe.get_all("User", filters={"enabled": 1, "user_type": "System User"})
-    for u in users:
-        frappe.db.set_value("User", u.name, "desk_theme", default_theme)
-    frappe.db.commit()

@@ -1,0 +1,58 @@
+// Shared by Claudion Day, Claudion Night and ERPGulf (Frappe v16).
+
+$claudion-font: "Host Grotesk", var(--font-stack), sans-serif;
+$claudion-serif: "Young Serif", Georgia, "Times New Roman", serif;
+$claudion-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+// Variable font: one file covers weights 300–800, so bold text is real bold, not browser-faked.
+@font-face {
+  font-family: "Host Grotesk";
+  src: url("/assets/claudion4saudi/fonts/HostGrotesk-Variable.woff2") format("woff2-variations"),
+    url("/assets/claudion4saudi/fonts/HostGrotesk-Variable.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Young Serif";
+  src: url("/assets/claudion4saudi/fonts/YoungSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Each theme's root selector. Night is keyed on data-theme-mode because its data-theme is "dark".
+$claudion-themes: '[data-theme="claudionday"]', '[data-theme-mode="claudionnight"]', '[data-theme="erpgulf"]';
+
+@each $root in $claudion-themes {
+  #{$root} * {
+    font-family: $claudion-font !important;
+  }
+
+  // Keep code editors and code blocks out of the global font override.
+  #{$root} .ace_editor,
+  #{$root} .ace_editor *,
+  #{$root} code,
+  #{$root} pre,
+  #{$root} kbd,
+  #{$root} samp,
+  #{$root} .ql-code-block,
+  #{$root} .ql-syntax {
+    font-family: $claudion-mono !important;
+  }
+}
+
+[data-theme="claudionday"],
+[data-theme="erpgulf"] {
+  color-scheme: light;
+}
+
+// Night: dark native controls, and a dark page before the script has switched Frappe to dark.
+[data-theme-mode="claudionnight"] {
+  color-scheme: dark;
+}
+
+html[data-theme="claudionnight"] body {
+  background-color: #0d1211;
+}

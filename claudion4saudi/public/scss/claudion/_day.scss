@@ -1,3 +1,4 @@
+// Claudion Day — light theme. Frappe v16 (16.5+). Sits on Frappe's default (light) tokens.
 [data-theme="claudionday"] {
   --main-color: #042226;
   /* Dark green */
@@ -7,15 +8,11 @@
   /* Darker green for search bar */
   --text-highlight: #9ec8b9;
   /* Soft green for titles */
-  --text-color: #aab2bd;
-  /*search bar text color*/
   --background-light: #ffffff;
   /* white background */
   --background-color2: #dfe3e1;
   /* Light gray for borders */
   --background-color3: #daede9;
-  --border-color3: #dcdede;
-  /* Light gray for borders */
   --box-color: #f5f7f7;
   /* box color light minty */
   --border-color: #dfe3e1;
@@ -28,18 +25,6 @@
   --text-color: #151616;
   --text-color2: #525454;
   /* Text color for various elements */
-}
-
-@font-face {
-  font-family: "Host Grotesk";
-  src: url("/assets/claudion4saudi/fonts/HostGrotesk-Regular.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-[data-theme="claudionday"] * {
-  font-family: "Host Grotesk", sans-serif !important;
 }
 
 [data-theme="claudionday"] .page-container,
@@ -104,20 +89,13 @@
 }
 
 [data-theme="claudionday"] .widget.onboarding-widget-box {
-  font-family: Host Grotesk !important;
+  font-family: $claudion-font !important;
   background-color: var(--box-color);
   /* Light minty background */
   border: 1px solid var(--border-color);
   /* Dark green border */
   border-radius: 8px;
   /* Optional: Rounded corners */
-  padding: 20px;
-}
-
-[data-theme="claudionday"] .onboarding-steps-wrapper {
-  background-color: rgba(23, 23, 23, 0.03) !important;
-  border: 1px solid rgba(23, 23, 23, 0.05) !important;
-  border-radius: 6px;
   padding: 20px;
 }
 
@@ -134,39 +112,11 @@
 /* [data-theme="claudionday"] .step-index svg use {
   fill: var(--background-light);
 } */
-[data-theme="claudionday"] .step-index svg {
-  display: none !important;
-  /* hide old SVG */
-}
-
-[data-theme="claudionday"] .step-index.step-pending {
-  background-image: url("/assets/claudion4saudi/assets/step_icon_day.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-}
-
-[data-theme="claudionday"] .step-index.step-skipped {
-  background-image: url("/assets/claudion4saudi/assets/circular_icon.svg");
-  /* ← update filename */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-}
 
 /* text color*/
-[data-theme="claudionday"] .step-text {
-  color: var(--text-color);
-}
 
 [data-theme="claudionday"] .onboarding-step-body h1 {
-  font-family: Host Grotesk;
+  font-family: $claudion-font;
   font-weight: 700 !important;
   font-size: 15px !important;
   line-height: 120%;
@@ -175,7 +125,7 @@
 }
 
 [data-theme="claudionday"] .onboarding-step-body p {
-  font-family: Host Grotesk;
+  font-family: $claudion-font;
   font-weight: 400;
   font-size: 12px !important;
   line-height: 120% !important;
@@ -187,7 +137,7 @@
 
 [data-theme="claudionday"] .onboarding-step-body ul {
   color: #2a2b2b;
-  font-family: Host Grotesk;
+  font-family: $claudion-font;
   font-weight: 400;
   font-size: 12px;
   line-height: 120% !important;
@@ -195,19 +145,6 @@
 }
 [data-theme="claudionday"] .onboarding-step-body ul li::marker {
   color: var(--accent-color);
-}
-
-[data-theme="claudionday"] .onboarding-step-preview {
-  display: flex;
-  flex-direction: column;
-}
-
-[data-theme="claudionday"] .onboarding-step-preview ul {
-  gap: 8px;
-}
-
-[data-theme="claudionday"] .onboarding-step-preview ul li::marker {
-  font-size: 6px;
 }
 /*show customer list text color*/
 /* [data-theme="claudionday"] .onboarding-step-body a {
@@ -231,49 +168,6 @@
   color: #094D3E !important;
 } */
 
-[data-theme="claudionday"]
-  #editorjs
-  > div
-  > div.codex-editor__redactor
-  > div:nth-child(1)
-  > div
-  > div
-  > div
-  > div.widget-body
-  > div.onboarding-step-preview
-  > div.onboarding-step-body
-  > p:nth-child(5)
-  > a {
-  /* display: inline-block !important; */
-
-  width: 105px !important;
-  height: 14px !important;
-
-  text-decoration: none !important;
-  font-family: "Host Grotesk", sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 12px !important;
-  line-height: 14px !important;
-  letter-spacing: 0px !important;
-  color: #094d3e !important;
-
-  opacity: 1 !important;
-  transform: rotate(0deg) !important;
-  /* background: none !important; */
-  border: none !important;
-
-  padding: 0 !important;
-  gap: 4px !important;
-  cursor: pointer !important;
-  text-decoration: underline !important;
-}
-[data-theme="claudionday"] .onboarding-step-footer {
-  display: flex !important;
-  justify-content: flex-end !important;
-  align-items: center !important;
-  gap: 12px !important; /* spacing between the two */
-}
-
 /* [data-theme="claudionday"] .onboarding-step-footer p {
   margin: 0 !important;
   padding: 0 !important;
@@ -287,36 +181,6 @@
   border: none; 
   font-weight: 500;
 } */
-
-[data-theme="claudionday"] .onboarding-step-footer .btn.btn-default {
-  /* width: 225px !important;
-  height: 36px !important; */
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
-
-  /* 
-  border-radius: var(--borderRadius-button-dense) !important;
-  border-width: var(--borderWidth-button-dense) !important; */
-  border-style: solid !important;
-  border: 1px solid #094d3e !important;
-
-  padding: 8px 12px !important;
-
-  background-color: #094d3e !important;
-  color: var(--color-text-button-fill-primary, #ffffff) !important;
-
-  font-family: "Host Grotesk", sans-serif !important;
-  /* font-weight: var(--fontWeight-semibold, 600) !important; */
-  /* font-size: var(--fontSize-300) !important; */
-  font-style: normal !important;
-  /* 'SemiBold' is handled by font-weight */
-  line-height: 120% !important;
-  letter-spacing: 0px !important;
-  text-align: center !important;
-  vertical-align: middle !important;
-}
 
 [data-theme="claudionday"] .shortcut-widget-box {
   background-color: #ffffff !important;
@@ -368,7 +232,7 @@
   /* width: 133px !important; */
   margin-top: 0 !important;
   height: 19px !important;
-  font-family: "Host Grotesk", sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 400 !important;
   font-style: normal !important;
   font-size: 14px !important;
@@ -383,7 +247,7 @@
   margin-bottom: 4px !important;
 } */
 /* [data-theme="claudionday"] .widget-title span.ellipsis {
-  font-family: "Host Grotesk", sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 700 !important; 
   font-style: normal !important; 
   font-size: 13.5px !important;
@@ -395,14 +259,14 @@
   display: none !important;
 }
 /* Hover effect for sidebar items */
-[data-theme="claudionday"] .desk-sidebar-item:hover {
+[data-theme="claudionday"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover {
   background-color: var(--accent-color);
   border-radius: 6px;
 }
 
 /* Change the text/icon color on hover */
-[data-theme="claudionday"] .desk-sidebar-item:hover .sidebar-item-label,
-[data-theme="claudionday"] .desk-sidebar-item:hover .sidebar-item-icon {
+[data-theme="claudionday"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover .sidebar-item-label,
+[data-theme="claudionday"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover .sidebar-item-icon {
   color: var(--background-light);
   /* White text on hover */
   fill: var(--background-light) !important;
@@ -410,13 +274,13 @@
 }
 
 /* Selected item background */
-[data-theme="claudionday"] .desk-sidebar-item.selected {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar {
   background-color: var(--accent-color);
 }
 
 /* Selected item text/icon color */
-[data-theme="claudionday"] .desk-sidebar-item.selected .sidebar-item-label,
-[data-theme="claudionday"] .desk-sidebar-item.selected .icon:focus {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-label,
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .icon:focus {
   color: var(--background-light);
   fill: white !important;
 }
@@ -481,7 +345,7 @@
 /* For the placeholder text */
 [data-theme="claudionday"] #navbar-search::placeholder {
   opacity: 1 !important;
-  font-family: "Host Grotesk", sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 400 !important;
   font-style: normal !important;
   /* "Regular" is not valid CSS */
@@ -492,7 +356,6 @@
   vertical-align: middle !important;
 }
 /*sdfghjkl*/
-[data-theme="claudionday"] .notifications-icon .notifications-seen,
 [data-theme="claudionday"] .notifications-icon .notifications-unseen {
   display: none !important;
 }
@@ -524,7 +387,7 @@
 }
 /*dfghjkl;lkjhgkl*/
 [data-theme="claudionday"] .widget-subtitle {
-  font-family: Host Grotesk;
+  font-family: $claudion-font;
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
@@ -570,9 +433,7 @@
   border: none !important; /* optional: remove default border */
   cursor: pointer !important;
 }
-[data-theme="claudionday"]
-  .widget-control
-  .btn.btn-sm.btn-secondary.small::after {
+[data-theme="claudionday"] .widget-control .btn.btn-sm.btn-secondary.small::after {
   content: "";
   display: none;
 }
@@ -646,7 +507,7 @@
 
   padding: 8px 12px !important;
 
-  font-family: "Host Grotesk", sans-serif !important;
+  font-family: $claudion-font !important;
   font-size: 14px !important;
   font-weight: 600 !important;
   line-height: 120% !important;
@@ -665,9 +526,7 @@
 
   cursor: pointer !important;
 }
-[data-theme="claudionday"]
-  .btn.btn-default.ellipsis.btn-new-workspace
-  .es-icon {
+[data-theme="claudionday"] .btn.btn-default.ellipsis.btn-new-workspace .es-icon {
   width: 16px !important;
   height: 16px !important;
   fill: #4e878f !important;
@@ -689,7 +548,7 @@
   border-radius: 6px !important;
 
   background-color: transparent !important;
-  font-family: "Host Grotesk", sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 600 !important;
   font-size: 14px !important;
   line-height: 120% !important;
@@ -711,114 +570,64 @@
   align-items: center !important;
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Item"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Item"])::before {
   background-image: url("/assets/claudion4saudi/assets/item.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Material Request"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Material Request"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226436.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Purchase Order"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Purchase Order"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226436%20(1).svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Purchase Analytics"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Purchase Analytics"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226437%20(1).svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Purchase Order Analysis"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Purchase Order Analysis"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226437.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Dashboard"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Dashboard"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226436%20(2).svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Procurement"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Procurement"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226436%20(3).svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Customer"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Customer"])::before {
   background-image: url("/assets/claudion4saudi/assets/customer.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Supplier"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Supplier"])::before {
   background-image: url("/assets/claudion4saudi/assets/B-supplier.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Sales Invoice"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Sales Invoice"])::before {
   background-image: url("/assets/claudion4saudi/assets/B-Sales-inv.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Leaderboard"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Leaderboard"])::before {
   background-image: url("/assets/claudion4saudi/assets/B-leaderboard.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Sales Order"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Sales Order"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226436.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Sales Analytics"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Sales Analytics"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226436%20(1).svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Point of Sale"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Point of Sale"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226437%20(1).svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Sales Management"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Sales Management"])::before {
   background-image: url("/assets/claudion4saudi/assets/Frame%202147226436.svg");
-}
-
-[data-theme="claudionday"] .step-index {
-  position: relative;
-  /* Make the step-index the reference point */
 }
 
 [data-theme="claudionday"] .indicator-pill.no-indicator-dot.ellipsis.green {
@@ -829,25 +638,8 @@
 }
 
 /* Connector line below each icon */
-[data-theme="claudionday"] .step-index::after {
-  content: "";
-  position: absolute;
-  top: calc(100% + 2.5px);
-  left: 50%;
-  transform: translate(-50%);
-  width: 2px;
-  height: 12px;
-  background-image: url(/assets/claudion4saudi/assets/Connector.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  bottom: calc(100% + 5px);
-}
 
 /* Remove connector for last step */
-[data-theme="claudionday"] .onboarding-step:last-child .step-index::after {
-  display: none;
-}
 
 [data-theme="claudionday"] .navbar .vertical-bar {
   border-right: 1px solid #114d56;
@@ -857,7 +649,6 @@
 }
 
 [data-theme="claudionday"] .vertical-bar {
-  justify: space-between;
 }
 
 [data-theme="claudionday"] ul.navbar-nav {
@@ -954,7 +745,7 @@ height: 16px !important;
   background: #f3f3f3;
 
   /* Font Styling */
-  font-family: "Host Grotesk", sans-serif;
+  font-family: $claudion-font;
   /* font-weight: 500;
   font-size: 14px;
   line-height: 120%;
@@ -975,7 +766,7 @@ height: 16px !important;
   color: white;
 }
 
-[data-theme="claudionday"].icon-xs:hover {
+[data-theme="claudionday"] .icon-xs:hover {
   stroke: white;
 }
 
@@ -1009,7 +800,7 @@ height: 16px !important;
 
   background: #f3f3f3;
 
-  font-family: "Host Grotesk", sans-serif;
+  font-family: $claudion-font;
   font-weight: 500;
   font-size: 14px;
   line-height: 120%;
@@ -1026,10 +817,10 @@ height: 16px !important;
   border-radius: 8px !important;
 } */
 [data-theme="claudionday"] .control-label,
-.grid-heading-row {
+[data-theme="claudionday"] .grid-heading-row {
   color: #393a3a;
   /* updated from screenshot */
-  font-family: "Host Grotesk", sans-serif;
+  font-family: $claudion-font;
   /* added the font */
   font-weight: 500;
   /* 500 from screenshot */
@@ -1127,8 +918,8 @@ height: 16px !important;
   /* replace with your desired color */
 }
 
-[data-theme="claudionday"].list-subject a {
-  font-family: "Host Grotesk";
+[data-theme="claudionday"] .list-subject a {
+  font-family: $claudion-font;
   font-size: 14px;
   font-weight: 400;
 }
@@ -1148,7 +939,7 @@ height: 16px !important;
 } */
 
 [data-theme="claudionday"] .ce-block__content {
-  font-family: Host Grotesk !important;
+  font-family: $claudion-font !important;
 }
 
 /* [data-theme="claudionday"] .ce-block__content[onboarding_name="Home"]{
@@ -1157,7 +948,7 @@ height: 16px !important;
 } */
 
 [data-theme="claudionday"] .ce-block__content .ce-header .h4 b {
-  font-family: Host Grotesk !important;
+  font-family: $claudion-font !important;
   font-size: 20px !important;
   font-weight: 600 !important;
 }
@@ -1167,11 +958,7 @@ height: 16px !important;
   border: 1px solid #dcdede !important;
 }
 
-[data-theme="claudionday"]
-  .ce-block.col-xs-12.col-sm-6.col-md-4
-  .ce-block__content
-  .widget
-  .links-widget-box {
+[data-theme="claudionday"] .ce-block.col-xs-12.col-sm-6.col-md-4 .ce-block__content .widget .links-widget-box {
   padding: 0px !important;
 }
 
@@ -1183,18 +970,14 @@ height: 16px !important;
 } */
 
 /* [data-theme="claudionday"] .shortcut-widget-box .widget-title .ellipsis {
-  font-family: Host Grotesk !important;
+  font-family: $claudion-font !important;
   font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 120%;
   letter-spacing: 0%;
 } */
-[data-theme="claudionday"]
-  .widget.number-widget-box
-  .widget-label
-  .widget-title
-  span.ellipsis {
-  font-family: "Host Grotesk", sans-serif !important;
+[data-theme="claudionday"] .widget.number-widget-box .widget-label .widget-title span.ellipsis {
+  font-family: $claudion-font !important;
   font-weight: 400 !important;
   font-style: normal !important;
   font-size: 14px !important;
@@ -1204,7 +987,7 @@ height: 16px !important;
   text-transform: none !important;
 }
 [data-theme="claudionday"] .card-stats.grey-stat .percentage-stat-area {
-  font-family: "Host Grotesk", sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 400 !important;
   font-style: normal !important;
   font-size: 14px !important;
@@ -1212,7 +995,39 @@ height: 16px !important;
   letter-spacing: 0 !important;
   color: #151616 !important;
 }
-[data-theme="claudionday"] .sidebar-item-icon svg {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="accounting"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="app-window"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="archive"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="assets"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="building-complex"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="buying"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="cable"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="crm"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="factory"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="folder-kanban"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="folder-normal"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="getting-started"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="handshake"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="headset"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="integration"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="organization"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="package"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="project"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="quality"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="rocket"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="sell"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="setting"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="settings"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="shield-check"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="shopping-cart"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="stock"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="store"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="support"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="tool"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="users"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="wallet"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="website"] svg,
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="wrench"] svg {
   display: none !important;
 }
 
@@ -1221,26 +1036,19 @@ height: 16px !important;
 }
 
 [data-theme="claudionday"] .flex {
-  font-family: Host Grotesk !important;
+  font-family: $claudion-font !important;
 }
 
-[data-theme="claudionday"]
-  .standard-sidebar-section
-  .nested-container
-  [title="Public"] {
-  font-family: Host Grotesk !important;
+[data-theme="claudionday"] .standard-sidebar-section .nested-container [title="Public"] {
+  font-family: $claudion-font !important;
 }
 
-[data-theme="claudionday"]
-  .list-sidebar
-  .overlay-sidebar
-  .hidden-xs
-  .hidden-sm
-  .opened {
-  font-family: Host Grotesk !important;
+[data-theme="claudionday"] .list-sidebar .overlay-sidebar .hidden-xs .hidden-sm .opened {
+  font-family: $claudion-font !important;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="getting-started"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="getting-started"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="rocket"] {
   border: 1.5px;
   display: inline-block;
   width: 20px;
@@ -1251,7 +1059,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="accounting"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="accounting"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="wallet"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1261,7 +1070,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="buying"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="buying"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="shopping-cart"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1271,7 +1081,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="sell"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="sell"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="store"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1281,7 +1092,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="stock"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="stock"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="package"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1291,7 +1103,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="assets"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="assets"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="archive"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1301,7 +1114,9 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="organization"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="organization"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="factory"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="building-complex"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1311,7 +1126,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="quality"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="quality"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="shield-check"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1321,7 +1137,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="project"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="project"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="folder-kanban"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1331,7 +1148,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="support"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="support"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="headset"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1351,7 +1169,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="website"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="website"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="app-window"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1361,7 +1180,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="crm"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="crm"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="handshake"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1371,7 +1191,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="tool"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="tool"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="wrench"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1381,7 +1202,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="setting"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="setting"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="settings"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1391,9 +1213,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .item-anchor[title="Integrations"]
-  .sidebar-item-icon[item-icon="integration"] {
+[data-theme="claudionday"] .sidebar-item-container[data-id="Integrations"] .sidebar-item-icon[item-icon="integration"],
+[data-theme="claudionday"] .sidebar-item-container[data-id="Integrations"] .sidebar-item-icon[item-icon="cable"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1403,9 +1224,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .item-anchor[title="ERPNext Integrations"]
-  .sidebar-item-icon[item-icon="integration"] {
+[data-theme="claudionday"] .sidebar-item-container[data-id="ERPNext Integrations"] .sidebar-item-icon[item-icon="integration"],
+[data-theme="claudionday"] .sidebar-item-container[data-id="ERPNext Integrations"] .sidebar-item-icon[item-icon="cable"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1415,9 +1235,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .item-anchor[title="Build"]
-  .sidebar-item-icon[item-icon="tool"] {
+[data-theme="claudionday"] .sidebar-item-container[data-id="Build"] .sidebar-item-icon[item-icon="tool"],
+[data-theme="claudionday"] .sidebar-item-container[data-id="Build"] .sidebar-item-icon[item-icon="wrench"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1451,14 +1270,6 @@ height: 16px !important;
   fill: url(#path-fill-gradient-purple-custom) !important;
 } */
 
-[data-theme="claudionday"] .region-fill {
-  fill: linear-gradient(
-    357.36deg,
-    rgba(245, 247, 247, 0) -12.34%,
-    rgba(117, 117, 255, 0.3) 83.59%
-  ) !important;
-}
-
 [data-theme="claudionday"] .graph-svg-tip .tooltip-legend {
   background: #7575ff !important;
 }
@@ -1486,7 +1297,8 @@ height: 16px !important;
 
 /* ******************************************************************************** */
 
-[data-theme="claudionday"] .sidebar-item-icon[item-icon="getting-started"] {
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="getting-started"],
+[data-theme="claudionday"] .sidebar-item-icon[item-icon="rocket"] {
   border: 1.5px;
   display: inline-block;
   width: 20px;
@@ -1497,9 +1309,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="accounting"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="accounting"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="wallet"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1509,9 +1320,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="buying"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="buying"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="shopping-cart"] {
   background-image: url("/assets/claudion4saudi/assets/3.svg") !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
@@ -1521,9 +1331,8 @@ height: 16px !important;
   display: inline-block !important;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="sell"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="sell"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="store"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1533,9 +1342,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="stock"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="stock"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="package"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1545,9 +1353,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="assets"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="assets"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="archive"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1557,9 +1364,9 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="organization"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="organization"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="factory"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="building-complex"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1569,9 +1376,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="quality"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="quality"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="shield-check"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1581,9 +1387,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="project"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="project"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="folder-kanban"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1593,9 +1398,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="support"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="support"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="headset"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1605,9 +1409,7 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="users"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="users"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1617,9 +1419,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="website"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="website"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="app-window"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1629,9 +1430,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="crm"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="crm"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="handshake"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1641,9 +1441,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="tool"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="tool"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="wrench"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1653,9 +1452,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="setting"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="setting"],
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="settings"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1665,10 +1463,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  a.item-anchor[title="Integrations"]
-  .sidebar-item-icon[item-icon="integration"] {
+[data-theme="claudionday"] .sidebar-item-container[data-id="Integrations"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="integration"],
+[data-theme="claudionday"] .sidebar-item-container[data-id="Integrations"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="cable"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1678,10 +1474,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  a.item-anchor[title="ERPNext Integrations"]
-  .sidebar-item-icon[item-icon="integration"] {
+[data-theme="claudionday"] .sidebar-item-container[data-id="ERPNext Integrations"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="integration"],
+[data-theme="claudionday"] .sidebar-item-container[data-id="ERPNext Integrations"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="cable"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1691,10 +1485,8 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .item-anchor[title="Build"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="tool"] {
+[data-theme="claudionday"] .sidebar-item-container[data-id="Build"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="tool"],
+[data-theme="claudionday"] .sidebar-item-container[data-id="Build"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="wrench"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1704,9 +1496,7 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .desk-sidebar-item.selected
-  .sidebar-item-icon[item-icon="folder-normal"] {
+[data-theme="claudionday"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="folder-normal"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1716,556 +1506,319 @@ height: 16px !important;
   background-position: center;
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Delivery Note"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Delivery Note"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sto-delivery-note.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Inventory Management"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Inventory Management"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sto-learn-inventory.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Purchase Receipt"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Purchase Receipt"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sto-purchase-receipt.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Stock Balance"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Stock Balance"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sto-stock-balance.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Stock Entry"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Stock Entry"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sto-stock-entry.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Stock Ledger"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Stock Ledger"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sto-stock-ledger.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Asset"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Asset"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-asst-asset.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Asset Category"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Asset Category"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-asst-asset-category.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Fixed Asset Register"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Fixed Asset Register"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-asst-fixed-asset-reg.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="BOM Creator"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="BOM Creator"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-bom-creator.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="BOM Stock Report"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="BOM Stock Report"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-bom-stock-report.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="BOM"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="BOM"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-bom.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Forecasting"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Forecasting"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-forecasting.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Job Card"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Job Card"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-job-card.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Manufacturing"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Manufacturing"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-learn-manufacturing.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Plant Floor"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Plant Floor"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-plant-floor.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Production Plan"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Production Plan"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-production-plan.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Production Planning Report"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Production Planning Report"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-production-planning-report.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Work Order"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Work Order"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-man-work-order.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Non Conformance"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Non Conformance"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-q-no-conformance.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Production Plan"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Production Plan"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-q-production-plan.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Action"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Action"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-q-qaction.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Goal"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Goal"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-q-qgoal.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Inspection"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Inspection"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-q-qinspection.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Procedure"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Procedure"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-q-qprocedure.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Review"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Review"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-q-qreview.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Project Management"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Project Management"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-pro-learn-project-management.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Project Billing Summary"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Project Billing Summary"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-pro-project-billing-summary.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Project"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Project"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-pro-project.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Task"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Task"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-pro-task.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Timesheet"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Timesheet"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-pro-timesheet.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Issue"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Issue"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sup-issue.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Maintenance Visit"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Maintenance Visit"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sup-maintenance-visit.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Service Level Agreement"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Service Level Agreement"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-sup-service-level-agreement.png");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Permission Manager"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Permission Manager"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-us-permission-manager.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Role"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Role"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-us-role.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="User Profile"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="User Profile"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-us-user-profile.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="User Type"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="User Type"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-us-user-type.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="User"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="User"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-us-user.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Blog Post"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Blog Post"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-web-blog-post.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Blogger"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Blogger"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-web-blogger.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Web Form"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Web Form"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-web-web-form.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Web Page"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Web Page"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-web-web-page.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Website Settings"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Website Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-web-website-settings.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Lead"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Lead"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-crm-lead.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Opportunity"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Opportunity"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-crm-opportunity.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Assignment Rule"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Assignment Rule"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-to-assignment-rule.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="File"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="File"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-to-file.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Import Data"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Import Data"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-to-import-data.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="ToDo"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="ToDo"])::before {
   background-image: url("/assets/claudion4saudi/assets/d-to-todo.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Accounts Settings"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Accounts Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--acc-sett.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Buying Settings"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Buying Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--buying-sett.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Global Defaults"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Global Defaults"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--global-defaults.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Print Settings"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Print Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--print-sett.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Selling Settings"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Selling Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--selling-sett.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Stock Settings"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Stock Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--stock-sett.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="System Settings"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="System Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--syst-sett.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Browse Apps"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Browse Apps"])::before {
   background-image: url("/assets/claudion4saudi/assets/BROWSE.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Client Script"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Client Script"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-client-script.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Customize Form"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Customize Form"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-customize-form.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="DocType"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="DocType"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-doctype.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Report"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Report"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-report.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Server Script"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Server Script"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-server-script.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Print Format Builder"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Print Format Builder"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-pfb.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Dashboard "])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Dashboard "])::before {
   background-image: url("/assets/claudion4saudi/assets/a-db.svg") !important;
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Zatca Setup Wizard"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Zatca Setup Wizard"])::before {
   background-image: url("/assets/claudion4saudi/assets/a-wizard.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Accounts Receivable"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Accounts Receivable"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-accnts-recvbl.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Cost Center"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Cost Center"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-cost-center.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Journal Entry"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Journal Entry"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-journal-entry.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Payment Entry"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Payment Entry"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-payment-entry.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="POS Invoice"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="POS Invoice"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-pos-invoice.svg") !important;
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Chart of Accounts"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Chart of Accounts"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-chart-of-accnts.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Purchase Invoice"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Purchase Invoice"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-pur-inv.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="General Ledger"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="General Ledger"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Trial Balance"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Trial Balance"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Accounting"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Accounting"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg") !important;
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="General Ledger"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="General Ledger"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Trial Balance"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Trial Balance"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");
 }
 
-[data-theme="claudionday"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Accounting"])::before {
+[data-theme="claudionday"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Accounting"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg") !important;
 }
 
@@ -2274,30 +1827,12 @@ height: 16px !important;
 [data-theme="claudionday"] .count {
   width: 16px !important;
   height: 20px !important;
-  font-family: "Host Grotesk" !important;
+  font-family: $claudion-font !important;
   font-weight: 700 !important;
   font-size: 24px !important;
   line-height: 20px !important;
   letter-spacing: 0% !important;
   color: black !important;
-}
-
-[data-theme="claudionday"] .number-card {
-  width: 242px !important;
-  height: 104px !important;
-  gap: 4px !important;
-  border-radius: 6px !important;
-  padding: 20px !important;
-  background: #f5f7f7 !important;
-
-  border: 1px solid #dcdede;
-  /* For inner alignment */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
 }
 
 [data-theme="claudionday"] .card-container {
@@ -2310,10 +1845,6 @@ height: 16px !important;
   margin-bottom: 20px;
 }
 
-[data-theme="claudionday"] .number-card h4 {
-  color: black !important;
-}
-
 [data-theme="claudionday"] .frappe-control[data-fieldname="zatca_list"] table {
   border-radius: 12px !important;
 
@@ -2323,7 +1854,7 @@ height: 16px !important;
 
 [data-theme="claudionday"] .frappe-control[data-fieldname="zatca_list"] td {
   color: black !important;
-  font-family: "Host Grotesk", sans-serif !important;
+  font-family: $claudion-font !important;
 }
 
 [data-theme="claudionday"] .frappe-control[data-fieldname="zatca_list"] td a {
@@ -2350,7 +1881,7 @@ height: 16px !important;
   color: #6b5b31 !important;
 
   /* Font styles */
-  font-family: "Host Grotesk", sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 500 !important;
   font-size: 11px !important;
   line-height: 120% !important;
@@ -2421,17 +1952,17 @@ height: 16px !important;
 [data-theme="claudionday"] .card-actions.dropdown.pull-right > a * {
   display: none !important;
 }
-[data-theme="claudionday"]
-  .widget-label:not(.shortcut-widget-box .widget-label)::before {
+[data-theme="claudionday"] .widget-label:not(.shortcut-widget-box .widget-label)::before {
   display: none !important;
   content: none !important;
 }
 
-
 /*****************FINAL************************/
 
 [data-theme="claudionday"] .icon[href="#icon-select"],
-[data-theme="claudionday"] .icon use[href="#icon-select"] {
+[data-theme="claudionday"] .icon[href="#icon-chevrons-up-down"],
+[data-theme="claudionday"] .icon use[href="#icon-select"],
+[data-theme="claudionday"] .icon use[href="#icon-chevrons-up-down"] {
   fill: #ffffff !important;
   stroke: #ffffff !important;
 }
@@ -2469,15 +2000,18 @@ height: 16px !important;
 }
 
 /* Hide only the SVG that uses #icon-add */
-[data-theme="claudionday"] .btn.icon-btn svg.icon.icon-sm use[href="#icon-add"] {
+[data-theme="claudionday"] .btn.icon-btn svg.icon.icon-sm use[href="#icon-add"],
+[data-theme="claudionday"] .btn.icon-btn svg.icon.icon-sm use[href="#icon-plus"] {
   display: none; 
 }
 
-[data-theme="claudionday"] .btn.icon-btn svg.icon.icon-sm:has(use[href="#icon-add"]) {
+[data-theme="claudionday"] .btn.icon-btn svg.icon.icon-sm:has(use[href="#icon-add"]),
+[data-theme="claudionday"] .btn.icon-btn svg.icon.icon-sm:has(use[href="#icon-plus"]) {
   display: none !important;
 }
 
-[data-theme="claudionday"] .btn.icon-btn:has(svg.icon.icon-sm use[href="#icon-add"]) {
+[data-theme="claudionday"] .btn.icon-btn:has(svg.icon.icon-sm use[href="#icon-add"]),
+[data-theme="claudionday"] .btn.icon-btn:has(svg.icon.icon-sm use[href="#icon-plus"]) {
   background-image: url("/assets/claudion4saudi/assets/add.svg") !important;
   background-repeat: no-repeat;
   background-position: center;
@@ -2489,5 +2023,4 @@ height: 16px !important;
   align-items: center;
   justify-content: center;
 }
-
 

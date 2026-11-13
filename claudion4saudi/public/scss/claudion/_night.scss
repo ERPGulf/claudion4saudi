@@ -1,13 +1,14 @@
-[data-theme="claudionnight"] {
+// Claudion Night — dark theme for Frappe v16. Runs on top of Frappe's own dark theme:
+// theme_switcher.js sets data-theme="dark" while data-theme-mode stays "claudionnight",
+// so these rules are keyed on data-theme-mode.
+[data-theme-mode="claudionnight"] {
   --main-color: #073c44;
   /* Dark green */
-  --acnt-color: #15b08f;
+  --accent-color: #15b08f;
   /* Teal for hover effects */
   --searchbar-color: #293532;
   --text-highlight: #9ec8b9;
   /* Soft green for titles */
-  --text-color: #aab2bd;
-  /*search bar text color*/
   --background-light: #0d1211;
   /* white background */
   --background-color3: #1b2120;
@@ -16,8 +17,6 @@
   --box-color: rgba(255, 255, 255, 0.03) !important;
   /* box color light minty */
   --border-color: #192422;
-  --box3-color: #f5f7f7;
-  --text-color: #151616;
   --text-color2: #525454;
   /* Text color for various elements */
   --text-color3: #979999;
@@ -25,26 +24,7 @@
   --text-light: #979999;
   /* Text color for various elements */
 }
-
-@font-face {
-  font-family: "Host Grotesk";
-  src: url("/assets/claudion4saudi/fonts/HostGrotesk-Regular.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-[data-theme="claudionnight"] * {
-  font-family: "Host Grotesk", sans-serif !important;
-}
-
-[data-theme="claudionnight"] .theme-selector .theme-card {
-  background-color: #0d1211 !important;
-  /* Match your dark background */
-  color: var(--text-light) !important;
-  border: 1px solid #1e2624 !important;
-  /* Same border color you use */
-}
-[data-theme="claudionnight"] .form-control {
+[data-theme-mode="claudionnight"] .form-control {
   /* width: 472px; */
   color: rgba(255, 255, 255, 1);
 
@@ -57,20 +37,17 @@
   background: rgba(2, 13, 15, 1);
   border: 1px solid rgba(204, 208, 208, 1); 
 }
-[data-theme="claudionnight"] .theme-selector .theme-card .preview {
-  background-color: #1b2120 !important;
-}
 
-[data-theme="claudionnight"].list-subject a {
-  font-family: "Host Grotesk";
+[data-theme-mode="claudionnight"] .list-subject a {
+  font-family: $claudion-font;
   font-size: 14px;
   font-weight: 400;
 }
 
-[data-theme="claudionnight"] .page-container {
+[data-theme-mode="claudionnight"] .page-container {
   background-color: var(--background-light);
 }
-/* [data-theme="claudionnight"] .form-page {
+/* [data-theme-mode="claudionnight"] .form-page {
   width: 1030px;
   height: 596px;
   border-radius: 12px;
@@ -80,7 +57,7 @@
   box-sizing: border-box;
 } */
 
-[data-theme="claudionnight"] .page-head.flex {
+[data-theme-mode="claudionnight"] .page-head.flex {
   background-color: var(--background-light);
   /* Pure black */
   color: var(--text-light);
@@ -88,13 +65,13 @@
   border: var(--background-light);
 }
 
-[data-theme="claudionnight"] .page-container {
+[data-theme-mode="claudionnight"] .page-container {
   background-color: #020d0f;
 }
-[data-theme="claudionnight"] .page-head {
+[data-theme-mode="claudionnight"] .page-head {
   background-color: #020d0f !important;
 }
-[data-theme="claudionnight"] .layout-main-section {
+[data-theme-mode="claudionnight"] .layout-main-section {
   background-color: #0a1416;
   /* width: 1030px;
   height: 583px;
@@ -108,21 +85,21 @@
   box-shadow: none !important;
 }
 
-[data-theme="claudionnight"] .page-form {
+[data-theme-mode="claudionnight"] .page-form {
   background-color: #0a1416 !important;
   /* white text */
 }
-[data-theme="claudionnight"] .list-row-head {
+[data-theme-mode="claudionnight"] .list-row-head {
   background-color: #0a1416 !important;
   /* white text */
 }
-/* [data-theme="claudionnight"] .avatar-frame {
+/* [data-theme-mode="claudionnight"] .avatar-frame {
   background-color: var(--accent-color) !important;
   color: #ffffff !important;
 } */
 
 /*upper sidebar*/
-[data-theme="claudionnight"] header.navbar.navbar-expand {
+[data-theme-mode="claudionnight"] header.navbar.navbar-expand {
   background-color: #042226;
   color: var(--text-light);
   /*Ensures text/icons are visible*/
@@ -130,7 +107,7 @@
 }
 
 /*search bar background*/
-[data-theme="claudionnight"] #navbar-search {
+[data-theme-mode="claudionnight"] #navbar-search {
   /* border-color: #4e878f !important;
   background: #4E878F; */
   border-color: #384B4B !important;
@@ -139,21 +116,21 @@
 }
 
 /*color for notification icon*/
-[data-theme="claudionnight"] .es-icon.icon-sm {
+[data-theme-mode="claudionnight"] .es-icon.icon-sm {
   stroke: var(--text-light) !important;
 }
 
 /*color for help icon*/
-[data-theme="claudionnight"] .dropdown-help .nav-link span {
+[data-theme-mode="claudionnight"] .dropdown-help .nav-link span {
   color: var(--text-light);
 }
 
-[data-theme="claudionnight"] .dropdown-help .es-icon.icon-xs {
+[data-theme-mode="claudionnight"] .dropdown-help .es-icon.icon-xs {
   stroke: var(--text-light) !important;
 }
 
-[data-theme="claudionnight"] .onboarding-step-body h1 {
-  font-family: Host Grotesk;
+[data-theme-mode="claudionnight"] .onboarding-step-body h1 {
+  font-family: $claudion-font;
   /* font-weight: 700 !important;
   font-size: 15px !important;
   line-height: 120%;
@@ -161,8 +138,8 @@
   color: #020d0f;
 }
 
-[data-theme="claudionnight"] .onboarding-step-body p {
-  font-family: Host Grotesk;
+[data-theme-mode="claudionnight"] .onboarding-step-body p {
+  font-family: $claudion-font;
   font-weight: 400;
   font-size: 12px !important;
   line-height: 120% !important;
@@ -172,24 +149,24 @@
 
 /*points*/
 
-[data-theme="claudionnight"] .onboarding-step-body ul {
+[data-theme-mode="claudionnight"] .onboarding-step-body ul {
   color: #2a2b2b;
-  font-family: Host Grotesk;
+  font-family: $claudion-font;
   font-weight: 400;
   font-size: 12px;
   line-height: 120% !important;
   letter-spacing: 0%;
 }
 
-[data-theme="claudionnight"] .widget.onboarding-widget-box {
-  font-family: Host Grotesk !important;
+[data-theme-mode="claudionnight"] .widget.onboarding-widget-box {
+  font-family: $claudion-font !important;
   background-color: var(--box-color); /* Light minty background */
   border: 1px solid var(--border-color); /* Dark green border */
   border-radius: 8px; /* Optional: Rounded corners */
   padding: 20px;
 }
 
-[data-theme="claudionnight"] .widget.onboarding-widget-box {
+[data-theme-mode="claudionnight"] .widget.onboarding-widget-box {
   background-color: var(--box-color) !important;
   border: 1px solid #293532;
   color: var(--text-light) !important;
@@ -197,8 +174,8 @@
   padding: 20px;
 }
 
-[data-theme="claudionnight"] .links-widget-box,
-[data-theme="claudionnight"] .widget.links-widget-box {
+[data-theme-mode="claudionnight"] .links-widget-box,
+[data-theme-mode="claudionnight"] .widget.links-widget-box {
   background-color: var(--box-color) !important;
   /* dark background */
   border: 1px solid var(--border-color) !important;
@@ -209,7 +186,7 @@
   /* optional for spacing */
 }
 
-/* [data-theme="claudionnight"] span.ellipsis {
+/* [data-theme-mode="claudionnight"] span.ellipsis {
   height: 22px;
   font-weight: 700;
   font-size: 18px;
@@ -218,12 +195,12 @@
   color: rgba(255, 255, 255, 1);
 } */
 
-[data-theme="claudionnight"] .widget-title {
+[data-theme-mode="claudionnight"] .widget-title {
   color: var(--text-light) !important;
 }
 
-[data-theme="claudionnight"] .widget-subtitle {
-  font-family: Host Grotesk;
+[data-theme-mode="claudionnight"] .widget-subtitle {
+  font-family: $claudion-font;
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
@@ -231,7 +208,7 @@
   color: #2a2b2b !important;
 }
 
-[data-theme="claudionnight"] .onboarding-step-body h1 {
+[data-theme-mode="claudionnight"] .onboarding-step-body h1 {
   /* width: 128px;
   height: 18px; */
   /* font-weight: 700;
@@ -246,87 +223,70 @@
   ); /* color: var(--text-light) !important;
   font-weight: 600; */
 }
-[data-theme="claudionnight"] li::marker {
+[data-theme-mode="claudionnight"] li::marker {
   color: red;
 }
 
-[data-theme="claudionnight"] .onboarding-step-body p {
+[data-theme-mode="claudionnight"] .onboarding-step-body p {
   color: var(--text-color3) !important;
 }
 
-[data-theme="claudionnight"] .onboarding-step-body ul,
-[data-theme="claudionnight"] .onboarding-step-body ul li {
+[data-theme-mode="claudionnight"] .onboarding-step-body ul,
+[data-theme-mode="claudionnight"] .onboarding-step-body ul li {
   color: var(--text-color3) !important;
 }
 
-[data-theme="claudionnight"] .widget-subtitle {
+[data-theme-mode="claudionnight"] .widget-subtitle {
   color: var(--text-color3) !important;
 }
 
-[data-theme="claudionnight"] .onboarding-steps-wrapper {
-  background-color: var(--background-color3) !important;
-  border: 1px solid #1e2624 !important;
-  color: #ffffff !important;
-}
-
-[data-theme="claudionnight"] .onboarding-step {
+[data-theme-mode="claudionnight"] .onboarding-step {
   background-color: var(--background-color3);
   color: var(--text-light);
 }
 
-[data-theme="claudionnight"] h3.ellipsis.title-text {
-  width: 55px;
-  height: 24px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 120%;
-  letter-spacing: 0%;
-  color: rgba(255, 255, 255, 1); /* color: var(--text-light) !important; */
-  /* Or any color code like #ffffff */
-}
-
-[data-theme="claudionnight"] svg.es-icon.sidebar-toggle-placeholder {
+[data-theme-mode="claudionnight"] svg.es-icon.sidebar-toggle-placeholder {
   stroke: var(--text-light) !important;
   /* or use a color like #ffffff */
   fill: var(--text-light) !important;
 }
-[data-theme="claudionnight"] .ce-block__content {
-  font-family: Host Grotesk !important;
+[data-theme-mode="claudionnight"] .ce-block__content {
+  font-family: $claudion-font !important;
 }
 
-[data-theme="claudionnight"] .ce-block__content .ce-header .h4 b {
-  font-family: Host Grotesk !important;
+[data-theme-mode="claudionnight"] .ce-block__content .ce-header .h4 b {
+  font-family: $claudion-font !important;
   font-size: 20px !important;
   font-weight: 600 !important;
   color: white !important;
 }
 
-[data-theme="claudionnight"] .ce-header .h4 b {
+[data-theme-mode="claudionnight"] .ce-header .h4 b {
   color: var(--text-light) !important;
   /* or #FFFFFF for white */
 }
 
-[data-theme="claudionnight"] .ce-header .h4 b {
+[data-theme-mode="claudionnight"] .ce-header .h4 b {
   color: var(--text-light) !important;
   /* or use a hex: #ffffff for white */
 }
 
-[data-theme="claudionnight"] .shortcut-widget-box .widget-title .ellipsis {
-  font-family: Host Grotesk !important;
+[data-theme-mode="claudionnight"] .shortcut-widget-box .widget-title .ellipsis {
+  font-family: $claudion-font !important;
   font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 120%;
   letter-spacing: 0%;
 }
 
-[data-theme="claudionnight"] .shortcut-widget-box {
+[data-theme-mode="claudionnight"] .shortcut-widget-box {
   background-color: var(--background-light) !important;
   color: var(--text-light) !important;
 }
 
-[data-theme="claudionnight"] .onboarding-step:hover,
-[data-theme="claudionnight"] .onboarding-step.skipped.active:hover,
-[data-theme="claudionnight"] .onboarding-step.pending.active:hover {
+[data-theme-mode="claudionnight"] .onboarding-step:hover,
+[data-theme-mode="claudionnight"] .onboarding-step.skipped.active:hover,
+[data-theme-mode="claudionnight"] .onboarding-step.pending.active:hover {
   background-color: #1b2120 !important;
   /* Same as normal background */
   color: var(--text-light) !important;
@@ -334,23 +294,23 @@
   /* match border too */
 }
 
-[data-theme="claudionnight"] .onboarding-step:empty {
+[data-theme-mode="claudionnight"] .onboarding-step:empty {
   display: none;
   background: transparent;
   border: none;
 }
 
-[data-theme="claudionnight"] .onboarding-step:focus,
-[data-theme="claudionnight"] .onboarding-step.active,
-[data-theme="claudionnight"] .onboarding-step:focus-visible {
+[data-theme-mode="claudionnight"] .onboarding-step:focus,
+[data-theme-mode="claudionnight"] .onboarding-step.active,
+[data-theme-mode="claudionnight"] .onboarding-step:focus-visible {
   border: 1px solid var(--accent-color) !important;
   /* optional if you want a colored border */
   outline: none !important;
   box-shadow: none !important;
 }
 
-[data-theme="claudionnight"] .links-widget-box,
-[data-theme="claudionnight"] .widget.links-widget-box {
+[data-theme-mode="claudionnight"] .links-widget-box,
+[data-theme-mode="claudionnight"] .widget.links-widget-box {
   background-color: var(--box-color) !important;
   border: 1px solid #293532 !important;
   color: var(--text-light) !important;
@@ -358,120 +318,65 @@
 }
 
 /* Target the specific text elements inside */
-[data-theme="claudionnight"] .widget.links-widget-box .widget-title,
-[data-theme="claudionnight"] .widget.links-widget-box .widget-subtitle,
-[data-theme="claudionnight"] .widget.links-widget-box .link-text {
+[data-theme-mode="claudionnight"] .widget.links-widget-box .widget-title,
+[data-theme-mode="claudionnight"] .widget.links-widget-box .widget-subtitle,
+[data-theme-mode="claudionnight"] .widget.links-widget-box .link-text {
   color: var(--text-light) !important;
   /* Title, subtitle, links all white */
 }
 
-[data-theme="claudionnight"] .onboarding-step.skipped.active {
+[data-theme-mode="claudionnight"] .onboarding-step.skipped.active {
   background-color: var(--background-color3);
 }
 
 /* green tick mark*/
-[data-theme="claudionnight"] .step-index svg {
-  display: none !important;
-  /* hide old SVG */
-}
 
-[data-theme="claudionnight"] .step-index.step-pending {
-  background-image: url("/assets/claudion4saudi/assets/night_step.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-}
-
-[data-theme="claudionnight"] .step-index.step-skipped {
-  background-image: url("/assets/claudion4saudi/assets/nightstep2.svg");
-  /* ← update filename */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-}
-
-/* [data-theme="claudionnight"] .step-index svg use {
+/* [data-theme-mode="claudionnight"] .step-index svg use {
   fill: var(--background-light);
 } */
 /* text color*/
-[data-theme="claudionnight"] .step-text {
-  color: var(--text-ight);
-}
 
 /*points*/
-[data-theme="claudionnight"] .onboarding-step-body ul li::marker {
+[data-theme-mode="claudionnight"] .onboarding-step-body ul li::marker {
   color: var(--accent-color);
 }
 
-[data-theme="claudionnight"] .onboarding-step-preview {
-  display: flex;
-  flex-direction: column;
-}
-
 /*show customer list text color*/
-[data-theme="claudionnight"] .onboarding-step-body a[href*="/app/customer"] {
+[data-theme-mode="claudionnight"] .onboarding-step-body a[href*="/app/customer"] {
   color:  #15B08F !important;
 
   /* background: transparent; */
 }
-[data-theme="claudionnight"] h1#buyingsettings{
+[data-theme-mode="claudionnight"] h1#buyingsettings{
     color:  #ffffff !important;
 
 }
-[data-theme="claudionnight"] h1#sellingsettings{
+[data-theme-mode="claudionnight"] h1#sellingsettings{
     color:  #ffffff !important;
 
 }
-[data-theme="claudionnight"] h1#reviewstocksettings{
+[data-theme-mode="claudionnight"] h1#reviewstocksettings{
     color:  #ffffff !important;}
 
-
-
-[data-theme="claudionnight"] .onboarding-step-body p a {
+[data-theme-mode="claudionnight"] .onboarding-step-body p a {
   color: var(--accent-color) !important;
   /* Use your theme accent */
 }
 
-[data-theme="claudionnight"] .onboarding-step-body p a:hover {
+[data-theme-mode="claudionnight"] .onboarding-step-body p a:hover {
   color: var(--main-color) !important;
   /* Use your theme accent */
 }
 
-[data-theme="claudionnight"] .onboarding-step-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-[data-theme="claudionnight"] .onboarding-step-body a:hover {
+[data-theme-mode="claudionnight"] .onboarding-step-body a:hover {
   color: var(--main-color);
   text-decoration: underline;
 }
 
 /*button*/
-[data-theme="claudionnight"] .onboarding-step-footer .btn.btn-default {
-  background-color: #094d3e;
-  color: var(--text-light);
-  border: none;
-  font-weight: 500;
-}
-
-[data-theme="claudionnight"] .onboarding-step-footer .btn.btn-default:hover {
-  background-color: var(--accent-color);
-  color: var(--background-light);
-  border: #094d3e;
-  font-weight: 500;
-}
 
 /*line*/
-[data-theme="claudionnight"] .widget.spacer {
+[data-theme-mode="claudionnight"] .widget.spacer {
   background-color: transparent !important;
   border-top: 1px solid #192422;
   height: 1px;
@@ -479,67 +384,58 @@
   border-radius: 0;
 }
 
-/* [data-theme="claudionnight"] .links-widget-box {
+/* [data-theme-mode="claudionnight"] .links-widget-box {
   background-color:var(--box3-color);
 } */
 
-/* [data-theme="claudionnight"] .sidebar-item-label {
+/* [data-theme-mode="claudionnight"] .sidebar-item-label {
   color: var(--text-light) !important;
 }
 
-[data-theme="claudionnight"] .sidebar-item-label:hover {
+[data-theme-mode="claudionnight"] .sidebar-item-label:hover {
   color: var(--text-light) !important;
 }
 
-[data-theme="claudionnight"] .sidebar-item-label.selected {
+[data-theme-mode="claudionnight"] .sidebar-item-label.selected {
   color: var(--text-light) !important;
 }
 
-
-[data-theme="claudionnight"] .sidebar-item-icon {
+[data-theme-mode="claudionnight"] .sidebar-item-icon {
   fill: var(--text-light) !important;
   or use a specific color code like #FFFFFF
 } */
 
-[data-theme="claudionnight"] .flex {
-  font-family: Host Grotesk !important;
+[data-theme-mode="claudionnight"] .flex {
+  font-family: $claudion-font !important;
 }
 
-[data-theme="claudionnight"]
-  .standard-sidebar-section
-  .nested-container
-  [title="Public"] {
-  font-family: Host Grotesk !important ;
+[data-theme-mode="claudionnight"] .standard-sidebar-section .nested-container [title="Public"] {
+  font-family: $claudion-font !important;
 }
 
-[data-theme="claudionnight"]
-  .list-sidebar
-  .overlay-sidebar
-  .hidden-xs
-  .hidden-sm
-  .opened {
-  font-family: Host Grotesk !important;
+[data-theme-mode="claudionnight"] .list-sidebar .overlay-sidebar .hidden-xs .hidden-sm .opened {
+  font-family: $claudion-font !important;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item:hover {
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover {
   background-color: #2a2f2d !important;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar {
   background-color: #2a2f2d !important;
   color: var(--background-light);
 }
-[data-theme="claudionnight"] .sidebar-item-label.selected {
+[data-theme-mode="claudionnight"] .sidebar-item-label.selected {
   color: black !important;
 }
 /* Change the text/icon color on hover */
-[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label,
-[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-icon {
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover .sidebar-item-label,
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover .sidebar-item-icon {
   color: var(--accent-color);
   fill: var(--accent-color);
 }
 
-[data-theme="claudionnight"] .standard-sidebar-label {
+[data-theme-mode="claudionnight"] .standard-sidebar-label {
   color: var(--text-light) !important;
   /* white color or whatever text color you want */
   font-weight: 500;
@@ -549,11 +445,11 @@
   text-transform: capitalize;
   /* optional: make first letter caps */
 }
-/* [data-theme="claudionnight"] .page-form {
+/* [data-theme-mode="claudionnight"] .page-form {
   background-color: #0a1416;
 } /* 
  /
-[data-theme="claudionnight"] .frappe-list {
+[data-theme-mode="claudionnight"] .frappe-list {
   background-color: #0a1416;
   width: 1030px;
   height: 583px;
@@ -564,10 +460,10 @@
   border: 1px solid #313536;
 } */
 
-[data-theme="claudionnight"] .control-label,
-.grid-heading-row {
-  color: #393a3a; /* updated from screenshot */
-  font-family: "Host Grotesk"; /* added the font */
+[data-theme-mode="claudionnight"] .control-label,
+[data-theme-mode="claudionnight"] .grid-heading-row {
+  color: #979999; /* updated from screenshot */
+  font-family: $claudion-font; /* added the font */
   font-weight: 500; /* 500 from screenshot */
   font-size: 12px; /* 12px from screenshot */
   line-height: 120%; /* 120% line height */
@@ -575,36 +471,36 @@
 }
 
 /* Hover effect to change stroke color */
-[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-icon svg {
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover .sidebar-item-icon svg {
   stroke: var(--accent-color) !important;
   /* Optional: Change outline color on hover */
 }
 
 /* Make sure the <use> element inside the svg also doesn't override it */
-/* [data-theme="claudionnight"] .desk-sidebar-item .sidebar-item-icon svg use {
+/* [data-theme-mode="claudionnight"] .desk-sidebar-item .sidebar-item-icon svg use {
   fill: none !important;
   stroke: var(--text-light) !important;
 } */
 
 /* Selected item text/icon color */
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-label,
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-label,
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon {
   color: var(--accent-color);
   fill: var(--accent-color);
 }
 
 /* For typed text inside the search input */
-[data-theme="claudionnight"] #navbar-search {
+[data-theme-mode="claudionnight"] #navbar-search {
   color: var(--text-color2);
 }
 
 /* For the placeholder text */
-[data-theme="claudionnight"] #navbar-search::placeholder {
+[data-theme-mode="claudionnight"] #navbar-search::placeholder {
   color: #aab2bd !important;
   opacity: 1;
 }
 
-[data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small {
+[data-theme-mode="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small {
   background: none;
   border: none;
   font-size: 20px;
@@ -615,9 +511,7 @@
 }
 
 /* Hide the original text */
-[data-theme="claudionnight"]
-  .widget-control
-  .btn.btn-sm.btn-secondary.small::before {
+[data-theme-mode="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small::before {
   content: "";
   display: inline-block;
   width: 36px;
@@ -632,180 +526,153 @@
   transform: translate(-50%, -50%); /* Perfect centering */
 }
 
-[data-theme="claudionnight"]
-  .widget-control
-  .btn.btn-sm.btn-secondary.small::after {
+[data-theme-mode="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small::after {
   content: "";
   display: none;
 }
 
 /* Optional: hide original content using visibility */
-[data-theme="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small {
+[data-theme-mode="claudionnight"] .widget-control .btn.btn-sm.btn-secondary.small {
   color: transparent !important;
 }
 
-[data-theme="claudionnight"] .list-row a {
+[data-theme-mode="claudionnight"] .list-row a {
   color: var(--text-light) !important;
 }
 
-[data-theme="claudionnight"] .list-row a:hover {
+[data-theme-mode="claudionnight"] .list-row a:hover {
   color: #969e9e !important;
 }
 
-[data-theme="claudionnight"] .level.list-row {
+[data-theme-mode="claudionnight"] .level.list-row {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-[data-theme="claudionnight"] .list-row-container:hover .level.list-row {
+[data-theme-mode="claudionnight"] .list-row-container:hover .level.list-row {
   background-color: #2a2f2d !important;
   color: var(--text-light) !important;
   cursor: pointer;
 }
 
-[data-theme="claudionnight"] .onboarding-step.skipped {
+[data-theme-mode="claudionnight"] .onboarding-step.skipped {
   background-color: transparent !important;
   border: 1px solid var(--border-color) !important;
   color: var(--text-light) !important;
 }
 
-[data-theme="claudionnight"] .onboarding-step.pending.active {
+[data-theme-mode="claudionnight"] .onboarding-step.pending.active {
   background-color: #313634 !important;
   color: var(--text-light) !important;
   border: 1px solid var(--border-color) !important;
 }
 
-[data-theme="claudionnight"] .onboarding-step.pending.active:hover {
+[data-theme-mode="claudionnight"] .onboarding-step.pending.active:hover {
   background-color: #313634 !important;
   color: var(--text-light) !important;
 }
 
-/* [data-theme="claudionnight"] .standard-sidebar-section .es-icon {
+/* [data-theme-mode="claudionnight"] .standard-sidebar-section .es-icon {
   stroke: var(--text-light) !important;
   fill: var(--text-light) !important;
 }
 
-
-[data-theme="claudionnight"] .sidebar-item-icon svg use {
+[data-theme-mode="claudionnight"] .sidebar-item-icon svg use {
   stroke: white !important;
   fill: white !important;
 }
 
-[data-theme="claudionnight"] .sidebar-label {
+[data-theme-mode="claudionnight"] .sidebar-label {
   color: var(--text-color3) !important;
   White color
 } */
 
-[data-theme="claudionnight"] span.ellipsis,
-[data-theme="claudionnight"] .widget-title {
+[data-theme-mode="claudionnight"] span.ellipsis,
+[data-theme-mode="claudionnight"] .widget-title {
   color: #837a7a !important;
 }
 
-[data-theme="claudionnight"] .widget-title span.ellipsis {
+[data-theme-mode="claudionnight"] .widget-title span.ellipsis {
   color: #ffffff !important;
   /* <-- pure white or your desired color */
 }
 
-[data-theme="claudionnight"] a.add-group-by {
+[data-theme-mode="claudionnight"] a.add-group-by {
   color: #837a7a !important;
   /* or whatever color you want */
 }
 
-[data-theme="claudionnight"] a.add-group-by:hover {
+[data-theme-mode="claudionnight"] a.add-group-by:hover {
   color: var(--accent-color);
   /* or whatever color you want */
 }
 
-[data-theme="claudionnight"] a.list-tag-preview {
-  color: #837a7a !important;
-  /* White color */
-}
-
 /* Optional - on hover */
-[data-theme="claudionnight"] a.list-tag-preview:hover {
-  color: var(--accent-color) !important;
-  /* Your accent color on hover */
-}
 
--------------------------------------------------
-/*hovers*/
-/*===============================
-Polish Hover Effects - Final
-================================*/
-
-/* Links inside sidebar filters ("Edit Filters" and similar) */
-[data-theme="claudionnight"] a.add-group-by {
+------------------------------------------------- [data-theme-mode="claudionnight"] a.add-group-by {
   color: #837a7a !important;
   transition: color 0.3s ease;
 }
 
-[data-theme="claudionnight"] a.add-group-by:hover {
+[data-theme-mode="claudionnight"] a.add-group-by:hover {
   color: var(--accent-color) !important;
   /* Hover turns accent color */
 }
 
 /* "Show Tags" link */
-[data-theme="claudionnight"] a.list-tag-preview {
-  color: #837a7a !important;
-  transition: color 0.3s ease;
-}
-
-[data-theme="claudionnight"] a.list-tag-preview:hover {
-  color: var(--accent-color) !important;
-}
 
 /* Sidebar labels like "Filter By" */
-[data-theme="claudionnight"] li.sidebar-label {
+[data-theme-mode="claudionnight"] li.sidebar-label {
   color: var(--text-color3) !important;
   transition: color 0.3s ease;
 }
 
-[data-theme="claudionnight"] li.sidebar-label:hover {
+[data-theme-mode="claudionnight"] li.sidebar-label:hover {
   color: var(--accent-color) !important;
 }
 
 /* Text inside widget boxes (titles, subtitles) */
-[data-theme="claudionnight"] span.ellipsis,
-[data-theme="claudionnight"] .widget-title {
+[data-theme-mode="claudionnight"] span.ellipsis,
+[data-theme-mode="claudionnight"] .widget-title {
   color: #837a7a !important;
   transition: color 0.3s ease;
 }
 
 /* Hover for widget titles */
-[data-theme="claudionnight"] .widget-title:hover span.ellipsis {
+[data-theme-mode="claudionnight"] .widget-title:hover span.ellipsis {
   color: var(--accent-color) !important;
 }
 
 /* Hover for text inside "Your Shortcuts" widgets */
-[data-theme="claudionnight"] .links-widget-box a:hover,
-[data-theme="claudionnight"] .widget.links-widget-box a:hover {
+[data-theme-mode="claudionnight"] .links-widget-box a:hover,
+[data-theme-mode="claudionnight"] .widget.links-widget-box a:hover {
   color: var(--accent-color) !important;
 }
 
 /* List View Row hover smooth transition */
-[data-theme="claudionnight"] .list-row-container:hover .level.list-row {
+[data-theme-mode="claudionnight"] .list-row-container:hover .level.list-row {
   background-color: #2a2f2d !important;
   color: var(--text-light) !important;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Final polish: normal links inside list view */
-[data-theme="claudionnight"] .list-row a {
+[data-theme-mode="claudionnight"] .list-row a {
   color: var(--text-light) !important;
   transition: color 0.3s ease;
 }
 
-[data-theme="claudionnight"] .list-row a:hover {
+[data-theme-mode="claudionnight"] .list-row a:hover {
   color: var(--accent-color) !important;
 }
 
 /* Final polish: hover for dashboard sidebar text */
-[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label,
-[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-icon {
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover .sidebar-item-label,
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover .sidebar-item-icon {
   color: var(--accent-color) !important;
   fill: var(--accent-color) !important;
 }
 
-[data-theme="claudionnight"] a.link-item.ellipsis.onboard-spotlight:hover {
+[data-theme-mode="claudionnight"] a.link-item.ellipsis.onboard-spotlight:hover {
   background-color: #2a2f2d !important;
   /* Dark gray hover background */
   color: var(--text-light) !important;
@@ -813,7 +680,7 @@ Polish Hover Effects - Final
 }
 
 /* General icon styling */
-[data-theme="claudionnight"] .widget-head .widget-label {
+[data-theme-mode="claudionnight"] .widget-head .widget-label {
   display: flex;
   /* Align icon and text in a row */
   align-items: center;
@@ -822,7 +689,7 @@ Polish Hover Effects - Final
   /* Space between icon and text */
 }
 
-[data-theme="claudionnight"] .widget-head .widget-label::before {
+[data-theme-mode="claudionnight"] .widget-head .widget-label::before {
   content: "";
   display: inline-block;
   width: 24px;
@@ -833,102 +700,61 @@ Polish Hover Effects - Final
   flex-shrink: 0;
 }
 
-[data-theme="claudionnight"]
-  .widget-head
-  .widget-label:has(span[title="Item"])::before {
+[data-theme-mode="claudionnight"] .widget-head .widget-label:has(span[title="Item"])::before {
   background-image: url("/assets/claudion4saudi/assets/night_item.svg");
 }
 
-[data-theme="claudionnight"]
-  .widget-head
-  .widget-label:has(span[title="Customer"])::before {
+[data-theme-mode="claudionnight"] .widget-head .widget-label:has(span[title="Customer"])::before {
   background-image: url("/assets/claudion4saudi/assets/night_customer.svg");
 }
 
-[data-theme="claudionnight"]
-  .widget-head
-  .widget-label:has(span[title="Supplier"])::before {
+[data-theme-mode="claudionnight"] .widget-head .widget-label:has(span[title="Supplier"])::before {
   background-image: url("/assets/claudion4saudi/assets/B-supplier.svg");
 }
 
-[data-theme="claudionnight"]
-  .widget-head
-  .widget-label:has(span[title="Sales Invoice"])::before {
+[data-theme-mode="claudionnight"] .widget-head .widget-label:has(span[title="Sales Invoice"])::before {
   background-image: url("/assets/claudion4saudi/assets/B-Sales-inv.svg");
 }
 
-[data-theme="claudionnight"]
-  .widget-head
-  .widget-label:has(span[title="Leaderboard"])::before {
+[data-theme-mode="claudionnight"] .widget-head .widget-label:has(span[title="Leaderboard"])::before {
   background-image: url("/assets/claudion4saudi/assets/B-leaderboard.svg");
 }
 
-[data-theme="claudionnight"] .step-index {
-  position: relative;
-  /* Make the step-index the reference point */
-}
-
 /* Connector line below each icon */
-[data-theme="claudionnight"] .step-index::after {
-  content: "";
-  position: absolute;
-  top: calc(100% + 6px);
-  /* Small gap after icon */
-  left: 50%;
-  /* Center it horizontally */
-  transform: translateX(-50%);
-  /* Exact center alignment */
-  width: 2px;
-  /* Width of the connector */
-  height: 20px;
-  /* Height of connector (adjust if needed) */
-  background-image: url("/assets/claudion4saudi/assets/Connector.png");
-  /* Your connector image */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 
 /* Remove connector for last step */
-[data-theme="claudionnight"] .onboarding-step:last-child .step-index::after {
-  display: none;
-}
 
-[data-theme="claudionnight"] .widget-control svg use,
-[data-theme="claudionnight"] .link-content.ellipsis svg use {
+[data-theme-mode="claudionnight"] .widget-control svg use,
+[data-theme-mode="claudionnight"] .link-content.ellipsis svg use {
   stroke: var(--text-light) !important;
   fill: var(--text-light) !important;
 }
 
 /* On hover - optional */
-[data-theme="claudionnight"] .widget-control:hover svg use,
-[data-theme="claudionnight"] .link-content.ellipsis:hover svg use {
+[data-theme-mode="claudionnight"] .widget-control:hover svg use,
+[data-theme-mode="claudionnight"] .link-content.ellipsis:hover svg use {
   stroke: var(--accent-color) !important;
   fill: var(--accent-color) !important;
 }
 
 /* Remove connector for last step */
-[data-theme="claudionnight"] .onboarding-step:last-child .step-index::after {
-  display: none;
-}
 
-[data-theme="claudionnight"] .navbar .vertical-bar {
+[data-theme-mode="claudionnight"] .navbar .vertical-bar {
   border-right: 1px solid #114d56;
   height: 24px;
   margin: auto;
   margin-left: var(--margin-md);
 }
 
-[data-theme="claudionnight"] .vertical-bar {
-  justify: space-between;
+[data-theme-mode="claudionnight"] .vertical-bar {
   /* Optional: equal gap between bell and Help */
 }
-[data-theme="claudionnight"] #navbar-breadcrumbs li a {
+[data-theme-mode="claudionnight"] #navbar-breadcrumbs li a {
   color: #ffffff;
   font-weight: 500;
   text-decoration: none;
 }
-[data-theme="claudionnight"] ul.navbar-nav {
+[data-theme-mode="claudionnight"] ul.navbar-nav {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -938,33 +764,66 @@ Polish Hover Effects - Final
 
 /* Apply only to widget titles under the Reports & Masters section */
 
-[data-theme="claudionnight"] .widget-control svg.es-icon-es-line.icon-xs {
+[data-theme-mode="claudionnight"] .widget-control svg.es-icon-es-line.icon-xs {
   stroke: black !important;
   fill: black !important;
 }
 
-[data-theme="claudionnight"] .shortcut-widget-box .widget-label {
+[data-theme-mode="claudionnight"] .shortcut-widget-box .widget-label {
   flex-direction: row !important; /* Align icon and text side-by-side */
   align-items: center !important; /* Vertically center */
   justify-content: flex-start;
   gap: 8px; /* Space between icon and text */
 }
-[data-theme="claudionnight"] .widget-head .widget-label {
+[data-theme-mode="claudionnight"] .widget-head .widget-label {
   display: flex;
   flex-direction: column; /* Stack title and subtitle vertically */
   align-items: flex-start; /* Align to the left */
   gap: 2px; /* Optional: spacing between title and subtitle */
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon svg {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="accounting"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="app-window"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="archive"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="assets"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="building-complex"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="buying"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="cable"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="crm"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="factory"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="folder-kanban"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="folder-normal"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="getting-started"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="handshake"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="headset"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="integration"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="organization"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="package"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="project"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="quality"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="rocket"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="sell"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="setting"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="settings"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="shield-check"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="shopping-cart"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="stock"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="store"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="support"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="tool"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="users"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="wallet"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="website"] svg,
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="wrench"] svg {
   display: none !important;
 }
 
-[data-theme="claudionnight"] .item-anchor {
+[data-theme-mode="claudionnight"] .item-anchor {
   gap: 8px;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="getting-started"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="getting-started"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="rocket"] {
   border: 1.5px;
   display: inline-block;
   width: 20px;
@@ -975,7 +834,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="accounting"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="accounting"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="wallet"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -985,7 +845,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="buying"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="buying"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="shopping-cart"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -995,7 +856,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="sell"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="sell"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="store"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1005,7 +867,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="stock"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="stock"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="package"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1015,7 +878,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="assets"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="assets"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="archive"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1025,7 +889,9 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="organization"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="organization"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="factory"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="building-complex"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1035,7 +901,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="quality"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="quality"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="shield-check"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1045,7 +912,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="project"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="project"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="folder-kanban"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1055,7 +923,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="support"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="support"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="headset"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1065,7 +934,7 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="users"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="users"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1075,7 +944,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="website"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="website"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="app-window"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1085,7 +955,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="crm"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="crm"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="handshake"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1095,7 +966,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="tool"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="tool"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="wrench"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1105,7 +977,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="setting"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="setting"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="settings"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1115,9 +988,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"]
-  .item-anchor[title="Integrations"]
-  .sidebar-item-icon[item-icon="integration"] {
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="Integrations"] .sidebar-item-icon[item-icon="integration"],
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="Integrations"] .sidebar-item-icon[item-icon="cable"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1127,9 +999,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"]
-  .item-anchor[title="ERPNext Integrations"]
-  .sidebar-item-icon[item-icon="integration"] {
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="ERPNext Integrations"] .sidebar-item-icon[item-icon="integration"],
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="ERPNext Integrations"] .sidebar-item-icon[item-icon="cable"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1139,9 +1010,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"]
-  .item-anchor[title="Build"]
-  .sidebar-item-icon[item-icon="tool"] {
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="Build"] .sidebar-item-icon[item-icon="tool"],
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="Build"] .sidebar-item-icon[item-icon="wrench"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1151,7 +1021,7 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="folder-normal"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="folder-normal"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1162,37 +1032,37 @@ Polish Hover Effects - Final
 }
 
 /* Base label color in the claudionnight theme */
-[data-theme="claudionnight"] .sidebar-item-label {
+[data-theme-mode="claudionnight"] .sidebar-item-label {
   color: var(--text-light) !important;
 }
 
 /* Hover state */
-[data-theme="claudionnight"] .sidebar-item-label:hover,
-[data-theme="claudionnight"] .desk-sidebar-item:hover .sidebar-item-label {
+[data-theme-mode="claudionnight"] .sidebar-item-label:hover,
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover .sidebar-item-label {
   color: white !important;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item:hover {
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover {
   background-color: #313634 !important;
 }
 
 /* Selected item label */
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-label {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-label {
   color: #020d0f !important;
 }
 
 /* Selected item background */
-[data-theme="claudionnight"] .desk-sidebar-item.selected {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar {
   background-color: #44c0a5 !important;
 }
 
 /* Icon fill on hover or selected */
-[data-theme="claudionnight"] .desk-sidebar-item:hover svg use,
-[data-theme="claudionnight"] .desk-sidebar-item.selected svg use {
+[data-theme-mode="claudionnight"] .standard-sidebar-item:not(.active-sidebar):has(.item-anchor:not(.section-break)):hover svg use,
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar svg use {
   fill: #020d0f !important;
   color: #020d0f !important;
 }
-[data-theme="claudionnight"] .input-with-feedback {
+[data-theme-mode="claudionnight"] .input-with-feedback {
   /* width: 145px;
   height: 33px; */
   /* gap: 8px;  */
@@ -1201,13 +1071,13 @@ Polish Hover Effects - Final
   background-color: #020d0f;
   border: 1px solid #313536;
 }
-[data-theme="claudionnight"] input[data-fieldname="has_variants"] {
+[data-theme-mode="claudionnight"] input[data-fieldname="has_variants"] {
   width: 16px;
   height: 16px;
 }
 
-[data-theme="claudionnight"] .label-area {
-  font-family: "Host Grotesk", sans-serif;
+[data-theme-mode="claudionnight"] .label-area {
+  font-family: $claudion-font;
   /* font-weight: 500; */
   /* font-size: 12px; */
   /* line-height: 130%; */
@@ -1218,21 +1088,21 @@ Polish Hover Effects - Final
   color: #ffffff;
 }
 
-[data-theme="claudionnight"] .list-row-checkbox {
+[data-theme-mode="claudionnight"] .list-row-checkbox {
   width: 16px;
   height: 16px;
   border-radius: 4px;
   border: 1px solid #525656;
   background: #0a1416;
 }
-[data-theme="claudionnight"] .list-check-all {
+[data-theme-mode="claudionnight"] .list-check-all {
   width: 16px;
   height: 16px;
   border-radius: 4px;
   border: 1px solid #525656;
   background: #0a1416;
 }
-[data-theme="claudionnight"] .btn.btn-default.btn-sm.ellipsis {
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.ellipsis {
   width: 112px;
   height: 29px;
   gap: 4px; /* Only effective if it's a flex or grid container */
@@ -1242,7 +1112,7 @@ Polish Hover Effects - Final
   border: 1px solid #4e878f;
   color: #4e878f; /* optional for better contrast */
 }
-[data-theme="claudionnight"] .btn.btn-default.icon-btn {
+[data-theme-mode="claudionnight"] .btn.btn-default.icon-btn {
   width: 32px;
   height: 32px;
   padding: 4px;
@@ -1251,7 +1121,7 @@ Polish Hover Effects - Final
   border-radius: 4px;
   color: #ffffff;
 }
-[data-theme="claudionnight"] .btn.btn-primary.btn-sm.primary-action {
+[data-theme-mode="claudionnight"] .btn.btn-primary.btn-sm.primary-action {
   width: 99px;
   height: 29px;
   gap: 8px;
@@ -1259,7 +1129,7 @@ Polish Hover Effects - Final
   padding: 8px;
   background: #4e878f;
 
-  font-family: "Host Grotesk", sans-serif;
+  font-family: $claudion-font;
   font-weight: 500;
   font-size: 14px;
   line-height: 120%;
@@ -1268,56 +1138,55 @@ Polish Hover Effects - Final
    align-items: center;
   justify-content: center;
 }
-[data-theme="claudionnight"] .es-icon.es-line.icon-sm {
+[data-theme-mode="claudionnight"] .es-icon.es-line.icon-sm {
   stroke: #4e878f !important;
   fill: #4e878f !important;
 }
-/* [data-theme="claudionnight"] svg.icon.icon-sm[href="#icon-dot-horizontal"] {
+/* [data-theme-mode="claudionnight"] svg.icon.icon-sm[href="#icon-dot-horizontal"] {
   stroke: #4e878f !important;
   fill: #4e878f !important;
 } */
-[data-theme="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button {
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button {
   width: 198px;
   height: 28px;
   gap: 10px; /* Only effective if using flex or grid layout */
   padding: 4px 12px;
   border-radius: 6px;
 }
-[data-theme="claudionnight"] .list-row-col {
+[data-theme-mode="claudionnight"] .list-row-col {
   color: #ffffff !important;
 }
-[data-theme="claudionnight"] .level-item {
+[data-theme-mode="claudionnight"] .level-item {
   color: #ffffff !important;
 }
-[data-theme="claudionnight"] .list-count {
+[data-theme-mode="claudionnight"] .list-count {
   color: #ffffff !important;
 }
-[data-theme="claudionnight"] .indicator-pill.blue {
+[data-theme-mode="claudionnight"] .indicator-pill.blue {
   border-radius: 9999px;
   background: #94b1b6;
   border: 1px solid #51858c;
 
-  font-family: "Host Grotesk", sans-serif;
+  font-family: $claudion-font;
 
   color: #0b272b !important;
 }
-[data-theme="claudionnight"] .btn.btn-xs.btn-secondary.chart-menu {
+[data-theme-mode="claudionnight"] .btn.btn-xs.btn-secondary.chart-menu {
   border: 1px solid #4E878F;
   background-color: #114d56;
   fill:#ffffff;
 }
-[data-theme="claudionnight"] .filter-chart.btn.btn-xs.pull-right {
+[data-theme-mode="claudionnight"] .filter-chart.btn.btn-xs.pull-right {
   border: 1px solid #4E878F;
   background-color: #114d56;
   fill:#ffffff
 }
-[data-theme="claudionnight"] .indicator-pill.blue > .ellipsis {
-  font-family: "Host Grotesk", sans-serif;
+[data-theme-mode="claudionnight"] .indicator-pill.blue > .ellipsis {
+  font-family: $claudion-font;
 
   color: #0b272b !important;
 }
-[data-theme="claudionnight"]
-  .btn.btn-default.btn-sm.list-sidebar-button[data-label="Assigned To"] {
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button[data-label="Assigned To"] {
   width: 198px;
   height: 28px;
   gap: 10px;
@@ -1326,10 +1195,8 @@ Polish Hover Effects - Final
   background: #15b08f;
 }
 
-[data-theme="claudionnight"]
-  .btn.btn-default.btn-sm.list-sidebar-button[data-label="Assigned To"]
-  > .ellipsis {
-  font-family: "Host Grotesk", sans-serif;
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button[data-label="Assigned To"] > .ellipsis {
+  font-family: $claudion-font;
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -1341,7 +1208,7 @@ Polish Hover Effects - Final
   justify-content: space-between;
   box-sizing: border-box;
 }
-/* [data-theme="claudionnight"]
+/* [data-theme-mode="claudionnight"]
   .btn.btn-default.btn-sm.list-sidebar-button[data-label="Created By"] {
   width: 198px;
   height: 28px;
@@ -1350,7 +1217,7 @@ Polish Hover Effects - Final
   border-radius: 6px;
   background: #020d0f;
 } */
-[data-theme="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button {
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button {
   width: 198px;
   height: 28px;
   gap: 10px;
@@ -1358,10 +1225,8 @@ Polish Hover Effects - Final
   border-radius: 6px;
   background: #020d0f;
 }
-[data-theme="claudionnight"]
-  .btn.btn-default.btn-sm.list-sidebar-button
-  > .ellipsis {
-  font-family: "Host Grotesk", sans-serif;
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.list-sidebar-button > .ellipsis {
+  font-family: $claudion-font;
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
@@ -1373,11 +1238,10 @@ Polish Hover Effects - Final
   justify-content: space-between;
   box-sizing: border-box;
 }
-[data-theme="claudionnight"] .list-sidebar-button span:first-child {
+[data-theme-mode="claudionnight"] .list-sidebar-button span:first-child {
   color: #979999;
 }
-[data-theme="claudionnight"]
-  .input-with-feedback.form-control.input-xs[placeholder="Filter Name"] {
+[data-theme-mode="claudionnight"] .input-with-feedback.form-control.input-xs[placeholder="Filter Name"] {
   width: 198px;
   height: 30px;
   gap: 8px; /* Only effective if display is flex or grid */
@@ -1387,12 +1251,11 @@ Polish Hover Effects - Final
   border: 1px solid #313536;
 
   box-sizing: border-box; /* ensures padding fits within width/height */
-  font-family: "Host Grotesk", sans-serif;
+  font-family: $claudion-font;
   font-size: 14px;
   color: #ffffff;
 }
-[data-theme="claudionnight"]
-  .list-link.filter-pill.list-sidebar-button.btn.btn-default {
+[data-theme-mode="claudionnight"] .list-link.filter-pill.list-sidebar-button.btn.btn-default {
   width: 198px;
   height: 30px;
   gap: 8px; /* Only effective if display is flex or grid */
@@ -1401,18 +1264,14 @@ Polish Hover Effects - Final
   background: #020d0f;
   border: 1px solid #313536;
 }
-[data-theme="claudionnight"] .ellipsis.filter-name {
+[data-theme-mode="claudionnight"] .ellipsis.filter-name {
   box-sizing: border-box; /* ensures padding fits within width/height */
-  font-family: "Host Grotesk", sans-serif;
+  font-family: $claudion-font;
   font-size: 13px;
 
   color: #979999;
 }
-[data-theme="claudionnight"] .saved-filters-preview {
-  font-family: "Host Grotesk", sans-serif;
-  color: #979999;
-}
-[data-theme="claudionnight"] .filter-button.btn.btn-sm.btn-default {
+[data-theme-mode="claudionnight"] .filter-button.btn.btn-sm.btn-default {
   width: 87px;
   height: 28px;
   gap: 4px; /* Only effective if display is flex/grid */
@@ -1426,7 +1285,7 @@ Polish Hover Effects - Final
   justify-content: center; /* ensures inner content is centered */
   box-sizing: border-box;
 }
-[data-theme="claudionnight"] .filter-x-button.btn.btn-sm.btn-default {
+[data-theme-mode="claudionnight"] .filter-x-button.btn.btn-sm.btn-default {
   /* width: 87px; */
   height: 28px;
   gap: 4px;
@@ -1439,7 +1298,7 @@ Polish Hover Effects - Final
   justify-content: center; /* ensures inner content is centered */
   box-sizing: border-box;
 }
-[data-theme="claudionnight"] .btn.btn-default.btn-sm.sort-selector-button {
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.sort-selector-button {
   /* width: 129px;*/
   height: 28px;
   gap: 4px; /* Only effective if display is flex/grid */
@@ -1453,7 +1312,7 @@ Polish Hover Effects - Final
   justify-content: center; /* ensures inner content is centered */
   box-sizing: border-box;
 }
-[data-theme="claudionnight"] .btn.btn-default.btn-sm.btn-order {
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.btn-order {
   /* width: 89px; */
   height: 28px;
   gap: 4px;
@@ -1466,20 +1325,20 @@ Polish Hover Effects - Final
   justify-content: center; /* ensures inner content is centered */
   box-sizing: border-box;
 }
-[data-theme="claudionnight"] .like-icon {
+[data-theme-mode="claudionnight"] .like-icon {
   fill: #ffffff !important;
 }
-[data-theme="claudionnight"] .form-tabs-list {
+[data-theme-mode="claudionnight"] .form-tabs-list {
   background: #0a1416 !important;
 
   color: #ffffffff !important;
 }
-[data-theme="claudionnight"] .std-form-layout > .form-layout > .form-page {
+[data-theme-mode="claudionnight"] .std-form-layout > .form-layout > .form-page {
   background: #0a1416 !important;
   border: 1px solid #313536 !important;
   color: #ffffffff !important;
 }
-[data-theme="claudionnight"] .input-with-feedback.form-control {
+[data-theme-mode="claudionnight"] .input-with-feedback.form-control {
   width: 100%; /* It will adapt to container */
   height: 38px;
   padding: 10px;
@@ -1492,20 +1351,19 @@ Polish Hover Effects - Final
   color: #ffffff !important; /* text dark */
   border: 1px solid #313536 !important; /* light gray border */
 }
-[data-theme="claudionnight"] .control-label {
+[data-theme-mode="claudionnight"] .control-label {
   color: #979999;
 }
-[data-theme="claudionnight"] .layout-main-section.frappe-card {
+[data-theme-mode="claudionnight"] .layout-main-section.frappe-card {
   background: #0A1416;
   border: 1px solid #313536 !important; /* Replace with your desired hex code */
 }
 
-
-[data-theme="claudionnight"] .nav-link{
+[data-theme-mode="claudionnight"] .nav-link{
   color:#ffffff !important;
 }
 
-[data-theme="claudionnight"] .btn.btn-default.ellipsis
+[data-theme-mode="claudionnight"] .btn.btn-default.ellipsis
 {
   border: 1px solid #4E878F;
   color: #4e878f;
@@ -1515,33 +1373,31 @@ Polish Hover Effects - Final
   padding: 4px;
   border-radius: 4px;
 
-
 }
 
-
-[data-theme="claudionnight"] .comment-input-header{
+[data-theme-mode="claudionnight"] .comment-input-header{
   color: #ffffff !important;
 }
-[data-theme="claudionnight"] .section-head.collapsible
+[data-theme-mode="claudionnight"] .section-head.collapsible
 {
   color: #ffffff !important;
  
 }
-[data-theme="claudionnight"] .timeline-item.activity-title{
+[data-theme-mode="claudionnight"] .timeline-item.activity-title{
   background-color: #020D0F!important;
   color: #ffffff!important;
 }
-[data-theme="claudionnight"] .timeline-item.activity-title h4{
+[data-theme-mode="claudionnight"] .timeline-item.activity-title h4{
   background-color: #020D0F!important;
   color: #ffffff!important;
 }
 
-[data-theme="claudionnight"] .timeline-items.timeline-actions{
+[data-theme-mode="claudionnight"] .timeline-items.timeline-actions{
     background-color: #020D0F!important;
 
 }
 
-[data-theme="claudionnight"] button.action-btn{
+[data-theme-mode="claudionnight"] button.action-btn{
   border: 1px solid #4E878F;
   color: #4e878f;
   background: #020D0F;
@@ -1551,42 +1407,42 @@ Polish Hover Effects - Final
   border-radius: 4px;
 }
 
-[data-theme="claudionnight"] .ql-editor
+[data-theme-mode="claudionnight"] .ql-editor
 {
   background: #020D0F!important;
   border: 1px solid #313536
 }
 
-[data-theme="claudionnight"] .ql-editor.ql-blank::before {
+[data-theme-mode="claudionnight"] .ql-editor.ql-blank::before {
   content: attr(data-placeholder);
   color: #313536;
   position: absolute;
   pointer-events: none;
 }
 
-[data-theme="claudionnight"] .timeline-content{
+[data-theme-mode="claudionnight"] .timeline-content{
   color: #ffffff !important;
 }
 
-[data-theme="claudionnight"] .timeline-content a {
+[data-theme-mode="claudionnight"] .timeline-content a {
   color: #ffffff !important;
 }
 
-[data-theme="claudionnight"] .timeline-content b {
+[data-theme-mode="claudionnight"] .timeline-content b {
   color: #ffffff !important;
 }
 
-[data-theme="claudionnight"] h1#createacustomer {
+[data-theme-mode="claudionnight"] h1#createacustomer {
   /* width: 128px;
   height: 18px; */
-  font-family: 'Host Grotesk', sans-serif;
+  font-family: $claudion-font;
   /* font-weight: 700;
   font-size: 15px;
   line-height: 120%;
   letter-spacing: 0%; */
   color: #ffffff;
 }
-[data-theme="claudionnight"] .ce-block__content .widget .dashboard-widget-box{
+[data-theme-mode="claudionnight"] .ce-block__content .widget .dashboard-widget-box{
   background: #0A1416 !important;
   border: 1px solid #313536;
   /* border-radius: 12px; 
@@ -1594,12 +1450,10 @@ Polish Hover Effects - Final
   color: #ffffff;
 }
 
-
 /* *******************************************************ICONS*********************************************************** */
 
-
-
-[data-theme="claudionnight"] .sidebar-item-icon[item-icon="getting-started"] {
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="getting-started"],
+[data-theme-mode="claudionnight"] .sidebar-item-icon[item-icon="rocket"] {
   border: 1.5px;
   display: inline-block;
   width: 20px;
@@ -1610,7 +1464,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="accounting"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="accounting"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="wallet"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1620,7 +1475,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="buying"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="buying"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="shopping-cart"] {
   background-image: url("/assets/claudion4saudi/assets/buying/Shopping, Ecommerce/shopping-bag-fast-buy.png") !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
@@ -1630,9 +1486,8 @@ Polish Hover Effects - Final
   display: inline-block !important;
 }
 
-
-
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="sell"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="sell"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="store"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1642,7 +1497,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="stock"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="stock"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="package"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1652,7 +1508,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="assets"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="assets"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="archive"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1662,7 +1519,9 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="organization"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="organization"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="factory"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="building-complex"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1672,7 +1531,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="quality"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="quality"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="shield-check"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1682,10 +1542,10 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-
     
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="project"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="project"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="folder-kanban"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1695,7 +1555,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="support"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="support"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="headset"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1705,7 +1566,7 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="users"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="users"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1715,7 +1576,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="website"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="website"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="app-window"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1725,7 +1587,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="crm"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="crm"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="handshake"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1735,7 +1598,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="tool"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="tool"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="wrench"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1745,7 +1609,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="setting"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="setting"],
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="settings"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1755,9 +1620,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"]
-  .desk-sidebar-item.selected a.item-anchor[title="Integrations"]  
-  .sidebar-item-icon[item-icon="integration"] {
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="Integrations"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="integration"],
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="Integrations"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="cable"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1767,9 +1631,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"]
-  .desk-sidebar-item.selected a.item-anchor[title="ERPNext Integrations"] 
-  .sidebar-item-icon[item-icon="integration"] {
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="ERPNext Integrations"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="integration"],
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="ERPNext Integrations"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="cable"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1779,9 +1642,8 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"]
-  .item-anchor[title="Build"] .desk-sidebar-item.selected 
-  .sidebar-item-icon[item-icon="tool"] {
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="Build"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="tool"],
+[data-theme-mode="claudionnight"] .sidebar-item-container[data-id="Build"] > .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="wrench"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1791,7 +1653,7 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-[data-theme="claudionnight"] .desk-sidebar-item.selected .sidebar-item-icon[item-icon="folder-normal"] {
+[data-theme-mode="claudionnight"] .standard-sidebar-item.active-sidebar .sidebar-item-icon[item-icon="folder-normal"] {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -1801,621 +1663,325 @@ Polish Hover Effects - Final
   background-position: center;
 }
 
-
-
-[data-theme="claudionnight"] .widget-label:has(span[title="Item"])::before {
+[data-theme-mode="claudionnight"] .widget-label:has(span[title="Item"])::before {
   background-image: url("/assets/claudion4saudi/assets/b-item.png")!important;
 }
 
-[data-theme="claudionnight"]  .widget-label:has(span[title="Material Request"])::before {
+[data-theme-mode="claudionnight"] .widget-label:has(span[title="Material Request"])::before {
   background-image: url("/assets/claudion4saudi/assets/b-material-request.png")!important;
 }
 
-[data-theme="claudionnight"]  .widget-label:has(span[title="Purchase Order"])::before {
+[data-theme-mode="claudionnight"] .widget-label:has(span[title="Purchase Order"])::before {
   background-image: url("/assets/claudion4saudi/assets/b-purchase-order.png")!important;
 }
 
-[data-theme="claudionnight"]  .widget-label:has(span[title="Purchase Analytics"])::before {
+[data-theme-mode="claudionnight"] .widget-label:has(span[title="Purchase Analytics"])::before {
   background-image: url("/assets/claudion4saudi/assets/b-purchase-analytics.png")!important;
 }
-[data-theme="claudionnight"]  .widget-label:has(span[title="Purchase Order Analysis"])::before {
+[data-theme-mode="claudionnight"] .widget-label:has(span[title="Purchase Order Analysis"])::before {
   background-image: url("/assets/claudion4saudi/assets/b-purchase-order-analysis.png")!important;
 }
-[data-theme="claudionnight"]  .widget-label:has(span[title="Dashboard"])::before {
+[data-theme-mode="claudionnight"] .widget-label:has(span[title="Dashboard"])::before {
   background-image: url("/assets/claudion4saudi/assets/b-dashboard.png")!important;
 }
-[data-theme="claudionnight"]  .widget-label:has(span[title="Learn Procurement"])::before {
+[data-theme-mode="claudionnight"] .widget-label:has(span[title="Learn Procurement"])::before {
   background-image: url("/assets/claudion4saudi/assets/b-learn-procurement.png")!important;
 }
 
-
-
-[data-theme="claudionnight"] .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Sales Order"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Sales Order"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sell-sales-order.png")!important
 }
-[data-theme="claudionnight"]  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Sales Analytics"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Sales Analytics"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sell-sales-analytics.png")!important;
 }
-[data-theme="claudionnight"]  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Point of Sale"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Point of Sale"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sell-point-of-sale.png")!important;
 }
-[data-theme="claudionnight"]  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Sales Management"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Sales Management"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sell-learn-sales.png")!important;
 }
 
-
-
-
-
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Delivery Note"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Delivery Note"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sto-delivery-note.png");}
 
-
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Inventory Management"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Inventory Management"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sto-learn-inventory.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Purchase Receipt"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Purchase Receipt"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sto-purchase-receipt.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Stock Balance"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Stock Balance"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sto-stock-balance.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Stock Entry"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Stock Entry"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sto-stock-entry.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Stock Ledger"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Stock Ledger"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sto-stock-ledger.png");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Asset"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Asset"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-asst-asset.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Asset Category"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Asset Category"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-asst-asset-category.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Fixed Asset Register"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Fixed Asset Register"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-asst-fixed-asset-reg.png");}
 
-
-
    
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="BOM Creator"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="BOM Creator"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-bom-creator.png");}
 
-
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="BOM Stock Report"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="BOM Stock Report"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-bom-stock-report.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="BOM"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="BOM"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-bom.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Forecasting"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Forecasting"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-forecasting.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Job Card"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Job Card"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-job-card.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Manufacturing"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Manufacturing"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-learn-manufacturing.png");}
 
-
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Plant Floor"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Plant Floor"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-plant-floor.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Production Plan"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Production Plan"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-production-plan.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Production Planning Report"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Production Planning Report"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-production-planning-report.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Work Order"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Work Order"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-man-work-order.png");}
 
-
-
-
-
   
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Non Conformance"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Non Conformance"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-q-no-conformance.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Production Plan"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Production Plan"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-q-production-plan.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Action"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Action"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-q-qaction.png");}
 
-
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Goal"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Goal"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-q-qgoal.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Inspection"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Inspection"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-q-qinspection.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Procedure"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Procedure"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-q-qprocedure.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Quality Review"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Quality Review"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-q-qreview.png");}
 
-
-
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Project Management"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Project Management"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-pro-learn-project-management.png");}
 
-
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Project Billing Summary"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Project Billing Summary"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-pro-project-billing-summary.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Project"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Project"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-pro-project.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Task"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Task"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-pro-task.png");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Timesheet"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Timesheet"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-pro-timesheet.png");}
 
-
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Issue"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Issue"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sup-issue.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Maintenance Visit"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Maintenance Visit"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sup-maintenance-visit.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Service Level Agreement"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Service Level Agreement"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-sup-service-level-agreement.svg");}
 
-
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Permission Manager"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Permission Manager"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-us-permission-manager.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Role"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Role"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-us-role.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="User Profile"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="User Profile"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-us-user-profile.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="User Type"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="User Type"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-us-user-type.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="User"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="User"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-us-user.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Blog Post"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Blog Post"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-web-blog-post.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Blogger"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Blogger"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-web-blogger.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Web Form"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Web Form"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-web-web-form.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Web Page"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Web Page"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-web-web-page.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Website Settings"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Website Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-web-website-settings.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Lead"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Lead"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-crm-lead.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Opportunity"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Opportunity"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-crm-opportunity.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Customer"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Customer"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-crm-customer.svg");}
 
-
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Assignment Rule"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Assignment Rule"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-to-assignment-rule.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="File"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="File"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-to-file.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Import Data"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Import Data"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-to-import-data.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="ToDo"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="ToDo"])::before {
   background-image: url("/assets/claudion4saudi/assets/n-to-todo.svg");}
-
-
 
   
 
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Accounts Settings"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Accounts Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--acc-sett.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Buying Settings"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Buying Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--buying-sett.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Global Defaults"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Global Defaults"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--global-defaults.svg");}
 
-
-
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Print Settings"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Print Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--print-sett.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Selling Settings"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Selling Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--selling-sett.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Stock Settings"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Stock Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--stock-sett.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="System Settings"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="System Settings"])::before {
   background-image: url("/assets/claudion4saudi/assets/d--syst-sett.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Browse Apps"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Browse Apps"])::before {
   background-image: url("/assets/claudion4saudi/assets/BROWSE.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Client Script"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Client Script"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-client-script.svg");}
 
-
-
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Customize Form"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Customize Form"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-customize-form.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="DocType"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="DocType"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-doctype.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Report"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Report"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-report.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Server Script"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Server Script"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-server-script.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Print Format Builder"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Print Format Builder"])::before {
   background-image: url("/assets/claudion4saudi/assets/build-pfb.svg");}
 
-   [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Dashboard "])::before {
+   [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Dashboard "])::before {
   background-image: url("/assets/claudion4saudi/assets/a-db.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Zatca Setup Wizard"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Zatca Setup Wizard"])::before {
   background-image: url("/assets/claudion4saudi/assets/a-wizard.svg");}
 
-
-   [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Accounts Receivable"])::before {
+   [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Accounts Receivable"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-accnts-recvbl.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Cost Center"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Cost Center"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-cost-center.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Journal Entry"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Journal Entry"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-journal-entry.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Payment Entry"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Payment Entry"])::before {
   background-image: url("/assets/claudion4saudi/assets/A-payment-entry.svg");}
 
-
-  [data-theme="claudionnight"]  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="POS Invoice"])::before  {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="POS Invoice"])::before  {
   background-image: url("/assets/claudion4saudi/assets/A-pos-invoice.svg")!important;}
 
-
-
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Chart of Accounts"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Chart of Accounts"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-chart-of-accnts.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Purchase Invoice"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Purchase Invoice"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-pur-inv.svg");}
 
   
-[data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="General Ledger"])::before {
+[data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="General Ledger"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-general-ledger.svg");}
 
-
-  [data-theme="claudionnight"]
-  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Trial Balance"])::before {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Trial Balance"])::before {
   background-image: url("/assets/claudion4saudi/assets/z-trial-balance.svg");}
 
-
-  [data-theme="claudionnight"]  .widget.shortcut-widget-box
-  .widget-head
-  .widget-label:has(span[title="Learn Accounting"])::before  {
+  [data-theme-mode="claudionnight"] .widget.shortcut-widget-box .widget-head .widget-label:has(span[title="Learn Accounting"])::before  {
   background-image: url("/assets/claudion4saudi/assets/z-learn-accounting.svg")!important;}
-
 
     /*********************************ICONS END***********************************/
 
     /* 
-[data-theme="claudionnight"] .count {
+[data-theme-mode="claudionnight"] .count {
   width: 16px !important;
   height: 20px !important;
-  font-family: "Host Grotesk" !important;
+  font-family: $claudion-font !important;
   font-weight: 700 !important;
   font-size: 24px !important;
   line-height: 20px !important;
@@ -2423,9 +1989,7 @@ Polish Hover Effects - Final
   color: #ffffff !important;
 }
 
-
-
-[data-theme="claudionnight"] .number-card {
+[data-theme-mode="claudionnight"] .number-card {
   width: 242.4px!important;
   height: 104px!important;
   gap: 4px!important;
@@ -2441,12 +2005,11 @@ Polish Hover Effects - Final
   text-align: center;
   box-sizing: border-box;
 }
-[data-theme="claudionnight"] .number-card h4 {
+[data-theme-mode="claudionnight"] .number-card h4 {
   color: #ffffff !important;
 }
 
-
-[data-theme="claudionnight"] #monthlyChart {
+[data-theme-mode="claudionnight"] #monthlyChart {
  
   border-radius: 8px !important;
   border-width: 1px !important;
@@ -2459,14 +2022,14 @@ Polish Hover Effects - Final
   justify-content: center !important;
   box-sizing: border-box !important;
 }
-[data-theme="claudionnight"] 
+[data-theme-mode="claudionnight"] 
 .frappe-control[data-fieldname="zatca_charts"] > div > div:nth-child(1),
-[data-theme="claudionnight"] 
+[data-theme-mode="claudionnight"] 
 .frappe-control[data-fieldname="zatca_charts"] > div > div:nth-child(2) {
   background-color: #0A1416 !important;
 }
 
-[data-theme="claudionnight"] 
+[data-theme-mode="claudionnight"] 
 .frappe-control[data-fieldname="zatca_list"] table {
   width: 1260px !important;
   height: 464px !important;
@@ -2479,38 +2042,34 @@ Polish Hover Effects - Final
   padding: 16px !important; 
   box-sizing: border-box !important;
 }
-[data-theme="claudionnight"] 
+[data-theme-mode="claudionnight"] 
 .frappe-control[data-fieldname="zatca_list"] td {
   color: #FFFFFF !important;
-  font-family: 'Host Grotesk', sans-serif !important;
+  font-family: $claudion-font !important;
  
 }
-[data-theme="claudionnight"] 
+[data-theme-mode="claudionnight"] 
 .frappe-control[data-fieldname="zatca_list"] td a {
   color: #ffffff !important;}
 
-[data-theme="claudionnight"] th {
+[data-theme-mode="claudionnight"] th {
   color: #ffffff !important;
 }
 
-
  */
 
-
- [data-theme="claudionnight"][data-route="Zatca/Zatca Dashboard"] .layout-main-section {
+ [data-theme-mode="claudionnight"][data-route="Zatca/Zatca Dashboard"] .layout-main-section {
   all: unset !important;
   display: contents !important;
 }
 
-
-
-[data-theme="claudionnight"]  .dashboard-widget-box {
+[data-theme-mode="claudionnight"] .dashboard-widget-box {
 background: #0A1416!important;
 border: 1px solid #313536!important;
 }
 
 /* Change the line (path) color to purple */
-[data-theme="claudionnight"] .line-graph-path {
+[data-theme-mode="claudionnight"] .line-graph-path {
   stroke: #7575ff !important;
 }
 
@@ -2518,50 +2077,43 @@ border: 1px solid #313536!important;
   fill: url(#path-fill-gradient-purple-custom) !important;
 } */
 
-[data-theme="claudionnight"] .region-fill {
-  fill: linear-gradient(
-    357.36deg,
-    rgba(245, 247, 247, 0) -12.34%,
-    rgba(117, 117, 255, 0.3) 83.59%
-  ) !important;
-}
-[data-theme="claudionnight"] .graph-svg-tip .tooltip-legend {
+[data-theme-mode="claudionnight"] .graph-svg-tip .tooltip-legend {
   background: #7575ff !important;
 }
 
 /* Additional fallback if .region-fill doesn't respond to URL gradient */
-[data-theme="claudionnight"] .region-fill {
+[data-theme-mode="claudionnight"] .region-fill {
   fill: #7575ff1a !important; /* 10% opacity */
 }
 
 /* Adjusting stroke width or line style */
-[data-theme="claudionnight"] .line-graph-path {
+[data-theme-mode="claudionnight"] .line-graph-path {
   stroke-width: 2px !important;
 }
 
 /* Smooth curve if it's SVG path-based */
-[data-theme="claudionnight"] .line-graph-path {
+[data-theme-mode="claudionnight"] .line-graph-path {
   stroke-linejoin: round !important;
   stroke-linecap: round !important;
 }
 
-[data-theme="claudionnight"] rect.bar.mini {
+[data-theme-mode="claudionnight"] rect.bar.mini {
   fill: #2195A7!important;
 }
 
-[data-theme="claudionnight"] .chart-legend .legend-dataset-label {
+[data-theme-mode="claudionnight"] .chart-legend .legend-dataset-label {
   fill: #8895a5;
   color:  #8895A5!important;
 
 }
 
-[data-theme="claudionnight"] .bar-chart .x.axis text,
-[data-theme="claudionnight"] .bar-chart .y.axis text {
+[data-theme-mode="claudionnight"] .bar-chart .x.axis text,
+[data-theme-mode="claudionnight"] .bar-chart .y.axis text {
   fill: #8895A5 !important;
  
 }
 
-[data-theme="claudionnight"] .widget.number-widget-box {
+[data-theme-mode="claudionnight"] .widget.number-widget-box {
   background-color: #0A1416 !important;
   border: 1px solid #313536 !important;
   border-radius: 6px !important;
@@ -2569,10 +2121,10 @@ border: 1px solid #313536!important;
   color: #FFFFFF !important;
 }
 
-[data-theme="claudionnight"] .widget.number-widget-box .widget-title span {
+[data-theme-mode="claudionnight"] .widget.number-widget-box .widget-title span {
   width: 120px !important;
   height: 20px !important;
-  font-family: 'Host Grotesk', sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 400 !important;
   font-size: 14px !important;
   line-height: 20px !important;
@@ -2584,31 +2136,27 @@ color: #FFFFFF !important;
   border-radius: 4px; /* optional: softens background edges */
 }
 
-[data-theme="claudionnight"] .widget.number-widget-box .number {
+[data-theme-mode="claudionnight"] .widget.number-widget-box .number {
   color:#FFFFFF !important;
-  width: 91;
-height: 20;
-  font-family: 'Host Grotesk', sans-serif !important;
+  font-family: $claudion-font !important;
 font-weight: 700;
 font-size: 24px;
 line-height: 20px;
 letter-spacing: 0%;
 }
 
-[data-theme="claudionnight"] .widget-title .ellipsis:hover {
+[data-theme-mode="claudionnight"] .widget-title .ellipsis:hover {
 color:#ffffff !important;
 }
 
-
-[data-theme="claudionnight"] .h4 {
+[data-theme-mode="claudionnight"] .h4 {
   color: #ffffff !important;
 }
 
-
-  [data-theme="claudionnight"] .count {
+  [data-theme-mode="claudionnight"] .count {
   width: 16px !important;
   height: 20px !important;
-  font-family: "Host Grotesk" !important;
+  font-family: $claudion-font !important;
   font-weight: 700 !important;
   font-size: 24px !important;
   line-height: 20px !important;
@@ -2616,32 +2164,7 @@ color:#ffffff !important;
   color: white !important;
 }
 
-
-
-[data-theme="claudionnight"] .number-card {
-  width: 242px!important;
-  height: 104px!important;
-  gap: 4px!important;
-  border-radius: 6px!important;
-  padding: 20px!important;
-  background: #0A1416!important; /* Replace with your desired hex code */
-
-  border: 1px solid #313536 !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-[data-theme="claudionnight"] .number-card h4 {
-  color: white !important;
-}
-
-
-[data-theme="claudionnight"] 
-.frappe-control[data-fieldname="zatca_list"] table {
+[data-theme-mode="claudionnight"] .frappe-control[data-fieldname="zatca_list"] table {
 
   border-radius: 12px !important;
 
@@ -2649,27 +2172,25 @@ color:#ffffff !important;
   border-bottom: 1px solid #313536 !important;
 
 }
-[data-theme="claudionnight"] 
-.frappe-control[data-fieldname="zatca_list"] td {
+[data-theme-mode="claudionnight"] .frappe-control[data-fieldname="zatca_list"] td {
   color: white !important;
-  font-family: 'Host Grotesk', sans-serif !important;
+  font-family: $claudion-font !important;
  
 }
-[data-theme="claudionnight"] 
-.frappe-control[data-fieldname="zatca_list"] td a {
+[data-theme-mode="claudionnight"] .frappe-control[data-fieldname="zatca_list"] td a {
   color: white !important;}
 
-[data-theme="claudionnight"] th {
+[data-theme-mode="claudionnight"] th {
   color: white !important;
 background: #313536 !important;
-  font-family: 'Host Grotesk', sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 500 !important;
   font-size: 14px !important;
   line-height: 20px !important;
   letter-spacing: 0px !important;
 }
 
-[data-theme="claudionnight"] .badge-danger {
+[data-theme-mode="claudionnight"] .badge-danger {
   width: 88px !important;
   height: 20px !important;
   gap: 4px !important;
@@ -2684,7 +2205,7 @@ background: #313536 !important;
   color: #c3a75d !important;
 
   /* Font styles */
-  font-family: 'Host Grotesk', sans-serif !important;
+  font-family: $claudion-font !important;
   font-weight: 500 !important;
   font-size: 11px !important;
   line-height: 120% !important;
@@ -2695,61 +2216,43 @@ background: #313536 !important;
   justify-content: center !important;
 }
 
-
-[data-theme="claudionnight"] .modal-dialog .modal-content{
+[data-theme-mode="claudionnight"] .modal-dialog .modal-content{
   background: #0A1416 !important;
   border: 1px solid #313536 !important;
   border-radius: 8px !important;
 }
 
-[data-theme="claudionnight"] .modal-title {
+[data-theme-mode="claudionnight"] .modal-title {
   color: #FFFFFF !important;
-  font-family: 'Host Grotesk', sans-serif !important;
+  font-family: $claudion-font !important;
  
 }
 
-[data-theme="claudionnight"] .theme-title {
-  color: #FFFFFF !important;
-  font-family: 'Host Grotesk', sans-serif !important;
-
-}
-
-
-[data-theme="claudionnight"] .btn.btn-secondary.btn-sm {
+[data-theme-mode="claudionnight"] .btn.btn-secondary.btn-sm {
   background: #15b08f;
   color:black;
 }
 
-[data-theme="claudionnight"] .btn.btn-default.btn-sm.btn-new-doc.hidden-xs {
+[data-theme-mode="claudionnight"] .btn.btn-default.btn-sm.btn-new-doc.hidden-xs {
   background: #15b08f;
   color:black;
 }
 
-[data-theme="claudionnight"] .btn.btn-primary.btn-sm.btn-modal-primary {
+[data-theme-mode="claudionnight"] .btn.btn-primary.btn-sm.btn-modal-primary {
   background: #15b08f;
   color:black;
 }
 
-[data-theme="claudionnight"] .btn.btn-paging {
-  background-color:  #4e878f;
-  
-}
-
-[data-theme="claudionnight"] .btn.btn-paging.btn-info {
-    background-color:  #4e878f;
-
-}
-
-[data-theme="claudionnight"] .form-clickable-section.grid-footer {
+[data-theme-mode="claudionnight"] .form-clickable-section.grid-footer {
   background: #0A1416 !important;
   
 }
 
-/* [data-theme="claudionnight"] .icon-btn svg {
+/* [data-theme-mode="claudionnight"] .icon-btn svg {
   display: none;
 }
 
-[data-theme="claudionnight"].icon-btn {
+[data-theme-mode="claudionnight"].icon-btn {
   background-image: url('/assets/claudion4saudi/assets/printer-modern.svg'); 
   background-repeat: no-repeat;
   background-position: center;
@@ -2758,27 +2261,26 @@ background: #313536 !important;
   height: 2em;
 } */
 
-
-[data-theme="claudionnight"] .frappe-control > div > div:first-child {
+[data-theme-mode="claudionnight"] .frappe-control > div > div:first-child {
   background: #0A1416 !important;
   color:#ffffff!important;
 /* border: 1px solid #313536 !important */
 }
 
-[data-theme="claudionnight"] .frappe-control > div > div:last-child {
+[data-theme-mode="claudionnight"] .frappe-control > div > div:last-child {
   background: #0A1416 !important;
   color: #ffffff !important;
   /* border: 1px solid #313536 !important; */
 }
 
-[data-theme="claudionnight"] .frappe-control[data-fieldname="zatca_list"] #dynamicContent {
+[data-theme-mode="claudionnight"] .frappe-control[data-fieldname="zatca_list"] #dynamicContent {
   background: #0A1416 !important;
   color: #ffffff !important;
   border: 1px solid #313536 !important;
   
 }
 
-[data-theme="claudionnight"] #page-Sales\ Invoice > div.container.page-body > div.page-wrapper > div > div.row.layout-main > div.col-lg-2.layout-side-section > div > ul.list-unstyled.sidebar-menu.form-attachments > li.attachments-actions > span > span > a {
+[data-theme-mode="claudionnight"] #page-Sales\ Invoice > div.container.page-body > div.page-wrapper > div > div.row.layout-main > div.col-lg-2.layout-side-section > div > ul.list-unstyled.sidebar-menu.form-attachments > li.attachments-actions > span > span > a {
 color: #ffffff !important;
  
 }
